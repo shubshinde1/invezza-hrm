@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: Euclid;
+    src: url(./assets/font/Euclid\ Circular\ A\ Regular.ttf);
+}
+
+@font-face {
+    font-family: Euclid-bold;
+    src: url(./assets/font/Euclid\ Circular\ A\ Bold.ttf);
+}
+
+@font-face {
+    font-family: Euclid-medium;
+    src: url(./assets/font/Euclid\ Circular\ A\ Medium.ttf);
+}
+
+
+
+.euclid {
+    font-family: Euclid;
+}
+
+.euclid-bold {
+    font-family: Euclid-bold;
+}
+
+.euclid-medium {
+    font-family: Euclid-medium;
+}
+
+
+body {
+    background-color: #D9D9D9;
+    font-family: euclid;
+}
+
+
+
+/* Hide scrollbar for Chrome, Safari, IE, Edge and Firefox and Opera */
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+};
