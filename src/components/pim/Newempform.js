@@ -23,7 +23,7 @@ export default function Newempform() {
   };
 
   return (
-    <div className="bg-white p-4 rounded-md h-screen">
+    <div className="bg-white p-4 rounded-md h-screen overflow-scroll">
       <div>
         <div>
           <h4 className="font-bold">Add Profile Picture</h4>
@@ -66,13 +66,87 @@ export default function Newempform() {
             </div>
           </div>
 
-          {/* Employment Information */}
+          {/* Personal Information */}
           <div className="mt-8">
             <h4 className="font-bold">Personal Information</h4>
             <div className="mt-2">
               <div className="flex gap-5 flex-wrap sm:flex-nowrap">
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label>First Name</label>
+                  <label htmlFor="firstName">First Name</label>
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"
+                  />
+                </div>
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <label htmlFor="lastName">Last Name</label>
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"
+                  />
+                </div>
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <label htmlFor="employeeId">Employee Id</label>
+                  <input
+                    id="employeeId"
+                    name="employeeId"
+                    type="text"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"
+                  />
+                </div>
+              </div>
+              <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <label htmlFor="dateOfBirth">Date of Birth</label>
+                  <input
+                    id="dateOfBirth"
+                    name="dateOfBirth"
+                    type="date"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"
+                  />
+                </div>
+
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <label htmlFor="gender">Gender</label>
+                  <select
+                    id="gender"
+                    name="gender"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"
+                  >
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <label htmlFor="maritalStatus">Marital Status</label>
+                  <select
+                    id="maritalStatus"
+                    name="maritalStatus"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"
+                  >
+                    <option value="">Select Marital Status</option>
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                    <option value="divorced">Divorced</option>
+                    <option value="widowed">Widowed</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Employment Information */}
+          <div className="mt-8">
+            <h4 className="font-bold">Employment Information</h4>
+            <div className="mt-2">
+              <div className="flex gap-5 flex-wrap sm:flex-nowrap">
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <label>Date of Joining</label>
                   <input className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"></input>
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col">
@@ -91,11 +165,11 @@ export default function Newempform() {
                 </div>
 
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label>Email Id</label>
+                  <label>Gender</label>
                   <input className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"></input>
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label>Phone No</label>
+                  <label>Marital Status</label>
                   <input className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"></input>
                 </div>
               </div>

@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.6efbb0dc.css",
-    "main.js": "/static/js/main.b61c59ce.js",
-    "static/js/453.4a276c5e.chunk.js": "/static/js/453.4a276c5e.chunk.js",
+    "main.css": "/static/css/main.2a2471e0.css",
+    "main.js": "/static/js/main.937968af.js",
+    "static/js/453.a058e9e8.chunk.js": "/static/js/453.a058e9e8.chunk.js",
     "static/media/Euclid Circular A Medium.ttf": "/static/media/Euclid Circular A Medium.a5befbfcb71cd093cc56.ttf",
     "static/media/Euclid Circular A Regular.ttf": "/static/media/Euclid Circular A Regular.d54600880dc63db716f2.ttf",
     "static/media/Euclid Circular A Bold.ttf": "/static/media/Euclid Circular A Bold.b4788f2f8f64a74fe6d6.ttf",
     "static/media/invezza-logo.png": "/static/media/invezza-logo.de428b5cf5787ea9c603.png",
+    "static/media/profilepic.png": "/static/media/profilepic.712251e88a1c52f0c358.png",
     "index.html": "/index.html",
-    "main.6efbb0dc.css.map": "/static/css/main.6efbb0dc.css.map",
-    "main.b61c59ce.js.map": "/static/js/main.b61c59ce.js.map",
-    "453.4a276c5e.chunk.js.map": "/static/js/453.4a276c5e.chunk.js.map"
+    "main.2a2471e0.css.map": "/static/css/main.2a2471e0.css.map",
+    "main.937968af.js.map": "/static/js/main.937968af.js.map",
+    "453.a058e9e8.chunk.js.map": "/static/js/453.a058e9e8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6efbb0dc.css",
-    "static/js/main.b61c59ce.js"
+    "static/css/main.2a2471e0.css",
+    "static/js/main.937968af.js"
   ]
 }
