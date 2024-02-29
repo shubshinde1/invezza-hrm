@@ -11,7 +11,8 @@ import Leave from "./components/Leave";
 import Claim from "./components/Claim";
 import Login from "./components/Login";
 import Pim from "./components/Pim";
-import Subitem from "./components/pim/Subitem";
+import Employeelist from "./components/pim/Employeelist";
+import Addemployee from "./components/pim/Addemployee";
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
           <Route path="Admin" element={<Admin />} />
           <Route path="Claim" element={<Claim />} />
           <Route path="Pim" element={<Pim />} />
-          <Route path="pim/Subitem" element={<Subitem />} />
+          <Route path="pim/employeelist" element={<Employeelist />} />
+          <Route path="pim/addemployee" element={<Addemployee />} />
         </Route>
         <Route path="login" element={<Login />} />
       </Routes>

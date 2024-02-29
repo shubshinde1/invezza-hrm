@@ -20,15 +20,15 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     icon: <BsPeopleFill />,
     subItems: [
       {
-        key: "subitem",
+        key: "employeelist",
         label: "Employee List",
-        path: "pim/subitem",
+        path: "pim/employeelist",
         icon: <BsPeopleFill />,
       },
       {
-        key: "subitem",
+        key: "employee",
         label: "Add New Employee",
-        path: "pim/subitem",
+        path: "pim/addemployee",
         icon: <BsPeopleFill />,
       },
     ],
