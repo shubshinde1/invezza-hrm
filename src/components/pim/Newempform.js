@@ -23,9 +23,9 @@ export default function Newempform() {
   };
 
   return (
-    <div className="bg-white p-4 rounded-md h-screen overflow-scroll">
+    <div className="bg-white p-4 rounded-md h-screen overflow-scroll scrollbar-hide">
       <div>
-        <div>
+        <form action="/employeelist" method="post">
           <h4 className="font-bold">Add Profile Picture</h4>
 
           {/* user profile */}
@@ -77,7 +77,7 @@ export default function Newempform() {
                     id="firstName"
                     name="firstName"
                     type="text"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
                   />
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col">
@@ -86,7 +86,7 @@ export default function Newempform() {
                     id="lastName"
                     name="lastName"
                     type="text"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
                   />
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col">
@@ -95,7 +95,7 @@ export default function Newempform() {
                     id="employeeId"
                     name="employeeId"
                     type="text"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
                   />
                 </div>
               </div>
@@ -106,7 +106,7 @@ export default function Newempform() {
                     id="dateOfBirth"
                     name="dateOfBirth"
                     type="date"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
                   />
                 </div>
 
@@ -115,9 +115,9 @@ export default function Newempform() {
                   <select
                     id="gender"
                     name="gender"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
                   >
-                    <option value="">Select Gender</option>
+                    <option value=""></option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                   </select>
@@ -127,9 +127,9 @@ export default function Newempform() {
                   <select
                     id="maritalStatus"
                     name="maritalStatus"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
                   >
-                    <option value="">Select Marital Status</option>
+                    <option value=""></option>
                     <option value="single">Single</option>
                     <option value="married">Married</option>
                     <option value="divorced">Divorced</option>
@@ -140,42 +140,332 @@ export default function Newempform() {
             </div>
           </div>
 
+          <hr className="my-8" />
+
           {/* Employment Information */}
           <div className="mt-8">
             <h4 className="font-bold">Employment Information</h4>
             <div className="mt-2">
               <div className="flex gap-5 flex-wrap sm:flex-nowrap">
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label>Date of Joining</label>
-                  <input className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"></input>
+                  <label htmlFor="dateogjoining">Date of Joining</label>
+                  <input
+                    id="dateogjoining"
+                    name="dateogjoining"
+                    type="date"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  />
                 </div>
+
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label>Last Name</label>
-                  <input className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"></input>
+                  <label htmlFor="department">Department</label>
+                  <select
+                    id="department"
+                    name="department"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  >
+                    <option value=""></option>
+                    <option value="informationtechnology">
+                      Information Technology
+                    </option>
+                    <option value="operations">Operations</option>
+                    <option value="sales">Sales</option>
+                    <option value="humanresources">Human Resources</option>
+                    <option value="finance">Finance</option>
+                    <option value="marketing">Marketing</option>
+                  </select>
                 </div>
+
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label>Employee Id</label>
-                  <input className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"></input>
+                  <label htmlFor="manager">Manger</label>
+                  <select
+                    id="manager"
+                    name="manager"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  >
+                    <option value=""></option>
+                    <option value="swpnilpatil">Swpnil Patil</option>
+                    <option value="sheetalpatil">Sheetal Patil</option>
+                    <option value="ishapathak">Isha Pathak</option>
+                    <option value="sushantkhadilkar">Sushant Khadilkar</option>
+                    <option value="shubhamshinde">Shubham Shinde</option>
+                  </select>
                 </div>
               </div>
               <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label>Date of Birth</label>
-                  <input className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"></input>
+                  <label htmlFor="teamlead">Team Leader</label>
+                  <select
+                    id="teamlead"
+                    name="teamlead"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  >
+                    <option value=""></option>
+                    <option value="swpnilpatil">Swpnil Patil</option>
+                    <option value="sheetalpatil">Sheetal Patil</option>
+                    <option value="ishapathak">Isha Pathak</option>
+                    <option value="sushantkhadilkar">Sushant Khadilkar</option>
+                    <option value="shubhamshinde">Shubham Shinde</option>
+                  </select>
+                </div>
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <label htmlFor="designation">Job Title / Designation</label>
+                  <select
+                    id="designation"
+                    name="designation"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  >
+                    <option value=""></option>
+                    <option value="software-engineer">Software Engineer</option>
+                    <option value="network-administrator">
+                      Network Administrator
+                    </option>
+                    <option value="systems-analyst">Systems Analyst</option>
+                    <option value="web-developer">Web Developer</option>
+                    <option value="database-administrator">
+                      Database Administrator
+                    </option>
+                    <option value="operations-manager">
+                      Operations Manager
+                    </option>
+                    <option value="logistics-coordinator">
+                      Logistics Coordinator
+                    </option>
+                    <option value="supply-chain-analyst">
+                      Supply Chain Analyst
+                    </option>
+                    <option value="production-supervisor">
+                      Production Supervisor
+                    </option>
+                    <option value="quality-assurance-specialist">
+                      Quality Assurance Specialist
+                    </option>
+                    <option value="sales-representative">
+                      Sales Representative
+                    </option>
+                    <option value="account-manager">Account Manager</option>
+                    <option value="sales-manager">Sales Manager</option>
+                    <option value="business-development-executive">
+                      Business Development Executive
+                    </option>
+                    <option value="customer-success-manager">
+                      Customer Success Manager
+                    </option>
+                    <option value="hr-manager">HR Manager</option>
+                    <option value="recruitment-specialist">
+                      Recruitment Specialist
+                    </option>
+                    <option value="training-coordinator">
+                      Training Coordinator
+                    </option>
+                    <option value="compensation-analyst">
+                      Compensation Analyst
+                    </option>
+                    <option value="employee-relations-manager">
+                      Employee Relations Manager
+                    </option>
+                    <option value="financial-analyst">Financial Analyst</option>
+                    <option value="accountant">Accountant</option>
+                    <option value="finance-manager">Finance Manager</option>
+                    <option value="investment-analyst">
+                      Investment Analyst
+                    </option>
+                    <option value="tax-consultant">Tax Consultant</option>
+                    <option value="marketing-manager">Marketing Manager</option>
+                    <option value="digital-marketing-specialist">
+                      Digital Marketing Specialist
+                    </option>
+                    <option value="brand-manager">Brand Manager</option>
+                    <option value="market-research-analyst">
+                      Market Research Analyst
+                    </option>
+                    <option value="social-media-coordinator">
+                      Social Media Coordinator
+                    </option>
+                  </select>
                 </div>
 
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label>Gender</label>
-                  <input className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"></input>
-                </div>
-                <div className="w-full lg:w-1/3 flex flex-col">
-                  <label>Marital Status</label>
-                  <input className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3"></input>
+                  {/* <label htmlFor="maritalStatus">Marital Status</label>
+                  <select
+                    id="maritalStatus"
+                    name="maritalStatus"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  >
+                    <option value=""></option>
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                    <option value="divorced">Divorced</option>
+                    <option value="widowed">Widowed</option>
+                  </select> */}
                 </div>
               </div>
             </div>
           </div>
-        </div>
+
+          <hr className="my-8" />
+
+          {/* Contact Information */}
+          <div className="mt-8">
+            <h4 className="font-bold">Contact Information</h4>
+            <div className="mt-2">
+              <div className="flex gap-5 flex-wrap sm:flex-nowrap">
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <label htmlFor="state">State</label>
+                  <select
+                    id="state"
+                    name="state"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  >
+                    <option value=""></option>
+                    <option value="andhra-pradesh">Andhra Pradesh</option>
+                    <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                    <option value="assam">Assam</option>
+                    <option value="bihar">Bihar</option>
+                    <option value="chhattisgarh">Chhattisgarh</option>
+                    <option value="goa">Goa</option>
+                    <option value="gujarat">Gujarat</option>
+                    <option value="haryana">Haryana</option>
+                    <option value="himachal-pradesh">Himachal Pradesh</option>
+                    <option value="jammu-kashmir">Jammu and Kashmir</option>
+                    <option value="jharkhand">Jharkhand</option>
+                    <option value="karnataka">Karnataka</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="madhya-pradesh">Madhya Pradesh</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="manipur">Manipur</option>
+                    <option value="meghalaya">Meghalaya</option>
+                    <option value="mizoram">Mizoram</option>
+                    <option value="nagaland">Nagaland</option>
+                    <option value="odisha">Odisha</option>
+                    <option value="punjab">Punjab</option>
+                    <option value="rajasthan">Rajasthan</option>
+                    <option value="sikkim">Sikkim</option>
+                    <option value="tamil-nadu">Tamil Nadu</option>
+                    <option value="telangana">Telangana</option>
+                    <option value="tripura">Tripura</option>
+                    <option value="uttar-pradesh">Uttar Pradesh</option>
+                    <option value="uttarakhand">Uttarakhand</option>
+                    <option value="west-bengal">West Bengal</option>
+                    <option value="andaman-nicobar-islands">
+                      Andaman and Nicobar Islands
+                    </option>
+                    <option value="chandigarh">Chandigarh</option>
+                    <option value="dadra-nagar-haveli-daman-diu">
+                      Dadra and Nagar Haveli and Daman and Diu
+                    </option>
+                    <option value="delhi">Delhi</option>
+                    <option value="lakshadweep">Lakshadweep</option>
+                    <option value="puducherry">Puducherry</option>
+                  </select>
+                </div>
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <label htmlFor="city">City</label>
+                  <select
+                    id="city"
+                    name="city"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  >
+                    <option value=""></option>
+                    <option value="mumbai">Mumbai</option>
+                    <option value="pune">Pune</option>
+                    <option value="nagpur">Nagpur</option>
+                    <option value="thane">Thane</option>
+                    <option value="nashik">Nashik</option>
+                    <option value="aurangabad">Aurangabad</option>
+                    <option value="solapur">Solapur</option>
+                    <option value="amravati">Amravati</option>
+                    <option value="kolhapur">Kolhapur</option>
+                    <option value="vasai-virar">Vasai-Virar</option>
+                    <option value="bhiwandi">Bhiwandi</option>
+                    <option value="nanded">Nanded</option>
+                    <option value="jalgaon">Jalgaon</option>
+                    <option value="akola">Akola</option>
+                    <option value="latur">Latur</option>
+                    <option value="dhule">Dhule</option>
+                    <option value="ahmednagar">Ahmednagar</option>
+                    <option value="chandrapur">Chandrapur</option>
+                    <option value="parbhani">Parbhani</option>
+                    <option value="jalna">Jalna</option>
+                    <option value="bhusawal">Bhusawal</option>
+                    <option value="panvel">Panvel</option>
+                    <option value="satara">Satara</option>
+                    <option value="beed">Beed</option>
+                    <option value="yavatmal">Yavatmal</option>
+                    <option value="osmanabad">Osmanabad</option>
+                    <option value="nandurbar">Nandurbar</option>
+                    <option value="sangli">Sangli</option>
+                    <option value="buldhana">Buldhana</option>
+                    <option value="wardha">Wardha</option>
+                    <option value="gondia">Gondia</option>
+                    <option value="ratnagiri">Ratnagiri</option>
+                    <option value="washim">Washim</option>
+                    <option value="hingoli">Hingoli</option>
+                    <option value="raigad">Raigad</option>
+                    <option value="sindhudurg">Sindhudurg</option>
+                    <option value="bhandara">Bhandara</option>
+                  </select>
+                </div>
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <label htmlFor="address">Address</label>
+                  <input
+                    id="address"
+                    name="address"
+                    type="text"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  />
+                </div>
+              </div>
+              <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <label htmlFor="zipcode">Zip Code</label>
+                  <input
+                    id="zipcode"
+                    name="zipcode"
+                    type="text"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  />
+                </div>
+
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <label htmlFor="emailid">Email Id</label>
+                  <input
+                    id="emailid"
+                    name="emailid"
+                    type="email"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  />
+                </div>
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <label htmlFor="phoneno">Phone No</label>
+                  <input
+                    id="phoneno"
+                    name="phoneno"
+                    type="number"
+                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr className="my-8" />
+
+          <div className="mt-8">
+            <div className="flex gap-5">
+              <input
+                type="submit"
+                value="Save Details"
+                className="bg-[#5336FD] px-4 py-2 text-white rounded-md cursor-pointer font-bold hover:scale-[1.020] duration-100"
+              />
+              <input
+                type="reset"
+                value="Reset Form"
+                className="bg-[#EBE9F6] px-4 py-2  rounded-md cursor-pointer hover:scale-[1.020] duration-100"
+              />
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );
