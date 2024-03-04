@@ -35,7 +35,19 @@ const LogoutMenuItem = () => {
           </div>
 
           {showConfirmation && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center">
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center"
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100vw",
+                height: "100%",
+                backgroundColor: "rgba(0, 0, 0, 0.5)", // Adjust the opacity as needed
+                backdropFilter: "blur(3px)", // Apply the blur effect
+                zIndex: "9998",
+              }}
+            >
               <div className="absolute inset-0 opacity-50 backdrop-blur-lg bg-black"></div>
               <div className="absolute bg-white p-7 rounded-md shadow-lg">
                 <p>Are you sure you want to logout?</p>

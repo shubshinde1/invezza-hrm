@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { HiMenuAlt1 } from "react-icons/hi";
+import { motion } from "framer-motion";
 
 const LinkClasses =
   "flex hover:bg-[#EBE9F6] hover:duration-500 p-3 mt-1.5 rounded-md euclid";
@@ -68,6 +69,10 @@ export default function Sidebar() {
     }
   };
 
+  const handleToggleAndItemClick = (item) => {
+    toggleSidebar();
+    handleItemClick(item);
+  };
   return (
     <div>
       <button
@@ -78,7 +83,7 @@ export default function Sidebar() {
       </button>
       <div
         ref={sidebarRef}
-        className={`md:flex md:flex-col w-72 md:w-60 h-fit md:h-screen ml-2 mt-2 md:m-0 md:rounded-none rounded-md absolute md:relative p-4 bg-white z-50 shadow-2xl md:shadow-none ${
+        className={`md:flex md:flex-col w-60 h-[98vh] md:h-screen ml-2 mt-2 md:m-0 md:rounded-none rounded-md absolute md:relative p-4 bg-white z-50 shadow-2xl md:shadow-none ${
           isSidebarOpen ? "" : "hidden"
         }`}
       >
@@ -100,10 +105,15 @@ export default function Sidebar() {
                 <SidebarLink
                   item={item}
                   pathname={pathname}
-                  onClick={() => handleItemClick(item)}
+                  onClick={handleToggleAndItemClick}
                 />
                 {clickedItem === item && item.subItems && (
                   <div className="md:absolute left-52 md:pl-6 top-0 md:w-60 ">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5 }}
+                    />
                     <div className=" bg-white shadow-md rounded-md p-1 border">
                       {item.subItems.map((subItem) => (
                         <SidebarLink
@@ -131,7 +141,7 @@ function SidebarLink({ item, pathname, onClick }) {
       to={item.path}
       className={classNames(
         pathname === item.path
-          ? "euclid-bold bg-[#EBE9F6]  after:w-1.5 after:bg-[#3C5EFE] after:rounded-full"
+          ? "euclid-bold bg-[#EBE9F6] after:w-1.5 after:bg-[#3C5EFE] after:rounded-full"
           : "",
         LinkClasses
       )}

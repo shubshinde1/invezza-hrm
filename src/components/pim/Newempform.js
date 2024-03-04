@@ -3,9 +3,22 @@ import { MantineProvider, Avatar } from "@mantine/core";
 import { BiReset } from "react-icons/bi";
 import { FaUpload } from "react-icons/fa6";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import PopupMessage from "./PopupMessage";
 
 export default function Newempform() {
   const [selectedImage, setSelectedImage] = useState("");
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
+  const Navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setIsSuccessPopupOpen(true); // Open the popup
+    setTimeout(() => {
+      setIsSuccessPopupOpen(false); // Close the popup after 2 seconds
+      Navigate("/pim/employeelist");
+    }, 2500);
+  };
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -25,7 +38,7 @@ export default function Newempform() {
   return (
     <div className="bg-white p-4 rounded-md h-screen overflow-scroll scrollbar-hide">
       <div>
-        <form action="/employeelist" method="post">
+        <form onSubmit={handleSubmit} action="" method="post">
           <h4 className="font-bold">Add Profile Picture</h4>
 
           {/* user profile */}
@@ -465,6 +478,13 @@ export default function Newempform() {
               />
             </div>
           </div>
+
+          {isSuccessPopupOpen && (
+            <PopupMessage
+              message="New Employee Added Successfully"
+              onClose={() => setIsSuccessPopupOpen(false)}
+            />
+          )}
         </form>
       </div>
     </div>

@@ -96,7 +96,7 @@ export default function Header() {
                   {({ active }) => (
                     <div
                       className={classNames(
-                        active && "bg-[#] cursor-pointer rounded-md",
+                        active && "bg-[#EBE9F6] cursor-pointer rounded-md",
                         "px-3 py-2 flex"
                       )}
                       onClick={() => navigate("/myprofile")}
@@ -107,7 +107,7 @@ export default function Header() {
                   )}
                 </Menu.Item>
                 {/* <Menu.Item> */}
-                  <LogoutMenuItem />
+                <LogoutMenuItem />
                 {/* </Menu.Item> */}
               </Menu.Items>
             </Transition>
