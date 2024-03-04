@@ -5,7 +5,7 @@ const MenuTabs = () => {
   const location = useLocation();
 
   return (
-    <div className="bg-white rounded-md p-2 sticky top-0 mb-2">
+    <div className="bg-white rounded-md p-2 sticky top-0 mb-2 z-50">
       <ul className="flex gap-2">
         <li
           className={` text-sm px-3 py-1.5 rounded-md ${

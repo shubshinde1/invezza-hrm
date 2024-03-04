@@ -59,6 +59,7 @@ select {
 
 }
 
+MenuItem,
 input,
 select,
 option:focus {

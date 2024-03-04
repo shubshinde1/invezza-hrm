@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Menutabs from "./Menutabs";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -10,209 +10,202 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { Bolt } from "@mui/icons-material";
+import { MdOutlinePreview } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
+import {
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
+import { FaFilterCircleXmark } from "react-icons/fa6";
 
 const columns = [
-  { id: "fname", label: "First Name", minWidth: 120 },
-  { id: "lname", label: "Last Name", minWidth: 120 },
   { id: "empid", label: "Employee ID", minWidth: 120 },
-  { id: "designation", label: "Designation", minWidth: 170 },
-  { id: "jdate", label: "Joining Date", minWidth: 150 },
-  { id: "tl", label: "Team Lead", minWidth: 120 },
-  { id: "manager", label: "Manager", minWidth: 120 },
+  { id: "ename", label: "Employee Name", minWidth: 120 },
+  { id: "designation", label: "Designation", minWidth: 120 },
+  { id: "jdate", label: "Joining Date", minWidth: 120 },
+  { id: "status", label: "Status", minWidth: 120 },
+  { id: "actions", label: "Actions", minWidth: 80 },
 ];
 
-function createData(fname, lname, empid, designation, jdate, tl, manager) {
-  return { fname, lname, empid, designation, jdate, tl, manager };
+function createData(empid, ename, designation, jdate, status) {
+  return { empid, ename, designation, jdate, status };
 }
 
 const rows = [
+  createData("EMP001", "John Doe", "Software Engineer", "01/01/2022", "Active"),
   createData(
-    "John",
-    "Doe",
-    "EMP001",
-    "Software Engineer",
-    "01/01/2022",
-    "Sarah",
-    "Mike"
-  ),
-  createData(
-    "Jane",
-    "Smith",
     "EMP002",
+    "Jane Smith",
     "Project Manager",
     "05/15/2021",
-    "Alice",
-    "Tom"
+    "Inactive"
   ),
-  // Creating data for 18 more employees
   createData(
-    "Alice",
-    "Johnson",
     "EMP003",
+    "Alice Johnson",
     "Data Analyst",
     "03/20/2023",
-    "Bob",
-    "Emily"
+    "Inactive"
   ),
   createData(
-    "Michael",
-    "Brown",
     "EMP004",
+    "Michael Brown",
     "Software Developer",
     "11/10/2021",
-    "Chris",
-    "Anna"
+    "Active"
   ),
   createData(
-    "Emma",
-    "Garcia",
     "EMP005",
+    "Emma Garcia",
     "Business Analyst",
     "07/08/2022",
-    "David",
-    "Lily"
+    "Active"
   ),
   createData(
-    "William",
-    "Martinez",
     "EMP006",
+    "William Martinez",
     "Quality Assurance",
     "09/25/2023",
-    "Sophia",
-    "Jason"
+    "Active"
   ),
   createData(
-    "Olivia",
-    "Anderson",
     "EMP007",
+    "Olivia Anderson",
     "UI/UX Designer",
     "04/05/2021",
-    "Eric",
-    "Natalie"
+    "Inactive"
   ),
   createData(
-    "James",
-    "Wilson",
     "EMP008",
+    "James Wilson",
     "System Administrator",
     "02/14/2022",
-    "Rachel",
-    "Kevin"
+    "Active"
   ),
   createData(
-    "Ella",
-    "Taylor",
     "EMP009",
+    "Ella Taylor",
     "Network Engineer",
     "06/30/2023",
-    "Andrew",
-    "Jessica"
+    "Active"
   ),
   createData(
-    "Noah",
-    "Thomas",
     "EMP010",
+    "Noah Thomas",
     "Database Administrator",
     "08/17/2021",
-    "Melissa",
-    "Mark"
+    "Inactive"
   ),
   createData(
-    "Isabella",
-    "Hernandez",
     "EMP011",
+    "Isabella Hernandez",
     "Cybersecurity Analyst",
     "10/29/2022",
-    "Peter",
-    "Oliver"
+    "Inactive"
   ),
   createData(
-    "Liam",
-    "Lopez",
     "EMP012",
+    "Liam Lopez",
     "DevOps Engineer",
     "12/12/2023",
-    "Victoria",
-    "Benjamin"
+    "Inactive"
   ),
   createData(
-    "Sophia",
-    "Scott",
     "EMP013",
+    "Sophia Scott",
     "Software Tester",
     "03/18/2021",
-    "Steven",
-    "Evelyn"
+    "Inactive"
   ),
+  createData("EMP014", "Mason Green", "Product Owner", "07/22/2022", "Active"),
+  createData("EMP015", "Ava Adams", "Scrum Master", "11/05/2023", "Inactive"),
   createData(
-    "Mason",
-    "Green",
-    "EMP014",
-    "Product Owner",
-    "07/22/2022",
-    "Hannah",
-    "Daniel"
-  ),
-  createData(
-    "Ava",
-    "Adams",
-    "EMP015",
-    "Scrum Master",
-    "11/05/2023",
-    "Nicholas",
-    "Chloe"
-  ),
-  createData(
-    "Harper",
-    "Baker",
     "EMP016",
+    "Harper Baker",
     "Technical Writer",
     "05/14/2021",
-    "Samantha",
-    "Justin"
+    "Active"
   ),
   createData(
-    "Evelyn",
-    "Rivera",
     "EMP017",
+    "Evelyn Rivera",
     "Business Intelligence Analyst",
     "01/29/2022",
-    "Gabriel",
-    "Lucas"
+    "Active"
   ),
   createData(
-    "Alexander",
-    "Reed",
     "EMP018",
+    "Alexander Reed",
     "Frontend Developer",
     "09/10/2023",
-    "Madison",
-    "Jackson"
+    "Active"
   ),
   createData(
-    "Charlotte",
-    "Perez",
     "EMP019",
+    "Charlotte Perez",
     "Backend Developer",
     "06/07/2021",
-    "Avery",
-    "Ethan"
+    "Inactive"
   ),
   createData(
-    "Ryan",
-    "Roberts",
     "EMP020",
+    "Ryan Roberts",
     "Full Stack Developer",
     "04/02/2022",
-    "Mia",
-    "Logan"
+    "Active"
   ),
 ];
 
 export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const match = useRouteMatch("/pim/addemployee");
+  const [filters, setFilters] = React.useState({
+    empid: "",
+    ename: "",
+    status: "",
+    designation: "",
+  });
+
+  const handleChangeFilter = (event) => {
+    const { name, value } = event.target;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [name]: value,
+    }));
+  };
+
+  const handleClearFilters = () => {
+    setFilters({
+      empid: "",
+      ename: "",
+      status: "",
+      designation: "",
+    });
+  };
+
+  const designations = Array.from(new Set(rows.map((row) => row.designation)));
+  const statuses = Array.from(new Set(rows.map((row) => row.status)));
+
+  const filteredRows = React.useMemo(() => {
+    return rows.filter((row) => {
+      return Object.entries(filters).every(([key, value]) => {
+        if (!value) return true; // If filter value is empty, return true
+        if (key === "designation") {
+          // For designation, check if the row value contains the filter value
+          return row[key].toLowerCase().includes(value.toLowerCase());
+        } else if (key === "status") {
+          // For status, check if the row value matches the filter value
+          return row[key].toLowerCase() === value.toLowerCase();
+        } else {
+          // For other fields, check if the row value starts with the filter value
+          return row[key].toLowerCase().startsWith(value.toLowerCase());
+        }
+      });
+    });
+  }, [filters]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -225,11 +218,108 @@ export default function StickyHeadTable() {
 
   return (
     <div>
-      {match && <Menutabs />}{" "}
+      <Menutabs />
       <Paper
         sx={{ overflow: "hidden" }}
-        className="md:w-[100%] w-[calc(100vw-0.8rem)]"
+        className="md:w-[100%] w-[calc(100vw-0.8rem)] h-[90%] top-24 -z-50"
       >
+        <div className="m-2 gap-2 flex-col items-center grid grid-cols-12 -z-50 ">
+          <TextField
+            className="col-span-12 sm:col-span-6 xl:col-span-2 "
+            id="empid"
+            name="empid"
+            label="Employee ID"
+            value={filters.empid}
+            onChange={handleChangeFilter}
+            variant="outlined"
+            style={{ border: 0 }}
+            margin="dense"
+          />
+          <TextField
+            className="col-span-12 sm:col-span-6 xl:col-span-2 py-1"
+            id="ename"
+            name="ename"
+            label="Employee Name"
+            value={filters.ename}
+            onChange={handleChangeFilter}
+            variant="outlined"
+            margin="dense"
+          />
+          <FormControl
+            variant="outlined"
+            margin="dense"
+            className="col-span-12 sm:col-span-6 xl:col-span-1 "
+          >
+            <InputLabel id="status-label" className="w-52 ">
+              Status
+            </InputLabel>
+            <Select
+              labelId="status-label"
+              id="status"
+              name="status"
+              value={filters.status}
+              onChange={handleChangeFilter}
+              label="Status"
+            >
+              <MenuItem value="">All</MenuItem>
+              {statuses.map((statuse) => (
+                <MenuItem key={statuse} value={statuse.toLowerCase()}>
+                  {statuse}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControl
+            variant="outlined"
+            margin="dense"
+            className="col-span-12 sm:col-span-6 xl:col-span-2"
+          >
+            <InputLabel id="designation-label" className="w-52">
+              Designation
+            </InputLabel>
+            <Select
+              labelId="designation-label"
+              id="designation"
+              name="designation"
+              value={filters.designation}
+              onChange={handleChangeFilter}
+              label="Designation"
+            >
+              <MenuItem value="">All</MenuItem>
+              {designations.map((designation) => (
+                <MenuItem
+                  key={designation}
+                  value={designation.toLowerCase()}
+                  className="bg-[#EBE9F6]"
+                >
+                  {designation}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <div className="col-span-12 md:col-span-5 flex items-center justify-between">
+            <button
+              className="bg-[#EBE9F6] md:mt-1 px-4 rounded-md w-fit"
+              onClick={handleClearFilters}
+            >
+              <FaFilterCircleXmark
+                variant="outlined"
+                className="h-12 cursor-pointer text-xl"
+              />
+            </button>
+            <TablePagination
+              rowsPerPageOptions={[10, 25, 100]}
+              component="div"
+              count={filteredRows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              style={{ paddingRight: "5px" }}
+            />
+          </div>
+        </div>
         <TableContainer
           sx={{ maxHeight: 530 }}
           className="m-2 pr-4 scrollbar-hide"
@@ -253,13 +343,29 @@ export default function StickyHeadTable() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows
+              {filteredRows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.empid}>
                     {columns.map((column) => (
                       <TableCell key={column.id} align="left">
-                        {row[column.id]}
+                        {column.id !== "actions" ? (
+                          row[column.id]
+                        ) : (
+                          <div className="flex items-center gap-2">
+                            <div className="hover:bg-[#dbd6fc] rounded-md p-2">
+                              <Link to={`/edit/${row.empid}`}>
+                                <FaEdit className="text-xl" />
+                              </Link>
+                            </div>
+                            {" | "}
+                            <div className="hover:bg-[#dbd6fc] rounded-md p-2">
+                              <Link to={`/view/${row.empid}`}>
+                                <MdOutlinePreview className="text-xl" />
+                              </Link>
+                            </div>
+                          </div>
+                        )}
                       </TableCell>
                     ))}
                   </TableRow>
@@ -267,76 +373,7 @@ export default function StickyHeadTable() {
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-          style={{ paddingRight: '5px' }}
-        />
       </Paper>
     </div>
   );
 }
-
-// import * as React from "react";
-// import Box from "@mui/material/Box";
-// import {
-//   DataGrid,
-//   GridToolbar,
-//   GridToolbarQuickFilter,
-// } from "@mui/x-data-grid";
-// import { BrowserRouter as useRouteMatch } from "react-router-dom";
-// import Menutabs from "./Menutabs";
-// import EmployeeData from "./EmployeeData";
-
-// const VISIBLE_FIELDS = [
-//   "FirstName",
-//   "LastName",
-//   "ID",
-//   "Designation",
-//   "JoiningDate",
-//   "TeamLeader",
-//   "Manager",
-// ];
-
-// export default function Employeelist() {
-//   const match = useRouteMatch("/pim/addemployee");
-
-//   const columns = React.useMemo(
-//     () =>
-//       VISIBLE_FIELDS.map((field) => ({
-//         field,
-//         headerName: field
-//           .replace(/([a-z])([A-Z])/g, "$1 $2")
-//           .replace(/\b\w/g, (char) => char.toUpperCase()), 
-//         width: 150,
-//       })),
-//     []
-//   );
-
-//   return (
-//     <div>
-//       {match && <Menutabs />}
-//       <Box sx={{ height: 530, width: 1, }}>
-//         <DataGrid
-//           rows={EmployeeData}
-//           columns={columns}
-//           disableColumnFilter
-//           disableColumnSelector
-//           disableDensitySelector
-//           slots={{ toolbar: GridToolbar }}
-//           slotProps={{
-//             toolbar: {
-//               showQuickFilter: true,
-//             },
-//           }}
-//           className="bg-white"
-//         />
-//       </Box>
-//     </div>
-//   );
-// }

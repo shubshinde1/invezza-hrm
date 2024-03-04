@@ -37,7 +37,7 @@ const PopupMessage = ({ message, onAddMore, onGoToList }) => {
       >
         <div className="flex items-center justify-center bg-[#EBE9F6] rounded-md px-4 py-3">
           <BsPersonFillCheck className="text-green-500 text-3xl" />
-          <p className="ml-2 md:text-xl">{message}</p>
+          <p className="ml-2">{message}</p>
         </div>
 
         <div className="bg-[#EBE9F6] mt-2 w-[100%] items-center">
@@ -62,14 +62,14 @@ const PopupMessage = ({ message, onAddMore, onGoToList }) => {
 
         <div className="flex items-center justify-between mx-8 mt-5">
           <button
-            className="bg-[#5336FD] text-white text-sm md:text-base px-3 py-2 rounded-md cursor-pointer font-bold hover:scale-[1.020] flex items-center"
+            className="bg-[#5336FD] text-white text-sm px-3 py-2 rounded-md cursor-pointer font-bold hover:scale-[1.020] flex items-center"
             onClick={onAddMore}
           >
             <BsPersonFillAdd className="mr-2.5 text-lg" />
             Add More
           </button>
           <button
-            className="bg-green-600 text-white text-sm md:text-base px-3 py-2 rounded-md cursor-pointer font-bold hover:scale-[1.020] flex items-center ml-4"
+            className="bg-green-600 text-white text-sm px-3 py-2 rounded-md cursor-pointer font-bold hover:scale-[1.020] flex items-center ml-4"
             onClick={onGoToList}
           >
             <FaListUl className="mr-2.5 text-lg" />
