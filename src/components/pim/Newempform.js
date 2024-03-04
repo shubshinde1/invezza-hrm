@@ -2,7 +2,7 @@ import React from "react";
 import { MantineProvider, Avatar } from "@mantine/core";
 import { BiReset } from "react-icons/bi";
 import { FaUpload } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PopupMessage from "./PopupMessage";
 
@@ -10,14 +10,15 @@ export default function Newempform() {
   const [selectedImage, setSelectedImage] = useState("");
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
   const Navigate = useNavigate();
+  let autoCloseTimer;
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsSuccessPopupOpen(true); // Open the popup
-    setTimeout(() => {
-      setIsSuccessPopupOpen(false); // Close the popup after 2 seconds
-      Navigate("/pim/employeelist");
-    }, 2500);
+    // Navigate("/pim/employeelist");
+    // setTimeout(() => {
+    //   setIsSuccessPopupOpen(false);
+    // }, 2500);
   };
 
   const handleImageUpload = (event) => {
@@ -34,6 +35,27 @@ export default function Newempform() {
   const handleResetImage = () => {
     setSelectedImage("");
   };
+
+  const handleAddMore = () => {
+    setIsSuccessPopupOpen(false); // Close the popup
+    clearTimeout(autoCloseTimer); // Cancel the auto close timer
+  };
+
+  const handleGoToList = () => {
+    setIsSuccessPopupOpen(false);
+    Navigate("/pim/employeelist");
+  };
+
+  useEffect(() => {
+    let autoCloseTimer;
+    if (isSuccessPopupOpen) {
+      autoCloseTimer = setTimeout(() => {
+        setIsSuccessPopupOpen(false); // Close the popup after 5 seconds
+        Navigate("/pim/employeelist"); // Redirect to the employee list
+      }, 10000);
+    }
+    return () => clearTimeout(autoCloseTimer);
+  }, [isSuccessPopupOpen, Navigate]);
 
   return (
     <div className="bg-white p-4 rounded-md h-screen overflow-scroll scrollbar-hide">
@@ -482,7 +504,8 @@ export default function Newempform() {
           {isSuccessPopupOpen && (
             <PopupMessage
               message="New Employee Added Successfully"
-              onClose={() => setIsSuccessPopupOpen(false)}
+              onAddMore={handleAddMore}
+              onGoToList={handleGoToList}
             />
           )}
         </form>

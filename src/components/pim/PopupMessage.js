@@ -1,32 +1,81 @@
-import React, { useEffect } from "react";
-import { FaSquareCheck } from "react-icons/fa6";
+import React, { useEffect, useState } from "react";
+import { BsPersonFillCheck, BsPersonFillAdd } from "react-icons/bs";
+import { FaListUl } from "react-icons/fa6";
 
-const PopupMessage = ({ message, onClose }) => {
+const PopupMessage = ({ message, onAddMore, onGoToList }) => {
+  const [timer, setTimer] = useState(10);
+  let countdown;
+
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      onClose();
-    }, 2000); // Close the popup after 2 seconds
+    const countdown = setInterval(() => {
+      setTimer((prevTimer) => prevTimer - 1);
+    }, 1000);
 
-    return () => clearTimeout(timeout);
-  }, [onClose]);
+    return () => clearInterval(countdown);
+  }, []);
+
+  useEffect(() => {
+    if (timer === 0) {
+      clearInterval(countdown);
+    }
+  }, [timer]);
 
   return (
     <>
       <div
-        className="flex items-center"
+        className=""
         style={{
           position: "fixed",
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           backgroundColor: "white",
-          padding: "10px 20px",
+          padding: "25px 20px",
           borderRadius: "5px",
           zIndex: "9999",
         }}
       >
-        <FaSquareCheck className="text-green-600 text-2xl" />
-        <p className="ml-2">{message}</p>
+        <div className="flex items-center justify-center bg-[#EBE9F6] rounded-md px-4 py-3">
+          <BsPersonFillCheck className="text-green-500 text-3xl" />
+          <p className="ml-2 md:text-xl">{message}</p>
+        </div>
+
+        <div className="bg-[#EBE9F6] mt-2 w-[100%] items-center">
+          {timer > 0 && (
+            <div
+              className="text-center "
+              style={{
+                top: "10px",
+                right: "10px",
+                backgroundColor: "white",
+                padding: "5px 10px",
+                borderRadius: "5px",
+                zIndex: "9999",
+              }}
+            >
+              <h1 className=" text-sm text-red-500">
+                You Will Ridirect To Employee list page in {timer}s
+              </h1>
+            </div>
+          )}
+        </div>
+
+        <div className="flex items-center justify-between mx-8 mt-5">
+          <button
+            className="bg-[#5336FD] text-white text-sm md:text-base px-3 py-2 rounded-md cursor-pointer font-bold hover:scale-[1.020] flex items-center"
+            onClick={onAddMore}
+          >
+            <BsPersonFillAdd className="mr-2.5 text-lg" />
+            Add More
+          </button>
+          <button
+            className="bg-green-600 text-white text-sm md:text-base px-3 py-2 rounded-md cursor-pointer font-bold hover:scale-[1.020] flex items-center ml-4"
+            onClick={onGoToList}
+          >
+            <FaListUl className="mr-2.5 text-lg" />
+            Go to List
+          </button>
+        </div>
       </div>
       <div
         style={{
@@ -39,6 +88,7 @@ const PopupMessage = ({ message, onClose }) => {
           backdropFilter: "blur(5px)", // Apply the blur effect
           zIndex: "9998",
         }}
+        // onClick={onAddMore}
       ></div>
     </>
   );

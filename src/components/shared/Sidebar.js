@@ -1,21 +1,29 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { DASHBOARD_SIDEBAR_LINKS } from "../../lib/consts/navigation";
 import logo from "../../assets/images/invezza-logo.png";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { HiMenuAlt1 } from "react-icons/hi";
-import { motion } from "framer-motion";
+import gsap from "gsap";
 
 const LinkClasses =
   "flex hover:bg-[#EBE9F6] hover:duration-500 p-3 mt-1.5 rounded-md euclid";
 
 export default function Sidebar() {
+  const comp = useRef(null);
   const { pathname } = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [clickedItem, setClickedItem] = useState(null);
   const sidebarRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      const t1 = gsap.timeline();
+    }, comp);
+    return () => ctx.revert();
+  }, []);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -109,11 +117,6 @@ export default function Sidebar() {
                 />
                 {clickedItem === item && item.subItems && (
                   <div className="md:absolute left-52 md:pl-6 top-0 md:w-60 ">
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5 }}
-                    />
                     <div className=" bg-white shadow-md rounded-md p-1 border">
                       {item.subItems.map((subItem) => (
                         <SidebarLink
