@@ -25,7 +25,7 @@ const LogoutMenuItem = () => {
       {({ active }) => (
         <>
           <div
-            className={`px-3 py-2 flex hover:bg-gray-200 cursor-pointer rounded-md  ${
+            className={`px-3 py-2 flex hover:bg-[#DAF4FF] cursor-pointer rounded-md  ${
               active ? "" : ""
             }`}
             onClick={handleLogout}

@@ -37,14 +37,14 @@ export function PersonalInformation({ onNext }) {
   };
   // Personal Information Form Component
   return (
-    <div className="mt-8">
+    <div className="">
       <div>
         <h4 className="font-bold">Personal Information</h4>
         <div className="flex items-center md:items-center mt-4 gap-4">
           <div>
             <MantineProvider>
               <Avatar
-                className="w-28 md:w-20 bg-[#EBE9F6] p-2 rounded-md"
+                className="w-28 md:w-20 clor p-2 rounded-md"
                 src={selectedImage || ""}
                 alt="Profile"
               />
@@ -67,7 +67,7 @@ export function PersonalInformation({ onNext }) {
                 <h1 className="ml-2 text-xs font-bold">Upload Avatar</h1>
               </label>
               <div
-                className="bg-[#EBE9F6] px-3 py-2 flex rounded-md md:ml-4 mt-4 md:mt-0 cursor-pointer items-center hover:scale-[1.020] duration-150"
+                className="clor px-3 py-2 flex rounded-md md:ml-4 mt-4 md:mt-0 cursor-pointer items-center hover:scale-[1.020] duration-150"
                 onClick={handleResetImage}
               >
                 <BiReset size={20} />
@@ -91,7 +91,7 @@ export function PersonalInformation({ onNext }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#EBE9F6",
+                    backgroundColor: "#DAF4FF",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -123,7 +123,7 @@ export function PersonalInformation({ onNext }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#EBE9F6",
+                    backgroundColor: "#DAF4FF",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -155,7 +155,7 @@ export function PersonalInformation({ onNext }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#EBE9F6",
+                    backgroundColor: "#DAF4FF",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -191,7 +191,7 @@ export function PersonalInformation({ onNext }) {
                         fontSize: 14,
                       },
                       "& .MuiInputBase-root": {
-                        backgroundColor: "#EBE9F6",
+                        backgroundColor: "#DAF4FF",
                         border: "0 none",
                         borderRadius: 2,
                         height: 50,
@@ -231,7 +231,7 @@ export function PersonalInformation({ onNext }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#EBE9F6",
+                    backgroundColor: "#DAF4FF",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -279,7 +279,7 @@ export function PersonalInformation({ onNext }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#EBE9F6",
+                    backgroundColor: "#DAF4FF",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -338,7 +338,7 @@ export function PersonalInformation({ onNext }) {
 export function EmploymentInformation({ onNext, onPrev }) {
   // Employment Information Form Component
   return (
-    <div className="mt-8">
+    <div className="">
       <h4 className="font-bold">Employment Information</h4>
       <div className="mt-2">
         <div className="flex gap-5 flex-wrap sm:flex-nowrap">
@@ -354,7 +354,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                       fontSize: 14,
                     },
                     "& .MuiInputBase-root": {
-                      backgroundColor: "#EBE9F6",
+                      backgroundColor: "#DAF4FF",
                       border: "0 none",
                       borderRadius: 2,
                       height: 50,
@@ -394,7 +394,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                   fontSize: 14,
                 },
                 "& .MuiInputBase-root": {
-                  backgroundColor: "#EBE9F6",
+                  backgroundColor: "#DAF4FF",
                   border: "0 none",
                   borderRadius: 2,
                   height: 50,
@@ -446,7 +446,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                   fontSize: 14,
                 },
                 "& .MuiInputBase-root": {
-                  backgroundColor: "#EBE9F6",
+                  backgroundColor: "#DAF4FF",
                   border: "0 none",
                   borderRadius: 2,
                   height: 50,
@@ -496,7 +496,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                   fontSize: 14,
                 },
                 "& .MuiInputBase-root": {
-                  backgroundColor: "#EBE9F6",
+                  backgroundColor: "#DAF4FF",
                   border: "0 none",
                   borderRadius: 2,
                   height: 50,
@@ -544,7 +544,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                   fontSize: 14,
                 },
                 "& .MuiInputBase-root": {
-                  backgroundColor: "#EBE9F6",
+                  backgroundColor: "#DAF4FF",
                   border: "0 none",
                   borderRadius: 2,
                   height: 50,
@@ -641,7 +641,7 @@ export function ContactInformation({ onPrev }) {
   };
   return (
     <div>
-      <div className="mt-8">
+      <div className="">
         <h4 className="font-bold">Contact Information</h4>
         <div className="mt-2">
           <div className="flex gap-5 flex-wrap sm:flex-nowrap">
@@ -655,7 +655,7 @@ export function ContactInformation({ onPrev }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#EBE9F6",
+                    backgroundColor: "#DAF4FF",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -742,7 +742,7 @@ export function ContactInformation({ onPrev }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#EBE9F6",
+                    backgroundColor: "#DAF4FF",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -828,7 +828,7 @@ export function ContactInformation({ onPrev }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#EBE9F6",
+                    backgroundColor: "#DAF4FF",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -863,7 +863,7 @@ export function ContactInformation({ onPrev }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#EBE9F6",
+                    backgroundColor: "#DAF4FF",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -897,7 +897,7 @@ export function ContactInformation({ onPrev }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#EBE9F6",
+                    backgroundColor: "#DAF4FF",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -930,7 +930,7 @@ export function ContactInformation({ onPrev }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#EBE9F6",
+                    backgroundColor: "#DAF4FF",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,

@@ -239,7 +239,7 @@ export default function StickyHeadTable() {
                 fontSize: 14,
               },
               "& .MuiInputBase-root": {
-                backgroundColor: "#EBE9F6",
+                backgroundColor: "#DAF4FF",
                 border: "0 none",
                 borderRadius: 2,
                 height: 50,
@@ -271,7 +271,7 @@ export default function StickyHeadTable() {
                 fontSize: 14,
               },
               "& .MuiInputBase-root": {
-                backgroundColor: "#EBE9F6",
+                backgroundColor: "#DAF4FF",
                 border: "0 none",
                 borderRadius: 2,
                 height: 50,
@@ -298,7 +298,7 @@ export default function StickyHeadTable() {
                 fontSize: 14,
               },
               "& .MuiInputBase-root": {
-                backgroundColor: "#EBE9F6",
+                backgroundColor: "#DAF4FF",
                 border: "0 none",
                 borderRadius: 2,
                 height: 50,
@@ -356,7 +356,7 @@ export default function StickyHeadTable() {
                 fontSize: 14,
               },
               "& .MuiInputBase-root": {
-                backgroundColor: "#EBE9F6",
+                backgroundColor: "#DAF4FF",
                 border: "0 none",
                 borderRadius: 2,
                 height: 50,
@@ -446,7 +446,7 @@ export default function StickyHeadTable() {
                     align="left"
                     style={{
                       minWidth: column.minWidth,
-                      backgroundColor: "#EBE9F6",
+                      backgroundColor: "#DAF4FF",
                       fontWeight: Bolt,
                     }}
                   >

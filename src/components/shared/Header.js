@@ -31,8 +31,8 @@ export default function Header() {
               <>
                 <Popover.Button
                   className={classNames(
-                    open && "bg-[#EBE9F6]",
-                    "hover:bg-[#EBE9F6] duration-500 p-2 rounded-md cursor-pointer focus:outline-none"
+                    open && "clor",
+                    "hover:bg-[#DAF4FF] duration-500 p-2 rounded-md cursor-pointer focus:outline-none"
                   )}
                 >
                   <IoNotifications fontSize={20} />
@@ -82,7 +82,7 @@ export default function Header() {
                   {({ active }) => (
                     <div
                       className={classNames(
-                        active && "bg-[#EBE9F6] cursor-pointer rounded-md",
+                        active && "clor cursor-pointer rounded-md",
                         "px-3 py-2 flex"
                       )}
                       onClick={() => navigate("/myprofile")}
@@ -96,7 +96,7 @@ export default function Header() {
                   {({ active }) => (
                     <div
                       className={classNames(
-                        active && "bg-[#EBE9F6] cursor-pointer rounded-md",
+                        active && "clor cursor-pointer rounded-md",
                         "px-3 py-2 flex"
                       )}
                       onClick={() => navigate("/myprofile")}

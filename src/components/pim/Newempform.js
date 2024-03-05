@@ -82,7 +82,7 @@ export default function Newempform() {
 
   return (
     <div className="bg-white p-4 rounded-md h-screen overflow-scroll scrollbar-hide flex flex-col md:grid grid-cols-12 gap-4">
-      <div className=" bg-[#EBE9F6] rounded-md col-span-2">
+      <div className=" clor rounded-md col-span-2">
         <ul className="text-sm p-2 flex flex-col gap-2">
           <li
             className={`hover:bg-blue-200 py-2.5 px-1.5 rounded-md cursor-pointer ${
@@ -119,7 +119,7 @@ export default function Newempform() {
           <div>
             <MantineProvider>
               <Avatar
-                className="w-28 md:w-20 bg-[#EBE9F6] p-2 rounded-md"
+                className="w-28 md:w-20 clor p-2 rounded-md"
                 src={selectedImage || ""}
                 alt="Profile"
               />
@@ -142,7 +142,7 @@ export default function Newempform() {
                 <h1 className="ml-2 text-xs font-bold">Upload Avatar</h1>
               </label>
               <div
-                className="bg-[#EBE9F6] px-3 py-2 flex rounded-md md:ml-4 mt-4 md:mt-0 cursor-pointer items-center hover:scale-[1.020] duration-150"
+                className="clor px-3 py-2 flex rounded-md md:ml-4 mt-4 md:mt-0 cursor-pointer items-center hover:scale-[1.020] duration-150"
                 onClick={handleResetImage}
               >
                 <BiReset size={20} />
@@ -1016,14 +1016,14 @@ export default function Newempform() {
         {/* <hr className="my-8" /> */}
 
         <div>
-          <div className="stepper flex w-full md:w-1/2 justify-between ">
+          {/* <div className="stepper flex w-full md:w-1/2 justify-between ">
             <div
               className={`step ${
                 step === 1
                   ? "active bg-[#5336FD] text-white w-10 px-4 py-2 h-10 rounded-full"
                   : "bg-gray-200 w-10 px-4 py-2 h-10 rounded-full cursor-pointer"
               }`}
-              onClick={() => setStep(1)} // Set step to 1 when clicked
+              onClick={() => setStep(1)}
             >
               <h1>1</h1>
             </div>
@@ -1033,7 +1033,7 @@ export default function Newempform() {
                   ? "active bg-[#5336FD] text-white w-10 px-4 py-2 h-10 rounded-full"
                   : "bg-gray-200 w-10 px-4 py-2 h-10 rounded-full cursor-pointer"
               }`}
-              onClick={() => setStep(2)} // Set step to 2 when clicked
+              onClick={() => setStep(2)}
             >
               <h1>2</h1>
             </div>
@@ -1043,11 +1043,11 @@ export default function Newempform() {
                   ? "active bg-[#5336FD] text-white w-10 px-4 py-2 h-10 rounded-full"
                   : "bg-gray-200 w-10 px-4 py-2 h-10 rounded-full cursor-pointer"
               }`}
-              onClick={() => setStep(3)} // Set step to 3 when clicked
+              onClick={() => setStep(3)}
             >
               <h1>3</h1>
             </div>
-          </div>
+          </div> */}
 
           <form onSubmit={handleSubmit}>
             {step === 1 && <PersonalInformation onNext={nextStep} />}

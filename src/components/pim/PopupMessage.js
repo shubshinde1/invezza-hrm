@@ -35,7 +35,7 @@ const PopupMessage = ({ message, onAddMore, onGoToList }) => {
           zIndex: "9999",
         }}
       >
-        <div className="flex items-center justify-center bg-col-cust rounded-md px-4 py-3">
+        <div className="flex items-center justify-center clor rounded-md px-4 py-3">
           <BsPersonFillCheck className="text-green-500 text-3xl" />
           <p className="ml-2">{message}</p>
         </div>
