@@ -20,6 +20,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { FaFilterCircleXmark } from "react-icons/fa6";
+import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 
 const columns = [
   { id: "empid", label: "Employee ID", minWidth: 120 },
@@ -221,19 +222,40 @@ export default function StickyHeadTable() {
       <Menutabs />
       <Paper
         sx={{ overflow: "hidden" }}
-        className="md:w-[100%] w-[calc(100vw-0.8rem)] h-[90%] top-24 -z-50"
+        className="md:w-[100%] w-[calc(100vw-0.8rem)] h-[90%] top-24"
       >
-        <div className="m-2 gap-2 flex-col items-center grid grid-cols-12 -z-50 ">
+        <div className="m-2 gap-2 flex-col items-center grid grid-cols-12 ">
           <TextField
-            className="col-span-12 sm:col-span-6 xl:col-span-2 "
+            className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
             id="empid"
             name="empid"
             label="Employee ID"
             value={filters.empid}
             onChange={handleChangeFilter}
             variant="outlined"
-            style={{ border: 0 }}
             margin="dense"
+            sx={{
+              "& .MuiInputLabel-root": {
+                fontSize: 14,
+              },
+              "& .MuiInputBase-root": {
+                backgroundColor: "#EBE9F6",
+                border: "0 none",
+                borderRadius: 2,
+                height: 50,
+              },
+              "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                borderColor: "transparent",
+              },
+              "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "transparent",
+                },
+              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "transparent",
+                },
+            }}
           />
           <TextField
             className="col-span-12 sm:col-span-6 xl:col-span-2 py-1"
@@ -244,11 +266,55 @@ export default function StickyHeadTable() {
             onChange={handleChangeFilter}
             variant="outlined"
             margin="dense"
+            sx={{
+              "& .MuiInputLabel-root": {
+                fontSize: 14,
+              },
+              "& .MuiInputBase-root": {
+                backgroundColor: "#EBE9F6",
+                border: "0 none",
+                borderRadius: 2,
+                height: 50,
+              },
+              "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                borderColor: "transparent",
+              },
+              "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "transparent",
+                },
+              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "transparent",
+                },
+            }}
           />
           <FormControl
             variant="outlined"
             margin="dense"
-            className="col-span-12 sm:col-span-6 xl:col-span-1 "
+            className="col-span-12 sm:col-span-6 xl:col-span-2 "
+            sx={{
+              "& .MuiInputLabel-root": {
+                fontSize: 14,
+              },
+              "& .MuiInputBase-root": {
+                backgroundColor: "#EBE9F6",
+                border: "0 none",
+                borderRadius: 2,
+                height: 50,
+              },
+              "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                borderColor: "transparent",
+              },
+              "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "transparent",
+                },
+              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "transparent",
+                },
+            }}
           >
             <InputLabel id="status-label" className="w-52 ">
               Status
@@ -260,6 +326,18 @@ export default function StickyHeadTable() {
               value={filters.status}
               onChange={handleChangeFilter}
               label="Status"
+              IconComponent={(props) => (
+                <span>
+                  <ArrowDropDownRoundedIcon
+                    {...props}
+                    sx={{
+                      fontSize: 40,
+                      // backgroundColor: "#CBCBCB",
+                      borderRadius: 2,
+                    }}
+                  />
+                </span>
+              )}
             >
               <MenuItem value="">All</MenuItem>
               {statuses.map((statuse) => (
@@ -273,6 +351,28 @@ export default function StickyHeadTable() {
             variant="outlined"
             margin="dense"
             className="col-span-12 sm:col-span-6 xl:col-span-2"
+            sx={{
+              "& .MuiInputLabel-root": {
+                fontSize: 14,
+              },
+              "& .MuiInputBase-root": {
+                backgroundColor: "#EBE9F6",
+                border: "0 none",
+                borderRadius: 2,
+                height: 50,
+              },
+              "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                borderColor: "transparent",
+              },
+              "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "transparent",
+                },
+              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "transparent",
+                },
+            }}
           >
             <InputLabel id="designation-label" className="w-52">
               Designation
@@ -284,13 +384,25 @@ export default function StickyHeadTable() {
               value={filters.designation}
               onChange={handleChangeFilter}
               label="Designation"
+              IconComponent={(props) => (
+                <span>
+                  <ArrowDropDownRoundedIcon
+                    {...props}
+                    sx={{
+                      fontSize: 40,
+                      // backgroundColor: "#CBCBCB",
+                      borderRadius: 2,
+                    }}
+                  />
+                </span>
+              )}
             >
               <MenuItem value="">All</MenuItem>
               {designations.map((designation) => (
                 <MenuItem
                   key={designation}
                   value={designation.toLowerCase()}
-                  className="bg-[#EBE9F6]"
+                  className="bg-[#EBE9F6] "
                 >
                   {designation}
                 </MenuItem>
@@ -298,14 +410,14 @@ export default function StickyHeadTable() {
             </Select>
           </FormControl>
 
-          <div className="col-span-12 md:col-span-5 flex items-center justify-between">
+          <div className="col-span-12 md:col-span-4 flex items-center justify-between ">
             <button
               className="bg-[#EBE9F6] md:mt-1 px-4 rounded-md w-fit"
               onClick={handleClearFilters}
             >
               <FaFilterCircleXmark
                 variant="outlined"
-                className="h-12 cursor-pointer text-xl"
+                className="h-11 cursor-pointer text-xl"
               />
             </button>
             <TablePagination
@@ -317,6 +429,7 @@ export default function StickyHeadTable() {
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
               style={{ paddingRight: "5px" }}
+              className="scrollbar-hide"
             />
           </div>
         </div>

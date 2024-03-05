@@ -5,6 +5,18 @@ import { FaUpload } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PopupMessage from "./PopupMessage";
+import {
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 
 export default function Newempform() {
   const [selectedImage, setSelectedImage] = useState("");
@@ -107,69 +119,250 @@ export default function Newempform() {
             <div className="mt-2">
               <div className="flex gap-5 flex-wrap sm:flex-nowrap">
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="firstName">First Name</label>
-                  <input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  <TextField
+                    className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                    id="fname"
+                    name="fname"
+                    label="First Name"
+                    variant="outlined"
+                    margin="dense"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   />
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="lastName">Last Name</label>
-                  <input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  <TextField
+                    className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                    id="lname"
+                    name="lname"
+                    label="Last Name"
+                    variant="outlined"
+                    margin="dense"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   />
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="employeeId">Employee Id</label>
-                  <input
-                    id="employeeId"
-                    name="employeeId"
-                    type="text"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  <TextField
+                    className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                    id="empid"
+                    name="empid"
+                    label="Employee Id"
+                    variant="outlined"
+                    margin="dense"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   />
                 </div>
               </div>
               <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="dateOfBirth">Date of Birth</label>
-                  <input
-                    id="dateOfBirth"
-                    name="dateOfBirth"
-                    type="date"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
-                  />
+                  <LocalizationProvider
+                    dateAdapter={AdapterDayjs}
+                    className="w-full"
+                  >
+                    <DemoContainer components={["DatePicker"]}>
+                      <DatePicker
+                        // defaultValue={dayjs()}
+                        // views={["day", "month", "year"]}
+                        label="Date of Birth"
+                        sx={{
+                          "& .MuiInputLabel-root": {
+                            fontSize: 14,
+                          },
+                          "& .MuiInputBase-root": {
+                            backgroundColor: "#EBE9F6",
+                            border: "0 none",
+                            borderRadius: 2,
+                            height: 50,
+                            width: "100%",
+                            overflow: "hidden",
+                          },
+                          "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                            {
+                              borderColor: "transparent",
+                            },
+                          "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                            {
+                              borderColor: "transparent",
+                            },
+                          "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                            {
+                              borderColor: "transparent",
+                            },
+                          "& ::placeholder": {
+                            fontSize: 12,
+                          },
+                          display: "block", // Ensure DatePicker occupies full width
+                          width: "100%", // Ensure DatePicker occupies full width
+                        }}
+                      />
+                    </DemoContainer>
+                  </LocalizationProvider>
                 </div>
 
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="gender">Gender</label>
-                  <select
-                    id="gender"
-                    name="gender"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  <FormControl
+                    variant="outlined"
+                    margin="dense"
+                    className="col-span-12 sm:col-span-6 xl:col-span-2"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   >
-                    <option value=""></option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                  </select>
+                    <InputLabel id="gender-label" className="w-52">
+                      Gender
+                    </InputLabel>
+                    <Select
+                      labelId="gender-label"
+                      id="gender"
+                      name="gender"
+                      label="Gender"
+                      IconComponent={(props) => (
+                        <ArrowDropDownRoundedIcon
+                          {...props}
+                          sx={{ fontSize: 40 }}
+                        />
+                      )}
+                    >
+                      <MenuItem value="male">Male</MenuItem>
+                      <MenuItem value="female">Female</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="maritalStatus">Marital Status</label>
-                  <select
-                    id="maritalStatus"
-                    name="maritalStatus"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  <FormControl
+                    variant="outlined"
+                    margin="dense"
+                    className="col-span-12 sm:col-span-6 xl:col-span-2"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   >
-                    <option value=""></option>
-                    <option value="single">Single</option>
-                    <option value="married">Married</option>
-                    <option value="divorced">Divorced</option>
-                    <option value="widowed">Widowed</option>
-                  </select>
+                    <InputLabel id="gender-label" className="w-52">
+                      Gender
+                    </InputLabel>
+                    <Select
+                      labelId="gender-label"
+                      id="gender"
+                      name="gender"
+                      label="Gender"
+                      IconComponent={(props) => (
+                        <ArrowDropDownRoundedIcon
+                          {...props}
+                          sx={{ fontSize: 40 }}
+                        />
+                      )}
+                    >
+                      <MenuItem value="single">Single</MenuItem>
+                      <MenuItem value="married">Married</MenuItem>
+                      <MenuItem value="divorced">Divorced</MenuItem>
+                      <MenuItem value="widowed">Widowed</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
               </div>
             </div>
@@ -183,156 +376,274 @@ export default function Newempform() {
             <div className="mt-2">
               <div className="flex gap-5 flex-wrap sm:flex-nowrap">
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="dateogjoining">Date of Joining</label>
-                  <input
-                    id="dateogjoining"
-                    name="dateogjoining"
-                    type="date"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
-                  />
+                  <LocalizationProvider
+                    dateAdapter={AdapterDayjs}
+                    className="w-full"
+                  >
+                    <DemoContainer components={["DatePicker"]}>
+                      <DatePicker
+                        // defaultValue={dayjs()}
+                        // views={["day", "month", "year"]}
+                        label="Date of Joining"
+                        sx={{
+                          "& .MuiInputLabel-root": {
+                            fontSize: 14,
+                          },
+                          "& .MuiInputBase-root": {
+                            backgroundColor: "#EBE9F6",
+                            border: "0 none",
+                            borderRadius: 2,
+                            height: 50,
+                            width: "100%",
+                            overflow: "hidden",
+                          },
+                          "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                            {
+                              borderColor: "transparent",
+                            },
+                          "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                            {
+                              borderColor: "transparent",
+                            },
+                          "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                            {
+                              borderColor: "transparent",
+                            },
+                          "& ::placeholder": {
+                            fontSize: 12,
+                          },
+                          display: "block", // Ensure DatePicker occupies full width
+                          width: "100%", // Ensure DatePicker occupies full width
+                        }}
+                      />
+                    </DemoContainer>
+                  </LocalizationProvider>
                 </div>
 
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="department">Department</label>
-                  <select
-                    id="department"
-                    name="department"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  <FormControl
+                    variant="outlined"
+                    margin="dense"
+                    className="col-span-12 sm:col-span-6 xl:col-span-2"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   >
-                    <option value=""></option>
-                    <option value="informationtechnology">
-                      Information Technology
-                    </option>
-                    <option value="operations">Operations</option>
-                    <option value="sales">Sales</option>
-                    <option value="humanresources">Human Resources</option>
-                    <option value="finance">Finance</option>
-                    <option value="marketing">Marketing</option>
-                  </select>
+                    <InputLabel id="dept-label" className="w-52">
+                      Department
+                    </InputLabel>
+                    <Select
+                      labelId="dept-label"
+                      id="gender"
+                      name="gender"
+                      label="Gender"
+                      IconComponent={(props) => (
+                        <ArrowDropDownRoundedIcon
+                          {...props}
+                          sx={{ fontSize: 40 }}
+                        />
+                      )}
+                    >
+                      <MenuItem value="informationtechnology">
+                        Information Technology
+                      </MenuItem>
+                      <MenuItem value="operations">Operations</MenuItem>
+                      <MenuItem value="sales">Sales</MenuItem>
+                      <MenuItem value="humanresources">
+                        Human Resources
+                      </MenuItem>
+                      <MenuItem value="finance">Finance</MenuItem>
+                      <MenuItem value="marketing">Marketing</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
 
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="manager">Manger</label>
-                  <select
-                    id="manager"
-                    name="manager"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  <FormControl
+                    variant="outlined"
+                    margin="dense"
+                    className="col-span-12 sm:col-span-6 xl:col-span-2"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   >
-                    <option value=""></option>
-                    <option value="swpnilpatil">Swpnil Patil</option>
-                    <option value="sheetalpatil">Sheetal Patil</option>
-                    <option value="ishapathak">Isha Pathak</option>
-                    <option value="sushantkhadilkar">Sushant Khadilkar</option>
-                    <option value="shubhamshinde">Shubham Shinde</option>
-                  </select>
+                    <InputLabel id="report-label" className="w-52">
+                      Reporting To
+                    </InputLabel>
+                    <Select
+                      labelId="report-label"
+                      id="reporting"
+                      name="reporting"
+                      label="Reporting To"
+                      IconComponent={(props) => (
+                        <ArrowDropDownRoundedIcon
+                          {...props}
+                          sx={{ fontSize: 40 }}
+                        />
+                      )}
+                    >
+                      <MenuItem value="swpnilpatil">Swpnil Patil</MenuItem>
+                      <MenuItem value="sheetalpatil">Sheetal Patil</MenuItem>
+                      <MenuItem value="ishapathak">Isha Pathak</MenuItem>
+                      <MenuItem value="sushantkhadilkar">
+                        Sushant Khadilkar
+                      </MenuItem>
+                      <MenuItem value="shubhamshinde">Shubham Shinde</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
               </div>
               <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="teamlead">Team Leader</label>
-                  <select
-                    id="teamlead"
-                    name="teamlead"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  <FormControl
+                    variant="outlined"
+                    margin="dense"
+                    className="col-span-12 sm:col-span-6 xl:col-span-2"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   >
-                    <option value=""></option>
-                    <option value="swpnilpatil">Swpnil Patil</option>
-                    <option value="sheetalpatil">Sheetal Patil</option>
-                    <option value="ishapathak">Isha Pathak</option>
-                    <option value="sushantkhadilkar">Sushant Khadilkar</option>
-                    <option value="shubhamshinde">Shubham Shinde</option>
-                  </select>
+                    <InputLabel id="tl-label" className="w-52">
+                      Team Leader
+                    </InputLabel>
+                    <Select
+                      labelId="tl-label"
+                      id="teamleader"
+                      name="teamleader"
+                      label="Team Leader"
+                      IconComponent={(props) => (
+                        <ArrowDropDownRoundedIcon
+                          {...props}
+                          sx={{ fontSize: 40 }}
+                        />
+                      )}
+                    >
+                      <MenuItem value="swpnilpatil">Swpnil Patil</MenuItem>
+                      <MenuItem value="sheetalpatil">Sheetal Patil</MenuItem>
+                      <MenuItem value="ishapathak">Isha Pathak</MenuItem>
+                      <MenuItem value="sushantkhadilkar">
+                        Sushant Khadilkar
+                      </MenuItem>
+                      <MenuItem value="shubhamshinde">Shubham Shinde</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="designation">Job Title / Designation</label>
-                  <select
-                    id="designation"
-                    name="designation"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  <FormControl
+                    variant="outlined"
+                    margin="dense"
+                    className="col-span-12 sm:col-span-6 xl:col-span-2"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   >
-                    <option value=""></option>
-                    <option value="software-engineer">Software Engineer</option>
-                    <option value="network-administrator">
-                      Network Administrator
-                    </option>
-                    <option value="systems-analyst">Systems Analyst</option>
-                    <option value="web-developer">Web Developer</option>
-                    <option value="database-administrator">
-                      Database Administrator
-                    </option>
-                    <option value="operations-manager">
-                      Operations Manager
-                    </option>
-                    <option value="logistics-coordinator">
-                      Logistics Coordinator
-                    </option>
-                    <option value="supply-chain-analyst">
-                      Supply Chain Analyst
-                    </option>
-                    <option value="production-supervisor">
-                      Production Supervisor
-                    </option>
-                    <option value="quality-assurance-specialist">
-                      Quality Assurance Specialist
-                    </option>
-                    <option value="sales-representative">
-                      Sales Representative
-                    </option>
-                    <option value="account-manager">Account Manager</option>
-                    <option value="sales-manager">Sales Manager</option>
-                    <option value="business-development-executive">
-                      Business Development Executive
-                    </option>
-                    <option value="customer-success-manager">
-                      Customer Success Manager
-                    </option>
-                    <option value="hr-manager">HR Manager</option>
-                    <option value="recruitment-specialist">
-                      Recruitment Specialist
-                    </option>
-                    <option value="training-coordinator">
-                      Training Coordinator
-                    </option>
-                    <option value="compensation-analyst">
-                      Compensation Analyst
-                    </option>
-                    <option value="employee-relations-manager">
-                      Employee Relations Manager
-                    </option>
-                    <option value="financial-analyst">Financial Analyst</option>
-                    <option value="accountant">Accountant</option>
-                    <option value="finance-manager">Finance Manager</option>
-                    <option value="investment-analyst">
-                      Investment Analyst
-                    </option>
-                    <option value="tax-consultant">Tax Consultant</option>
-                    <option value="marketing-manager">Marketing Manager</option>
-                    <option value="digital-marketing-specialist">
-                      Digital Marketing Specialist
-                    </option>
-                    <option value="brand-manager">Brand Manager</option>
-                    <option value="market-research-analyst">
-                      Market Research Analyst
-                    </option>
-                    <option value="social-media-coordinator">
-                      Social Media Coordinator
-                    </option>
-                  </select>
+                    <InputLabel id="report-label" className="w-52">
+                      Reporting To
+                    </InputLabel>
+                    <Select
+                      labelId="report-label"
+                      id="reporting"
+                      name="reporting"
+                      label="Reporting To"
+                      IconComponent={(props) => (
+                        <ArrowDropDownRoundedIcon
+                          {...props}
+                          sx={{ fontSize: 40 }}
+                        />
+                      )}
+                    >
+                      <MenuItem value="swpnilpatil">Swpnil Patil</MenuItem>
+                      <MenuItem value="sheetalpatil">Sheetal Patil</MenuItem>
+                      <MenuItem value="ishapathak">Isha Pathak</MenuItem>
+                      <MenuItem value="sushantkhadilkar">
+                        Sushant Khadilkar
+                      </MenuItem>
+                      <MenuItem value="shubhamshinde">Shubham Shinde</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
 
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  {/* <label htmlFor="maritalStatus">Marital Status</label>
-                  <select
-                    id="maritalStatus"
-                    name="maritalStatus"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
-                  >
-                    <option value=""></option>
-                    <option value="single">Single</option>
-                    <option value="married">Married</option>
-                    <option value="divorced">Divorced</option>
-                    <option value="widowed">Widowed</option>
-                  </select> */}
                 </div>
               </div>
             </div>
@@ -346,138 +657,317 @@ export default function Newempform() {
             <div className="mt-2">
               <div className="flex gap-5 flex-wrap sm:flex-nowrap">
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="state">State</label>
-                  <select
-                    id="state"
-                    name="state"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  <FormControl
+                    variant="outlined"
+                    margin="dense"
+                    className="col-span-12 sm:col-span-6 xl:col-span-2"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   >
-                    <option value=""></option>
-                    <option value="andhra-pradesh">Andhra Pradesh</option>
-                    <option value="arunachal-pradesh">Arunachal Pradesh</option>
-                    <option value="assam">Assam</option>
-                    <option value="bihar">Bihar</option>
-                    <option value="chhattisgarh">Chhattisgarh</option>
-                    <option value="goa">Goa</option>
-                    <option value="gujarat">Gujarat</option>
-                    <option value="haryana">Haryana</option>
-                    <option value="himachal-pradesh">Himachal Pradesh</option>
-                    <option value="jammu-kashmir">Jammu and Kashmir</option>
-                    <option value="jharkhand">Jharkhand</option>
-                    <option value="karnataka">Karnataka</option>
-                    <option value="kerala">Kerala</option>
-                    <option value="madhya-pradesh">Madhya Pradesh</option>
-                    <option value="maharashtra">Maharashtra</option>
-                    <option value="manipur">Manipur</option>
-                    <option value="meghalaya">Meghalaya</option>
-                    <option value="mizoram">Mizoram</option>
-                    <option value="nagaland">Nagaland</option>
-                    <option value="odisha">Odisha</option>
-                    <option value="punjab">Punjab</option>
-                    <option value="rajasthan">Rajasthan</option>
-                    <option value="sikkim">Sikkim</option>
-                    <option value="tamil-nadu">Tamil Nadu</option>
-                    <option value="telangana">Telangana</option>
-                    <option value="tripura">Tripura</option>
-                    <option value="uttar-pradesh">Uttar Pradesh</option>
-                    <option value="uttarakhand">Uttarakhand</option>
-                    <option value="west-bengal">West Bengal</option>
-                    <option value="andaman-nicobar-islands">
-                      Andaman and Nicobar Islands
-                    </option>
-                    <option value="chandigarh">Chandigarh</option>
-                    <option value="dadra-nagar-haveli-daman-diu">
-                      Dadra and Nagar Haveli and Daman and Diu
-                    </option>
-                    <option value="delhi">Delhi</option>
-                    <option value="lakshadweep">Lakshadweep</option>
-                    <option value="puducherry">Puducherry</option>
-                  </select>
+                    <InputLabel id="state-label" className="w-52">
+                      State
+                    </InputLabel>
+                    <Select
+                      labelId="state-label"
+                      id="state"
+                      name="state"
+                      label="State"
+                      IconComponent={(props) => (
+                        <ArrowDropDownRoundedIcon
+                          {...props}
+                          sx={{ fontSize: 40 }}
+                        />
+                      )}
+                    >
+                      <MenuItem value="andhra-pradesh">Andhra Pradesh</MenuItem>
+                      <MenuItem value="arunachal-pradesh">
+                        Arunachal Pradesh
+                      </MenuItem>
+                      <MenuItem value="assam">Assam</MenuItem>
+                      <MenuItem value="bihar">Bihar</MenuItem>
+                      <MenuItem value="chhattisgarh">Chhattisgarh</MenuItem>
+                      <MenuItem value="goa">Goa</MenuItem>
+                      <MenuItem value="gujarat">Gujarat</MenuItem>
+                      <MenuItem value="haryana">Haryana</MenuItem>
+                      <MenuItem value="himachal-pradesh">
+                        Himachal Pradesh
+                      </MenuItem>
+                      <MenuItem value="jammu-kashmir">
+                        Jammu and Kashmir
+                      </MenuItem>
+                      <MenuItem value="jharkhand">Jharkhand</MenuItem>
+                      <MenuItem value="karnataka">Karnataka</MenuItem>
+                      <MenuItem value="kerala">Kerala</MenuItem>
+                      <MenuItem value="madhya-pradesh">Madhya Pradesh</MenuItem>
+                      <MenuItem value="maharashtra">Maharashtra</MenuItem>
+                      <MenuItem value="manipur">Manipur</MenuItem>
+                      <MenuItem value="meghalaya">Meghalaya</MenuItem>
+                      <MenuItem value="mizoram">Mizoram</MenuItem>
+                      <MenuItem value="nagaland">Nagaland</MenuItem>
+                      <MenuItem value="odisha">Odisha</MenuItem>
+                      <MenuItem value="punjab">Punjab</MenuItem>
+                      <MenuItem value="rajasthan">Rajasthan</MenuItem>
+                      <MenuItem value="sikkim">Sikkim</MenuItem>
+                      <MenuItem value="tamil-nadu">Tamil Nadu</MenuItem>
+                      <MenuItem value="telangana">Telangana</MenuItem>
+                      <MenuItem value="tripura">Tripura</MenuItem>
+                      <MenuItem value="uttar-pradesh">Uttar Pradesh</MenuItem>
+                      <MenuItem value="uttarakhand">Uttarakhand</MenuItem>
+                      <MenuItem value="west-bengal">West Bengal</MenuItem>
+                      <MenuItem value="andaman-nicobar-islands">
+                        Andaman and Nicobar Islands
+                      </MenuItem>
+                      <MenuItem value="chandigarh">Chandigarh</MenuItem>
+                      <MenuItem value="dadra-nagar-haveli-daman-diu">
+                        Dadra and Nagar Haveli and Daman and Diu
+                      </MenuItem>
+                      <MenuItem value="delhi">Delhi</MenuItem>
+                      <MenuItem value="lakshadweep">Lakshadweep</MenuItem>
+                      <MenuItem value="puducherry">Puducherry</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="city">City</label>
-                  <select
-                    id="city"
-                    name="city"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  <FormControl
+                    variant="outlined"
+                    margin="dense"
+                    className="col-span-12 sm:col-span-6 xl:col-span-2"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   >
-                    <option value=""></option>
-                    <option value="mumbai">Mumbai</option>
-                    <option value="pune">Pune</option>
-                    <option value="nagpur">Nagpur</option>
-                    <option value="thane">Thane</option>
-                    <option value="nashik">Nashik</option>
-                    <option value="aurangabad">Aurangabad</option>
-                    <option value="solapur">Solapur</option>
-                    <option value="amravati">Amravati</option>
-                    <option value="kolhapur">Kolhapur</option>
-                    <option value="vasai-virar">Vasai-Virar</option>
-                    <option value="bhiwandi">Bhiwandi</option>
-                    <option value="nanded">Nanded</option>
-                    <option value="jalgaon">Jalgaon</option>
-                    <option value="akola">Akola</option>
-                    <option value="latur">Latur</option>
-                    <option value="dhule">Dhule</option>
-                    <option value="ahmednagar">Ahmednagar</option>
-                    <option value="chandrapur">Chandrapur</option>
-                    <option value="parbhani">Parbhani</option>
-                    <option value="jalna">Jalna</option>
-                    <option value="bhusawal">Bhusawal</option>
-                    <option value="panvel">Panvel</option>
-                    <option value="satara">Satara</option>
-                    <option value="beed">Beed</option>
-                    <option value="yavatmal">Yavatmal</option>
-                    <option value="osmanabad">Osmanabad</option>
-                    <option value="nandurbar">Nandurbar</option>
-                    <option value="sangli">Sangli</option>
-                    <option value="buldhana">Buldhana</option>
-                    <option value="wardha">Wardha</option>
-                    <option value="gondia">Gondia</option>
-                    <option value="ratnagiri">Ratnagiri</option>
-                    <option value="washim">Washim</option>
-                    <option value="hingoli">Hingoli</option>
-                    <option value="raigad">Raigad</option>
-                    <option value="sindhudurg">Sindhudurg</option>
-                    <option value="bhandara">Bhandara</option>
-                  </select>
+                    <InputLabel id="city-label" className="w-52">
+                      City
+                    </InputLabel>
+                    <Select
+                      labelId="city-label"
+                      id="city"
+                      name="city"
+                      label="City"
+                      IconComponent={(props) => (
+                        <ArrowDropDownRoundedIcon
+                          {...props}
+                          sx={{ fontSize: 40 }}
+                        />
+                      )}
+                    >
+                      <MenuItem value="mumbai">Mumbai</MenuItem>
+                      <MenuItem value="pune">Pune</MenuItem>
+                      <MenuItem value="nagpur">Nagpur</MenuItem>
+                      <MenuItem value="thane">Thane</MenuItem>
+                      <MenuItem value="nashik">Nashik</MenuItem>
+                      <MenuItem value="aurangabad">Aurangabad</MenuItem>
+                      <MenuItem value="solapur">Solapur</MenuItem>
+                      <MenuItem value="amravati">Amravati</MenuItem>
+                      <MenuItem value="kolhapur">Kolhapur</MenuItem>
+                      <MenuItem value="vasai-virar">Vasai-Virar</MenuItem>
+                      <MenuItem value="bhiwandi">Bhiwandi</MenuItem>
+                      <MenuItem value="nanded">Nanded</MenuItem>
+                      <MenuItem value="jalgaon">Jalgaon</MenuItem>
+                      <MenuItem value="akola">Akola</MenuItem>
+                      <MenuItem value="latur">Latur</MenuItem>
+                      <MenuItem value="dhule">Dhule</MenuItem>
+                      <MenuItem value="ahmednagar">Ahmednagar</MenuItem>
+                      <MenuItem value="chandrapur">Chandrapur</MenuItem>
+                      <MenuItem value="parbhani">Parbhani</MenuItem>
+                      <MenuItem value="jalna">Jalna</MenuItem>
+                      <MenuItem value="bhusawal">Bhusawal</MenuItem>
+                      <MenuItem value="panvel">Panvel</MenuItem>
+                      <MenuItem value="satara">Satara</MenuItem>
+                      <MenuItem value="beed">Beed</MenuItem>
+                      <MenuItem value="yavatmal">Yavatmal</MenuItem>
+                      <MenuItem value="osmanabad">Osmanabad</MenuItem>
+                      <MenuItem value="nandurbar">Nandurbar</MenuItem>
+                      <MenuItem value="sangli">Sangli</MenuItem>
+                      <MenuItem value="buldhana">Buldhana</MenuItem>
+                      <MenuItem value="wardha">Wardha</MenuItem>
+                      <MenuItem value="gondia">Gondia</MenuItem>
+                      <MenuItem value="ratnagiri">Ratnagiri</MenuItem>
+                      <MenuItem value="washim">Washim</MenuItem>
+                      <MenuItem value="hingoli">Hingoli</MenuItem>
+                      <MenuItem value="raigad">Raigad</MenuItem>
+                      <MenuItem value="sindhudurg">Sindhudurg</MenuItem>
+                      <MenuItem value="bhandara">Bhandara</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="address">Address</label>
-                  <input
+                  <TextField
+                    className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
                     id="address"
                     name="address"
-                    type="text"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                    label="Address"
+                    variant="outlined"
+                    margin="dense"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   />
                 </div>
               </div>
               <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="zipcode">Zip Code</label>
-                  <input
-                    id="zipcode"
-                    name="zipcode"
-                    type="text"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                  <TextField
+                    className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                    id="zip"
+                    name="zip"
+                    label="Zip Code"
+                    type="number"
+                    variant="outlined"
+                    margin="dense"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   />
                 </div>
 
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="emailid">Email Id</label>
-                  <input
-                    id="emailid"
-                    name="emailid"
+                  <TextField
+                    className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                    id="email"
+                    name="email"
+                    label="Email"
                     type="email"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                    variant="outlined"
+                    margin="dense"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   />
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col">
-                  <label htmlFor="phoneno">Phone No</label>
-                  <input
-                    id="phoneno"
-                    name="phoneno"
+                  <TextField
+                    className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                    id="phone"
+                    name="phone"
+                    label="Phone Number"
                     type="number"
-                    className="bg-[#EBE9F6] rounded-lg md:mt-2 py-2.5 px-3 text-sm"
+                    variant="outlined"
+                    margin="dense"
+                    sx={{
+                      "& .MuiInputLabel-root": {
+                        fontSize: 14,
+                      },
+                      "& .MuiInputBase-root": {
+                        backgroundColor: "#EBE9F6",
+                        border: "0 none",
+                        borderRadius: 2,
+                        height: 50,
+                      },
+                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
                   />
                 </div>
               </div>
@@ -503,6 +993,7 @@ export default function Newempform() {
 
           {isSuccessPopupOpen && (
             <PopupMessage
+              className
               message="New Employee Added Successfully"
               onAddMore={handleAddMore}
               onGoToList={handleGoToList}

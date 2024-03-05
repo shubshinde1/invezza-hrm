@@ -5,11 +5,13 @@ const MenuTabs = () => {
   const location = useLocation();
 
   return (
-    <div className="bg-white rounded-md p-2 sticky top-0 mb-2 z-50">
+    <div className="bg-white rounded-md p-2 sticky top-0 mb-2 z-0">
       <ul className="flex gap-2">
         <li
           className={` text-sm px-3 py-1.5 rounded-md ${
-            location.pathname === "/pim/employeelist" ? "bg-[#5336FD] text-white font-bold " : "bg-[#EBE9F6]"
+            location.pathname === "/pim/employeelist"
+              ? "bg-[#5336FD] text-white font-bold "
+              : "bg-[#EBE9F6]"
           }`}
         >
           <NavLink to="/pim/employeelist" activeClassName="bg-gray-200">
@@ -18,7 +20,9 @@ const MenuTabs = () => {
         </li>
         <li
           className={` text-sm px-3 py-1.5 rounded-md ${
-            location.pathname === "/pim/addemployee" ? "bg-[#5336FD] text-white font-bold" : "bg-[#EBE9F6]"
+            location.pathname === "/pim/addemployee"
+              ? "bg-[#5336FD] text-white font-bold"
+              : "bg-[#EBE9F6]"
           }`}
         >
           <NavLink to="/pim/addemployee" activeClassName="bg-gray-200">

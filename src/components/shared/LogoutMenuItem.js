@@ -21,7 +21,7 @@ const LogoutMenuItem = () => {
   };
 
   return (
-    <Menu.Item className="">
+    <Menu.Item className="z-50">
       {({ active }) => (
         <>
           <div
@@ -45,7 +45,7 @@ const LogoutMenuItem = () => {
                 height: "100%",
                 backgroundColor: "rgba(0, 0, 0, 0.5)", // Adjust the opacity as needed
                 backdropFilter: "blur(3px)", // Apply the blur effect
-                zIndex: "9998",
+                zIndex: 9998,
               }}
             >
               <div className="absolute inset-0 opacity-50 backdrop-blur-lg bg-black"></div>

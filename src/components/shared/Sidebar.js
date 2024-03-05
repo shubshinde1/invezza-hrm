@@ -1,29 +1,20 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { DASHBOARD_SIDEBAR_LINKS } from "../../lib/consts/navigation";
 import logo from "../../assets/images/invezza-logo.png";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { HiMenuAlt1 } from "react-icons/hi";
-import gsap from "gsap";
 
 const LinkClasses =
   "flex hover:bg-[#EBE9F6] hover:duration-500 p-3 mt-1.5 rounded-md euclid";
 
 export default function Sidebar() {
-  const comp = useRef(null);
   const { pathname } = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [clickedItem, setClickedItem] = useState(null);
   const sidebarRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
-
-  useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      const t1 = gsap.timeline();
-    }, comp);
-    return () => ctx.revert();
-  }, []);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -82,7 +73,7 @@ export default function Sidebar() {
     handleItemClick(item);
   };
   return (
-    <div>
+    <div className="z-10">
       <button
         className="md:hidden fixed top-2 left-2 p-3 text-black bg-white rounded-md"
         onClick={toggleSidebar}
