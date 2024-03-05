@@ -7,7 +7,7 @@ import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { HiMenuAlt1 } from "react-icons/hi";
 
 const LinkClasses =
-  "flex hover:bg-[#EEFAFF] hover:duration-500 p-3 mt-1.5 rounded-md euclid";
+  "flex hover:bg-[#EBE9F6] hover:duration-500 p-3 mt-1.5 rounded-md euclid";
 
 export default function Sidebar() {
   const { pathname } = useLocation();
@@ -89,7 +89,7 @@ export default function Sidebar() {
         <div className=" flex flex-row justify-between items-center">
           <img src={logo} className="pr-16" alt="logo" />
           <TbLayoutSidebarLeftCollapseFilled
-            className="text-2xl absolute flex md:hidden right-5 mt-5 hover:bg-col-cust rounded-md"
+            className="text-2xl absolute flex md:hidden right-5 mt-5 hover:bg-[#EBE9F6] rounded-md"
             onClick={toggleSidebar}
           />
         </div>
@@ -135,7 +135,7 @@ function SidebarLink({ item, pathname, onClick }) {
       to={item.path}
       className={classNames(
         pathname === item.path
-          ? "euclid-bold bg-col-cust after:w-1.5 after:bg-[#3C5EFE] after:rounded-full"
+          ? "euclid-bold bg-[#EBE9F6] after:w-1.5 after:bg-[#3C5EFE] after:rounded-full"
           : "",
         LinkClasses
       )}
