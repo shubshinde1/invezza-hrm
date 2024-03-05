@@ -239,7 +239,7 @@ export default function StickyHeadTable() {
                 fontSize: 14,
               },
               "& .MuiInputBase-root": {
-                backgroundColor: "#DAF4FF",
+                backgroundColor: "#f0f9ff",
                 border: "0 none",
                 borderRadius: 2,
                 height: 50,
@@ -271,7 +271,7 @@ export default function StickyHeadTable() {
                 fontSize: 14,
               },
               "& .MuiInputBase-root": {
-                backgroundColor: "#DAF4FF",
+                backgroundColor: "#f0f9ff",
                 border: "0 none",
                 borderRadius: 2,
                 height: 50,
@@ -298,7 +298,7 @@ export default function StickyHeadTable() {
                 fontSize: 14,
               },
               "& .MuiInputBase-root": {
-                backgroundColor: "#DAF4FF",
+                backgroundColor: "#f0f9ff",
                 border: "0 none",
                 borderRadius: 2,
                 height: 50,
@@ -356,7 +356,7 @@ export default function StickyHeadTable() {
                 fontSize: 14,
               },
               "& .MuiInputBase-root": {
-                backgroundColor: "#DAF4FF",
+                backgroundColor: "#f0f9ff",
                 border: "0 none",
                 borderRadius: 2,
                 height: 50,
@@ -402,7 +402,7 @@ export default function StickyHeadTable() {
                 <MenuItem
                   key={designation}
                   value={designation.toLowerCase()}
-                  className="bg-col-cust "
+                  className="bg-sky-50 "
                 >
                   {designation}
                 </MenuItem>
@@ -412,7 +412,7 @@ export default function StickyHeadTable() {
 
           <div className="col-span-12 md:col-span-4 flex items-center justify-between ">
             <button
-              className="bg-col-cust md:mt-1 px-4 rounded-md w-fit"
+              className="bg-sky-50 md:mt-1 px-4 rounded-md w-fit"
               onClick={handleClearFilters}
             >
               <FaFilterCircleXmark
@@ -446,7 +446,7 @@ export default function StickyHeadTable() {
                     align="left"
                     style={{
                       minWidth: column.minWidth,
-                      backgroundColor: "#DAF4FF",
+                      backgroundColor: "#f0f9ff",
                       fontWeight: Bolt,
                     }}
                   >

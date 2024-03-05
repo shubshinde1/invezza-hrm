@@ -11,7 +11,7 @@ const MenuTabs = () => {
           className={` text-sm px-3 py-1.5 rounded-md ${
             location.pathname === "/pim/employeelist"
               ? "bg-[#5336FD] text-white font-bold "
-              : "clor"
+              : "bg-sky-50"
           }`}
         >
           <NavLink to="/pim/employeelist" activeClassName="bg-gray-200">
@@ -22,7 +22,7 @@ const MenuTabs = () => {
           className={` text-sm px-3 py-1.5 rounded-md ${
             location.pathname === "/pim/addemployee"
               ? "bg-[#5336FD] text-white font-bold"
-              : "clor"
+              : "bg-sky-50"
           }`}
         >
           <NavLink to="/pim/addemployee" activeClassName="bg-gray-200">

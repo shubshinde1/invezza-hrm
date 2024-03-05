@@ -91,7 +91,7 @@ export function PersonalInformation({ onNext }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#DAF4FF",
+                    backgroundColor: "#f0f9ff",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -123,7 +123,7 @@ export function PersonalInformation({ onNext }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#DAF4FF",
+                    backgroundColor: "#f0f9ff",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -155,7 +155,7 @@ export function PersonalInformation({ onNext }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#DAF4FF",
+                    backgroundColor: "#f0f9ff",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -191,7 +191,7 @@ export function PersonalInformation({ onNext }) {
                         fontSize: 14,
                       },
                       "& .MuiInputBase-root": {
-                        backgroundColor: "#DAF4FF",
+                        backgroundColor: "#f0f9ff",
                         border: "0 none",
                         borderRadius: 2,
                         height: 50,
@@ -231,7 +231,7 @@ export function PersonalInformation({ onNext }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#DAF4FF",
+                    backgroundColor: "#f0f9ff",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -279,7 +279,7 @@ export function PersonalInformation({ onNext }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#DAF4FF",
+                    backgroundColor: "#f0f9ff",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -354,7 +354,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                       fontSize: 14,
                     },
                     "& .MuiInputBase-root": {
-                      backgroundColor: "#DAF4FF",
+                      backgroundColor: "#f0f9ff",
                       border: "0 none",
                       borderRadius: 2,
                       height: 50,
@@ -394,7 +394,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                   fontSize: 14,
                 },
                 "& .MuiInputBase-root": {
-                  backgroundColor: "#DAF4FF",
+                  backgroundColor: "#f0f9ff",
                   border: "0 none",
                   borderRadius: 2,
                   height: 50,
@@ -446,7 +446,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                   fontSize: 14,
                 },
                 "& .MuiInputBase-root": {
-                  backgroundColor: "#DAF4FF",
+                  backgroundColor: "#f0f9ff",
                   border: "0 none",
                   borderRadius: 2,
                   height: 50,
@@ -496,7 +496,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                   fontSize: 14,
                 },
                 "& .MuiInputBase-root": {
-                  backgroundColor: "#DAF4FF",
+                  backgroundColor: "#f0f9ff",
                   border: "0 none",
                   borderRadius: 2,
                   height: 50,
@@ -544,7 +544,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                   fontSize: 14,
                 },
                 "& .MuiInputBase-root": {
-                  backgroundColor: "#DAF4FF",
+                  backgroundColor: "#f0f9ff",
                   border: "0 none",
                   borderRadius: 2,
                   height: 50,
@@ -655,7 +655,7 @@ export function ContactInformation({ onPrev }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#DAF4FF",
+                    backgroundColor: "#f0f9ff",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -742,7 +742,7 @@ export function ContactInformation({ onPrev }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#DAF4FF",
+                    backgroundColor: "#f0f9ff",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -828,7 +828,7 @@ export function ContactInformation({ onPrev }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#DAF4FF",
+                    backgroundColor: "#f0f9ff",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -863,7 +863,7 @@ export function ContactInformation({ onPrev }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#DAF4FF",
+                    backgroundColor: "#f0f9ff",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -897,7 +897,7 @@ export function ContactInformation({ onPrev }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#DAF4FF",
+                    backgroundColor: "#f0f9ff",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
@@ -930,7 +930,7 @@ export function ContactInformation({ onPrev }) {
                     fontSize: 14,
                   },
                   "& .MuiInputBase-root": {
-                    backgroundColor: "#DAF4FF",
+                    backgroundColor: "#f0f9ff",
                     border: "0 none",
                     borderRadius: 2,
                     height: 50,
