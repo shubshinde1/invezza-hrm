@@ -1,36 +1,37 @@
 import React from "react";
-import { MantineProvider, Avatar } from "@mantine/core";
-import { BiReset } from "react-icons/bi";
-import { FaUpload } from "react-icons/fa6";
+// import { MantineProvider, Avatar } from "@mantine/core";
+// import { BiReset } from "react-icons/bi";
+// import { FaUpload } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import PopupMessage from "./PopupMessage";
+// import PopupMessage from "./PopupMessage";
+// import {
+//   TextField,
+//   FormControl,
+//   InputLabel,
+//   Select,
+//   MenuItem,
+// } from "@mui/material";
+// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+// import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+// import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+// import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import {
-  TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-} from "@mui/material";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
+  PersonalInformation,
+  EmploymentInformation,
+  ContactInformation,
+} from "./Formsteps";
 
 export default function Newempform() {
   const [selectedImage, setSelectedImage] = useState("");
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
   const Navigate = useNavigate();
-  let autoCloseTimer;
+  // let autoCloseTimer;
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsSuccessPopupOpen(true); // Open the popup
-    // Navigate("/pim/employeelist");
-    // setTimeout(() => {
-    //   setIsSuccessPopupOpen(false);
-    // }, 2500);
+    setIsSuccessPopupOpen(true);
   };
 
   const handleImageUpload = (event) => {
@@ -44,19 +45,19 @@ export default function Newempform() {
     }
   };
 
-  const handleResetImage = () => {
-    setSelectedImage("");
-  };
+  // const handleResetImage = () => {
+  //   setSelectedImage("");
+  // };
 
-  const handleAddMore = () => {
-    setIsSuccessPopupOpen(false); // Close the popup
-    clearTimeout(autoCloseTimer); // Cancel the auto close timer
-  };
+  // const handleAddMore = () => {
+  //   setIsSuccessPopupOpen(false); // Close the popup
+  //   clearTimeout(autoCloseTimer); // Cancel the auto close timer
+  // };
 
-  const handleGoToList = () => {
-    setIsSuccessPopupOpen(false);
-    Navigate("/pim/employeelist");
-  };
+  // const handleGoToList = () => {
+  //   setIsSuccessPopupOpen(false);
+  //   Navigate("/pim/employeelist");
+  // };
 
   useEffect(() => {
     let autoCloseTimer;
@@ -69,52 +70,90 @@ export default function Newempform() {
     return () => clearTimeout(autoCloseTimer);
   }, [isSuccessPopupOpen, Navigate]);
 
-  return (
-    <div className="bg-white p-4 rounded-md h-screen overflow-scroll scrollbar-hide">
-      <div>
-        <form onSubmit={handleSubmit} action="" method="post">
-          <h4 className="font-bold">Add Profile Picture</h4>
+  const [step, setStep] = useState(1);
 
-          {/* user profile */}
-          <div className="flex items-center md:items-center mt-4 gap-4">
-            <div>
-              <MantineProvider>
-                <Avatar
-                  className="w-28 md:w-20 bg-[#EBE9F6] p-2 rounded-md"
-                  src={selectedImage || ""}
-                  alt="Profile"
+  const nextStep = () => {
+    setStep((prevStep) => prevStep + 1);
+  };
+
+  const prevStep = () => {
+    setStep((prevStep) => prevStep - 1);
+  };
+
+  return (
+    <div className="bg-white p-4 rounded-md h-screen overflow-scroll scrollbar-hide flex flex-col md:grid grid-cols-12 gap-4">
+      <div className=" bg-[#EBE9F6] rounded-md col-span-2">
+        <ul className="text-sm p-2 flex flex-col gap-2">
+          <li
+            className={`hover:bg-blue-200 py-2.5 px-1.5 rounded-md cursor-pointer ${
+              step === 1 ? "bg-blue-200" : ""
+            }`}
+            onClick={() => setStep(1)} // Set step to 1 when clicked
+          >
+            Personal Information
+          </li>
+          <li
+            className={`hover:bg-blue-200 py-2.5 px-1.5 rounded-md cursor-pointer ${
+              step === 2 ? "bg-blue-200" : ""
+            }`}
+            onClick={() => setStep(2)} // Set step to 2 when clicked
+          >
+            Employment Information
+          </li>
+          <li
+            className={`hover:bg-blue-200 py-2.5 px-1.5 rounded-md cursor-pointer ${
+              step === 3 ? "bg-blue-200" : ""
+            }`}
+            onClick={() => setStep(3)} // Set step to 3 when clicked
+          >
+            Contact Information
+          </li>
+        </ul>
+      </div>
+      <div className="col-span-10">
+        {/* <form onSubmit={handleSubmit} action="" method="post">
+          <h4 className="font-bold">Add Profile Picture</h4> */}
+
+        {/* user profile */}
+        {/* <div className="flex items-center md:items-center mt-4 gap-4">
+          <div>
+            <MantineProvider>
+              <Avatar
+                className="w-28 md:w-20 bg-[#EBE9F6] p-2 rounded-md"
+                src={selectedImage || ""}
+                alt="Profile"
+              />
+            </MantineProvider>
+          </div>
+          <div className="flex items-center">
+            <div className="flex flex-col md:flex-row">
+              <label
+                htmlFor="upload-avatar"
+                className="bg-[#5336FD] px-3 py-2 flex text-white rounded-md cursor-pointer items-center hover:scale-[1.020] duration-150"
+              >
+                <input
+                  type="file"
+                  id="upload-avatar"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  style={{ display: "none" }}
                 />
-              </MantineProvider>
-            </div>
-            <div className="flex items-center">
-              <div className="flex flex-col md:flex-row">
-                <label
-                  htmlFor="upload-avatar"
-                  className="bg-[#5336FD] px-3 py-2 flex text-white rounded-md cursor-pointer items-center hover:scale-[1.020] duration-150"
-                >
-                  <input
-                    type="file"
-                    id="upload-avatar"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    style={{ display: "none" }}
-                  />
-                  <FaUpload size={18} />
-                  <h1 className="ml-2 text-xs font-bold">Upload Avatar</h1>
-                </label>
-                <div
-                  className="bg-[#EBE9F6] px-3 py-2 flex rounded-md md:ml-4 mt-4 md:mt-0 cursor-pointer items-center hover:scale-[1.020] duration-150"
-                  onClick={handleResetImage}
-                >
-                  <BiReset size={20} />
-                  <h1 className="ml-2 text-xs font-bold">Reset Image</h1>
-                </div>
+                <FaUpload size={18} />
+                <h1 className="ml-2 text-xs font-bold">Upload Avatar</h1>
+              </label>
+              <div
+                className="bg-[#EBE9F6] px-3 py-2 flex rounded-md md:ml-4 mt-4 md:mt-0 cursor-pointer items-center hover:scale-[1.020] duration-150"
+                onClick={handleResetImage}
+              >
+                <BiReset size={20} />
+                <h1 className="ml-2 text-xs font-bold">Reset Image</h1>
               </div>
             </div>
           </div>
+        </div> */}
 
-          {/* Personal Information */}
-          <div className="mt-8">
+        {/* Personal Information */}
+        {/* <div className="mt-8">
             <h4 className="font-bold">Personal Information</h4>
             <div className="mt-2">
               <div className="flex gap-5 flex-wrap sm:flex-nowrap">
@@ -366,12 +405,12 @@ export default function Newempform() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <hr className="my-8" />
+        {/* <hr className="my-8" /> */}
 
-          {/* Employment Information */}
-          <div className="mt-8">
+        {/* Employment Information */}
+        {/* <div className="mt-8">
             <h4 className="font-bold">Employment Information</h4>
             <div className="mt-2">
               <div className="flex gap-5 flex-wrap sm:flex-nowrap">
@@ -647,12 +686,12 @@ export default function Newempform() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <hr className="my-8" />
+        {/* <hr className="my-8" /> */}
 
-          {/* Contact Information */}
-          <div className="mt-8">
+        {/* Contact Information */}
+        {/* <div className="mt-8">
             <h4 className="font-bold">Contact Information</h4>
             <div className="mt-2">
               <div className="flex gap-5 flex-wrap sm:flex-nowrap">
@@ -972,34 +1011,53 @@ export default function Newempform() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <hr className="my-8" />
+        {/* <hr className="my-8" /> */}
 
-          <div className="mt-8">
-            <div className="flex gap-5">
-              <input
-                type="submit"
-                value="Save Details"
-                className="bg-[#5336FD] px-4 py-2 text-white rounded-md cursor-pointer font-bold hover:scale-[1.020] duration-100"
-              />
-              <input
-                type="reset"
-                value="Reset Form"
-                className="bg-[#EBE9F6] px-4 py-2  rounded-md cursor-pointer hover:scale-[1.020] duration-100"
-              />
+        <div>
+          <div className="stepper flex w-full md:w-1/2 justify-between ">
+            <div
+              className={`step ${
+                step === 1
+                  ? "active bg-[#5336FD] text-white w-10 px-4 py-2 h-10 rounded-full"
+                  : "bg-gray-200 w-10 px-4 py-2 h-10 rounded-full cursor-pointer"
+              }`}
+              onClick={() => setStep(1)} // Set step to 1 when clicked
+            >
+              <h1>1</h1>
+            </div>
+            <div
+              className={`step ${
+                step === 2
+                  ? "active bg-[#5336FD] text-white w-10 px-4 py-2 h-10 rounded-full"
+                  : "bg-gray-200 w-10 px-4 py-2 h-10 rounded-full cursor-pointer"
+              }`}
+              onClick={() => setStep(2)} // Set step to 2 when clicked
+            >
+              <h1>2</h1>
+            </div>
+            <div
+              className={`step ${
+                step === 3
+                  ? "active bg-[#5336FD] text-white w-10 px-4 py-2 h-10 rounded-full"
+                  : "bg-gray-200 w-10 px-4 py-2 h-10 rounded-full cursor-pointer"
+              }`}
+              onClick={() => setStep(3)} // Set step to 3 when clicked
+            >
+              <h1>3</h1>
             </div>
           </div>
 
-          {isSuccessPopupOpen && (
-            <PopupMessage
-              className
-              message="New Employee Added Successfully"
-              onAddMore={handleAddMore}
-              onGoToList={handleGoToList}
-            />
-          )}
-        </form>
+          <form onSubmit={handleSubmit}>
+            {step === 1 && <PersonalInformation onNext={nextStep} />}
+            {step === 2 && (
+              <EmploymentInformation onNext={nextStep} onPrev={prevStep} />
+            )}
+            {step === 3 && <ContactInformation onPrev={prevStep} />}
+          </form>
+        </div>
+        {/* </form> */}
       </div>
     </div>
   );

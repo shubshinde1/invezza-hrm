@@ -3,7 +3,7 @@ import { BsPersonFillCheck, BsPersonFillAdd } from "react-icons/bs";
 import { FaListUl } from "react-icons/fa6";
 
 const PopupMessage = ({ message, onAddMore, onGoToList }) => {
-  const [timer, setTimer] = useState(10);
+  const [timer, setTimer] = useState(5);
   let countdown;
 
   useEffect(() => {
