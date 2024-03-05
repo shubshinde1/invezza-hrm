@@ -402,7 +402,7 @@ export default function StickyHeadTable() {
                 <MenuItem
                   key={designation}
                   value={designation.toLowerCase()}
-                  className="bg-[#EBE9F6] "
+                  className="bg-col-cust "
                 >
                   {designation}
                 </MenuItem>
@@ -412,7 +412,7 @@ export default function StickyHeadTable() {
 
           <div className="col-span-12 md:col-span-4 flex items-center justify-between ">
             <button
-              className="bg-[#EBE9F6] md:mt-1 px-4 rounded-md w-fit"
+              className="bg-col-cust md:mt-1 px-4 rounded-md w-fit"
               onClick={handleClearFilters}
             >
               <FaFilterCircleXmark
