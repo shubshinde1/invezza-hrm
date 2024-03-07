@@ -1,6 +1,6 @@
-import { FaDoorOpen } from "react-icons/fa";
+import { FaDoorOpen, FaAddressBook } from "react-icons/fa";
 import { MdSpaceDashboard, MdLocalPolice } from "react-icons/md";
-import { IoCalendar } from "react-icons/io5";
+import { IoCalendar, IoPersonAdd } from "react-icons/io5";
 import { FaClipboardUser } from "react-icons/fa6";
 import { SiTask } from "react-icons/si";
 import { RiShieldUserFill } from "react-icons/ri";
@@ -22,14 +22,14 @@ export const DASHBOARD_SIDEBAR_LINKS = [
       {
         key: "employeelist",
         label: "Employee List",
-        path: "pim/employeelist",
-        icon: <BsPeopleFill />,
+        path: "/pim/employeelist",
+        icon: <FaAddressBook />,
       },
       {
         key: "employee",
-        label: "Add New Employee",
-        path: "pim/addemployee",
-        icon: <BsPeopleFill />,
+        label: "Add Employee",
+        path: "/pim/addemployee",
+        icon: <IoPersonAdd />,
       },
     ],
   },
@@ -53,7 +53,7 @@ export const DASHBOARD_SIDEBAR_LINKS = [
   },
   {
     key: "task",
-    label: "task",
+    label: "Task",
     path: "/task",
     icon: <SiTask />,
   },

@@ -44,7 +44,7 @@ export function PersonalInformation({ onNext }) {
           <div>
             <MantineProvider>
               <Avatar
-                className="w-28 md:w-20 clor p-2 rounded-md"
+                className="w-28 md:w-20 bg-sky-50 p-2 rounded-md"
                 src={selectedImage || ""}
                 alt="Profile"
               />
@@ -67,7 +67,7 @@ export function PersonalInformation({ onNext }) {
                 <h1 className="ml-2 text-xs font-bold">Upload Avatar</h1>
               </label>
               <div
-                className="clor px-3 py-2 flex rounded-md md:ml-4 mt-4 md:mt-0 cursor-pointer items-center hover:scale-[1.020] duration-150"
+                className="bg-sky-50 px-3 py-2 flex rounded-md md:ml-4 mt-4 md:mt-0 cursor-pointer items-center hover:scale-[1.020] duration-150"
                 onClick={handleResetImage}
               >
                 <BiReset size={20} />
@@ -606,10 +606,10 @@ export function EmploymentInformation({ onNext, onPrev }) {
   );
 }
 
-export function ContactInformation({ onPrev }) {
+export function ContactInformation({ onPrev, onNext }) {
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
   const Navigate = useNavigate();
-  let autoCloseTimer;
+  // let autoCloseTimer;
 
   useEffect(() => {
     let autoCloseTimer;
@@ -622,23 +622,18 @@ export function ContactInformation({ onPrev }) {
     return () => clearTimeout(autoCloseTimer);
   }, [isSuccessPopupOpen, Navigate]);
 
-  const handleAddMore = () => {
-    setIsSuccessPopupOpen(false); // Close the popup
-    clearTimeout(autoCloseTimer);
-    onPrev();
-    onPrev();
-  };
+  // const handleAddMore = () => {
+  //   setIsSuccessPopupOpen(false); // Close the popup
+  //   clearTimeout(autoCloseTimer);
+  //   onPrev();
+  //   onPrev();
+  // };
 
-  const handleGoToList = () => {
-    setIsSuccessPopupOpen(false);
-    Navigate("/pim/employeelist");
-  };
-  // Contact Information Form Component
+  // const handleGoToList = () => {
+  //   setIsSuccessPopupOpen(false);
+  //   Navigate("/pim/employeelist");
+  // };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setIsSuccessPopupOpen(true);
-  };
   return (
     <div>
       <div className="">
@@ -856,6 +851,316 @@ export function ContactInformation({ onPrev }) {
                 name="zip"
                 label="Zip Code"
                 type="number"
+                variant="outlined"
+                margin="dense"
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    fontSize: 14,
+                  },
+                  "& .MuiInputBase-root": {
+                    backgroundColor: "#f0f9ff",
+                    border: "0 none",
+                    borderRadius: 2,
+                    height: 50,
+                  },
+                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "transparent",
+                  },
+                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "transparent",
+                    },
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "transparent",
+                    },
+                }}
+              />
+            </div>
+
+            <div className="w-full lg:w-1/3 flex flex-col">
+              <TextField
+                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                id="email"
+                name="email"
+                label="Email"
+                type="email"
+                variant="outlined"
+                margin="dense"
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    fontSize: 14,
+                  },
+                  "& .MuiInputBase-root": {
+                    backgroundColor: "#f0f9ff",
+                    border: "0 none",
+                    borderRadius: 2,
+                    height: 50,
+                  },
+                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "transparent",
+                  },
+                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "transparent",
+                    },
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "transparent",
+                    },
+                }}
+              />
+            </div>
+            <div className="w-full lg:w-1/3 flex flex-col">
+              <TextField
+                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                id="phone"
+                name="phone"
+                label="Phone Number"
+                type="number"
+                variant="outlined"
+                margin="dense"
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    fontSize: 14,
+                  },
+                  "& .MuiInputBase-root": {
+                    backgroundColor: "#f0f9ff",
+                    border: "0 none",
+                    borderRadius: 2,
+                    height: 50,
+                  },
+                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "transparent",
+                  },
+                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "transparent",
+                    },
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "transparent",
+                    },
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full flex justify-between md:absolute md:z-0 md:bottom-36 md:right-10 md:w-8/12 ">
+        <button
+          type="button"
+          onClick={onPrev}
+          className="bg-[#5336FD] text-white px-5 py-2 rounded-md  hover:scale-[1.020]"
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          onClick={onNext}
+          className="bg-[#5336FD] text-white px-5 py-2 rounded-md md:ml-5 hover:scale-[1.020]"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export function EmergencyContacts({ onPrev }) {
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
+  const Navigate = useNavigate();
+  let autoCloseTimer;
+
+  useEffect(() => {
+    let autoCloseTimer;
+    if (isSuccessPopupOpen) {
+      autoCloseTimer = setTimeout(() => {
+        setIsSuccessPopupOpen(false); // Close the popup after 5 seconds
+        Navigate("/pim/employeelist"); // Redirect to the employee list
+      }, 5000);
+    }
+    return () => clearTimeout(autoCloseTimer);
+  }, [isSuccessPopupOpen, Navigate]);
+
+  const handleAddMore = () => {
+    setIsSuccessPopupOpen(false);
+    clearTimeout(autoCloseTimer);
+    onPrev();
+    onPrev();
+    onPrev();
+  };
+
+  const handleGoToList = () => {
+    setIsSuccessPopupOpen(false);
+    Navigate("/pim/employeelist");
+  };
+  // Contact Information Form Component
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setIsSuccessPopupOpen(true);
+  };
+  return (
+    <div>
+      <div className="">
+        <h4 className="font-bold">Emergency Contacts</h4>
+        <div className="mt-2">
+          <div className="flex gap-5 flex-wrap sm:flex-nowrap">
+            <div className="w-full lg:w-1/3 flex flex-col">
+              <TextField
+                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                id="emergencycontactname"
+                name="emergencycontactname"
+                label="Full Name"
+                variant="outlined"
+                margin="dense"
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    fontSize: 14,
+                  },
+                  "& .MuiInputBase-root": {
+                    backgroundColor: "#f0f9ff",
+                    border: "0 none",
+                    borderRadius: 2,
+                    height: 50,
+                  },
+                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "transparent",
+                  },
+                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "transparent",
+                    },
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "transparent",
+                    },
+                }}
+              />
+            </div>
+            <div className="w-full lg:w-1/3 flex flex-col">
+              <FormControl
+                variant="outlined"
+                margin="dense"
+                className="col-span-12 sm:col-span-6 xl:col-span-2"
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    fontSize: 14,
+                  },
+                  "& .MuiInputBase-root": {
+                    backgroundColor: "#f0f9ff",
+                    border: "0 none",
+                    borderRadius: 2,
+                    height: 50,
+                  },
+                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "transparent",
+                  },
+                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "transparent",
+                    },
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "transparent",
+                    },
+                }}
+              >
+                <InputLabel id="relation-label" className="w-52">
+                  Relation
+                </InputLabel>
+                <Select
+                  labelId="relation-label"
+                  id="relation"
+                  name="relation"
+                  label="Relation"
+                  IconComponent={(props) => (
+                    <ArrowDropDownRoundedIcon
+                      {...props}
+                      sx={{ fontSize: 40 }}
+                    />
+                  )}
+                >
+                  <MenuItem value="father">Father</MenuItem>
+                  <MenuItem value="mother">Mother</MenuItem>
+                  <MenuItem value="brother">Brother</MenuItem>
+                  <MenuItem value="sister">Sister</MenuItem>
+                  <MenuItem value="son">Son</MenuItem>
+                  <MenuItem value="daughter">Daughter</MenuItem>
+                  <MenuItem value="grandfather">Grandfather</MenuItem>
+                  <MenuItem value="grandmother">Grandmother</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="w-full lg:w-1/3 flex flex-col">
+              <FormControl
+                variant="outlined"
+                margin="dense"
+                className="col-span-12 sm:col-span-6 xl:col-span-2"
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    fontSize: 14,
+                  },
+                  "& .MuiInputBase-root": {
+                    backgroundColor: "#f0f9ff",
+                    border: "0 none",
+                    borderRadius: 2,
+                    height: 50,
+                  },
+                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "transparent",
+                  },
+                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "transparent",
+                    },
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "transparent",
+                    },
+                }}
+              >
+                <InputLabel id="profestion-label" className="w-52">
+                  Profestion
+                </InputLabel>
+                <Select
+                  labelId="profestion-label"
+                  id="profestion"
+                  name="profestion"
+                  label="Profestion"
+                  IconComponent={(props) => (
+                    <ArrowDropDownRoundedIcon
+                      {...props}
+                      sx={{ fontSize: 40 }}
+                    />
+                  )}
+                >
+                  <MenuItem value="bussinessman">Business Man</MenuItem>
+                  <MenuItem value="doctor">Doctor</MenuItem>
+                  <MenuItem value="engineer">Engineer</MenuItem>
+                  <MenuItem value="teacher">Teacher</MenuItem>
+                  <MenuItem value="lawyer">Lawyer</MenuItem>
+                  <MenuItem value="artist">Artist</MenuItem>
+                  <MenuItem value="architect">Architect</MenuItem>
+                  <MenuItem value="chef">Chef</MenuItem>
+                  <MenuItem value="nurse">Nurse</MenuItem>
+                  <MenuItem value="scientist">Scientist</MenuItem>
+                  <MenuItem value="accountant">Accountant</MenuItem>
+                  <MenuItem value="pilot">Pilot</MenuItem>
+                  <MenuItem value="police officer">Police Officer</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+          </div>
+          <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
+            <div className="w-full lg:w-1/3 flex flex-col">
+              <TextField
+                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                id="address"
+                name="address"
+                label="Address"
+                type="text"
                 variant="outlined"
                 margin="dense"
                 sx={{

@@ -12,13 +12,13 @@ const PopupMessage = ({ message, onAddMore, onGoToList }) => {
     }, 1000);
 
     return () => clearInterval(countdown);
-  }, []);
+  }, [countdown]);
 
-  useEffect(() => {
-    if (timer === 0) {
-      clearInterval(countdown);
-    }
-  }, [timer]);
+  // useEffect(() => {
+  //   if (timer === 0) {
+  //     clearInterval(countdown);
+  //   }
+  // }, [timer]);
 
   return (
     <>

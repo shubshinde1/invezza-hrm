@@ -15,10 +15,31 @@ export default function Header() {
 
   const getTitle = () => {
     const currentPath = location.pathname;
+
+    // Search for the current path in the main links array
     const currentLink = DASHBOARD_SIDEBAR_LINKS.find(
       (link) => link.path === currentPath
     );
-    return currentLink ? currentLink.label : "Tab Title";
+
+    if (currentLink) {
+      // If current path is found in main links array, return its label
+      return currentLink.label;
+    } else {
+      // If not found, search within the subItems arrays
+      for (const link of DASHBOARD_SIDEBAR_LINKS) {
+        if (link.subItems) {
+          const subItem = link.subItems.find(
+            (subLink) => subLink.path === currentPath
+          );
+          if (subItem) {
+            // If current path is found in a subItem, return its parent label
+            return link.label;
+          }
+        }
+      }
+    }
+
+    return "Tab Title"; // Return default title if no match is found
   };
 
   return (
