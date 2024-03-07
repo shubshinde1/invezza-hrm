@@ -22,6 +22,7 @@ import {
   EmploymentInformation,
   ContactInformation,
   EmergencyContacts,
+  WorkExperience,
 } from "./Formsteps";
 
 export default function Newempform() {
@@ -77,6 +78,7 @@ export default function Newempform() {
     "Employment Information",
     "Contact Information",
     "Emergency Contacts",
+    "Work Experience",
   ];
 
   const nextStep = () => {
@@ -181,7 +183,10 @@ export default function Newempform() {
             {step === 3 && (
               <ContactInformation onNext={nextStep} onPrev={prevStep} />
             )}
-            {step === 4 && <EmergencyContacts onPrev={prevStep} />}
+            {step === 4 && (
+              <EmergencyContacts onNext={nextStep} onPrev={prevStep} />
+            )}
+            {step === 5 && <WorkExperience onPrev={prevStep} />}
           </form>
         </div>
       </div>

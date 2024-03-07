@@ -17,9 +17,86 @@ import { useNavigate } from "react-router-dom";
 import { MantineProvider, Avatar } from "@mantine/core";
 import { BiReset } from "react-icons/bi";
 import { FaUpload } from "react-icons/fa6";
+import { makeStyles } from "@mui/styles";
+import classNames from "classnames";
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
+  .MuiMenuItem-root {
+    font-family: Euclid;
+    font-size: 14px;
+    font-weight: bold;
+    margin: auto 8px;
+    border-radius: 7px;
+  }
+  .MuiMenuItem-root:hover {
+    background-color:#e0f2fe;
+    padding-left: 15px;
+  }
+  .MuiMenuItem-root:hover {
+    transition-duration: 0.2s;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+`;
+
+const useStyles = makeStyles({
+  root: {
+    "& .MuiInputLabel-root": {
+      fontFamily: "euclid",
+      fontSize: 14,
+      paddingTop: -2.5,
+      fontWeight: "bold",
+    },
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "black",
+      fontWeight: "bold",
+      fontSize: 15,
+    },
+    "& .MuiInputBase-root": {
+      backgroundColor: "#f0f9ff",
+      border: "0 none",
+      borderRadius: 7,
+      height: 50,
+      width: "100%",
+      overflow: "hidden",
+    },
+    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "transparent",
+    },
+    "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
+      borderColor: "transparent",
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "gray",
+    },
+    "& .Muilplaceholder": {
+      fontFamily: "euclid",
+      fontSize: 10,
+    },
+    "& .MuiOutlinedInput-input": {
+      fontFamily: "euclid-medium",
+      fontSize: 14,
+    },
+    "& .MuiOutlinedInput-input": {
+      fontFamily: "euclid-medium",
+      fontSize: 14,
+    },
+    "& ::placeholder": {
+      fontSize: 12,
+    },
+    display: "block",
+    width: "100%",
+  },
+});
 
 export function PersonalInformation({ onNext }) {
   const [selectedImage, setSelectedImage] = useState("");
+  const classes = useStyles();
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -35,7 +112,6 @@ export function PersonalInformation({ onNext }) {
   const handleResetImage = () => {
     setSelectedImage("");
   };
-  // Personal Information Form Component
   return (
     <div className="">
       <div>
@@ -80,98 +156,41 @@ export function PersonalInformation({ onNext }) {
           <div className="flex gap-5 flex-wrap sm:flex-nowrap">
             <div className="w-full lg:w-1/3 flex flex-col">
               <TextField
-                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
                 id="fname"
                 name="fname"
                 label="First Name"
                 variant="outlined"
                 margin="dense"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
               />
             </div>
             <div className="w-full lg:w-1/3 flex flex-col">
               <TextField
-                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
                 id="lname"
                 name="lname"
                 label="Last Name"
                 variant="outlined"
                 margin="dense"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
               />
             </div>
             <div className="w-full lg:w-1/3 flex flex-col">
               <TextField
-                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
                 id="empid"
                 name="empid"
                 label="Employee Id"
                 variant="outlined"
                 margin="dense"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
               />
             </div>
           </div>
@@ -183,39 +202,11 @@ export function PersonalInformation({ onNext }) {
               >
                 <DemoContainer components={["DatePicker"]}>
                   <DatePicker
-                    // defaultValue={dayjs()}
-                    // views={["day", "month", "year"]}
                     label="Date of Birth"
-                    sx={{
-                      "& .MuiInputLabel-root": {
-                        fontSize: 14,
-                      },
-                      "& .MuiInputBase-root": {
-                        backgroundColor: "#f0f9ff",
-                        border: "0 none",
-                        borderRadius: 2,
-                        height: 50,
-                        width: "100%",
-                        overflow: "hidden",
-                      },
-                      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
-                        {
-                          borderColor: "transparent",
-                        },
-                      "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                        {
-                          borderColor: "transparent",
-                        },
-                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                        {
-                          borderColor: "transparent",
-                        },
-                      "& ::placeholder": {
-                        fontSize: 12,
-                      },
-                      display: "block", // Ensure DatePicker occupies full width
-                      width: "100%", // Ensure DatePicker occupies full width
-                    }}
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2",
+                      classes.root
+                    )}
                   />
                 </DemoContainer>
               </LocalizationProvider>
@@ -225,29 +216,10 @@ export function PersonalInformation({ onNext }) {
               <FormControl
                 variant="outlined"
                 margin="dense"
-                className="col-span-12 sm:col-span-6 xl:col-span-2"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
               >
                 <InputLabel id="gender-label" className="w-52">
                   Gender
@@ -264,6 +236,7 @@ export function PersonalInformation({ onNext }) {
                     />
                   )}
                 >
+                  <GlobalStyles />
                   <MenuItem value="male">Male</MenuItem>
                   <MenuItem value="female">Female</MenuItem>
                 </Select>
@@ -273,38 +246,19 @@ export function PersonalInformation({ onNext }) {
               <FormControl
                 variant="outlined"
                 margin="dense"
-                className="col-span-12 sm:col-span-6 xl:col-span-2"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
               >
-                <InputLabel id="gender-label" className="w-52">
-                  Gender
+                <InputLabel id="maritialstatus-label" className="w-52">
+                  Maritial Status
                 </InputLabel>
                 <Select
-                  labelId="gender-label"
-                  id="gender"
-                  name="gender"
-                  label="Gender"
+                  labelId="maritialstatus-label"
+                  id="maritialstatus"
+                  name="maritialstatus"
+                  label="Maritial Status"
                   IconComponent={(props) => (
                     <ArrowDropDownRoundedIcon
                       {...props}
@@ -312,6 +266,7 @@ export function PersonalInformation({ onNext }) {
                     />
                   )}
                 >
+                  <GlobalStyles />
                   <MenuItem value="single">Single</MenuItem>
                   <MenuItem value="married">Married</MenuItem>
                   <MenuItem value="divorced">Divorced</MenuItem>
@@ -335,7 +290,9 @@ export function PersonalInformation({ onNext }) {
   );
 }
 
-export function EmploymentInformation({ onNext, onPrev }) {
+export function EmploymentInformation({ onPrev, onNext }) {
+  const classes = useStyles();
+
   // Employment Information Form Component
   return (
     <div className="">
@@ -346,39 +303,11 @@ export function EmploymentInformation({ onNext, onPrev }) {
             <LocalizationProvider dateAdapter={AdapterDayjs} className="w-full">
               <DemoContainer components={["DatePicker"]}>
                 <DatePicker
-                  // defaultValue={dayjs()}
-                  // views={["day", "month", "year"]}
                   label="Date of Joining"
-                  sx={{
-                    "& .MuiInputLabel-root": {
-                      fontSize: 14,
-                    },
-                    "& .MuiInputBase-root": {
-                      backgroundColor: "#f0f9ff",
-                      border: "0 none",
-                      borderRadius: 2,
-                      height: 50,
-                      width: "100%",
-                      overflow: "hidden",
-                    },
-                    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
-                      {
-                        borderColor: "transparent",
-                      },
-                    "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                      {
-                        borderColor: "transparent",
-                      },
-                    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                      {
-                        borderColor: "transparent",
-                      },
-                    "& ::placeholder": {
-                      fontSize: 12,
-                    },
-                    display: "block", // Ensure DatePicker occupies full width
-                    width: "100%", // Ensure DatePicker occupies full width
-                  }}
+                  className={classNames(
+                    "col-span-12 sm:col-span-6 xl:col-span-2",
+                    classes.root
+                  )}
                 />
               </DemoContainer>
             </LocalizationProvider>
@@ -388,29 +317,10 @@ export function EmploymentInformation({ onNext, onPrev }) {
             <FormControl
               variant="outlined"
               margin="dense"
-              className="col-span-12 sm:col-span-6 xl:col-span-2"
-              sx={{
-                "& .MuiInputLabel-root": {
-                  fontSize: 14,
-                },
-                "& .MuiInputBase-root": {
-                  backgroundColor: "#f0f9ff",
-                  border: "0 none",
-                  borderRadius: 2,
-                  height: 50,
-                },
-                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "transparent",
-                },
-                "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                  {
-                    borderColor: "transparent",
-                  },
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                  {
-                    borderColor: "transparent",
-                  },
-              }}
+              className={classNames(
+                "col-span-12 sm:col-span-6 xl:col-span-2",
+                classes.root
+              )}
             >
               <InputLabel id="dept-label" className="w-52">
                 Department
@@ -424,6 +334,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                   <ArrowDropDownRoundedIcon {...props} sx={{ fontSize: 40 }} />
                 )}
               >
+                <GlobalStyles />
                 <MenuItem value="informationtechnology">
                   Information Technology
                 </MenuItem>
@@ -440,29 +351,10 @@ export function EmploymentInformation({ onNext, onPrev }) {
             <FormControl
               variant="outlined"
               margin="dense"
-              className="col-span-12 sm:col-span-6 xl:col-span-2"
-              sx={{
-                "& .MuiInputLabel-root": {
-                  fontSize: 14,
-                },
-                "& .MuiInputBase-root": {
-                  backgroundColor: "#f0f9ff",
-                  border: "0 none",
-                  borderRadius: 2,
-                  height: 50,
-                },
-                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "transparent",
-                },
-                "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                  {
-                    borderColor: "transparent",
-                  },
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                  {
-                    borderColor: "transparent",
-                  },
-              }}
+              className={classNames(
+                "col-span-12 sm:col-span-6 xl:col-span-2",
+                classes.root
+              )}
             >
               <InputLabel id="report-label" className="w-52">
                 Reporting To
@@ -476,6 +368,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                   <ArrowDropDownRoundedIcon {...props} sx={{ fontSize: 40 }} />
                 )}
               >
+                <GlobalStyles />
                 <MenuItem value="swpnilpatil">Swpnil Patil</MenuItem>
                 <MenuItem value="sheetalpatil">Sheetal Patil</MenuItem>
                 <MenuItem value="ishapathak">Isha Pathak</MenuItem>
@@ -490,29 +383,10 @@ export function EmploymentInformation({ onNext, onPrev }) {
             <FormControl
               variant="outlined"
               margin="dense"
-              className="col-span-12 sm:col-span-6 xl:col-span-2"
-              sx={{
-                "& .MuiInputLabel-root": {
-                  fontSize: 14,
-                },
-                "& .MuiInputBase-root": {
-                  backgroundColor: "#f0f9ff",
-                  border: "0 none",
-                  borderRadius: 2,
-                  height: 50,
-                },
-                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "transparent",
-                },
-                "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                  {
-                    borderColor: "transparent",
-                  },
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                  {
-                    borderColor: "transparent",
-                  },
-              }}
+              className={classNames(
+                "col-span-12 sm:col-span-6 xl:col-span-2",
+                classes.root
+              )}
             >
               <InputLabel id="tl-label" className="w-52">
                 Team Leader
@@ -526,6 +400,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                   <ArrowDropDownRoundedIcon {...props} sx={{ fontSize: 40 }} />
                 )}
               >
+                <GlobalStyles />
                 <MenuItem value="swpnilpatil">Swpnil Patil</MenuItem>
                 <MenuItem value="sheetalpatil">Sheetal Patil</MenuItem>
                 <MenuItem value="ishapathak">Isha Pathak</MenuItem>
@@ -538,29 +413,10 @@ export function EmploymentInformation({ onNext, onPrev }) {
             <FormControl
               variant="outlined"
               margin="dense"
-              className="col-span-12 sm:col-span-6 xl:col-span-2"
-              sx={{
-                "& .MuiInputLabel-root": {
-                  fontSize: 14,
-                },
-                "& .MuiInputBase-root": {
-                  backgroundColor: "#f0f9ff",
-                  border: "0 none",
-                  borderRadius: 2,
-                  height: 50,
-                },
-                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "transparent",
-                },
-                "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                  {
-                    borderColor: "transparent",
-                  },
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                  {
-                    borderColor: "transparent",
-                  },
-              }}
+              className={classNames(
+                "col-span-12 sm:col-span-6 xl:col-span-2",
+                classes.root
+              )}
             >
               <InputLabel id="report-label" className="w-52">
                 Reporting To
@@ -574,6 +430,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
                   <ArrowDropDownRoundedIcon {...props} sx={{ fontSize: 40 }} />
                 )}
               >
+                <GlobalStyles />
                 <MenuItem value="swpnilpatil">Swpnil Patil</MenuItem>
                 <MenuItem value="sheetalpatil">Sheetal Patil</MenuItem>
                 <MenuItem value="ishapathak">Isha Pathak</MenuItem>
@@ -609,6 +466,7 @@ export function EmploymentInformation({ onNext, onPrev }) {
 export function ContactInformation({ onPrev, onNext }) {
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
   const Navigate = useNavigate();
+  const classes = useStyles();
   // let autoCloseTimer;
 
   useEffect(() => {
@@ -644,29 +502,33 @@ export function ContactInformation({ onPrev, onNext }) {
               <FormControl
                 variant="outlined"
                 margin="dense"
-                className="col-span-12 sm:col-span-6 xl:col-span-2"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
+                // className="col-span-12 sm:col-span-6 xl:col-span-2"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2",
+                  classes.root
+                )}
+                // sx={{
+                //   "& .MuiInputLabel-root": {
+                //     fontSize: 14,
+                //   },
+                //   "& .MuiInputBase-root": {
+                //     backgroundColor: "#f0f9ff",
+                //     border: "0 none",
+                //     borderRadius: 2,
+                //     height: 50,
+                //   },
+                //   "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                //     borderColor: "transparent",
+                //   },
+                //   "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                //     {
+                //       borderColor: "transparent",
+                //     },
+                //   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                //     {
+                //       borderColor: "transparent",
+                //     },
+                // }}
               >
                 <InputLabel id="state-label" className="w-52">
                   State
@@ -683,6 +545,7 @@ export function ContactInformation({ onPrev, onNext }) {
                     />
                   )}
                 >
+                  <GlobalStyles />
                   <MenuItem value="andhra-pradesh">Andhra Pradesh</MenuItem>
                   <MenuItem value="arunachal-pradesh">
                     Arunachal Pradesh
@@ -731,29 +594,10 @@ export function ContactInformation({ onPrev, onNext }) {
               <FormControl
                 variant="outlined"
                 margin="dense"
-                className="col-span-12 sm:col-span-6 xl:col-span-2"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2",
+                  classes.root
+                )}
               >
                 <InputLabel id="city-label" className="w-52">
                   City
@@ -770,6 +614,7 @@ export function ContactInformation({ onPrev, onNext }) {
                     />
                   )}
                 >
+                  <GlobalStyles />
                   <MenuItem value="mumbai">Mumbai</MenuItem>
                   <MenuItem value="pune">Pune</MenuItem>
                   <MenuItem value="nagpur">Nagpur</MenuItem>
@@ -812,136 +657,60 @@ export function ContactInformation({ onPrev, onNext }) {
             </div>
             <div className="w-full lg:w-1/3 flex flex-col">
               <TextField
-                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
                 id="address"
                 name="address"
                 label="Address"
                 variant="outlined"
                 margin="dense"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
               />
             </div>
           </div>
           <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
             <div className="w-full lg:w-1/3 flex flex-col">
               <TextField
-                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
                 id="zip"
                 name="zip"
                 label="Zip Code"
                 type="number"
                 variant="outlined"
                 margin="dense"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
               />
             </div>
 
             <div className="w-full lg:w-1/3 flex flex-col">
               <TextField
-                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
                 id="email"
                 name="email"
                 label="Email"
                 type="email"
                 variant="outlined"
                 margin="dense"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
               />
             </div>
             <div className="w-full lg:w-1/3 flex flex-col">
               <TextField
-                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
                 id="phone"
                 name="phone"
                 label="Phone Number"
                 type="number"
                 variant="outlined"
                 margin="dense"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
               />
             </div>
           </div>
@@ -967,10 +736,11 @@ export function ContactInformation({ onPrev, onNext }) {
   );
 }
 
-export function EmergencyContacts({ onPrev }) {
+export function EmergencyContacts({ onPrev, onNext }) {
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
   const Navigate = useNavigate();
   let autoCloseTimer;
+  const classes = useStyles();
 
   useEffect(() => {
     let autoCloseTimer;
@@ -1009,63 +779,25 @@ export function EmergencyContacts({ onPrev }) {
           <div className="flex gap-5 flex-wrap sm:flex-nowrap">
             <div className="w-full lg:w-1/3 flex flex-col">
               <TextField
-                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
                 id="emergencycontactname"
                 name="emergencycontactname"
                 label="Full Name"
                 variant="outlined"
                 margin="dense"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
               />
             </div>
             <div className="w-full lg:w-1/3 flex flex-col">
               <FormControl
                 variant="outlined"
                 margin="dense"
-                className="col-span-12 sm:col-span-6 xl:col-span-2"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2",
+                  classes.root
+                )}
               >
                 <InputLabel id="relation-label" className="w-52">
                   Relation
@@ -1082,6 +814,7 @@ export function EmergencyContacts({ onPrev }) {
                     />
                   )}
                 >
+                  <GlobalStyles />
                   <MenuItem value="father">Father</MenuItem>
                   <MenuItem value="mother">Mother</MenuItem>
                   <MenuItem value="brother">Brother</MenuItem>
@@ -1097,29 +830,10 @@ export function EmergencyContacts({ onPrev }) {
               <FormControl
                 variant="outlined"
                 margin="dense"
-                className="col-span-12 sm:col-span-6 xl:col-span-2"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2",
+                  classes.root
+                )}
               >
                 <InputLabel id="profestion-label" className="w-52">
                   Profestion
@@ -1136,6 +850,7 @@ export function EmergencyContacts({ onPrev }) {
                     />
                   )}
                 >
+                  <GlobalStyles />
                   <MenuItem value="bussinessman">Business Man</MenuItem>
                   <MenuItem value="doctor">Doctor</MenuItem>
                   <MenuItem value="engineer">Engineer</MenuItem>
@@ -1156,102 +871,225 @@ export function EmergencyContacts({ onPrev }) {
           <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
             <div className="w-full lg:w-1/3 flex flex-col">
               <TextField
-                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
                 id="address"
                 name="address"
                 label="Address"
                 type="text"
                 variant="outlined"
                 margin="dense"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
               />
             </div>
 
             <div className="w-full lg:w-1/3 flex flex-col">
               <TextField
-                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
                 id="email"
                 name="email"
                 label="Email"
                 type="email"
                 variant="outlined"
                 margin="dense"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
               />
             </div>
             <div className="w-full lg:w-1/3 flex flex-col">
               <TextField
-                className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
                 id="phone"
                 name="phone"
                 label="Phone Number"
                 type="number"
                 variant="outlined"
                 margin="dense"
-                sx={{
-                  "& .MuiInputLabel-root": {
-                    fontSize: 14,
-                  },
-                  "& .MuiInputBase-root": {
-                    backgroundColor: "#f0f9ff",
-                    border: "0 none",
-                    borderRadius: 2,
-                    height: 50,
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "transparent",
-                  },
-                  "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "transparent",
-                    },
-                }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full flex justify-between md:absolute md:z-0 md:bottom-36 md:right-10 md:w-8/12 ">
+        <button
+          type="button"
+          onClick={onPrev}
+          className="bg-[#5336FD] text-white px-5 py-2 rounded-md  hover:scale-[1.020]"
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          onClick={onNext}
+          className="bg-[#5336FD] text-white px-5 py-2 rounded-md md:ml-5 hover:scale-[1.020]"
+        >
+          Next
+        </button>
+      </div>
+      {isSuccessPopupOpen && (
+        <PopupMessage
+          className
+          message="New Employee Added Successfully"
+          onAddMore={handleAddMore}
+          onGoToList={handleGoToList}
+        />
+      )}
+    </div>
+  );
+}
+
+export function WorkExperience({ onPrev }) {
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
+  const Navigate = useNavigate();
+  let autoCloseTimer;
+  const classes = useStyles();
+
+  useEffect(() => {
+    let autoCloseTimer;
+    if (isSuccessPopupOpen) {
+      autoCloseTimer = setTimeout(() => {
+        setIsSuccessPopupOpen(false); // Close the popup after 5 seconds
+        Navigate("/pim/employeelist"); // Redirect to the employee list
+      }, 5000);
+    }
+    return () => clearTimeout(autoCloseTimer);
+  }, [isSuccessPopupOpen, Navigate]);
+
+  const handleAddMore = () => {
+    setIsSuccessPopupOpen(false);
+    clearTimeout(autoCloseTimer);
+    onPrev();
+    onPrev();
+    onPrev();
+  };
+
+  const handleGoToList = () => {
+    setIsSuccessPopupOpen(false);
+    Navigate("/pim/employeelist");
+  };
+  // Contact Information Form Component
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setIsSuccessPopupOpen(true);
+  };
+  return (
+    <div>
+      <div className="">
+        <h4 className="font-bold">Work Experiences</h4>
+        <div className="mt-2">
+          <div className="flex gap-5 flex-wrap sm:flex-nowrap">
+            <div className="w-full lg:w-1/3 flex flex-col">
+              <TextField
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
+                id="jobtitle"
+                name="jobtitle"
+                label="Job Title"
+                variant="outlined"
+                margin="dense"
+              />
+            </div>
+            <div className="w-full lg:w-1/3 flex flex-col">
+              <TextField
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
+                id="companyname"
+                name="companyname"
+                label="Company Name"
+                variant="outlined"
+                margin="dense"
+              />
+            </div>
+            <div className="w-full lg:w-1/3 flex flex-col">
+              <TextField
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
+                id="companyurl"
+                name="companyurl"
+                label="Company Website"
+                type="text"
+                variant="outlined"
+                margin="dense"
+              />
+            </div>
+          </div>
+          <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
+            <div className="w-full lg:w-1/3 flex flex-col">
+              <TextField
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs euclid",
+                  classes.root
+                )}
+                id="location"
+                name="location"
+                label="Company Location"
+                type="text"
+                variant="outlined"
+                margin="dense"
+              />
+            </div>
+
+            <div className="w-full lg:w-1/3 flex flex-col">
+              <FormControl
+                variant="outlined"
+                margin="dense"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2",
+                  classes.root
+                )}
+              >
+                <InputLabel id="emptype-label" className="w-52">
+                  Emplyement Type
+                </InputLabel>
+                <Select
+                  labelId="emptype-label"
+                  id="emplyementtype"
+                  name="emplyementtype"
+                  label="Emplyement Type"
+                  IconComponent={(props) => (
+                    <ArrowDropDownRoundedIcon
+                      {...props}
+                      sx={{ fontSize: 40 }}
+                    />
+                  )}
+                >
+                  <GlobalStyles />
+                  <MenuItem value="full-time">Full-time</MenuItem>
+                  <MenuItem value="part-time">Part-time</MenuItem>
+                  <MenuItem value="contract">Contract</MenuItem>
+                  <MenuItem value="temporary">Temporary</MenuItem>
+                  <MenuItem value="freelance">
+                    Freelance or Independent Contractor
+                  </MenuItem>
+                  <MenuItem value="internship">Internship</MenuItem>
+                  <MenuItem value="remote">Remote or Telecommuting</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="w-full lg:w-1/3 flex flex-col">
+              <TextField
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  classes.root
+                )}
+                id="phone"
+                name="phone"
+                label="Phone Number"
+                type="number"
+                variant="outlined"
+                margin="dense"
               />
             </div>
           </div>
