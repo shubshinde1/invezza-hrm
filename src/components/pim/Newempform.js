@@ -91,54 +91,22 @@ export default function Newempform() {
 
   return (
     <div className="bg-white p-4 rounded-md h-screen overflow-scroll scrollbar-hide flex flex-col md:grid grid-cols-12 gap-4">
-      <div className=" bg-sky-50 rounded-md col-span-2">
-        {/* <ul className="text-sm p-2 flex flex-col gap-2">
-          <li
-            className={`hover:bg-blue-100 py-2.5 px-1.5 rounded-md cursor-pointer ${
-              step === 1 ? "bg-blue-100 font-bold" : ""
-            }`}
-            onClick={() => setStep(1)}
-          >
-            Personal Information
-          </li>
-          <li
-            className={`hover:bg-blue-100 py-2.5 px-1.5 rounded-md cursor-pointer ${
-              step === 2 ? "bg-blue-100 font-bold" : ""
-            }`}
-            onClick={() => setStep(2)}
-          >
-            Employment Information
-          </li>
-          <li
-            className={`hover:bg-blue-100 py-2.5 px-1.5 rounded-md cursor-pointer ${
-              step === 3 ? "bg-blue-100 font-bold" : ""
-            }`}
-            onClick={() => setStep(3)}
-          >
-            Contact Information
-          </li>
-          <li
-            className={`hover:bg-blue-100 py-2.5 px-1.5 rounded-md cursor-pointer ${
-              step === 4 ? "bg-blue-100 font-bold" : ""
-            }`}
-            onClick={() => setStep(4)}
-          >
-            Emergency Contacts
-          </li>
-        </ul> */}
-        <ul className="text-sm p-2 flex flex-col gap-2">
-          {steps.map((stepName, index) => (
-            <li
-              key={index + 1}
-              className={`hover:bg-blue-100 py-2.5 px-1.5 rounded-md cursor-pointer ${
-                step === index + 1 ? "bg-blue-100 font-bold" : ""
-              }`}
-              onClick={() => setStep(index + 1)}
-            >
-              {stepName}
-            </li>
-          ))}
-        </ul>
+      <div className="  col-span-2 ">
+        <div className="bg-sky-50 rounded-md sticky top-0">
+          <ul className="text-sm p-2 flex flex-col gap-2 sticky top-0">
+            {steps.map((stepName, index) => (
+              <li
+                key={index + 1}
+                className={`hover:bg-blue-100 py-2.5 px-1.5 rounded-md cursor-pointer ${
+                  step === index + 1 ? "bg-blue-100 font-bold" : ""
+                }`}
+                onClick={() => setStep(index + 1)}
+              >
+                {stepName}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       <div className="col-span-10">
         <div>

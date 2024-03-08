@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   TextField,
   FormControl,
@@ -12,7 +12,6 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import PopupMessage from "./PopupMessage";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MantineProvider, Avatar } from "@mantine/core";
 import { BiReset } from "react-icons/bi";
@@ -20,6 +19,11 @@ import { FaUpload } from "react-icons/fa6";
 import { makeStyles } from "@mui/styles";
 import classNames from "classnames";
 import { createGlobalStyle } from "styled-components";
+import { IoAddCircle } from "react-icons/io5";
+import { motion } from "framer-motion";
+import { TbPlayerTrackNextFilled } from "react-icons/tb";
+import { IoMdSave } from "react-icons/io";
+import Checkbox from "@mui/joy/Checkbox";
 
 const GlobalStyles = createGlobalStyle`
   .MuiMenuItem-root {
@@ -89,8 +93,12 @@ const useStyles = makeStyles({
     "& ::placeholder": {
       fontSize: 12,
     },
+    "& JoyCheckbox-input": {
+      backgroundColor: "red",
+    },
     display: "block",
     width: "100%",
+    fontFamily: "euclid-medium",
   },
 });
 
@@ -116,174 +124,192 @@ export function PersonalInformation({ onNext }) {
     <div className="">
       <div>
         <h4 className="font-bold">Personal Information</h4>
-        <div className="flex items-center md:items-center mt-4 gap-4">
-          <div>
-            <MantineProvider>
-              <Avatar
-                className="w-28 md:w-20 bg-sky-50 p-2 rounded-md"
-                src={selectedImage || ""}
-                alt="Profile"
-              />
-            </MantineProvider>
-          </div>
-          <div className="flex items-center">
-            <div className="flex flex-col md:flex-row">
-              <label
-                htmlFor="upload-avatar"
-                className="bg-[#5336FD] px-3 py-2 flex text-white rounded-md cursor-pointer items-center hover:scale-[1.020] duration-150"
-              >
-                <input
-                  type="file"
-                  id="upload-avatar"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  style={{ display: "none" }}
+        <motion.div
+          className="mt-2"
+          animate={{ y: 0 }}
+          initial={{ y: -20 }}
+          transition={{ type: "spring", bounce: 0.7 }}
+        >
+          <div className="flex items-center md:items-center mt-4 gap-4">
+            <div>
+              <MantineProvider>
+                <Avatar
+                  className="w-28 md:w-20 bg-sky-50 p-2 rounded-md"
+                  src={selectedImage || ""}
+                  alt="Profile"
                 />
-                <FaUpload size={18} />
-                <h1 className="ml-2 text-xs font-bold">Upload Avatar</h1>
-              </label>
-              <div
-                className="bg-sky-50 px-3 py-2 flex rounded-md md:ml-4 mt-4 md:mt-0 cursor-pointer items-center hover:scale-[1.020] duration-150"
-                onClick={handleResetImage}
-              >
-                <BiReset size={20} />
-                <h1 className="ml-2 text-xs font-bold">Reset Image</h1>
+              </MantineProvider>
+            </div>
+            <div className="flex items-center">
+              <div className="flex flex-col md:flex-row">
+                <label
+                  htmlFor="upload-avatar"
+                  className="bg-[#5336FD] px-3 py-2 flex text-white rounded-md cursor-pointer items-center hover:scale-[1.020] duration-150"
+                >
+                  <input
+                    type="file"
+                    id="upload-avatar"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    style={{ display: "none" }}
+                  />
+                  <FaUpload size={18} />
+                  <h1 className="ml-2 text-xs font-bold">Upload Avatar</h1>
+                </label>
+                <div
+                  className="bg-sky-50 px-3 py-2 flex rounded-md md:ml-4 mt-4 md:mt-0 cursor-pointer items-center hover:scale-[1.020] duration-150"
+                  onClick={handleResetImage}
+                >
+                  <BiReset size={20} />
+                  <h1 className="ml-2 text-xs font-bold">Reset Image</h1>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="mt-5">
-          <div className="flex gap-5 flex-wrap sm:flex-nowrap">
-            <div className="w-full lg:w-1/3 flex flex-col">
-              <TextField
-                className={classNames(
-                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                  classes.root
-                )}
-                id="fname"
-                name="fname"
-                label="First Name"
-                variant="outlined"
-                margin="dense"
-              />
+          <div className="mt-5">
+            <div className="flex gap-5 flex-wrap sm:flex-nowrap">
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <TextField
+                  className={classNames(
+                    "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                    classes.root
+                  )}
+                  id="fname"
+                  name="fname"
+                  label="First Name"
+                  variant="outlined"
+                  margin="dense"
+                />
+              </div>
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <TextField
+                  className={classNames(
+                    "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                    classes.root
+                  )}
+                  id="lname"
+                  name="lname"
+                  label="Last Name"
+                  variant="outlined"
+                  margin="dense"
+                />
+              </div>
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <TextField
+                  className={classNames(
+                    "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                    classes.root
+                  )}
+                  id="empid"
+                  name="empid"
+                  label="Employee Id"
+                  variant="outlined"
+                  margin="dense"
+                />
+              </div>
             </div>
-            <div className="w-full lg:w-1/3 flex flex-col">
-              <TextField
-                className={classNames(
-                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                  classes.root
-                )}
-                id="lname"
-                name="lname"
-                label="Last Name"
-                variant="outlined"
-                margin="dense"
-              />
-            </div>
-            <div className="w-full lg:w-1/3 flex flex-col">
-              <TextField
-                className={classNames(
-                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                  classes.root
-                )}
-                id="empid"
-                name="empid"
-                label="Employee Id"
-                variant="outlined"
-                margin="dense"
-              />
-            </div>
-          </div>
-          <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
-            <div className="w-full lg:w-1/3 flex flex-col">
-              <LocalizationProvider
-                dateAdapter={AdapterDayjs}
-                className="w-full"
-              >
-                <DemoContainer components={["DatePicker"]}>
-                  <DatePicker
-                    label="Date of Birth"
-                    className={classNames(
-                      "col-span-12 sm:col-span-6 xl:col-span-2",
-                      classes.root
-                    )}
-                  />
-                </DemoContainer>
-              </LocalizationProvider>
-            </div>
+            <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <LocalizationProvider
+                  dateAdapter={AdapterDayjs}
+                  className="w-full"
+                >
+                  <DemoContainer components={["DatePicker"]}>
+                    <DatePicker
+                      label="Date of Birth"
+                      className={classNames(
+                        "col-span-12 sm:col-span-6 xl:col-span-2",
+                        classes.root
+                      )}
+                    />
+                  </DemoContainer>
+                </LocalizationProvider>
+              </div>
 
-            <div className="w-full lg:w-1/3 flex flex-col">
-              <FormControl
-                variant="outlined"
-                margin="dense"
-                className={classNames(
-                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                  classes.root
-                )}
-              >
-                <InputLabel id="gender-label" className="w-52">
-                  Gender
-                </InputLabel>
-                <Select
-                  labelId="gender-label"
-                  id="gender"
-                  name="gender"
-                  label="Gender"
-                  IconComponent={(props) => (
-                    <ArrowDropDownRoundedIcon
-                      {...props}
-                      sx={{ fontSize: 40 }}
-                    />
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <FormControl
+                  variant="outlined"
+                  margin="dense"
+                  className={classNames(
+                    "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                    classes.root
                   )}
                 >
-                  <GlobalStyles />
-                  <MenuItem value="male">Male</MenuItem>
-                  <MenuItem value="female">Female</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-            <div className="w-full lg:w-1/3 flex flex-col">
-              <FormControl
-                variant="outlined"
-                margin="dense"
-                className={classNames(
-                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                  classes.root
-                )}
-              >
-                <InputLabel id="maritialstatus-label" className="w-52">
-                  Maritial Status
-                </InputLabel>
-                <Select
-                  labelId="maritialstatus-label"
-                  id="maritialstatus"
-                  name="maritialstatus"
-                  label="Maritial Status"
-                  IconComponent={(props) => (
-                    <ArrowDropDownRoundedIcon
-                      {...props}
-                      sx={{ fontSize: 40 }}
-                    />
+                  <InputLabel id="gender-label" className="w-52">
+                    Gender
+                  </InputLabel>
+                  <Select
+                    labelId="gender-label"
+                    id="gender"
+                    name="gender"
+                    label="Gender"
+                    IconComponent={(props) => (
+                      // <div className="bg-red-500 z-50">
+                      <ArrowDropDownRoundedIcon
+                        {...props}
+                        sx={{
+                          fontSize: 40,
+                          // marginLeft: "0.375rem",
+                          // backgroundColor: "#bfdbfe",
+                          borderRadius: 1,
+                        }}
+                        // className="bg-sky-200 mr-1.5 rounded-md cursor-pointer"
+                      />
+                      // </div>
+                    )}
+                  >
+                    <GlobalStyles />
+                    <MenuItem value="male">Male</MenuItem>
+                    <MenuItem value="female">Female</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <FormControl
+                  variant="outlined"
+                  margin="dense"
+                  className={classNames(
+                    "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                    classes.root
                   )}
                 >
-                  <GlobalStyles />
-                  <MenuItem value="single">Single</MenuItem>
-                  <MenuItem value="married">Married</MenuItem>
-                  <MenuItem value="divorced">Divorced</MenuItem>
-                  <MenuItem value="widowed">Widowed</MenuItem>
-                </Select>
-              </FormControl>
+                  <InputLabel id="maritialstatus-label" className="w-52">
+                    Maritial Status
+                  </InputLabel>
+                  <Select
+                    labelId="maritialstatus-label"
+                    id="maritialstatus"
+                    name="maritialstatus"
+                    label="Maritial Status"
+                    IconComponent={(props) => (
+                      <ArrowDropDownRoundedIcon
+                        {...props}
+                        sx={{ fontSize: 40 }}
+                      />
+                    )}
+                  >
+                    <GlobalStyles />
+                    <MenuItem value="single">Single</MenuItem>
+                    <MenuItem value="married">Married</MenuItem>
+                    <MenuItem value="divorced">Divorced</MenuItem>
+                    <MenuItem value="widowed">Widowed</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-      <div className="w-full flex justify-end md:absolute md:z-0 md:bottom-36 md:right-10">
+      <div className="w-full flex justify-end md:absolute md:z-0 mt-8 md:bottom-36 md:right-10">
         <button
           type="button"
           onClick={onNext}
-          className="bg-[#5336FD] text-white px-5 py-2 mt-8 rounded-md hover:scale-[1.020]"
+          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
         >
-          Next
+          <div className="flex items-center gap-2">
+            Next
+            <TbPlayerTrackNextFilled />
+          </div>
         </button>
       </div>
     </div>
@@ -297,7 +323,12 @@ export function EmploymentInformation({ onPrev, onNext }) {
   return (
     <div className="">
       <h4 className="font-bold">Employment Information</h4>
-      <div className="mt-2">
+      <motion.div
+        className="mt-2"
+        animate={{ y: 0 }}
+        initial={{ y: -20 }}
+        transition={{ type: "spring", bounce: 0.7 }}
+      >
         <div className="flex gap-5 flex-wrap sm:flex-nowrap">
           <div className="w-full lg:w-1/3 flex flex-col">
             <LocalizationProvider dateAdapter={AdapterDayjs} className="w-full">
@@ -442,21 +473,27 @@ export function EmploymentInformation({ onPrev, onNext }) {
 
           <div className="w-full lg:w-1/3 flex flex-col"></div>
         </div>
-      </div>
-      <div className="w-full flex justify-between md:absolute md:z-0 md:bottom-36 md:right-10 md:w-8/12 ">
+      </motion.div>
+      <div className="w-full flex justify-between md:absolute md:z-0 mt-8 md:bottom-36 md:right-10 md:w-8/12 ">
         <button
           type="button"
           onClick={onPrev}
-          className="bg-[#5336FD] text-white px-5 py-2 rounded-md  hover:scale-[1.020]"
+          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
         >
-          Previous
+          <div className="flex items-center gap-2">
+            <TbPlayerTrackNextFilled className="rotate-180" />
+            Previous
+          </div>
         </button>
         <button
           type="button"
           onClick={onNext}
-          className="bg-[#5336FD] text-white px-5 py-2 rounded-md md:ml-5 hover:scale-[1.020]"
+          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
         >
-          Next
+          <div className="flex items-center gap-2">
+            Next
+            <TbPlayerTrackNextFilled />
+          </div>
         </button>
       </div>
     </div>
@@ -496,7 +533,12 @@ export function ContactInformation({ onPrev, onNext }) {
     <div>
       <div className="">
         <h4 className="font-bold">Contact Information</h4>
-        <div className="mt-2">
+        <motion.div
+          className="mt-2"
+          animate={{ y: 0 }}
+          initial={{ y: -20 }}
+          transition={{ type: "spring", bounce: 0.7 }}
+        >
           <div className="flex gap-5 flex-wrap sm:flex-nowrap">
             <div className="w-full lg:w-1/3 flex flex-col">
               <FormControl
@@ -714,22 +756,28 @@ export function ContactInformation({ onPrev, onNext }) {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-      <div className="w-full flex justify-between md:absolute md:z-0 md:bottom-36 md:right-10 md:w-8/12 ">
+      <div className="w-full flex justify-between md:absolute md:z-0 mt-8 md:bottom-36 md:right-10 md:w-8/12 ">
         <button
           type="button"
           onClick={onPrev}
-          className="bg-[#5336FD] text-white px-5 py-2 rounded-md  hover:scale-[1.020]"
+          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
         >
-          Previous
+          <div className="flex items-center gap-2">
+            <TbPlayerTrackNextFilled className="rotate-180" />
+            Previous
+          </div>
         </button>
         <button
           type="button"
           onClick={onNext}
-          className="bg-[#5336FD] text-white px-5 py-2 rounded-md md:ml-5 hover:scale-[1.020]"
+          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
         >
-          Next
+          <div className="flex items-center gap-2">
+            Next
+            <TbPlayerTrackNextFilled />
+          </div>
         </button>
       </div>
     </div>
@@ -775,7 +823,12 @@ export function EmergencyContacts({ onPrev, onNext }) {
     <div>
       <div className="">
         <h4 className="font-bold">Emergency Contacts</h4>
-        <div className="mt-2">
+        <motion.div
+          className="mt-2"
+          animate={{ y: 0 }}
+          initial={{ y: -20 }}
+          transition={{ type: "spring", bounce: 0.7 }}
+        >
           <div className="flex gap-5 flex-wrap sm:flex-nowrap">
             <div className="w-full lg:w-1/3 flex flex-col">
               <TextField
@@ -913,22 +966,28 @@ export function EmergencyContacts({ onPrev, onNext }) {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-      <div className="w-full flex justify-between md:absolute md:z-0 md:bottom-36 md:right-10 md:w-8/12 ">
+      <div className="w-full flex justify-between md:absolute md:z-0 mt-8 md:bottom-36 md:right-10 md:w-8/12 ">
         <button
           type="button"
           onClick={onPrev}
-          className="bg-[#5336FD] text-white px-5 py-2 rounded-md  hover:scale-[1.020]"
+          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
         >
-          Previous
+          <div className="flex items-center gap-2">
+            <TbPlayerTrackNextFilled className="rotate-180" />
+            Previous
+          </div>
         </button>
         <button
           type="button"
           onClick={onNext}
-          className="bg-[#5336FD] text-white px-5 py-2 rounded-md md:ml-5 hover:scale-[1.020]"
+          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
         >
-          Next
+          <div className="flex items-center gap-2">
+            Next
+            <TbPlayerTrackNextFilled />
+          </div>
         </button>
       </div>
       {isSuccessPopupOpen && (
@@ -945,173 +1004,395 @@ export function EmergencyContacts({ onPrev, onNext }) {
 
 export function WorkExperience({ onPrev }) {
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
+  const [workExperiences, setWorkExperiences] = useState([
+    { name: "Experience 1" },
+  ]);
   const Navigate = useNavigate();
   let autoCloseTimer;
   const classes = useStyles();
+
+  const handleAddMore = () => {
+    const newExperience = { name: `Experience ${workExperiences.length + 1}` };
+    setWorkExperiences([...workExperiences, newExperience]);
+  };
+
+  const handleRemove = (index) => {
+    const updatedExperiences = [...workExperiences];
+    updatedExperiences.splice(index, 1);
+    setWorkExperiences(updatedExperiences);
+  };
 
   useEffect(() => {
     let autoCloseTimer;
     if (isSuccessPopupOpen) {
       autoCloseTimer = setTimeout(() => {
-        setIsSuccessPopupOpen(false); // Close the popup after 5 seconds
-        Navigate("/pim/employeelist"); // Redirect to the employee list
+        setIsSuccessPopupOpen(false);
+        Navigate("/pim/employeelist");
       }, 5000);
     }
     return () => clearTimeout(autoCloseTimer);
   }, [isSuccessPopupOpen, Navigate]);
 
-  const handleAddMore = () => {
-    setIsSuccessPopupOpen(false);
-    clearTimeout(autoCloseTimer);
-    onPrev();
-    onPrev();
-    onPrev();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setIsSuccessPopupOpen(true);
   };
 
   const handleGoToList = () => {
     setIsSuccessPopupOpen(false);
     Navigate("/pim/employeelist");
   };
-  // Contact Information Form Component
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setIsSuccessPopupOpen(true);
-  };
+  const [elecome, setElecome] = React.useState(true);
   return (
-    <div>
+    <div className="">
       <div className="">
-        <h4 className="font-bold">Work Experiences</h4>
-        <div className="mt-2">
-          <div className="flex gap-5 flex-wrap sm:flex-nowrap">
-            <div className="w-full lg:w-1/3 flex flex-col">
-              <TextField
-                className={classNames(
-                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                  classes.root
-                )}
-                id="jobtitle"
-                name="jobtitle"
-                label="Job Title"
-                variant="outlined"
-                margin="dense"
-              />
-            </div>
-            <div className="w-full lg:w-1/3 flex flex-col">
-              <TextField
-                className={classNames(
-                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                  classes.root
-                )}
-                id="companyname"
-                name="companyname"
-                label="Company Name"
-                variant="outlined"
-                margin="dense"
-              />
-            </div>
-            <div className="w-full lg:w-1/3 flex flex-col">
-              <TextField
-                className={classNames(
-                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                  classes.root
-                )}
-                id="companyurl"
-                name="companyurl"
-                label="Company Website"
-                type="text"
-                variant="outlined"
-                margin="dense"
-              />
-            </div>
-          </div>
-          <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
-            <div className="w-full lg:w-1/3 flex flex-col">
-              <TextField
-                className={classNames(
-                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs euclid",
-                  classes.root
-                )}
-                id="location"
-                name="location"
-                label="Company Location"
-                type="text"
-                variant="outlined"
-                margin="dense"
-              />
-            </div>
-
-            <div className="w-full lg:w-1/3 flex flex-col">
-              <FormControl
-                variant="outlined"
-                margin="dense"
-                className={classNames(
-                  "col-span-12 sm:col-span-6 xl:col-span-2",
-                  classes.root
-                )}
-              >
-                <InputLabel id="emptype-label" className="w-52">
-                  Emplyement Type
-                </InputLabel>
-                <Select
-                  labelId="emptype-label"
-                  id="emplyementtype"
-                  name="emplyementtype"
-                  label="Emplyement Type"
-                  IconComponent={(props) => (
-                    <ArrowDropDownRoundedIcon
-                      {...props}
-                      sx={{ fontSize: 40 }}
-                    />
-                  )}
+        <div className="flex items-center justify-between">
+          <h4 className="font-bold">Work Experiences</h4>
+          <button
+            type="button"
+            onClick={handleAddMore}
+            className="bg-[#5336FD] text-white px-2 py-1 rounded-md hover:scale-[1.020] flex items-center gap-1"
+          >
+            <IoAddCircle className="text-xl" />
+            Add More
+          </button>
+        </div>
+        <div className="mt-2 ">
+          {workExperiences.map((workExp, index) => (
+            <motion.div
+              key={index}
+              className="mb-5"
+              animate={{ y: 0 }}
+              initial={{ y: -20 }}
+              transition={{ type: "spring", bounce: 0.7 }}
+            >
+              {index !== 0 && <hr className="mb-5" />}
+              <div className="flex items-center">
+                <h1>Experience {index + 1}</h1>
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleRemove(index);
+                    setElecome(!elecome);
+                  }}
+                  className="bg-sky-50 px-2 py-1 rounded-md text-xs ml-3 hover:bg-[#5336FD] hover:text-white flex items-center gap-1"
                 >
-                  <GlobalStyles />
-                  <MenuItem value="full-time">Full-time</MenuItem>
-                  <MenuItem value="part-time">Part-time</MenuItem>
-                  <MenuItem value="contract">Contract</MenuItem>
-                  <MenuItem value="temporary">Temporary</MenuItem>
-                  <MenuItem value="freelance">
-                    Freelance or Independent Contractor
-                  </MenuItem>
-                  <MenuItem value="internship">Internship</MenuItem>
-                  <MenuItem value="remote">Remote or Telecommuting</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-            <div className="w-full lg:w-1/3 flex flex-col">
-              <TextField
-                className={classNames(
-                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                  classes.root
-                )}
-                id="phone"
-                name="phone"
-                label="Phone Number"
-                type="number"
-                variant="outlined"
-                margin="dense"
-              />
-            </div>
-          </div>
+                  {/* <IoIosRemoveCircle className="text-base" /> */}
+                  Remove
+                </button>
+              </div>
+              <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-3">
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <TextField
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                      classes.root
+                    )}
+                    id="jobtitle"
+                    name="jobtitle"
+                    label="Job Title"
+                    variant="outlined"
+                    margin="dense"
+                  />
+                </div>
+
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <TextField
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                      classes.root
+                    )}
+                    id="companyname"
+                    name="companyname"
+                    label="Company Name"
+                    variant="outlined"
+                    margin="dense"
+                  />
+                </div>
+
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <TextField
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                      classes.root
+                    )}
+                    id="companyurl"
+                    name="companyurl"
+                    label="Company Website"
+                    type="text"
+                    variant="outlined"
+                    margin="dense"
+                  />
+                </div>
+              </div>
+              <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <TextField
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs euclid",
+                      classes.root
+                    )}
+                    id="location"
+                    name="location"
+                    label="Company Location"
+                    type="text"
+                    variant="outlined"
+                    margin="dense"
+                  />
+                </div>
+
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <FormControl
+                    variant="outlined"
+                    margin="dense"
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2",
+                      classes.root
+                    )}
+                  >
+                    <InputLabel id="emptype-label" className="w-52">
+                      Emplyement Type
+                    </InputLabel>
+                    <Select
+                      labelId="emptype-label"
+                      id="emplyementtype"
+                      name="emplyementtype"
+                      label="Emplyement Type"
+                      IconComponent={(props) => (
+                        <ArrowDropDownRoundedIcon
+                          {...props}
+                          sx={{ fontSize: 40 }}
+                        />
+                      )}
+                    >
+                      <GlobalStyles />
+                      <MenuItem value="full-time">Full-time</MenuItem>
+                      <MenuItem value="part-time">Part-time</MenuItem>
+                      <MenuItem value="contract">Contract</MenuItem>
+                      <MenuItem value="temporary">Temporary</MenuItem>
+                      <MenuItem value="freelance">
+                        Freelance or Independent Contractor
+                      </MenuItem>
+                      <MenuItem value="internship">Internship</MenuItem>
+                      <MenuItem value="remote">
+                        Remote or Telecommuting
+                      </MenuItem>
+                    </Select>
+                  </FormControl>
+                </div>
+
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <FormControl
+                    variant="outlined"
+                    margin="dense"
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2",
+                      classes.root
+                    )}
+                  >
+                    <InputLabel id="emptype-label" className="w-52">
+                      Emplyement Type
+                    </InputLabel>
+                    <Select
+                      labelId="emptype-label"
+                      id="emplyementtype"
+                      name="emplyementtype"
+                      label="Emplyement Type"
+                      IconComponent={(props) => (
+                        <ArrowDropDownRoundedIcon
+                          {...props}
+                          sx={{ fontSize: 40 }}
+                        />
+                      )}
+                    >
+                      <GlobalStyles />
+                      <MenuItem value="full-time">Full-time</MenuItem>
+                      <MenuItem value="part-time">Part-time</MenuItem>
+                      <MenuItem value="contract">Contract</MenuItem>
+                      <MenuItem value="temporary">Temporary</MenuItem>
+                      <MenuItem value="freelance">
+                        Freelance or Independent Contractor
+                      </MenuItem>
+                      <MenuItem value="internship">Internship</MenuItem>
+                      <MenuItem value="remote">
+                        Remote or Telecommuting
+                      </MenuItem>
+                    </Select>
+                  </FormControl>
+                </div>
+              </div>
+              <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5 items-center">
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <LocalizationProvider
+                    dateAdapter={AdapterDayjs}
+                    className="w-full"
+                  >
+                    <DemoContainer components={["DatePicker"]}>
+                      <DatePicker
+                        label="Start Date"
+                        className={classNames(
+                          "col-span-12 sm:col-span-6 xl:col-span-2",
+                          classes.root
+                        )}
+                      />
+                    </DemoContainer>
+                  </LocalizationProvider>
+                </div>
+
+                <div className="w-full lg:w-1/3 flex flex-col">
+                  <LocalizationProvider
+                    dateAdapter={AdapterDayjs}
+                    className="w-full"
+                  >
+                    <DemoContainer components={["DatePicker"]}>
+                      <DatePicker
+                        label="End Date"
+                        className={classNames(
+                          "col-span-12 sm:col-span-6 xl:col-span-2",
+                          classes.root
+                        )}
+                      />
+                    </DemoContainer>
+                  </LocalizationProvider>
+                </div>
+
+                <div className="w-full lg:w-1/3 flex flex-row items-center">
+                  {/* <FormControl
+                    variant="outlined"
+                    margin="dense"
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2",
+                      classes.root
+                    )}
+                  >
+                    <InputLabel id="emptype-label" className="w-52">
+                      Emplyement Type
+                    </InputLabel>
+                    <Select
+                      labelId="emptype-label"
+                      id="emplyementtype"
+                      name="emplyementtype"
+                      label="Emplyement Type"
+                      IconComponent={(props) => (
+                        <ArrowDropDownRoundedIcon
+                          {...props}
+                          sx={{ fontSize: 40 }}
+                        />
+                      )}
+                    >
+                      <GlobalStyles />
+                      <MenuItem value="full-time">Full-time</MenuItem>
+                      <MenuItem value="part-time">Part-time</MenuItem>
+                      <MenuItem value="contract">Contract</MenuItem>
+                      <MenuItem value="temporary">Temporary</MenuItem>
+                      <MenuItem value="freelance">
+                        Freelance or Independent Contractor
+                      </MenuItem>
+                      <MenuItem value="internship">Internship</MenuItem>
+                      <MenuItem value="remote">
+                        Remote or Telecommuting
+                      </MenuItem>
+                    </Select>
+                  </FormControl> */}
+                  <Checkbox
+                    color="primary"
+                    disabled={false}
+                    // label="I currently work here"
+                    size="md"
+                    variant="soft"
+                    className="col-span-12 sm:col-span-6 xl:col-span-2"
+                  />
+                  <h1 className="ml-2">I currently work here</h1>
+                </div>
+              </div>
+              <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
+                <div className="w-full lg:w-2/3 flex flex-col">
+                  {/* <TextField
+                    className={classNames("", classes.root)}
+                    id="location"
+                    name="location"
+                    label="Company Location"
+                    type="text"
+                    variant="outlined"
+                    margin="dense"
+                  /> */}
+                  <textarea
+                    className="bg-[#f0f9ff] rounded-md focus:border-[1px] mt-2 p-3 pb-0 "
+                    placeholder="Description"
+                  ></textarea>
+                </div>
+
+                <div className="w-full lg:w-1/3 flex flex-col md:-mr-2">
+                  {/* <LocalizationProvider
+                    dateAdapter={AdapterDayjs}
+                    className="w-full"
+                  >
+                    <DemoContainer components={["DatePicker"]}>
+                      <DatePicker
+                        label="Date of Joining"
+                        className={classNames(
+                          "col-span-12 sm:col-span-6 xl:col-span-2",
+                          classes.root
+                        )}
+                      />
+                    </DemoContainer>
+                  </LocalizationProvider> */}
+                </div>
+
+                {/* <div className="w-full lg:w-1/3 flex flex-col">
+                  <TextField
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                      classes.root
+                    )}
+                    id="phone"
+                    name="phone"
+                    label="Phone Number"
+                    type="number"
+                    variant="outlined"
+                    margin="dense"
+                  />
+                </div> */}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
-      <div className="w-full flex justify-between md:absolute md:z-0 md:bottom-36 md:right-10 md:w-8/12 ">
+      <div className="w-full flex justify-between  md:z-0 md:bottom-36 md:right-10  ">
         <button
           type="button"
           onClick={onPrev}
-          className="bg-[#5336FD] text-white px-5 py-2 mt-8 rounded-md  hover:scale-[1.020]"
+          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
         >
-          Previous
+          <div className="flex items-center gap-2">
+            <TbPlayerTrackNextFilled className="rotate-180" />
+            Previous
+          </div>
         </button>
         <button
           type="submit"
           value="Save Details"
           onClick={handleSubmit}
-          className="bg-[#5336FD] text-white px-5 py-2 mt-8 rounded-md cursor-pointer hover:scale-[1.020]"
+          className="bg-[#5336FD] text-white px-5 py-2 rounded-md cursor-pointer hover:scale-[1.020]"
         >
-          Save Details
+          <div className="flex items-center gap-2">
+            <IoMdSave />
+            Save Details
+          </div>
         </button>
+        {/* <button
+          type="button"
+          onClick={onNext}
+          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
+        >
+          <div className="flex items-center gap-2">
+            Next
+            <TbPlayerTrackNextFilled />
+          </div>
+        </button> */}
       </div>
+
       {isSuccessPopupOpen && (
         <PopupMessage
           className

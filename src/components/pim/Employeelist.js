@@ -21,6 +21,82 @@ import {
 } from "@mui/material";
 import { FaFilterCircleXmark } from "react-icons/fa6";
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
+import { makeStyles } from "@mui/styles";
+import { createGlobalStyle } from "styled-components";
+import classNames from "classnames";
+
+const useStyles = makeStyles({
+  root: {
+    "& .MuiInputLabel-root": {
+      fontFamily: "euclid",
+      fontSize: 14,
+      paddingTop: -2.5,
+      fontWeight: "bold",
+    },
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "black",
+      fontWeight: "bold",
+      fontSize: 15,
+    },
+    "& .MuiInputBase-root": {
+      backgroundColor: "#f0f9ff",
+      border: "0 none",
+      borderRadius: 7,
+      height: 50,
+      width: "100%",
+      overflow: "hidden",
+    },
+    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "transparent",
+    },
+    "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
+      borderColor: "transparent",
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "gray",
+    },
+    "& .Muilplaceholder": {
+      fontFamily: "euclid",
+      fontSize: 10,
+    },
+    "& .MuiOutlinedInput-input": {
+      fontFamily: "euclid-medium",
+      fontSize: 14,
+    },
+    "& .MuiOutlinedInput-input": {
+      fontFamily: "euclid-medium",
+      fontSize: 14,
+    },
+    "& ::placeholder": {
+      fontSize: 12,
+    },
+    display: "block",
+    width: "100%",
+  },
+});
+
+const GlobalStyles = createGlobalStyle`
+  .MuiMenuItem-root {
+    font-family: Euclid;
+    font-size: 14px;
+    font-weight: bold;
+    margin: auto 8px;
+    border-radius: 7px;
+  }
+  .MuiMenuItem-root:hover {
+    background-color:#e0f2fe;
+    padding-left: 15px;
+  }
+  .MuiMenuItem-root:hover {
+    transition-duration: 0.2s;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+`;
 
 const columns = [
   { id: "empid", label: "Employee ID", minWidth: 120 },
@@ -161,6 +237,8 @@ const rows = [
 ];
 
 export default function StickyHeadTable() {
+  const classes = useStyles();
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [filters, setFilters] = React.useState({
@@ -226,7 +304,10 @@ export default function StickyHeadTable() {
       >
         <div className="m-2 gap-2 flex-col items-center grid grid-cols-12 ">
           <TextField
-            className="col-span-12 sm:col-span-6 xl:col-span-2 text-xs"
+            className={classNames(
+              "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+              classes.root
+            )}
             id="empid"
             name="empid"
             label="Employee ID"
@@ -234,31 +315,12 @@ export default function StickyHeadTable() {
             onChange={handleChangeFilter}
             variant="outlined"
             margin="dense"
-            sx={{
-              "& .MuiInputLabel-root": {
-                fontSize: 14,
-              },
-              "& .MuiInputBase-root": {
-                backgroundColor: "#f0f9ff",
-                border: "0 none",
-                borderRadius: 2,
-                height: 50,
-              },
-              "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                borderColor: "transparent",
-              },
-              "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                {
-                  borderColor: "transparent",
-                },
-              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                {
-                  borderColor: "transparent",
-                },
-            }}
           />
           <TextField
-            className="col-span-12 sm:col-span-6 xl:col-span-2 py-1"
+            className={classNames(
+              "col-span-12 sm:col-span-6 xl:col-span-2 py-1",
+              classes.root
+            )}
             id="ename"
             name="ename"
             label="Employee Name"
@@ -266,55 +328,14 @@ export default function StickyHeadTable() {
             onChange={handleChangeFilter}
             variant="outlined"
             margin="dense"
-            sx={{
-              "& .MuiInputLabel-root": {
-                fontSize: 14,
-              },
-              "& .MuiInputBase-root": {
-                backgroundColor: "#f0f9ff",
-                border: "0 none",
-                borderRadius: 2,
-                height: 50,
-              },
-              "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                borderColor: "transparent",
-              },
-              "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                {
-                  borderColor: "transparent",
-                },
-              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                {
-                  borderColor: "transparent",
-                },
-            }}
           />
           <FormControl
             variant="outlined"
             margin="dense"
-            className="col-span-12 sm:col-span-6 xl:col-span-2 "
-            sx={{
-              "& .MuiInputLabel-root": {
-                fontSize: 14,
-              },
-              "& .MuiInputBase-root": {
-                backgroundColor: "#f0f9ff",
-                border: "0 none",
-                borderRadius: 2,
-                height: 50,
-              },
-              "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                borderColor: "transparent",
-              },
-              "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                {
-                  borderColor: "transparent",
-                },
-              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                {
-                  borderColor: "transparent",
-                },
-            }}
+            className={classNames(
+              "col-span-12 sm:col-span-6 xl:col-span-2",
+              classes.root
+            )}
           >
             <InputLabel id="status-label" className="w-52 ">
               Status
@@ -339,6 +360,7 @@ export default function StickyHeadTable() {
                 </span>
               )}
             >
+              <GlobalStyles />
               <MenuItem value="">All</MenuItem>
               {statuses.map((statuse) => (
                 <MenuItem key={statuse} value={statuse.toLowerCase()}>
@@ -350,29 +372,10 @@ export default function StickyHeadTable() {
           <FormControl
             variant="outlined"
             margin="dense"
-            className="col-span-12 sm:col-span-6 xl:col-span-2"
-            sx={{
-              "& .MuiInputLabel-root": {
-                fontSize: 14,
-              },
-              "& .MuiInputBase-root": {
-                backgroundColor: "#f0f9ff",
-                border: "0 none",
-                borderRadius: 2,
-                height: 50,
-              },
-              "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                borderColor: "transparent",
-              },
-              "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                {
-                  borderColor: "transparent",
-                },
-              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                {
-                  borderColor: "transparent",
-                },
-            }}
+            className={classNames(
+              "col-span-12 sm:col-span-6 xl:col-span-2",
+              classes.root
+            )}
           >
             <InputLabel id="designation-label" className="w-52">
               Designation
@@ -397,6 +400,7 @@ export default function StickyHeadTable() {
                 </span>
               )}
             >
+              <GlobalStyles />
               <MenuItem value="">All</MenuItem>
               {designations.map((designation) => (
                 <MenuItem

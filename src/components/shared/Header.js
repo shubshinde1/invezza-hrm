@@ -90,6 +90,7 @@ export default function Header() {
               </Menu.Button>
             </div>
             <Transition
+              className="z-50"
               as={Fragment}
               enter="transition ease-out duration-100"
               enterFrom="transform opacity-0 scale-95"
