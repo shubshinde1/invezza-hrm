@@ -95,7 +95,7 @@ export default function Sidebar() {
       </button>
       <div
         ref={sidebarRef}
-        className={`md:flex md:flex-col w-56 h-[98vh] md:h-screen ml-2 mt-2 md:m-0 md:rounded-none rounded-md absolute md:relative p-4 bg-white z-50 shadow-2xl md:shadow-none ${
+        className={`md:flex md:flex-col w-52 h-[98vh] md:h-screen ml-2 mt-2 md:m-0 md:rounded-none rounded-md absolute md:relative p-4 bg-white z-50 shadow-2xl md:shadow-none ${
           isSidebarOpen ? "" : "hidden"
         }`}
       >
@@ -153,7 +153,7 @@ export default function Sidebar() {
                   />
                 </motion.div>
                 {clickedItem === item && item.subItems && (
-                  <div className="md:absolute left-48 md:pl-6 top-0 md:w-60 ">
+                  <div className="md:absolute left-44 md:pl-6 top-0 md:w-60 ">
                     <motion.div
                       className=" bg-white shadow-md rounded-md p-1 border"
                       animate={{ x: 0 }}

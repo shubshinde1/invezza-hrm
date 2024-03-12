@@ -9,7 +9,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { Bolt } from "@mui/icons-material";
 import { MdOutlinePreview } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import {
@@ -63,10 +62,6 @@ const useStyles = makeStyles({
       fontFamily: "euclid-medium",
       fontSize: 14,
     },
-    "& .MuiOutlinedInput-input": {
-      fontFamily: "euclid-medium",
-      fontSize: 14,
-    },
     "& ::placeholder": {
       fontSize: 12,
     },
@@ -76,7 +71,11 @@ const useStyles = makeStyles({
 });
 
 const GlobalStyles = createGlobalStyle`
-  .MuiMenuItem-root {
+.MuiPaper-root{
+  height:215px;
+  border-radius:10px;
+} 
+.MuiMenuItem-root {
     font-family: Euclid;
     font-size: 14px;
     font-weight: bold;
@@ -95,6 +94,7 @@ const GlobalStyles = createGlobalStyle`
     display: none;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    
 }
 `;
 
@@ -236,7 +236,14 @@ const rows = [
   ),
 ];
 
-export default function StickyHeadTable() {
+
+export default function StickyHeadTable({
+  empid,
+  ename,
+  designation,
+  jdate,
+  status,
+}) {
   const classes = useStyles();
 
   const [page, setPage] = React.useState(0);
@@ -293,6 +300,10 @@ export default function StickyHeadTable() {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+  };
+
+  const handlePreview = (empid, ename, designation, jdate, status) => {
+    console.log("Row Data:", { empid, ename, designation, jdate, status });
   };
 
   return (
@@ -451,7 +462,8 @@ export default function StickyHeadTable() {
                     style={{
                       minWidth: column.minWidth,
                       backgroundColor: "#f0f9ff",
-                      fontWeight: Bolt,
+                      fontWeight: "Bold",
+                      fontFamily: "Euclid",
                     }}
                   >
                     {column.label}
@@ -471,16 +483,38 @@ export default function StickyHeadTable() {
                         ) : (
                           <div className="flex items-center gap-2">
                             <div className="hover:bg-[#dbd6fc] rounded-md p-2">
-                              <Link to={`/edit/${row.empid}`}>
+                              <Link
+                                to={{
+                                  pathname: `/pim/edit/${
+                                    row.empid
+                                  }/${encodeURIComponent(
+                                    row.ename
+                                  )}/${encodeURIComponent(
+                                    row.designation
+                                  )}/${encodeURIComponent(
+                                    row.jdate
+                                  )}/${encodeURIComponent(row.status)}`,
+                                }}
+                              >
                                 <FaEdit className="text-xl" />
                               </Link>
                             </div>
                             {" | "}
-                            <div className="hover:bg-[#dbd6fc] rounded-md p-2">
-                              <Link to={`/view/${row.empid}`}>
-                                <MdOutlinePreview className="text-xl" />
-                              </Link>
-                            </div>
+                            <Link
+                              to={{
+                                pathname: `/pim/view/${
+                                  row.empid
+                                }/${encodeURIComponent(
+                                  row.ename
+                                )}/${encodeURIComponent(
+                                  row.designation
+                                )}/${encodeURIComponent(
+                                  row.jdate
+                                )}/${encodeURIComponent(row.status)}`,
+                              }}
+                            >
+                              <MdOutlinePreview className="text-xl" />
+                            </Link>
                           </div>
                         )}
                       </TableCell>

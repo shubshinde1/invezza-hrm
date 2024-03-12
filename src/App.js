@@ -1,6 +1,5 @@
-// import logo from "./logo.svg";
-import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/shared/Layout";
 import Dashboard from "./components/Dashboard";
 import Attendance from "./components/Attendance";
@@ -13,6 +12,9 @@ import Login from "./components/Login";
 import Pim from "./components/Pim";
 import Employeelist from "./components/pim/Employeelist";
 import Addemployee from "./components/pim/Addemployee";
+import EditEmployee from "./components/pim/EditEmployee";
+import ViewEmployee from "./components/pim/ViewEmployee";
+// import StickyHeadTable from "./components/pim/Employeelist";
 
 function App() {
   return (
@@ -29,6 +31,16 @@ function App() {
           <Route path="Pim" element={<Pim />} />
           <Route path="pim/employeelist" element={<Employeelist />} />
           <Route path="pim/addemployee" element={<Addemployee />} />
+          {/* <Route exact path="/" Component={<StickyHeadTable />} /> */}
+          {/* <Route path="/pim/edit/:empid" element={<EditEmployee />} /> */}
+          <Route
+            path="/pim/edit/:empid/:ename/:designation/:jdate/:status"
+            element={<EditEmployee />}
+          />
+          <Route
+            path="/pim/view/:empid/:ename/:designation/:jdate/:status"
+            element={<ViewEmployee />}
+          />
         </Route>
         <Route path="login" element={<Login />} />
       </Routes>

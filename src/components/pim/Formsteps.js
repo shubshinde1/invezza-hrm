@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TextField,
   FormControl,
@@ -26,6 +26,10 @@ import { IoMdSave } from "react-icons/io";
 import Checkbox from "@mui/joy/Checkbox";
 
 const GlobalStyles = createGlobalStyle`
+.MuiPaper-root{
+  height:215px;
+  border-radius:10px;
+} 
   .MuiMenuItem-root {
     font-family: Euclid;
     font-size: 14px;
@@ -35,7 +39,7 @@ const GlobalStyles = createGlobalStyle`
   }
   .MuiMenuItem-root:hover {
     background-color:#e0f2fe;
-    padding-left: 15px;
+    padding-left: 14px;
   }
   .MuiMenuItem-root:hover {
     transition-duration: 0.2s;
@@ -81,10 +85,6 @@ const useStyles = makeStyles({
     "& .Muilplaceholder": {
       fontFamily: "euclid",
       fontSize: 10,
-    },
-    "& .MuiOutlinedInput-input": {
-      fontFamily: "euclid-medium",
-      fontSize: 14,
     },
     "& .MuiOutlinedInput-input": {
       fontFamily: "euclid-medium",
@@ -815,10 +815,10 @@ export function EmergencyContacts({ onPrev, onNext }) {
   };
   // Contact Information Form Component
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setIsSuccessPopupOpen(true);
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   setIsSuccessPopupOpen(true);
+  // };
   return (
     <div>
       <div className="">
@@ -1008,7 +1008,7 @@ export function WorkExperience({ onPrev }) {
     { name: "Experience 1" },
   ]);
   const Navigate = useNavigate();
-  let autoCloseTimer;
+  // let autoCloseTimer;
   const classes = useStyles();
 
   const handleAddMore = () => {
@@ -1068,19 +1068,22 @@ export function WorkExperience({ onPrev }) {
               transition={{ type: "spring", bounce: 0.7 }}
             >
               {index !== 0 && <hr className="mb-5" />}
-              <div className="flex items-center">
-                <h1>Experience {index + 1}</h1>
-                <button
-                  type="button"
-                  onClick={() => {
-                    handleRemove(index);
-                    setElecome(!elecome);
-                  }}
-                  className="bg-sky-50 px-2 py-1 rounded-md text-xs ml-3 hover:bg-[#5336FD] hover:text-white flex items-center gap-1"
-                >
-                  {/* <IoIosRemoveCircle className="text-base" /> */}
-                  Remove
-                </button>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <h1>Experience {index + 1}</h1>
+                  {index !== 0 && ( // Disable removal button for the first experience
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleRemove(index);
+                        setElecome(!elecome);
+                      }}
+                      className="bg-sky-50 px-2 py-1 rounded-md text-xs ml-3 hover:bg-[#5336FD] hover:text-white flex items-center gap-1"
+                    >
+                      Remove
+                    </button>
+                  )}
+                </div>
               </div>
               <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-3">
                 <div className="w-full lg:w-1/3 flex flex-col">
