@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useParams } from "react-router-dom";
 import MenuTabs from "./Menutabs";
 import { FaUserAlt } from "react-icons/fa";
-import html2pdf from "html2pdf";
+import html2pdf from "html2pdf.js";
 import { HiDocumentDownload } from "react-icons/hi";
 
 export default function ViewEmployee() {
