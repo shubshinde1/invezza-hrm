@@ -20,6 +20,7 @@ import { makeStyles } from "@mui/styles";
 import classNames from "classnames";
 import { createGlobalStyle } from "styled-components";
 import { IoAddCircle } from "react-icons/io5";
+import { FaUserAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { TbPlayerTrackNextFilled } from "react-icons/tb";
 import { IoMdSave } from "react-icons/io";
@@ -132,13 +133,17 @@ export function PersonalInformation({ onNext }) {
         >
           <div className="flex items-center md:items-center mt-4 gap-4">
             <div>
-              <MantineProvider>
-                <Avatar
-                  className="w-28 md:w-20 bg-sky-50 p-2 rounded-md"
-                  src={selectedImage || ""}
-                  alt="Profile"
-                />
-              </MantineProvider>
+              <div className="w-28 md:w-20 bg-sky-50 p-2 rounded-md flex justify-center">
+                {selectedImage ? (
+                  <img
+                    src={selectedImage}
+                    className="w-full h-full object-cover rounded-md"
+                    alt="Profile"
+                  />
+                ) : (
+                  <FaUserAlt className="text-6xl text-gray-300" />
+                )}
+              </div>
             </div>
             <div className="flex items-center">
               <div className="flex flex-col md:flex-row">
@@ -474,15 +479,15 @@ export function EmploymentInformation({ onPrev, onNext }) {
           <div className="w-full lg:w-1/3 flex flex-col"></div>
         </div>
       </motion.div>
-      <div className="w-full flex justify-between md:absolute md:z-0 mt-8 md:bottom-36 md:right-10 md:w-8/12 ">
+      <div className="w-full flex justify-between md:absolute md:z-0 mt-8 md:bottom-36 md:right-10 md:w-7/12 md:w-7/12 lg:w-8/12 ">
         <button
           type="button"
           onClick={onPrev}
-          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
+          className="bg-blue-100 px-4 py-2 rounded-md hover:scale-[1.020]"
         >
           <div className="flex items-center gap-2">
             <TbPlayerTrackNextFilled className="rotate-180" />
-            Previous
+            Back
           </div>
         </button>
         <button
@@ -758,15 +763,15 @@ export function ContactInformation({ onPrev, onNext }) {
           </div>
         </motion.div>
       </div>
-      <div className="w-full flex justify-between md:absolute md:z-0 mt-8 md:bottom-36 md:right-10 md:w-8/12 ">
+      <div className="w-full flex justify-between md:absolute md:z-0 mt-8 md:bottom-36 md:right-10 md:w-7/12 lg:w-8/12 ">
         <button
           type="button"
           onClick={onPrev}
-          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
+          className="bg-blue-100 px-4 py-2 rounded-md hover:scale-[1.020]"
         >
           <div className="flex items-center gap-2">
             <TbPlayerTrackNextFilled className="rotate-180" />
-            Previous
+            Back
           </div>
         </button>
         <button
@@ -968,15 +973,15 @@ export function EmergencyContacts({ onPrev, onNext }) {
           </div>
         </motion.div>
       </div>
-      <div className="w-full flex justify-between md:absolute md:z-0 mt-8 md:bottom-36 md:right-10 md:w-8/12 ">
+      <div className="w-full flex justify-between md:absolute md:z-0 mt-8 md:bottom-36 md:right-10 md:w-7/12 lg:w-8/12 ">
         <button
           type="button"
           onClick={onPrev}
-          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
+          className="bg-blue-100 px-4 py-2 rounded-md hover:scale-[1.020]"
         >
           <div className="flex items-center gap-2">
             <TbPlayerTrackNextFilled className="rotate-180" />
-            Previous
+            Back
           </div>
         </button>
         <button
@@ -1366,11 +1371,11 @@ export function WorkExperience({ onPrev }) {
         <button
           type="button"
           onClick={onPrev}
-          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
+          className="bg-blue-100 px-4 py-2 rounded-md hover:scale-[1.020]"
         >
           <div className="flex items-center gap-2">
             <TbPlayerTrackNextFilled className="rotate-180" />
-            Previous
+            Back
           </div>
         </button>
         <button
@@ -1381,7 +1386,7 @@ export function WorkExperience({ onPrev }) {
         >
           <div className="flex items-center gap-2">
             <IoMdSave />
-            Save Details
+            Save
           </div>
         </button>
         {/* <button

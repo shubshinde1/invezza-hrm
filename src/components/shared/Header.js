@@ -25,21 +25,50 @@ export default function Header() {
       // If current path is found in main links array, return its label
       return currentLink.label;
     } else {
+      // below block is for this (item) just shows parent
+
       // If not found, search within the subItems arrays
+      // for (const link of DASHBOARD_SIDEBAR_LINKS) {
+      //   if (link.subItems) {
+      //     const subItem = link.subItems.find(
+      //       (subLink) => subLink.path === currentPath
+      //     );
+      //     if (subItem) {
+      //       // If current path is found in a subItem, return its parent label
+      //       return link.label;
+      //     }
+      //   }
+      // }
+
+      // Below bloack is for (item > SubItems)
+
+      // for (const link of DASHBOARD_SIDEBAR_LINKS) {
+      //   if (link.subItems) {
+      //     const subItem = link.subItems.find(
+      //       (subLink) => subLink.path === currentPath
+      //     );
+      //     if (subItem) {
+      //       // Return main link label + ">" + subItem label
+      //       return `${link.label} > ${subItem.label}`;
+      //     }
+      //   }
+      // }
+
+      // Below bloack is for (SubItems)
+
       for (const link of DASHBOARD_SIDEBAR_LINKS) {
         if (link.subItems) {
           const subItem = link.subItems.find(
             (subLink) => subLink.path === currentPath
           );
           if (subItem) {
-            // If current path is found in a subItem, return its parent label
-            return link.label;
+            return subItem.label; // Return the label of the subItem
           }
         }
       }
     }
 
-    return "Tab Title"; // Return default title if no match is found
+    return "View Employee"; // Return default title if no match is found
   };
 
   return (

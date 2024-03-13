@@ -9,8 +9,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { MdOutlinePreview } from "react-icons/md";
-import { FaEdit } from "react-icons/fa";
+import { IoEye } from "react-icons/io5";
+import { FaUserEdit } from "react-icons/fa";
 import {
   TextField,
   FormControl,
@@ -235,7 +235,6 @@ const rows = [
     "Active"
   ),
 ];
-
 
 export default function StickyHeadTable({
   empid,
@@ -482,25 +481,25 @@ export default function StickyHeadTable({
                           row[column.id]
                         ) : (
                           <div className="flex items-center gap-2">
-                            <div className="hover:bg-[#dbd6fc] rounded-md p-2">
-                              <Link
-                                to={{
-                                  pathname: `/pim/edit/${
-                                    row.empid
-                                  }/${encodeURIComponent(
-                                    row.ename
-                                  )}/${encodeURIComponent(
-                                    row.designation
-                                  )}/${encodeURIComponent(
-                                    row.jdate
-                                  )}/${encodeURIComponent(row.status)}`,
-                                }}
-                              >
-                                <FaEdit className="text-xl" />
-                              </Link>
-                            </div>
+                            <Link
+                              className="hover:bg-[#dbd6fc] rounded-md p-2"
+                              to={{
+                                pathname: `/pim/edit/${
+                                  row.empid
+                                }/${encodeURIComponent(
+                                  row.ename
+                                )}/${encodeURIComponent(
+                                  row.designation
+                                )}/${encodeURIComponent(
+                                  row.jdate
+                                )}/${encodeURIComponent(row.status)}`,
+                              }}
+                            >
+                              <FaUserEdit className="text-xl" />
+                            </Link>
                             {" | "}
                             <Link
+                              className="hover:bg-[#dbd6fc] rounded-md p-2"
                               to={{
                                 pathname: `/pim/view/${
                                   row.empid
@@ -513,7 +512,7 @@ export default function StickyHeadTable({
                                 )}/${encodeURIComponent(row.status)}`,
                               }}
                             >
-                              <MdOutlinePreview className="text-xl" />
+                              <IoEye className="text-xl" />
                             </Link>
                           </div>
                         )}
