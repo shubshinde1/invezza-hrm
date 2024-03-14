@@ -23,17 +23,17 @@ const PopupMessage = ({ message, onAddMore, onGoToList }) => {
   return (
     <>
       <div
-        className=""
-        style={{
-          position: "fixed",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          backgroundColor: "white",
-          padding: "25px 20px",
-          borderRadius: "5px",
-          zIndex: "9999",
-        }}
+        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg z-[9999] w-72 sm:w-auto px-5"
+        // style={{
+        //   position: "fixed",
+        //   top: "50%",
+        //   left: "50%",
+        //   transform: "translate(-50%, -50%)",
+        //   backgroundColor: "white",
+        //   padding: "25px 20px",
+        //   borderRadius: "5px",
+        //   zIndex: "9999",
+        // }}
       >
         <div className="flex items-center justify-center bg-sky-50 rounded-md px-4 py-3">
           <BsPersonFillCheck className="text-green-500 text-3xl" />
@@ -60,7 +60,7 @@ const PopupMessage = ({ message, onAddMore, onGoToList }) => {
           )}
         </div>
 
-        <div className="flex items-center justify-between mx-8 mt-5">
+        <div className="flex items-center justify-between  mt-5">
           <button
             className="bg-[#5336FD] text-white text-sm px-3 py-2 rounded-md cursor-pointer font-bold hover:scale-[1.020] flex items-center"
             onClick={onAddMore}

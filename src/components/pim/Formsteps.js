@@ -13,7 +13,6 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import PopupMessage from "./PopupMessage";
 import { useNavigate } from "react-router-dom";
-import { MantineProvider, Avatar } from "@mantine/core";
 import { BiReset } from "react-icons/bi";
 import { FaUpload } from "react-icons/fa6";
 import { makeStyles } from "@mui/styles";
@@ -1021,6 +1020,15 @@ export function WorkExperience({ onPrev }) {
     setWorkExperiences([...workExperiences, newExperience]);
   };
 
+  const handleAddMoreexp = (event) => {
+    event.preventDefault(); // Prevent the default behavior
+    setIsSuccessPopupOpen(false); // Close the popup
+    const numBack = 4; // Number of times to go back
+    for (let i = 0; i < numBack; i++) {
+      onPrev();
+    }
+  };
+
   const handleRemove = (index) => {
     const updatedExperiences = [...workExperiences];
     updatedExperiences.splice(index, 1);
@@ -1266,43 +1274,6 @@ export function WorkExperience({ onPrev }) {
                 </div>
 
                 <div className="w-full lg:w-1/3 flex flex-row items-center">
-                  {/* <FormControl
-                    variant="outlined"
-                    margin="dense"
-                    className={classNames(
-                      "col-span-12 sm:col-span-6 xl:col-span-2",
-                      classes.root
-                    )}
-                  >
-                    <InputLabel id="emptype-label" className="w-52">
-                      Emplyement Type
-                    </InputLabel>
-                    <Select
-                      labelId="emptype-label"
-                      id="emplyementtype"
-                      name="emplyementtype"
-                      label="Emplyement Type"
-                      IconComponent={(props) => (
-                        <ArrowDropDownRoundedIcon
-                          {...props}
-                          sx={{ fontSize: 40 }}
-                        />
-                      )}
-                    >
-                      <GlobalStyles />
-                      <MenuItem value="full-time">Full-time</MenuItem>
-                      <MenuItem value="part-time">Part-time</MenuItem>
-                      <MenuItem value="contract">Contract</MenuItem>
-                      <MenuItem value="temporary">Temporary</MenuItem>
-                      <MenuItem value="freelance">
-                        Freelance or Independent Contractor
-                      </MenuItem>
-                      <MenuItem value="internship">Internship</MenuItem>
-                      <MenuItem value="remote">
-                        Remote or Telecommuting
-                      </MenuItem>
-                    </Select>
-                  </FormControl> */}
                   <Checkbox
                     color="primary"
                     disabled={false}
@@ -1316,52 +1287,13 @@ export function WorkExperience({ onPrev }) {
               </div>
               <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
                 <div className="w-full lg:w-2/3 flex flex-col">
-                  {/* <TextField
-                    className={classNames("", classes.root)}
-                    id="location"
-                    name="location"
-                    label="Company Location"
-                    type="text"
-                    variant="outlined"
-                    margin="dense"
-                  /> */}
                   <textarea
                     className="bg-[#f0f9ff] rounded-md focus:border-[1px] mt-2 p-3 pb-0 "
                     placeholder="Description"
                   ></textarea>
                 </div>
 
-                <div className="w-full lg:w-1/3 flex flex-col md:-mr-2">
-                  {/* <LocalizationProvider
-                    dateAdapter={AdapterDayjs}
-                    className="w-full"
-                  >
-                    <DemoContainer components={["DatePicker"]}>
-                      <DatePicker
-                        label="Date of Joining"
-                        className={classNames(
-                          "col-span-12 sm:col-span-6 xl:col-span-2",
-                          classes.root
-                        )}
-                      />
-                    </DemoContainer>
-                  </LocalizationProvider> */}
-                </div>
-
-                {/* <div className="w-full lg:w-1/3 flex flex-col">
-                  <TextField
-                    className={classNames(
-                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                      classes.root
-                    )}
-                    id="phone"
-                    name="phone"
-                    label="Phone Number"
-                    type="number"
-                    variant="outlined"
-                    margin="dense"
-                  />
-                </div> */}
+                <div className="w-full lg:w-1/3 flex flex-col md:-mr-2"></div>
               </div>
             </motion.div>
           ))}
@@ -1389,23 +1321,13 @@ export function WorkExperience({ onPrev }) {
             Save
           </div>
         </button>
-        {/* <button
-          type="button"
-          onClick={onNext}
-          className="bg-[#5336FD] text-white px-4 py-2 rounded-md hover:scale-[1.020]"
-        >
-          <div className="flex items-center gap-2">
-            Next
-            <TbPlayerTrackNextFilled />
-          </div>
-        </button> */}
       </div>
 
       {isSuccessPopupOpen && (
         <PopupMessage
           className
           message="New Employee Added Successfully"
-          onAddMore={handleAddMore}
+          onAddMore={handleAddMoreexp}
           onGoToList={handleGoToList}
         />
       )}
