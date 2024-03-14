@@ -1,18 +1,39 @@
 import React from "react";
+import Greeting from "./dashboard/Greeting";
+import Calendar from "./dashboard/Calendar";
+import Bodycards from "./dashboard/Bodycards";
+import { motion } from "framer-motion";
 
 export default function dashboard() {
   return (
     <div className="">
-      <div className="flex gap-2">
-        <div className="w-3/4 flex flex-col gap-2">
-          <div className="  bg-white p-4 rounded-md">
-            <h2></h2>
-          </div>
-          <div className=" h-96 bg-white p-4 rounded-md">
-            Good Morning Shubham
-          </div>
+      <div className="">
+        <div className="grid grid-cols-12 grid-rows-3 gap-2">
+          <motion.div
+            initial={{ originX: 0, x: -20 }}
+            animate={{ originX: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            className=" col-span-12 xl:col-span-9 bg-white p-4 rounded-md sticky"
+          >
+            <Greeting />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            className=" col-span-12 xl:col-span-3  row-span-3 bg-white p-4 rounded-md sticky"
+          >
+            <Calendar />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2 }}
+            className=" col-span-12 xl:col-span-9   overflow-scroll scrollbar-hide"
+          >
+            <Bodycards />
+          </motion.div>
         </div>
-        <div className="w-1/4 bg-white p-4 rounded-md">calender</div>
       </div>
     </div>
   );
