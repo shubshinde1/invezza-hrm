@@ -115,7 +115,7 @@ export default function Greeting() {
       <div className="flex flex-col md:flex-row justify-between">
         <div className="md:w-1/2 flex flex-col md:justify-between">
           <div className="flex flex-col gap-1">
-            <h2 className="text-xl md:text-2xl font-bold text-[#5336FD]">
+            <h2 className="text-xl md:text-2xl font-bold text-[#3C5EFE]">
               Good Morning Shubham
             </h2>
             <h2>You have 24 new tasks. It's a lot of work today!</h2>

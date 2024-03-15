@@ -121,8 +121,8 @@ export default function Sidebar() {
                   animate={{ x: 0 }}
                   initial={{ x: -20 }}
                   transition={
-                    // { type: "tween", duration: 5 },
-                    { type: "spring", bounce: 0.7 }
+                    { type: "tween", duration: 1 }
+                    // { type: "spring", bounce: 0.7 }
                   }
                   className="hidden md:block"
                 >
@@ -139,7 +139,7 @@ export default function Sidebar() {
                 <motion.div
                   animate={{ x: rotate ? -20 : 0 }}
                   initial={{ x: rotate ? -20 : 0 }}
-                  transition={{ type: "spring", bounce: 0.5, duration: 10 }}
+                  transition={{ type: "spring", bounce: 0.5, duration: 1 }}
                   className="md:hidden"
                 >
                   <SidebarLink

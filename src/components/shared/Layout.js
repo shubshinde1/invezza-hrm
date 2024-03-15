@@ -10,8 +10,8 @@ const Layout = () => {
       <Sidebar className="z-10" />
       <div className="flex-1">
         <motion.div
-          initial={{ originX: 0, x: -20 }}
-          animate={{ originX: 1, x: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           // transition={{ type: "spring", bounce: 0.7 }}
         >
