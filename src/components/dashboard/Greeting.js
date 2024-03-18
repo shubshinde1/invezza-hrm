@@ -111,8 +111,8 @@ export default function Greeting() {
   );
 
   return (
-    <div>
-      <div className="flex flex-col md:flex-row justify-between">
+    <div className="">
+      <div className="flex flex-col md:flex-row justify-between ">
         <div className="md:w-1/2 flex flex-col md:justify-between">
           <div className="flex flex-col gap-1">
             <h2 className="text-xl md:text-2xl font-bold text-[#3C5EFE]">
@@ -126,7 +126,7 @@ export default function Greeting() {
             </button>
           </Link>
         </div>
-        <div className="flex flex-col items-start md:items-end md:w-1/2 mt-5 md:mt-0">
+        <div className="flex flex-col items-start md:items-end  md:w-1/2 mt-5 md:mt-0">
           <div className="flex items-center gap-2">
             <button
               className={`px-2 py-1.5 rounded-md flex items-center gap-1 text-xs font-bold hover:bg-sky-50  ${
@@ -145,7 +145,7 @@ export default function Greeting() {
               )}
             </button>
           </div>
-          <div className="w-full sm:w-2/3 md:mt-20 mt-5">
+          <div className="w-full sm:w-2/3 mt-4">
             <div className="flex justify-between text-xs">
               <span className="flex flex-col items-end">
                 {completedHours}h {completedMinutes}m Completed

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const Layout = () => {
   return (
-    <div className="flex flex-row h-screen w-screen overflow-hidden">
+    <div className="flex flex-row h-screen w-screen overflow-hidden ">
       <Sidebar className="z-10" />
       <div className="flex-1">
         <motion.div

@@ -62,9 +62,9 @@ export default function Calendar() {
   const classes = useStyles();
 
   return (
-    <div className="flex flex-col sm:flex-row xl:flex-col justify-start items-center sm:items-stretch sm:justify-between xl:justify-normal ">
+    <div className="flex flex-col sm:flex-row xl:flex-col justify-start items-start sm:items-stretch sm:justify-between xl:justify-normal ">
       <div className="">
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <LocalizationProvider dateAdapter={AdapterDayjs} className="">
           <DateCalendar className={`${classes.root} `} />
         </LocalizationProvider>
       </div>

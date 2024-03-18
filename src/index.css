@@ -53,7 +53,7 @@ body {
     background-position: center;
     background-size: 100vw; */
     scroll-behavior: smooth;
-    
+
 }
 
 select {
@@ -106,6 +106,27 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .custom-toolbar {
     background-color: #7e0f0f;
+    position: absolute;
     /* Your desired background color */
     /* Add any other styling properties */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+}
+
+/* Handle on hover */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
