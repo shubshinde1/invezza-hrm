@@ -1,22 +1,6 @@
 import React from "react";
-// import { MantineProvider, Avatar } from "@mantine/core";
-// import { BiReset } from "react-icons/bi";
-// import { FaUpload } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import PopupMessage from "./PopupMessage";
-// import {
-//   TextField,
-//   FormControl,
-//   InputLabel,
-//   Select,
-//   MenuItem,
-// } from "@mui/material";
-// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-// import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-// import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-// import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import {
   PersonalInformation,
   EmploymentInformation,
@@ -24,42 +8,16 @@ import {
   EmergencyContacts,
   WorkExperience,
 } from "./Formsteps";
+import { motion } from "framer-motion";
 
 export default function Newempform() {
-  // const [selectedImage, setSelectedImage] = useState("");
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
   const Navigate = useNavigate();
-  // let autoCloseTimer;
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsSuccessPopupOpen(true);
   };
-
-  // const handleImageUpload = (event) => {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       setSelectedImage(reader.result);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
-
-  // const handleResetImage = () => {
-  //   setSelectedImage("");
-  // };
-
-  // const handleAddMore = () => {
-  //   setIsSuccessPopupOpen(false); // Close the popup
-  //   clearTimeout(autoCloseTimer); // Cancel the auto close timer
-  // };
-
-  // const handleGoToList = () => {
-  //   setIsSuccessPopupOpen(false);
-  //   Navigate("/pim/employeelist");
-  // };
 
   useEffect(() => {
     let autoCloseTimer;
@@ -90,7 +48,12 @@ export default function Newempform() {
   };
 
   return (
-    <div className="bg-white p-4 rounded-md h-screen overflow-scroll scrollbar-hide flex flex-col md:grid grid-cols-12 gap-4">
+    <motion.div
+      className="bg-white p-4 rounded-md h-screen overflow-scroll scrollbar-hide flex flex-col md:grid grid-cols-12 gap-4"
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="  col-span-2 ">
         <div className="bg-sky-50 rounded-md sticky top-0">
           <ul className="text-sm p-2 flex flex-col gap-2 sticky top-0">
@@ -110,39 +73,6 @@ export default function Newempform() {
       </div>
       <div className="col-span-10">
         <div>
-          {/* <div className="stepper flex w-full md:w-1/2 justify-between ">
-            <div
-              className={`step ${
-                step === 1
-                  ? "active bg-[#5336FD] text-white w-10 px-4 py-2 h-10 rounded-full"
-                  : "bg-gray-200 w-10 px-4 py-2 h-10 rounded-full cursor-pointer"
-              }`}
-              onClick={() => setStep(1)}
-            >
-              <h1>1</h1>
-            </div>
-            <div
-              className={`step ${
-                step === 2
-                  ? "active bg-[#5336FD] text-white w-10 px-4 py-2 h-10 rounded-full"
-                  : "bg-gray-200 w-10 px-4 py-2 h-10 rounded-full cursor-pointer"
-              }`}
-              onClick={() => setStep(2)}
-            >
-              <h1>2</h1>
-            </div>
-            <div
-              className={`step ${
-                step === 3
-                  ? "active bg-[#5336FD] text-white w-10 px-4 py-2 h-10 rounded-full"
-                  : "bg-gray-200 w-10 px-4 py-2 h-10 rounded-full cursor-pointer"
-              }`}
-              onClick={() => setStep(3)}
-            >
-              <h1>3</h1>
-            </div>
-          </div> */}
-
           <form onSubmit={handleSubmit}>
             {step === 1 && <PersonalInformation onNext={nextStep} />}
             {step === 2 && (
@@ -158,6 +88,6 @@ export default function Newempform() {
           </form>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -23,6 +23,7 @@ import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import { makeStyles } from "@mui/styles";
 import { createGlobalStyle } from "styled-components";
 import classNames from "classnames";
+import { motion } from "framer-motion";
 
 const useStyles = makeStyles({
   root: {
@@ -308,222 +309,233 @@ export default function StickyHeadTable({
   return (
     <div>
       <Menutabs />
-      <Paper
-        sx={{ overflow: "hidden" }}
-        className="md:w-[100%] w-[calc(100vw-0.8rem)] h-[90%] top-24"
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <div className="m-2 gap-2 flex-col items-center grid grid-cols-12 ">
-          <TextField
-            className={classNames(
-              "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-              classes.root
-            )}
-            id="empid"
-            name="empid"
-            label="Employee ID"
-            value={filters.empid}
-            onChange={handleChangeFilter}
-            variant="outlined"
-            margin="dense"
-          />
-          <TextField
-            className={classNames(
-              "col-span-12 sm:col-span-6 xl:col-span-2 py-1",
-              classes.root
-            )}
-            id="ename"
-            name="ename"
-            label="Employee Name"
-            value={filters.ename}
-            onChange={handleChangeFilter}
-            variant="outlined"
-            margin="dense"
-          />
-          <FormControl
-            variant="outlined"
-            margin="dense"
-            className={classNames(
-              "col-span-12 sm:col-span-6 xl:col-span-2",
-              classes.root
-            )}
-          >
-            <InputLabel id="status-label" className="w-52 ">
-              Status
-            </InputLabel>
-            <Select
-              labelId="status-label"
-              id="status"
-              name="status"
-              value={filters.status}
-              onChange={handleChangeFilter}
-              label="Status"
-              IconComponent={(props) => (
-                <span>
-                  <ArrowDropDownRoundedIcon
-                    {...props}
-                    sx={{
-                      fontSize: 40,
-                      // backgroundColor: "#CBCBCB",
-                      borderRadius: 2,
-                    }}
-                  />
-                </span>
-              )}
-            >
-              <GlobalStyles />
-              <MenuItem value="">All</MenuItem>
-              {statuses.map((statuse) => (
-                <MenuItem key={statuse} value={statuse.toLowerCase()}>
-                  {statuse}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl
-            variant="outlined"
-            margin="dense"
-            className={classNames(
-              "col-span-12 sm:col-span-6 xl:col-span-2",
-              classes.root
-            )}
-          >
-            <InputLabel id="designation-label" className="w-52">
-              Designation
-            </InputLabel>
-            <Select
-              labelId="designation-label"
-              id="designation"
-              name="designation"
-              value={filters.designation}
-              onChange={handleChangeFilter}
-              label="Designation"
-              IconComponent={(props) => (
-                <span>
-                  <ArrowDropDownRoundedIcon
-                    {...props}
-                    sx={{
-                      fontSize: 40,
-                      // backgroundColor: "#CBCBCB",
-                      borderRadius: 2,
-                    }}
-                  />
-                </span>
-              )}
-            >
-              <GlobalStyles />
-              <MenuItem value="">All</MenuItem>
-              {designations.map((designation) => (
-                <MenuItem
-                  key={designation}
-                  value={designation.toLowerCase()}
-                  className="bg-sky-50 "
-                >
-                  {designation}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <div className="col-span-12 md:col-span-4 flex items-center justify-between ">
-            <button
-              className="bg-sky-50 md:mt-1 px-4 rounded-md w-fit"
-              onClick={handleClearFilters}
-            >
-              <FaFilterCircleXmark
-                variant="outlined"
-                className="h-11 cursor-pointer text-xl"
-              />
-            </button>
-            <TablePagination
-              rowsPerPageOptions={[10, 25, 100]}
-              component="div"
-              count={filteredRows.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-              style={{ paddingRight: "5px" }}
-              className="scrollbar-hide"
-            />
-          </div>
-        </div>
-        <TableContainer
-          sx={{ maxHeight: 530 }}
-          className="m-2 pr-4 scrollbar-hide"
+        <Paper
+          sx={{ overflow: "hidden" }}
+          className="md:w-[100%] w-[calc(100vw-0.8rem)] h-[90%] top-24"
         >
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead className="">
-              <TableRow>
-                {columns.map((column) => (
-                  <TableCell
-                    key={column.id}
-                    align="left"
-                    style={{
-                      minWidth: column.minWidth,
-                      backgroundColor: "#f0f9ff",
-                      fontWeight: "Bold",
-                      fontFamily: "Euclid",
-                    }}
+          <div className="m-2 gap-2 flex-col items-center grid grid-cols-12 ">
+            <TextField
+              className={classNames(
+                "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                classes.root
+              )}
+              id="empid"
+              name="empid"
+              label="Employee ID"
+              value={filters.empid}
+              onChange={handleChangeFilter}
+              variant="outlined"
+              margin="dense"
+            />
+            <TextField
+              className={classNames(
+                "col-span-12 sm:col-span-6 xl:col-span-2 py-1",
+                classes.root
+              )}
+              id="ename"
+              name="ename"
+              label="Employee Name"
+              value={filters.ename}
+              onChange={handleChangeFilter}
+              variant="outlined"
+              margin="dense"
+            />
+            <FormControl
+              variant="outlined"
+              margin="dense"
+              className={classNames(
+                "col-span-12 sm:col-span-6 xl:col-span-2",
+                classes.root
+              )}
+            >
+              <InputLabel id="status-label" className="w-52 ">
+                Status
+              </InputLabel>
+              <Select
+                labelId="status-label"
+                id="status"
+                name="status"
+                value={filters.status}
+                onChange={handleChangeFilter}
+                label="Status"
+                IconComponent={(props) => (
+                  <span>
+                    <ArrowDropDownRoundedIcon
+                      {...props}
+                      sx={{
+                        fontSize: 40,
+                        // backgroundColor: "#CBCBCB",
+                        borderRadius: 2,
+                      }}
+                    />
+                  </span>
+                )}
+              >
+                <GlobalStyles />
+                <MenuItem value="">All</MenuItem>
+                {statuses.map((statuse) => (
+                  <MenuItem key={statuse} value={statuse.toLowerCase()}>
+                    {statuse}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl
+              variant="outlined"
+              margin="dense"
+              className={classNames(
+                "col-span-12 sm:col-span-6 xl:col-span-2",
+                classes.root
+              )}
+            >
+              <InputLabel id="designation-label" className="w-52">
+                Designation
+              </InputLabel>
+              <Select
+                labelId="designation-label"
+                id="designation"
+                name="designation"
+                value={filters.designation}
+                onChange={handleChangeFilter}
+                label="Designation"
+                IconComponent={(props) => (
+                  <span>
+                    <ArrowDropDownRoundedIcon
+                      {...props}
+                      sx={{
+                        fontSize: 40,
+                        // backgroundColor: "#CBCBCB",
+                        borderRadius: 2,
+                      }}
+                    />
+                  </span>
+                )}
+              >
+                <GlobalStyles />
+                <MenuItem value="">All</MenuItem>
+                {designations.map((designation) => (
+                  <MenuItem
+                    key={designation}
+                    value={designation.toLowerCase()}
+                    className="bg-sky-50 "
                   >
-                    {column.label}
-                  </TableCell>
+                    {designation}
+                  </MenuItem>
                 ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {filteredRows
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row) => (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.empid}>
-                    {columns.map((column) => (
-                      <TableCell key={column.id} align="left">
-                        {column.id !== "actions" ? (
-                          row[column.id]
-                        ) : (
-                          <div className="flex items-center gap-2">
-                            <Link
-                              className="hover:bg-[#dbd6fc] rounded-md p-2"
-                              to={{
-                                pathname: `/pim/edit/${
-                                  row.empid
-                                }/${encodeURIComponent(
-                                  row.ename
-                                )}/${encodeURIComponent(
-                                  row.designation
-                                )}/${encodeURIComponent(
-                                  row.jdate
-                                )}/${encodeURIComponent(row.status)}`,
-                              }}
-                            >
-                              <FaUserEdit className="text-xl" />
-                            </Link>
-                            {" | "}
-                            <Link
-                              className="hover:bg-[#dbd6fc] rounded-md p-2"
-                              to={{
-                                pathname: `/pim/view/${
-                                  row.empid
-                                }/${encodeURIComponent(
-                                  row.ename
-                                )}/${encodeURIComponent(
-                                  row.designation
-                                )}/${encodeURIComponent(
-                                  row.jdate
-                                )}/${encodeURIComponent(row.status)}`,
-                              }}
-                            >
-                              <IoEye className="text-xl" />
-                            </Link>
-                          </div>
-                        )}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
+              </Select>
+            </FormControl>
+
+            <div className="col-span-12 md:col-span-4 flex items-center justify-between ">
+              <button
+                className="bg-sky-50 md:mt-1 px-4 rounded-md w-fit"
+                onClick={handleClearFilters}
+              >
+                <FaFilterCircleXmark
+                  variant="outlined"
+                  className="h-11 cursor-pointer text-xl"
+                />
+              </button>
+              <TablePagination
+                rowsPerPageOptions={[10, 25, 100]}
+                component="div"
+                count={filteredRows.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+                style={{ paddingRight: "5px" }}
+                className="scrollbar-hide"
+              />
+            </div>
+          </div>
+          <TableContainer
+            sx={{ maxHeight: 530 }}
+            className="m-2 pr-4 scrollbar-hide"
+          >
+            <Table stickyHeader aria-label="sticky table">
+              <TableHead className="">
+                <TableRow>
+                  {columns.map((column) => (
+                    <TableCell
+                      key={column.id}
+                      align="left"
+                      style={{
+                        minWidth: column.minWidth,
+                        backgroundColor: "#f0f9ff",
+                        fontWeight: "Bold",
+                        fontFamily: "Euclid",
+                      }}
+                    >
+                      {column.label}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {filteredRows
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row) => (
+                    <TableRow
+                      hover
+                      role="checkbox"
+                      tabIndex={-1}
+                      key={row.empid}
+                    >
+                      {columns.map((column) => (
+                        <TableCell key={column.id} align="left">
+                          {column.id !== "actions" ? (
+                            row[column.id]
+                          ) : (
+                            <div className="flex items-center gap-2">
+                              <Link
+                                className="hover:bg-[#dbd6fc] rounded-md p-2"
+                                to={{
+                                  pathname: `/pim/edit/${
+                                    row.empid
+                                  }/${encodeURIComponent(
+                                    row.ename
+                                  )}/${encodeURIComponent(
+                                    row.designation
+                                  )}/${encodeURIComponent(
+                                    row.jdate
+                                  )}/${encodeURIComponent(row.status)}`,
+                                }}
+                              >
+                                <FaUserEdit className="text-xl" />
+                              </Link>
+                              {" | "}
+                              <Link
+                                className="hover:bg-[#dbd6fc] rounded-md p-2"
+                                to={{
+                                  pathname: `/pim/view/${
+                                    row.empid
+                                  }/${encodeURIComponent(
+                                    row.ename
+                                  )}/${encodeURIComponent(
+                                    row.designation
+                                  )}/${encodeURIComponent(
+                                    row.jdate
+                                  )}/${encodeURIComponent(row.status)}`,
+                                }}
+                              >
+                                <IoEye className="text-xl" />
+                              </Link>
+                            </div>
+                          )}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
+      </motion.div>
     </div>
   );
 }

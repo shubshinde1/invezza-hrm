@@ -126,9 +126,9 @@ export function PersonalInformation({ onNext }) {
         <h4 className="font-bold">Personal Information</h4>
         <motion.div
           className="mt-2"
-          animate={{ y: 0 }}
-          initial={{ y: -20 }}
-          transition={{ type: "spring", bounce: 0.7 }}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
         >
           <div className="flex items-center md:items-center mt-4 gap-4">
             <div>
@@ -329,9 +329,9 @@ export function EmploymentInformation({ onPrev, onNext }) {
       <h4 className="font-bold">Employment Information</h4>
       <motion.div
         className="mt-2"
-        animate={{ y: 0 }}
-        initial={{ y: -20 }}
-        transition={{ type: "spring", bounce: 0.7 }}
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
         <div className="flex gap-5 flex-wrap sm:flex-nowrap">
           <div className="w-full lg:w-1/3 flex flex-col">
@@ -539,9 +539,9 @@ export function ContactInformation({ onPrev, onNext }) {
         <h4 className="font-bold">Contact Information</h4>
         <motion.div
           className="mt-2"
-          animate={{ y: 0 }}
-          initial={{ y: -20 }}
-          transition={{ type: "spring", bounce: 0.7 }}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
           <div className="flex gap-5 flex-wrap sm:flex-nowrap">
             <div className="w-full lg:w-1/3 flex flex-col">
@@ -829,9 +829,9 @@ export function EmergencyContacts({ onPrev, onNext }) {
         <h4 className="font-bold">Emergency Contacts</h4>
         <motion.div
           className="mt-2"
-          animate={{ y: 0 }}
-          initial={{ y: -20 }}
-          transition={{ type: "spring", bounce: 0.7 }}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
           <div className="flex gap-5 flex-wrap sm:flex-nowrap">
             <div className="w-full lg:w-1/3 flex flex-col">
@@ -1076,9 +1076,9 @@ export function WorkExperience({ onPrev }) {
             <motion.div
               key={index}
               className="mb-5"
-              animate={{ y: 0 }}
-              initial={{ y: -20 }}
-              transition={{ type: "spring", bounce: 0.7 }}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
             >
               {index !== 0 && <hr className="mb-5" />}
               <div className="flex items-center justify-between">
