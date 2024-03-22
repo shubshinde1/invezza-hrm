@@ -134,7 +134,7 @@ export default function ClientCard({ clients }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <Card className={classes.card}>
+                <Card className={`${classes.card}`}>
                   <CardContent className="flex flex-col gap-4 hover:shadow-xl group ">
                     <div className="flex items-center gap-4 group-hover:bg-sky-50 py-2 group-hover:px-2 duration-300 group-hover:rounded-md">
                       <img src={clientAvatar} width={50} />
@@ -169,6 +169,13 @@ export default function ClientCard({ clients }) {
                       <div className="flex ">
                         <label className="w-20">Projects -</label>
                         <p>{client.projects.length}</p>
+                      </div>
+                      <div className="flex">
+                        <label className="w-20">Project -</label>
+                        <p>
+                          {client.projects.length > 0 &&
+                            client.projects[0].projectname}
+                        </p>
                       </div>
                     </div>
                   </CardContent>

@@ -199,7 +199,7 @@
         "projects": [
             {
                 "projectid": 111,
-                "projectname": "E-commerce Website Development",
+                "projectname": "E-commerce Website",
                 "receiveddate": "2024-01-25",
                 "deadline": "2024-07-31",
                 "remark": "Integrate secure payment gateway",
