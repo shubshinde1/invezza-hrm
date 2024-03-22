@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import clientsData from "./MasterClientsProjects.json";
 import { makeStyles } from "@mui/styles";
 import {
-  Button,
   Table,
   TableBody,
   TableCell,
@@ -10,13 +9,13 @@ import {
   TableHead,
   TableRow,
   Paper,
-  IconButton,
   InputBase,
 } from "@mui/material";
 import { Card, CardContent, Typography, Grid, Box } from "@mui/material";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaThList, FaSearch } from "react-icons/fa";
-import Tooltip from "@mui/material/Tooltip";
+import clientAvatar from "../../assets/images/clientAvatar.png";
+import { motion } from "framer-motion";
 
 const useStyles = makeStyles({
   root: {
@@ -34,24 +33,23 @@ const useStyles = makeStyles({
     fontWeight: "bold",
   },
   listViewContainer: {
-    textAlign: "right", // Align the List View to the right
+    textAlign: "right",
   },
   searchContainer: {
-    // marginBottom: 10,
-    // backgroundColor: "red",
     borderRadius: 7,
     display: "flex",
     alignItems: "center",
-    // padding: 5,
   },
   searchInput: {
     marginLeft: 7,
     padding: 2,
-    // flex: 1,
   },
-  //   searchIcon: {
-  //     marginRight: 10,
-  //   },
+  title: {
+    fontWeight: "bold",
+  },
+  fullScreenGrid: {
+    marginBottom: 80,
+  },
 });
 
 export default function ClientCard({ clients }) {
@@ -120,47 +118,62 @@ export default function ClientCard({ clients }) {
             className="mr-2 bg-sky-100 p-2 rounded-md cursor-pointer"
           >
             {viewMode === "grid" ? (
-              <Tooltip title="List" placement="left" arrow>
-                <FaThList fontSize={17} color="black" />
-              </Tooltip>
+              <FaThList fontSize={17} color="black" />
             ) : (
-              <Tooltip title="List" placement="left" arrow>
-                <BsFillGrid3X3GapFill fontSize={17} color="black" />
-              </Tooltip>
+              <BsFillGrid3X3GapFill fontSize={17} color="black" />
             )}
           </div>
         </div>
       </div>
       {viewMode === "grid" ? (
-        <Grid container spacing={1} className={classes.fullScreenGrid}>
+        <Grid container spacing={1} className={`${classes.fullScreenGrid} `}>
           {filteredData.map((client) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={client.clientid}>
-              <Card className={classes.card}>
-                <CardContent>
-                  <Typography
-                    className={classes.title}
-                    color="textSecondary"
-                    gutterBottom
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Card className={classes.card}>
+                  <CardContent className="flex flex-col gap-4 hover:shadow-xl group ">
+                    <div className="flex items-center gap-4 group-hover:bg-sky-50 py-2 group-hover:px-2 duration-300 group-hover:rounded-md">
+                      <img src={clientAvatar} width={50} />
+                      <div className={classes.pos}>
+                        <h4 className="font-bold">{client.businessname}</h4>
+                        <h4 className="text-xs">{client.clientname}</h4>
+                      </div>
+                    </div>
+                    <hr className="w-full h-[1px] bg-gray-300" />
+                    {/* <h1
+                    className={`${classes.title} w-fit bg-sky-100 py-1 px-2 rounded-md text-xs`}
                   >
                     Client ID: {client.clientid}
-                  </Typography>
-                  <Typography variant="h5" component="h2">
-                    Client Name: {client.clientname}
-                  </Typography>
-                  <Typography className={classes.pos} color="textSecondary">
-                    Business Name: {client.businessname}
-                  </Typography>
-                  <Typography variant="body2" component="p">
-                    Phone: {client.phone}
-                    <br />
-                    Email: {client.email}
-                    <br />
-                    GSTN: {client.gstn}
-                    <br />
-                    Projects: {client.projects.length}
-                  </Typography>
-                </CardContent>
-              </Card>
+                  </h1> */}
+                    <div className="flex flex-col gap-2 text-[.85rem]">
+                      <div className="flex ">
+                        <label className="w-20">Client ID -</label>
+                        <p>{client.clientid}</p>
+                      </div>
+                      <div className="flex ">
+                        <label className="w-20">Phone -</label>
+                        <p>{client.phone}</p>
+                      </div>
+                      <div className="flex ">
+                        <label className="w-20">Email -</label>
+                        <p>{client.email}</p>
+                      </div>
+                      <div className="flex ">
+                        <label className="w-20">GSTN -</label>
+                        <p>{client.gstn}</p>
+                      </div>
+                      <div className="flex ">
+                        <label className="w-20">Projects -</label>
+                        <p>{client.projects.length}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </Grid>
           ))}
         </Grid>
