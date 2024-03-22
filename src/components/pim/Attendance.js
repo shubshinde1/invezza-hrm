@@ -25,8 +25,6 @@ import { createGlobalStyle } from "styled-components";
 import classNames from "classnames";
 import { motion } from "framer-motion";
 
-import Tooltip from "@mui/material/Tooltip";
-
 const useStyles = makeStyles({
   root: {
     "& .MuiInputLabel-root": {
@@ -102,198 +100,75 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const columns = [
-  { id: "empid", label: "Employee ID", minWidth: 120 },
-  { id: "ename", label: "Employee Name", minWidth: 120 },
-  { id: "designation", label: "Designation", minWidth: 120 },
-  { id: "jdate", label: "Joining Date", minWidth: 120 },
-  { id: "status", label: "Status", minWidth: 120 },
-  { id: "mark", label: "Mark" },
-  { id: "actions", label: "Actions", minWidth: 80 },
+  { id: "from", label: "From", minWidth: 120 },
+  { id: "to", label: "To", minWidth: 120 },
+  { id: "reason", label: "Reason", minWidth: 120 },
+  { id: "noofleaves", label: "No Of Leaves", minWidth: 120 },
 ];
 
-function createData(empid, ename, designation, mark, jdate, status) {
-  return { empid, ename, designation, mark, jdate, status };
+function createData(from, to, reason, noofleaves) {
+  return { from, to, reason, noofleaves };
+}
+
+// Function to calculate the number of days between two dates
+function calculateDaysBetweenDates(fromDate, toDate) {
+  const from = new Date(fromDate);
+  const to = new Date(toDate);
+  const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+  return Math.round(Math.abs((from - to) / oneDay)) + 1; // Adding 1 to include both start and end dates
 }
 
 const rows = [
   {
-    empid: "EMP001",
-    ename: "John Doe",
-    designation: "Software Engineer",
-    jdate: "01/01/2022",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
+    from: "05/15/2021",
+    to: "05/16/2021",
+    reason: "Vacation",
+    noofleaves: calculateDaysBetweenDates("05/15/2021", "05/15/2021"), // 1 day
   },
   {
-    empid: "EMP002",
-    ename: "Jane Smith",
-    designation: "Project Manager",
-    jdate: "05/15/2021",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
+    from: "06/01/2021",
+    to: "06/02/2021",
+    reason: "Sick Leave",
+    noofleaves: calculateDaysBetweenDates("06/01/2021", "06/02/2021"), // 3 days
   },
   {
-    empid: "EMP003",
-    ename: "Alice Johnson",
-    designation: "Data Analyst",
-    jdate: "03/20/2023",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
+    from: "07/10/2021",
+    to: "07/11/2021",
+    reason: "Family Emergency",
+    noofleaves: calculateDaysBetweenDates("07/10/2021", "07/11/2021"), // 3 days
   },
   {
-    empid: "EMP004",
-    ename: "Michael Brown",
-    designation: "Software Developer",
-    jdate: "11/10/2021",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
+    from: "08/05/2021",
+    to: "08/05/2021",
+    reason: "Personal Time",
+    noofleaves: calculateDaysBetweenDates("08/05/2021", "08/05/2021"), // 2 days
   },
   {
-    empid: "EMP005",
-    ename: "Emma Garcia",
-    designation: "Business Analyst",
-    jdate: "07/08/2022",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP006",
-    ename: "William Martinez",
-    designation: "Quality Assurance",
-    jdate: "09/25/2023",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP007",
-    ename: "Olivia Anderson",
-    designation: "UI/UX Designer",
-    jdate: "04/05/2021",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP008",
-    ename: "James Wilson",
-    designation: "System Administrator",
-    jdate: "02/14/2022",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP009",
-    ename: "Ella Taylor",
-    designation: "Network Engineer",
-    jdate: "06/30/2023",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP010",
-    ename: "Noah Thomas",
-    designation: "Database Administrator",
-    jdate: "08/17/2021",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP011",
-    ename: "Isabella Hernandez",
-    designation: "Cybersecurity Analyst",
-    jdate: "10/29/2022",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP012",
-    ename: "Liam Lopez",
-    designation: "DevOps Engineer",
-    jdate: "12/12/2023",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP013",
-    ename: "Sophia Scott",
-    designation: "Software Tester",
-    jdate: "03/18/2021",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP014",
-    ename: "Mason Green",
-    designation: "Product Owner",
-    jdate: "07/22/2022",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP015",
-    ename: "Ava Adams",
-    designation: "Scrum Master",
-    jdate: "11/05/2023",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP016",
-    ename: "Harper Baker",
-    designation: "Technical Writer",
-    jdate: "05/14/2021",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP017",
-    ename: "Evelyn Rivera",
-    designation: "Business Intelligence Analyst",
-    jdate: "01/29/2022",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP018",
-    ename: "Alexander Reed",
-    designation: "Frontend Developer",
-    jdate: "09/10/2023",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP019",
-    ename: "Charlotte Perez",
-    designation: "Backend Developer",
-    jdate: "06/07/2021",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP020",
-    ename: "Ryan Roberts",
-    designation: "Full Stack Developer",
-    jdate: "04/02/2022",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
+    from: "09/01/2021",
+    to: "09/01/211",
+    reason: "Workshop",
+    noofleaves: calculateDaysBetweenDates("09/01/2021", "09/1/2021"), // 2 days
   },
 ];
 
-export default function StickyHeadTable({
-  empid,
-  ename,
-  designation,
-  jdate,
-  status,
-}) {
+export default function Attendance({ from, to, reason, noofleaves }) {
   const classes = useStyles();
+
+  console.log(noofleaves);
+
+  const totalLeaves = rows.reduce((total, row) => total + row.noofleaves, 0);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [filters, setFilters] = React.useState({
-    empid: "",
-    ename: "",
-    status: "",
-    designation: "",
+    // empid: "",
+    // ename: "",
+    // status: "",
+    // designation: "",
+    from: "",
+    to: "",
+    reason: "",
+    noofleaves: "",
   });
 
   const handleChangeFilter = (event) => {
@@ -306,15 +181,15 @@ export default function StickyHeadTable({
 
   const handleClearFilters = () => {
     setFilters({
-      empid: "",
-      ename: "",
-      status: "",
-      designation: "",
+      from: "",
+      to: "",
+      reason: "",
+      noofleaves: "",
     });
   };
 
-  const designations = Array.from(new Set(rows.map((row) => row.designation)));
-  const statuses = Array.from(new Set(rows.map((row) => row.status)));
+  // const designations = Array.from(new Set(rows.map((row) => row.designation)));
+  // const statuses = Array.from(new Set(rows.map((row) => row.status)));
 
   const filteredRows = React.useMemo(() => {
     return rows.filter((row) => {
@@ -343,13 +218,14 @@ export default function StickyHeadTable({
     setPage(0);
   };
 
-  const handlePreview = (empid, ename, designation, jdate, status) => {
-    console.log("Row Data:", { empid, ename, designation, jdate, status });
+  const handlePreview = (from, to, reason, noofleaves) => {
+    console.log("Row Data:", { from, to, reason, noofleaves });
   };
+
+  console.log(rows.noofleaves);
 
   return (
     <div>
-      <Menutabs />
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
@@ -365,10 +241,10 @@ export default function StickyHeadTable({
                 "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
                 classes.root
               )}
-              id="empid"
-              name="empid"
-              label="Employee ID"
-              value={filters.empid}
+              id="from"
+              name="from"
+              label="From Date"
+              value={filters.from}
               onChange={handleChangeFilter}
               variant="outlined"
               margin="dense"
@@ -378,15 +254,15 @@ export default function StickyHeadTable({
                 "col-span-12 sm:col-span-6 xl:col-span-2 py-1",
                 classes.root
               )}
-              id="ename"
-              name="ename"
-              label="Employee Name"
-              value={filters.ename}
+              id="to"
+              name="to"
+              label="To Date"
+              value={filters.to}
               onChange={handleChangeFilter}
               variant="outlined"
               margin="dense"
             />
-            <FormControl
+            {/* <FormControl
               variant="outlined"
               margin="dense"
               className={classNames(
@@ -419,14 +295,10 @@ export default function StickyHeadTable({
               >
                 <GlobalStyles />
                 <MenuItem value="">All</MenuItem>
-                {statuses.map((statuse) => (
-                  <MenuItem key={statuse} value={statuse.toLowerCase()}>
-                    {statuse}
-                  </MenuItem>
-                ))}
+                <MenuItem></MenuItem>
               </Select>
-            </FormControl>
-            <FormControl
+            </FormControl> */}
+            {/* <FormControl
               variant="outlined"
               margin="dense"
               className={classNames(
@@ -459,17 +331,9 @@ export default function StickyHeadTable({
               >
                 <GlobalStyles />
                 <MenuItem value="">All</MenuItem>
-                {designations.map((designation) => (
-                  <MenuItem
-                    key={designation}
-                    value={designation.toLowerCase()}
-                    className="bg-sky-50 "
-                  >
-                    {designation}
-                  </MenuItem>
-                ))}
+                <MenuItem></MenuItem>
               </Select>
-            </FormControl>
+            </FormControl> */}
 
             <div className="col-span-12 md:col-span-4 flex items-center justify-between ">
               <button
@@ -525,76 +389,14 @@ export default function StickyHeadTable({
                       hover
                       role="checkbox"
                       tabIndex={-1}
-                      key={row.empid}
+                      key={row.from}
                     >
                       {columns.map((column) => (
                         <TableCell key={column.id} align="left">
                           {column.id !== "actions" ? (
-                            column.id === "mark" ? (
-                              <Tooltip
-                                title={row.mark ? "Present" : "Absent"}
-                                placement="top"
-                                arrow
-                              >
-                                <div
-                                  className={`rounded-full px-1.5 py-0.5 w-fit flex justify-center text-white text-[.7rem] euclid-bold font-bold cursor-pointer ${
-                                    row.mark ? "bg-green-500" : "bg-red-500"
-                                  }`}
-                                >
-                                  {row.mark ? "P" : "A"}
-                                </div>
-                              </Tooltip>
-                            ) : (
-                              row[column.id]
-                            )
+                            row[column.id]
                           ) : (
-                            <div className="flex items-center gap-2">
-                              <Tooltip
-                                title={"Edit " + row.ename}
-                                placement="top"
-                                arrow
-                              >
-                                <Link
-                                  className="hover:bg-[#dbd6fc] rounded-md p-2"
-                                  to={{
-                                    pathname: `/pim/edit/${
-                                      row.empid
-                                    }/${encodeURIComponent(
-                                      row.ename
-                                    )}/${encodeURIComponent(
-                                      row.designation
-                                    )}/${encodeURIComponent(
-                                      row.jdate
-                                    )}/${encodeURIComponent(row.status)}`,
-                                  }}
-                                >
-                                  <FaUserEdit className="text-xl" />
-                                </Link>
-                              </Tooltip>
-                              {" | "}
-                              <Tooltip
-                                title={"View " + row.ename}
-                                placement="top"
-                                arrow
-                              >
-                                <Link
-                                  className="hover:bg-[#dbd6fc] rounded-md p-2"
-                                  to={{
-                                    pathname: `/pim/view/${
-                                      row.empid
-                                    }/${encodeURIComponent(
-                                      row.ename
-                                    )}/${encodeURIComponent(
-                                      row.designation
-                                    )}/${encodeURIComponent(
-                                      row.jdate
-                                    )}/${encodeURIComponent(row.status)}`,
-                                  }}
-                                >
-                                  <IoEye className="text-xl" />
-                                </Link>
-                              </Tooltip>
-                            </div>
+                            <div className="flex items-center gap-2"></div>
                           )}
                         </TableCell>
                       ))}
@@ -602,6 +404,10 @@ export default function StickyHeadTable({
                   ))}
               </TableBody>
             </Table>
+            <div className="px-2 py-4 font-bold bg-sky-50 flex">
+              <h2 className=" w-4/6">Total Leaves Of Month</h2>
+              <h5 className="ml-36">{totalLeaves}</h5>
+            </div>
           </TableContainer>
         </Paper>
       </motion.div>

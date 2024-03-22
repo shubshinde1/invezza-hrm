@@ -5,6 +5,8 @@ import { FaClipboardUser } from "react-icons/fa6";
 import { SiTask } from "react-icons/si";
 import { RiShieldUserFill } from "react-icons/ri";
 import { BsPeopleFill } from "react-icons/bs";
+import { RiServiceFill } from "react-icons/ri";
+import { HiMiniCodeBracketSquare } from "react-icons/hi2";
 
 export const DASHBOARD_SIDEBAR_LINKS = [
   {
@@ -32,6 +34,18 @@ export const DASHBOARD_SIDEBAR_LINKS = [
         icon: <IoPersonAdd />,
       },
     ],
+  },
+  {
+    key: "clients",
+    label: "Clients",
+    path: "/clients",
+    icon: <RiServiceFill />,
+  },
+  {
+    key: "projects",
+    label: "Projects",
+    path: "/projects",
+    icon: <HiMiniCodeBracketSquare />,
   },
   {
     key: "leave",

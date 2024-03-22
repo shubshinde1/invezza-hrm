@@ -27,7 +27,6 @@ import Checkbox from "@mui/joy/Checkbox";
 
 import { FaFileArrowUp } from "react-icons/fa6";
 
-
 const GlobalStyles = createGlobalStyle`
 .MuiPaper-root{
   height:215px;
@@ -1339,9 +1338,6 @@ export function WorkExperience({ onPrev, onNext }) {
 
 export function Documents({ onPrev }) {
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
-  const [workExperiences, setWorkExperiences] = useState([
-    { name: "Experience 1" },
-  ]);
   const Navigate = useNavigate();
   // let autoCloseTimer;
   const classes = useStyles();
@@ -1397,265 +1393,257 @@ export function Documents({ onPrev }) {
           <h4 className="font-bold">Documents</h4>
         </div>
         <div className="mt-2 ">
-          {workExperiences.map((workExp, index) => (
-            <motion.div
-              key={index}
-              className="mb-5"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              {/* {index !== 0 && <hr className="mb-5" />}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <h1>Experience {index + 1}</h1>
-                </div>
-              </div> */}
-              <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-3">
-                <div className="w-full lg:w-1/3 flex flex-col">
-                  <div>
-                    <input
-                      type="file"
-                      id="adharcard"
-                      name="adharcard"
-                      accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
-                      onChange={handleFileChange}
-                      style={{ display: "none" }} // Hide the file input
-                    />
-                    <TextField
-                      id="adharcard-label"
-                      label="Adhar Card"
-                      variant="outlined"
-                      margin="dense"
-                      type="text" // Change type to text for styling purposes
-                      className={classNames(
-                        "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
-                        classes.root
-                      )}
-                      InputLabelProps={{
-                        shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
-                      }}
-                      InputProps={{
-                        endAdornment: (
-                          <label
-                            htmlFor="adharcard"
-                            className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
-                          >
-                            <FaFileArrowUp className="text-gray-500" />
-                          </label>
-                        ),
-                        value: selectedFileName, // Display only the selected file name
-                        readOnly: true, // Make the field read-only
-                        style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
-                      }}
-                    />
-                  </div>
-                </div>
-
-                <div className="w-full lg:w-1/3 flex flex-col">
-                  <div>
-                    <input
-                      type="file"
-                      id="pancard"
-                      name="pancard"
-                      accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
-                      onChange={handleFileChange}
-                      style={{ display: "none" }} // Hide the file input
-                    />
-                    <TextField
-                      id="pancard-label"
-                      label="Pan Card"
-                      variant="outlined"
-                      margin="dense"
-                      type="text" // Change type to text for styling purposes
-                      className={classNames(
-                        "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
-                        classes.root
-                      )}
-                      InputLabelProps={{
-                        shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
-                      }}
-                      InputProps={{
-                        endAdornment: (
-                          <label
-                            htmlFor="adharcard"
-                            className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
-                          >
-                            <FaFileArrowUp className="text-gray-500" />
-                          </label>
-                        ),
-                        value: selectedFileName, // Display only the selected file name
-                        readOnly: true, // Make the field read-only
-                        style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
-                      }}
-                    />
-                  </div>
-                </div>
-
-                <div className="w-full lg:w-1/3 flex flex-col">
-                  <div>
-                    <input
-                      type="file"
-                      id="addressproof"
-                      name="addressproof"
-                      accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
-                      onChange={handleFileChange}
-                      style={{ display: "none" }} // Hide the file input
-                    />
-                    <TextField
-                      id="addressproof-label"
-                      label="Address Proof"
-                      variant="outlined"
-                      margin="dense"
-                      type="text" // Change type to text for styling purposes
-                      className={classNames(
-                        "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
-                        classes.root
-                      )}
-                      InputLabelProps={{
-                        shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
-                      }}
-                      InputProps={{
-                        endAdornment: (
-                          <label
-                            htmlFor="adharcard"
-                            className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
-                          >
-                            <FaFileArrowUp className="text-gray-500" />
-                          </label>
-                        ),
-                        value: selectedFileName, // Display only the selected file name
-                        readOnly: true, // Make the field read-only
-                        style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
-                      }}
-                    />
-                  </div>
+          <motion.div
+            className="mb-5"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-3">
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <div>
+                  <input
+                    type="file"
+                    id="adharcard"
+                    name="adharcard"
+                    accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
+                    onChange={handleFileChange}
+                    style={{ display: "none" }} // Hide the file input
+                  />
+                  <TextField
+                    id="adharcard"
+                    label="Adhar Card"
+                    variant="outlined"
+                    margin="dense"
+                    type="text" // Change type to text for styling purposes
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
+                      classes.root
+                    )}
+                    InputLabelProps={{
+                      shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
+                    }}
+                    InputProps={{
+                      endAdornment: (
+                        <label
+                          htmlFor="adharcard"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                        >
+                          <FaFileArrowUp className="text-gray-500" />
+                        </label>
+                      ),
+                      value: selectedFileName, // Display only the selected file name
+                      readOnly: true, // Make the field read-only
+                      style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
+                    }}
+                  />
                 </div>
               </div>
-              <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
-                <div className="w-full lg:w-1/3 flex flex-col">
-                  <div>
-                    <input
-                      type="file"
-                      id="electricitybil"
-                      name="electricitybil"
-                      accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
-                      onChange={handleFileChange}
-                      style={{ display: "none" }} // Hide the file input
-                    />
-                    <TextField
-                      id="electricitybil-label"
-                      label="Electricity Bil"
-                      variant="outlined"
-                      margin="dense"
-                      type="text" // Change type to text for styling purposes
-                      className={classNames(
-                        "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
-                        classes.root
-                      )}
-                      InputLabelProps={{
-                        shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
-                      }}
-                      InputProps={{
-                        endAdornment: (
-                          <label
-                            htmlFor="adharcard"
-                            className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
-                          >
-                            <FaFileArrowUp className="text-gray-500" />
-                          </label>
-                        ),
-                        value: selectedFileName, // Display only the selected file name
-                        readOnly: true, // Make the field read-only
-                        style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
-                      }}
-                    />
-                  </div>
-                </div>
 
-                <div className="w-full lg:w-1/3 flex flex-col">
-                  <div>
-                    <input
-                      type="file"
-                      id="offerlatter"
-                      name="offerlatter"
-                      accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
-                      onChange={handleFileChange}
-                      style={{ display: "none" }} // Hide the file input
-                    />
-                    <TextField
-                      id="offerlatter-label"
-                      label="Offer Latter"
-                      variant="outlined"
-                      margin="dense"
-                      type="text" // Change type to text for styling purposes
-                      className={classNames(
-                        "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
-                        classes.root
-                      )}
-                      InputLabelProps={{
-                        shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
-                      }}
-                      InputProps={{
-                        endAdornment: (
-                          <label
-                            htmlFor="adharcard"
-                            className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
-                          >
-                            <FaFileArrowUp className="text-gray-500" />
-                          </label>
-                        ),
-                        value: selectedFileName, // Display only the selected file name
-                        readOnly: true, // Make the field read-only
-                        style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
-                      }}
-                    />
-                  </div>
-                </div>
-
-                <div className="w-full lg:w-1/3 flex flex-col">
-                  <div>
-                    <input
-                      type="file"
-                      id="experiencelatter"
-                      name="experiencelatter"
-                      accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
-                      onChange={handleFileChange}
-                      style={{ display: "none" }} // Hide the file input
-                    />
-                    <TextField
-                      id="experiencelatter-label"
-                      label="Experience Latter"
-                      variant="outlined"
-                      margin="dense"
-                      type="text" // Change type to text for styling purposes
-                      className={classNames(
-                        "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
-                        classes.root
-                      )}
-                      InputLabelProps={{
-                        shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
-                      }}
-                      InputProps={{
-                        endAdornment: (
-                          <label
-                            htmlFor="adharcard"
-                            className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
-                          >
-                            <FaFileArrowUp className="text-gray-500" />
-                          </label>
-                        ),
-                        value: selectedFileName, // Display only the selected file name
-                        readOnly: true, // Make the field read-only
-                        style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
-                      }}
-                    />
-                  </div>
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <div>
+                  <input
+                    type="file"
+                    id="pancard"
+                    name="pancard"
+                    accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
+                    onChange={handleFileChange}
+                    style={{ display: "none" }} // Hide the file input
+                  />
+                  <TextField
+                    id="pancard"
+                    label="Pan Card"
+                    variant="outlined"
+                    margin="dense"
+                    type="text" // Change type to text for styling purposes
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
+                      classes.root
+                    )}
+                    InputLabelProps={{
+                      shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
+                    }}
+                    InputProps={{
+                      endAdornment: (
+                        <label
+                          htmlFor="pancard"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                        >
+                          <FaFileArrowUp className="text-gray-500" />
+                        </label>
+                      ),
+                      value: selectedFileName, // Display only the selected file name
+                      readOnly: true, // Make the field read-only
+                      style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
+                    }}
+                  />
                 </div>
               </div>
-              <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5 items-center">
-                <div className="w-full lg:w-1/3 flex flex-col">
-                  {/* <LocalizationProvider
+
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <div>
+                  <input
+                    type="file"
+                    id="addressproof"
+                    name="addressproof"
+                    accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
+                    onChange={handleFileChange}
+                    style={{ display: "none" }} // Hide the file input
+                  />
+                  <TextField
+                    id="addressproof"
+                    label="Address Proof"
+                    variant="outlined"
+                    margin="dense"
+                    type="text" // Change type to text for styling purposes
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
+                      classes.root
+                    )}
+                    InputLabelProps={{
+                      shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
+                    }}
+                    InputProps={{
+                      endAdornment: (
+                        <label
+                          htmlFor="addressproof"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                        >
+                          <FaFileArrowUp className="text-gray-500" />
+                        </label>
+                      ),
+                      value: selectedFileName, // Display only the selected file name
+                      readOnly: true, // Make the field read-only
+                      style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <div>
+                  <input
+                    type="file"
+                    id="electricitybil"
+                    name="electricitybil"
+                    accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
+                    onChange={handleFileChange}
+                    style={{ display: "none" }} // Hide the file input
+                  />
+                  <TextField
+                    id="electricitybil"
+                    label="Electricity Bil"
+                    variant="outlined"
+                    margin="dense"
+                    type="text" // Change type to text for styling purposes
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
+                      classes.root
+                    )}
+                    InputLabelProps={{
+                      shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
+                    }}
+                    InputProps={{
+                      endAdornment: (
+                        <label
+                          htmlFor="electricitybil"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                        >
+                          <FaFileArrowUp className="text-gray-500" />
+                        </label>
+                      ),
+                      value: selectedFileName, // Display only the selected file name
+                      readOnly: true, // Make the field read-only
+                      style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <div>
+                  <input
+                    type="file"
+                    id="offerlatter"
+                    name="offerlatter"
+                    accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
+                    onChange={handleFileChange}
+                    style={{ display: "none" }} // Hide the file input
+                  />
+                  <TextField
+                    id="offerlatter"
+                    label="Offer Latter"
+                    variant="outlined"
+                    margin="dense"
+                    type="text" // Change type to text for styling purposes
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
+                      classes.root
+                    )}
+                    InputLabelProps={{
+                      shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
+                    }}
+                    InputProps={{
+                      endAdornment: (
+                        <label
+                          htmlFor="offerlatter"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                        >
+                          <FaFileArrowUp className="text-gray-500" />
+                        </label>
+                      ),
+                      value: selectedFileName, // Display only the selected file name
+                      readOnly: true, // Make the field read-only
+                      style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <div>
+                  <input
+                    type="file"
+                    id="experiencelatter"
+                    name="experiencelatter"
+                    accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
+                    onChange={handleFileChange}
+                    style={{ display: "none" }} // Hide the file input
+                  />
+                  <TextField
+                    id="experiencelatter"
+                    label="Experience Latter"
+                    variant="outlined"
+                    margin="dense"
+                    type="text" // Change type to text for styling purposes
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
+                      classes.root
+                    )}
+                    InputLabelProps={{
+                      shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
+                    }}
+                    InputProps={{
+                      endAdornment: (
+                        <label
+                          htmlFor="experiencelatter"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                        >
+                          <FaFileArrowUp className="text-gray-500" />
+                        </label>
+                      ),
+                      value: selectedFileName, // Display only the selected file name
+                      readOnly: true, // Make the field read-only
+                      style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5 items-center">
+              <div className="w-full lg:w-1/3 flex flex-col">
+                {/* <LocalizationProvider
                     dateAdapter={AdapterDayjs}
                     className="w-full"
                   >
@@ -1669,137 +1657,126 @@ export function Documents({ onPrev }) {
                       />
                     </DemoContainer>
                   </LocalizationProvider> */}
-                  <div>
-                    <input
-                      type="file"
-                      id="payslip1"
-                      name="payslip1"
-                      accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
-                      onChange={handleFileChange}
-                      style={{ display: "none" }} // Hide the file input
-                    />
-                    <TextField
-                      id="payslip1-label"
-                      label="Pay slip 1"
-                      variant="outlined"
-                      margin="dense"
-                      type="text" // Change type to text for styling purposes
-                      className={classNames(
-                        "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
-                        classes.root
-                      )}
-                      InputLabelProps={{
-                        shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
-                      }}
-                      InputProps={{
-                        endAdornment: (
-                          <label
-                            htmlFor="adharcard"
-                            className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
-                          >
-                            <FaFileArrowUp className="text-gray-500" />
-                          </label>
-                        ),
-                        value: selectedFileName, // Display only the selected file name
-                        readOnly: true, // Make the field read-only
-                        style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
-                      }}
-                    />
-                  </div>
-                </div>
-
-                <div className="w-full lg:w-1/3 flex flex-col">
-                  <div>
-                    <input
-                      type="file"
-                      id="payslip2"
-                      name="payslip2"
-                      accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
-                      onChange={handleFileChange}
-                      style={{ display: "none" }} // Hide the file input
-                    />
-                    <TextField
-                      id="payslip2-label"
-                      label="Pay slip 2"
-                      variant="outlined"
-                      margin="dense"
-                      type="text" // Change type to text for styling purposes
-                      className={classNames(
-                        "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
-                        classes.root
-                      )}
-                      InputLabelProps={{
-                        shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
-                      }}
-                      InputProps={{
-                        endAdornment: (
-                          <label
-                            htmlFor="adharcard"
-                            className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
-                          >
-                            <FaFileArrowUp className="text-gray-500" />
-                          </label>
-                        ),
-                        value: selectedFileName, // Display only the selected file name
-                        readOnly: true, // Make the field read-only
-                        style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
-                      }}
-                    />
-                  </div>
-                </div>
-
-                <div className="w-full lg:w-1/3 flex flex-col">
-                  <div>
-                    <input
-                      type="file"
-                      id="payslip3"
-                      name="payslip3"
-                      accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
-                      onChange={handleFileChange}
-                      style={{ display: "none" }} // Hide the file input
-                    />
-                    <TextField
-                      id="payslip3-label"
-                      label="Pay slip 3"
-                      variant="outlined"
-                      margin="dense"
-                      type="text" // Change type to text for styling purposes
-                      className={classNames(
-                        "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
-                        classes.root
-                      )}
-                      InputLabelProps={{
-                        shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
-                      }}
-                      InputProps={{
-                        endAdornment: (
-                          <label
-                            htmlFor="adharcard"
-                            className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
-                          >
-                            <FaFileArrowUp className="text-gray-500" />
-                          </label>
-                        ),
-                        value: selectedFileName, // Display only the selected file name
-                        readOnly: true, // Make the field read-only
-                        style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
-                      }}
-                    />
-                  </div>
+                <div>
+                  <input
+                    type="file"
+                    id="payslip1"
+                    name="payslip1"
+                    accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
+                    onChange={handleFileChange}
+                    style={{ display: "none" }} // Hide the file input
+                  />
+                  <TextField
+                    id="payslip1"
+                    label="Pay slip 1"
+                    variant="outlined"
+                    margin="dense"
+                    type="text" // Change type to text for styling purposes
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
+                      classes.root
+                    )}
+                    InputLabelProps={{
+                      shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
+                    }}
+                    InputProps={{
+                      endAdornment: (
+                        <label
+                          htmlFor="payslip1"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                        >
+                          <FaFileArrowUp className="text-gray-500" />
+                        </label>
+                      ),
+                      value: selectedFileName, // Display only the selected file name
+                      readOnly: true, // Make the field read-only
+                      style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
+                    }}
+                  />
                 </div>
               </div>
-              {/* <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
-                <div className="w-full lg:w-2/3 flex flex-col">
-                  <textarea
-                    className="bg-[#f0f9ff] rounded-md focus:border-[1px] mt-2 p-3 pb-0 "
-                    placeholder="Description"
-                  ></textarea>
-                </div>
 
-                <div className="w-full lg:w-1/3 flex flex-col md:-mr-2"></div>
-              </div> */}
-            </motion.div>
-          ))}
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <div>
+                  <input
+                    type="file"
+                    id="payslip2"
+                    name="payslip2"
+                    accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
+                    onChange={handleFileChange}
+                    style={{ display: "none" }} // Hide the file input
+                  />
+                  <TextField
+                    id="payslip2"
+                    label="Pay slip 2"
+                    variant="outlined"
+                    margin="dense"
+                    type="text" // Change type to text for styling purposes
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
+                      classes.root
+                    )}
+                    InputLabelProps={{
+                      shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
+                    }}
+                    InputProps={{
+                      endAdornment: (
+                        <label
+                          htmlFor="payslip2"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                        >
+                          <FaFileArrowUp className="text-gray-500" />
+                        </label>
+                      ),
+                      value: selectedFileName, // Display only the selected file name
+                      readOnly: true, // Make the field read-only
+                      style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className="w-full lg:w-1/3 flex flex-col">
+                <div>
+                  <input
+                    type="file"
+                    id="payslip3"
+                    name="payslip3"
+                    accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
+                    onChange={handleFileChange}
+                    style={{ display: "none" }} // Hide the file input
+                  />
+                  <TextField
+                    id="payslip3"
+                    label="Pay slip 3"
+                    variant="outlined"
+                    margin="dense"
+                    type="text" // Change type to text for styling purposes
+                    className={classNames(
+                      "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
+                      classes.root
+                    )}
+                    InputLabelProps={{
+                      shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
+                    }}
+                    InputProps={{
+                      endAdornment: (
+                        <label
+                          htmlFor="payslip3"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                        >
+                          <FaFileArrowUp className="text-gray-500" />
+                        </label>
+                      ),
+                      value: selectedFileName, // Display only the selected file name
+                      readOnly: true, // Make the field read-only
+                      style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
       <div className="w-full flex justify-between md:absolute md:z-0 mt-8 md:bottom-36 md:right-10 md:w-7/12 lg:w-8/12">
