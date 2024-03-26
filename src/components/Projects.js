@@ -120,8 +120,8 @@ export default function Projects() {
   );
 
   return (
-    <div>
-      <div className="bg-white rounded-md  px-2 py-1 flex items-center justify-between">
+    <div className="w-[96vw] md:w-auto">
+      <div className="bg-white rounded-md  px-2 py-1 flex  items-center justify-between">
         <div className="">
           <SearchInput
             placeholder="Search by Project name, id"
@@ -129,7 +129,6 @@ export default function Projects() {
             onChange={handleSearchChange}
             className=" bg-sky-50 md:w-96"
           />
-          
         </div>
         <div className="">
           <TablePagination

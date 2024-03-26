@@ -153,7 +153,7 @@ export default function ClientCard({ clients }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <Card className={`${classes.card} cursor-pointer`}>
+                <Card className={`${classes.card} `}>
                   <CardContent className="flex flex-col gap-4 hover:shadow-xl group ">
                     <div className="flex  justify-between group-hover:bg-sky-50 py-2 group-hover:px-2 duration-300 group-hover:rounded-md">
                       <div className="flex items-center gap-4">
@@ -163,11 +163,14 @@ export default function ClientCard({ clients }) {
                           <h4 className="text-xs">{client.clientname}</h4>
                         </div>
                       </div>
-                      <div className="bg-sky-50 rounded-md hidden group-hover:flex group-hover:items-start">
+                      <Link
+                        to="/projects"
+                        className="bg-sky-50 rounded-md hidden group-hover:flex group-hover:items-start cursor-pointer"
+                      >
                         <div className="hover:bg-sky-100 rounded-md hidden group-hover:flex p-3">
                           <FaExternalLinkAlt className=" " />
                         </div>
-                      </div>
+                      </Link>
                     </div>
                     <hr className="w-full h-[1px] bg-gray-300" />
                     {/* <h1
@@ -241,7 +244,7 @@ export default function ClientCard({ clients }) {
           ))}
         </Grid>
       ) : (
-        <Box className={classes.listViewContainer}>
+        <Box className={`${classes.listViewContainer} w-[96vw] md:w-auto`}>
           <TableContainer component={Paper}>
             <Table>
               <TableHead className="bg-sky-50">
