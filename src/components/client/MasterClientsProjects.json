@@ -13,7 +13,8 @@
                 "receiveddate": "2024-03-22",
                 "deadline": "2024-06-30",
                 "remark": "High priority project",
-                "status": "In Progress",
+                "associate": "Shubham Shinde",
+                "status": "0",
                 "clientid": 1,
                 "businessname": "JD Corporation"
             },
@@ -23,7 +24,8 @@
                 "receiveddate": "2024-02-15",
                 "deadline": "2024-05-31",
                 "remark": "Requires frequent updates",
-                "status": "Pending",
+                "associate": "Shubham Shinde",
+                "status": "0",
                 "clientid": 1,
                 "businessname": "JD Corporation"
             }
@@ -43,7 +45,8 @@
                 "receiveddate": "2024-01-10",
                 "deadline": "2024-04-30",
                 "remark": "Target audience: millennials",
-                "status": "Completed",
+                "associate": "Shubham Shinde",
+                "status": "2",
                 "clientid": 2,
                 "businessname": "AS Enterprises"
             }
@@ -63,7 +66,8 @@
                 "receiveddate": "2024-02-28",
                 "deadline": "2024-07-15",
                 "remark": "Global launch event planned",
-                "status": "In Progress",
+                "associate": "Shubham Shinde",
+                "status": "0",
                 "clientid": 3,
                 "businessname": "EJ Enterprises"
             }
@@ -83,7 +87,8 @@
                 "receiveddate": "2024-03-05",
                 "deadline": "2024-04-30",
                 "remark": "Quarterly financial review",
-                "status": "Completed",
+                "associate": "Shubham Shinde",
+                "status": "2",
                 "clientid": 4,
                 "businessname": "MB Holdings"
             }
@@ -103,7 +108,8 @@
                 "receiveddate": "2024-01-20",
                 "deadline": "2024-06-15",
                 "remark": "Reduce lead times",
-                "status": "In Progress",
+                "associate": "Shubham Shinde",
+                "status": "1",
                 "clientid": 5,
                 "businessname": "SW Corporation"
             }
@@ -123,7 +129,8 @@
                 "receiveddate": "2024-02-10",
                 "deadline": "2024-05-30",
                 "remark": "Streamline employee data management",
-                "status": "In Progress",
+                "associate": "Shubham Shinde",
+                "status": "1",
                 "clientid": 6,
                 "businessname": "JT Enterprises"
             }
@@ -143,7 +150,8 @@
                 "receiveddate": "2024-01-15",
                 "deadline": "2024-03-31",
                 "remark": "Competitor analysis",
-                "status": "Completed",
+                "associate": "Shubham Shinde",
+                "status": "2",
                 "clientid": 7,
                 "businessname": "EM Consulting"
             }
@@ -163,7 +171,8 @@
                 "receiveddate": "2024-02-20",
                 "deadline": "2024-06-30",
                 "remark": "Track stock levels in real-time",
-                "status": "In Progress",
+                "associate": "Shubham Shinde",
+                "status": "1",
                 "clientid": 8,
                 "businessname": "LA Enterprises"
             }
@@ -183,7 +192,8 @@
                 "receiveddate": "2024-03-01",
                 "deadline": "2024-08-31",
                 "remark": "Increase brand engagement",
-                "status": "In Progress",
+                "associate": "Shubham Shinde",
+                "status": "1",
                 "clientid": 9,
                 "businessname": "OW Corporation"
             }
@@ -203,7 +213,113 @@
                 "receiveddate": "2024-01-25",
                 "deadline": "2024-07-31",
                 "remark": "Integrate secure payment gateway",
-                "status": "In Progress",
+                "associate": "Shubham Shinde",
+                "status": "1",
+                "clientid": 10,
+                "businessname": "WL Enterprises"
+            }
+        ]
+    },
+    {
+        "clientid": 10,
+        "clientname": "William Lee",
+        "businessname": "WL Enterprises",
+        "phone": "222-333-4444",
+        "email": "william.lee@example.com",
+        "gstn": "GSTN678901",
+        "projects": [
+            {
+                "projectid": 111,
+                "projectname": "E-commerce Website",
+                "receiveddate": "2024-01-25",
+                "deadline": "2024-07-31",
+                "remark": "Integrate secure payment gateway",
+                "associate": "Shubham Shinde",
+                "status": "1",
+                "clientid": 10,
+                "businessname": "WL Enterprises"
+            }
+        ]
+    },
+    {
+        "clientid": 10,
+        "clientname": "William Lee",
+        "businessname": "WL Enterprises",
+        "phone": "222-333-4444",
+        "email": "william.lee@example.com",
+        "gstn": "GSTN678901",
+        "projects": [
+            {
+                "projectid": 111,
+                "projectname": "E-commerce Website",
+                "receiveddate": "2024-01-25",
+                "deadline": "2024-07-31",
+                "remark": "Integrate secure payment gateway",
+                "associate": "Shubham Shinde",
+                "status": "1",
+                "clientid": 10,
+                "businessname": "WL Enterprises"
+            }
+        ]
+    },
+    {
+        "clientid": 10,
+        "clientname": "William Lee",
+        "businessname": "WL Enterprises",
+        "phone": "222-333-4444",
+        "email": "william.lee@example.com",
+        "gstn": "GSTN678901",
+        "projects": [
+            {
+                "projectid": 111,
+                "projectname": "E-commerce Website",
+                "receiveddate": "2024-01-25",
+                "deadline": "2024-07-31",
+                "remark": "Integrate secure payment gateway",
+                "associate": "Shubham Shinde",
+                "status": "1",
+                "clientid": 10,
+                "businessname": "WL Enterprises"
+            }
+        ]
+    },
+    {
+        "clientid": 10,
+        "clientname": "William Lee",
+        "businessname": "WL Enterprises",
+        "phone": "222-333-4444",
+        "email": "william.lee@example.com",
+        "gstn": "GSTN678901",
+        "projects": [
+            {
+                "projectid": 111,
+                "projectname": "E-commerce Website",
+                "receiveddate": "2024-01-25",
+                "deadline": "2024-07-31",
+                "remark": "Integrate secure payment gateway",
+                "associate": "Shubham Shinde",
+                "status": "1",
+                "clientid": 10,
+                "businessname": "WL Enterprises"
+            }
+        ]
+    },
+    {
+        "clientid": 10,
+        "clientname": "William Lee",
+        "businessname": "WL Enterprises",
+        "phone": "222-333-4444",
+        "email": "william.lee@example.com",
+        "gstn": "GSTN678901",
+        "projects": [
+            {
+                "projectid": 111,
+                "projectname": "E-commerce Website",
+                "receiveddate": "2024-01-25",
+                "deadline": "2024-07-31",
+                "remark": "Integrate secure payment gateway",
+                "associate": "Shubham Shinde",
+                "status": "1",
                 "clientid": 10,
                 "businessname": "WL Enterprises"
             }

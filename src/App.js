@@ -18,7 +18,7 @@ import EditEmployee from "./components/pim/EditEmployee";
 import ViewEmployee from "./components/pim/ViewEmployee";
 import Attendance from "./components/pim/Attendance";
 // import StickyHeadTable from "./components/pim/Employeelist";
-import Clientslist from "./components/clients/Clientslist";
+import Addclient from "./components/client/Addclient";
 
 function App() {
   return (
@@ -48,7 +48,9 @@ function App() {
             path="/pim/view/:empid/:ename/:designation/:jdate/:status"
             element={<ViewEmployee />}
           />
-          <Route path="clientslist" element={<Clientslist />} />
+          <Route path="projects/:clientId" element={<Projects />} />
+
+          <Route path="clients/addclient" element={<Addclient />} />
         </Route>
         <Route path="login" element={<Login />} />
       </Routes>
