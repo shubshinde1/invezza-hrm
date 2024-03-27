@@ -11,15 +11,16 @@ import {
   Paper,
   InputBase,
 } from "@mui/material";
-import { Card, CardContent, Typography, Grid, Box } from "@mui/material";
-import { BsFillGrid3X3GapFill } from "react-icons/bs";
-import { FaThList, FaSearch } from "react-icons/fa";
+import { Card, CardContent, Grid, Box } from "@mui/material";
 import clientAvatar from "../../assets/images/clientAvatar.png";
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { MdOutlineAddCircle } from "react-icons/md";
 import Tooltip from "@mui/material/Tooltip";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { BsFillGrid3X3GapFill } from "react-icons/bs";
+import { FaThList } from "react-icons/fa";
 
 const useStyles = makeStyles({
   root: {
@@ -61,11 +62,50 @@ const useStyles = makeStyles({
   },
 });
 
+function GenerateLink({ client, navigate }) {
+  const handleClick = () => {
+    navigate({
+      pathname: "/projects/viewprojects",
+      search: `?client=${encodeURIComponent(JSON.stringify(client))}`,
+    });
+  };
+
+  return (
+    <div
+      onClick={handleClick}
+      className="rounded-md  group-hover:flex group-hover:items-start cursor-pointer"
+    >
+      <div className="hover:bg-sky-100 rounded-md hidden group-hover:flex p-3">
+        <FaExternalLinkAlt />
+      </div>
+    </div>
+  );
+}
+
+function GenerateLinkForList({ client, navigate }) {
+  const handleClick = () => {
+    navigate({
+      pathname: "/projects/viewprojects",
+      search: `?client=${encodeURIComponent(JSON.stringify(client))}`,
+    });
+  };
+
+  return (
+    <div onClick={handleClick} className="rounded-md   cursor-pointer">
+      <div className="hover:bg-sky-100 rounded-md w-fit p-3">
+        <FaExternalLinkAlt />
+      </div>
+    </div>
+  );
+}
+
 export default function ClientCard({ clients }) {
   const classes = useStyles();
   const [viewMode, setViewMode] = useState("grid");
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState(clientsData);
+  const location = useLocation(); // useLocation hook to get current location
+  const navigate = useNavigate(); // Define the navigate function
 
   const toggleViewMode = () => {
     setViewMode(viewMode === "grid" ? "list" : "grid");
@@ -77,7 +117,7 @@ export default function ClientCard({ clients }) {
     } else {
       const filtered = clientsData.filter(
         (client) =>
-          client.clientid.toString().includes(searchTerm) || // Convert clientid to string before applying includes
+          client.clientid.toString().includes(searchTerm.toLowerCase()) ||
           client.clientname.toLowerCase().includes(searchTerm.toLowerCase()) ||
           client.businessname
             .toLowerCase()
@@ -114,12 +154,6 @@ export default function ClientCard({ clients }) {
               onChange={handleInputChange}
               inputProps={{ style: { fontSize: 14 } }}
             />
-            {/* <div
-            className="hover:bg-sky-100 w-fit mr-1 p-2 rounded-md flex  items-center cursor-pointer"
-            onClick={handleSearch} // Remove the onClick event
-          >
-            <FaSearch fontSize={17} />
-          </div> */}
           </div>
           <div className="bg-sky-50 rounded-md p-2.5 flex items-center gap-2">
             <Tooltip title="Add Client" placement="right" arrow>
@@ -127,10 +161,8 @@ export default function ClientCard({ clients }) {
                 <MdOutlineAddCircle fontSize={20} />
               </Link>
             </Tooltip>
-            {/* Add Client */}
           </div>
         </div>
-        {/* <hr className="w-0.5 h-5 bg-gray-500 rounded-full" /> */}
         <div className="ml-2">
           <div
             onClick={toggleViewMode}
@@ -145,9 +177,16 @@ export default function ClientCard({ clients }) {
         </div>
       </div>
       {viewMode === "grid" ? (
-        <Grid container spacing={1} className={`${classes.fullScreenGrid} `}>
-          {filteredData.map((client) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={client.clientid}>
+        <Grid container spacing={1.5} className={`${classes.fullScreenGrid} `}>
+          {filteredData.map((client, index) => (
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              key={`${client.clientid}-${index}`}
+            >
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -157,27 +196,15 @@ export default function ClientCard({ clients }) {
                   <CardContent className="flex flex-col gap-4 hover:shadow-xl group ">
                     <div className="flex  justify-between group-hover:bg-sky-50 py-2 group-hover:px-2 duration-300 group-hover:rounded-md">
                       <div className="flex items-center gap-4">
-                        <img src={clientAvatar} width={50} />
+                        <img src={clientAvatar} width={50} alt="Clientlogo" />
                         <div className={classes.pos}>
                           <h4 className="font-bold">{client.businessname}</h4>
                           <h4 className="text-xs">{client.clientname}</h4>
                         </div>
                       </div>
-                      <Link
-                        to="/projects"
-                        className="bg-sky-50 rounded-md hidden group-hover:flex group-hover:items-start cursor-pointer"
-                      >
-                        <div className="hover:bg-sky-100 rounded-md hidden group-hover:flex p-3">
-                          <FaExternalLinkAlt className=" " />
-                        </div>
-                      </Link>
+                      <GenerateLink client={client} navigate={navigate} />
                     </div>
                     <hr className="w-full h-[1px] bg-gray-300" />
-                    {/* <h1
-                    className={`${classes.title} w-fit bg-sky-100 py-1 px-2 rounded-md text-xs`}
-                  >
-                    Client ID: {client.clientid}
-                  </h1> */}
                     <div className="flex flex-col gap-2 text-[.85rem]">
                       <div className="flex ">
                         <label className="w-20 font-semibold">Client ID </label>
@@ -264,11 +291,12 @@ export default function ClientCard({ clients }) {
                   <TableCell className={classes.columnHeader}>
                     Projects
                   </TableCell>
+                  <TableCell className={classes.columnHeader}>Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filteredData.map((client) => (
-                  <TableRow key={client.clientid}>
+                {filteredData.map((client, index) => (
+                  <TableRow key={client.clientid} className="group">
                     <TableCell>{client.clientname}</TableCell>
                     <TableCell>{client.clientid}</TableCell>
                     <TableCell>{client.businessname}</TableCell>
@@ -276,6 +304,15 @@ export default function ClientCard({ clients }) {
                     <TableCell>{client.email}</TableCell>
                     <TableCell>{client.gstn}</TableCell>
                     <TableCell>{client.projects.length}</TableCell>
+                    <Tooltip title="View Details" placement="top" arrow>
+                      <TableCell>
+                        <GenerateLinkForList
+                          client={client}
+                          navigate={navigate}
+                          className="flex"
+                        />
+                      </TableCell>
+                    </Tooltip>
                   </TableRow>
                 ))}
               </TableBody>

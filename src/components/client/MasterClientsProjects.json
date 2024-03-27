@@ -25,7 +25,18 @@
                 "deadline": "2024-05-31",
                 "remark": "Requires frequent updates",
                 "associate": "Shubham Shinde",
-                "status": "0",
+                "status": "2",
+                "clientid": 1,
+                "businessname": "JD Corporation"
+            },
+            {
+                "projectid": 102,
+                "projectname": "Mobile App Development",
+                "receiveddate": "2024-02-15",
+                "deadline": "2024-05-31",
+                "remark": "Requires frequent updates",
+                "associate": "Shubham Shinde",
+                "status": "1",
                 "clientid": 1,
                 "businessname": "JD Corporation"
             }
@@ -49,6 +60,17 @@
                 "status": "2",
                 "clientid": 2,
                 "businessname": "AS Enterprises"
+            },
+            {
+                "projectid": 102,
+                "projectname": "Mobile App Development",
+                "receiveddate": "2024-02-15",
+                "deadline": "2024-05-31",
+                "remark": "Requires frequent updates",
+                "associate": "Shubham Shinde",
+                "status": "2",
+                "clientid": 1,
+                "businessname": "JD Corporation"
             }
         ]
     },
@@ -67,7 +89,7 @@
                 "deadline": "2024-07-15",
                 "remark": "Global launch event planned",
                 "associate": "Shubham Shinde",
-                "status": "0",
+                "status": "1",
                 "clientid": 3,
                 "businessname": "EJ Enterprises"
             }
@@ -263,7 +285,7 @@
         ]
     },
     {
-        "clientid": 10,
+        "clientid": 99,
         "clientname": "William Lee",
         "businessname": "WL Enterprises",
         "phone": "222-333-4444",

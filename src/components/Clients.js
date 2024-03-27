@@ -6,10 +6,8 @@ import clientData from "./client/MasterClientsProjects.json"; // Import clientDa
 
 export default function Clients() {
   return (
-    <Routes>
-      {/* Pass clientData as a prop to the ClientCard component */}
-      <Route path="/" element={<ClientCard client={clientData} />} />
-      <Route path="/projects/:projectId" element={<Projects />} />
-    </Routes>
+    <div>
+      <ClientCard />
+    </div>
   );
 }

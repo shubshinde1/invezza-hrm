@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/shared/Layout";
 import Dashboard from "./components/Dashboard";
-// import Attendance from "./components/Attendance";
 import Myprofile from "./components/Myprofile";
 import Admin from "./components/Admin";
 import Task from "./components/Task";
@@ -17,8 +16,8 @@ import Addemployee from "./components/pim/Addemployee";
 import EditEmployee from "./components/pim/EditEmployee";
 import ViewEmployee from "./components/pim/ViewEmployee";
 import Attendance from "./components/pim/Attendance";
-// import StickyHeadTable from "./components/pim/Employeelist";
 import Addclient from "./components/client/Addclient";
+import ViewProjects from "./components/client/ViewProjects";
 
 function App() {
   return (
@@ -38,8 +37,6 @@ function App() {
           <Route path="pim/employeelist" element={<Employeelist />} />
           <Route path="pim/addemployee" element={<Addemployee />} />
           <Route path="pim/attendance" element={<Attendance />} />
-          {/* <Route exact path="/" Component={<StickyHeadTable />} /> */}
-          {/* <Route path="/pim/edit/:empid" element={<EditEmployee />} /> */}
           <Route
             path="/pim/edit/:empid/:ename/:designation/:jdate/:status"
             element={<EditEmployee />}
@@ -48,8 +45,7 @@ function App() {
             path="/pim/view/:empid/:ename/:designation/:jdate/:status"
             element={<ViewEmployee />}
           />
-          <Route path="projects/:clientId" element={<Projects />} />
-
+          <Route path="/projects/viewprojects" element={<ViewProjects />} />
           <Route path="clients/addclient" element={<Addclient />} />
         </Route>
         <Route path="login" element={<Login />} />
