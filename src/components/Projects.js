@@ -85,11 +85,11 @@ export default function Projects() {
 
   const getStatusLabel = (status) => {
     switch (status) {
-      case "0":
+      case 0:
         return "Pending";
-      case "1":
+      case 1:
         return "In Progress";
-      case "2":
+      case 2:
         return "Completed";
       default:
         return "";
@@ -98,11 +98,11 @@ export default function Projects() {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case "0":
+      case 0:
         return "pending";
-      case "1":
+      case 1:
         return "inProgress";
-      case "2":
+      case 2:
         return "completed";
       default:
         return "";

@@ -75,8 +75,10 @@ const useStyles = makeStyles({
 
 const GlobalStyles = createGlobalStyle`
 .MuiPaper-root{
-  height:215px;
   border-radius:10px;
+} 
+.MuiList-root {
+  height: 215px;
 } 
 .MuiMenuItem-root {
     font-family: Euclid;
@@ -84,6 +86,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: bold;
     margin: auto 8px;
     border-radius: 7px;
+    margin-top:5px;
   }
   .MuiMenuItem-root:hover {
     background-color:#e0f2fe;
@@ -373,6 +376,7 @@ export default function StickyHeadTable({
               variant="outlined"
               margin="dense"
             />
+
             <TextField
               className={classNames(
                 "col-span-12 sm:col-span-6 xl:col-span-2 py-1",

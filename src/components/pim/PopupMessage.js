@@ -54,7 +54,7 @@ const PopupMessage = ({ message, onAddMore, onGoToList }) => {
               }}
             >
               <h1 className=" text-sm text-red-500">
-                You Will Ridirect To Employee list page in {timer}s
+                Ridirect To Employee list in {timer}s
               </h1>
             </div>
           )}

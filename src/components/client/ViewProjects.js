@@ -20,7 +20,7 @@ function ViewProjects() {
   }, [location.search]);
 
   return (
-    <div className="container mx-auto pb-20 ">
+    <div className=" mx-auto pb-20 ">
       {client ? (
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -90,16 +90,16 @@ function ViewProjects() {
                     <Tooltip title="Work Status" placement="top" arrow>
                       <span
                         className={`inline-block px-1 py-0.5 rounded-md font-bold text-[.6rem] text-white cursor-pointer ${
-                          project.status === "0"
+                          project.status === 0
                             ? "bg-red-400"
-                            : project.status === "1"
+                            : project.status === 1
                             ? "bg-yellow-400"
                             : "bg-green-400"
                         }`}
                       >
-                        {project.status === "0"
+                        {project.status === 0
                           ? "Pending"
-                          : project.status === "1"
+                          : project.status === 1
                           ? "In Progress"
                           : "Completed"}
                       </span>

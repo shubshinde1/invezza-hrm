@@ -21,6 +21,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaThList } from "react-icons/fa";
+import { FaHospitalUser } from "react-icons/fa";
+// import { HiCodeBracketSquare } from "react-icons/hi2";
+import { FaBriefcase } from "react-icons/fa6";
+import { FaBusinessTime } from "react-icons/fa6";
+import { HiMiniRocketLaunch } from "react-icons/hi2";
+import Avatar from "@mui/joy/Avatar";
+import AvatarGroup from "@mui/joy/AvatarGroup";
+import { TbTimelineEventFilled } from "react-icons/tb";
 
 const useStyles = makeStyles({
   root: {
@@ -107,6 +115,40 @@ export default function ClientCard({ clients }) {
   const location = useLocation(); // useLocation hook to get current location
   const navigate = useNavigate(); // Define the navigate function
 
+  const totalClients = clientsData.length;
+
+  const totalProjects = clientsData.reduce(
+    (total, client) => total + client.projects.length,
+    0
+  );
+
+  const totalPendingProjects = clientsData.reduce((total, client) => {
+    // Count the number of projects with status "2" for each client
+    const pendingProjects = client.projects.filter(
+      (project) => project.status === 0
+    ).length;
+    // Add the count of pending projects for the current client to the total count
+    return total + pendingProjects;
+  }, 0);
+
+  const totalCompleteProjects = clientsData.reduce((total, client) => {
+    // Count the number of projects with status "2" for each client
+    const pendingProjects = client.projects.filter(
+      (project) => project.status === 2
+    ).length;
+    // Add the count of pending projects for the current client to the total count
+    return total + pendingProjects;
+  }, 0);
+
+  const totalInprogressProjects = clientsData.reduce((total, client) => {
+    // Count the number of projects with status "2" for each client
+    const pendingProjects = client.projects.filter(
+      (project) => project.status === 1
+    ).length;
+    // Add the count of pending projects for the current client to the total count
+    return total + pendingProjects;
+  }, 0);
+
   const toggleViewMode = () => {
     setViewMode(viewMode === "grid" ? "list" : "grid");
   };
@@ -139,40 +181,161 @@ export default function ClientCard({ clients }) {
 
   return (
     <div className={classes.root}>
-      <div
-        style={{ marginBottom: 10 }}
-        className="bg-white rounded-md p-2 flex justify-between items-center"
-      >
-        <div className="flex items-center">
-          <div
-            className={`${classes.searchContainer} bg-sky-50 mr-2  flex  h-full py-1 `}
-          >
-            <InputBase
-              placeholder="Search by Client Name, Id "
-              className={`${classes.searchInput} md:w-96`}
-              value={searchTerm}
-              onChange={handleInputChange}
-              inputProps={{ style: { fontSize: 14 } }}
-            />
-          </div>
-          <div className="bg-sky-50 rounded-md p-2.5 flex items-center gap-2">
-            <Tooltip title="Add Client" placement="right" arrow>
-              <Link to="/clients/addclient">
-                <MdOutlineAddCircle fontSize={20} />
+      <div className="bg-white rounded-md">
+        <div className="p-2">
+          <div className="grid grid-cols-12 lg:grid-cols-11 gap-4 ">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2 }}
+              className="flex flex-col gap-5 col-span-12 lg:col-span-3 bg-sky-5 border-2  hover:shadow-lg hover:shadow-sky-50 rounded-md p-3"
+            >
+              <div className="flex items-center gap-2">
+                <FaHospitalUser fontSize={20} />
+                <h2 className="text-sm">All Clients</h2>
+              </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <AvatarGroup>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      size="sm"
+                    />
+                    <Avatar
+                      alt="Travis Howard"
+                      src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      size="sm"
+                    />
+                    <Avatar
+                      alt="Cindy Baker"
+                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+                      size="sm"
+                    />
+                    <Avatar size="sm" sx={{ backgroundColor: "#f0f9ff" }}>
+                      +{totalClients - 3}
+                    </Avatar>
+                  </AvatarGroup>
+                </div>
+                {/* <div className="bg-sky-50 px-2 py-1.5 rounded-md"> */}
+                <h2 className="text-4xl font-bold text-gray-300">
+                  {totalClients}
+                </h2>
+                {/* </div> */}
+              </div>
+            </motion.div>
+            <motion.div
+              className="col-span-6 lg:col-span-2 bg-sky-5 border-2 hover:shadow-lg hover:shadow-sky-50 rounded-md"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Link to={"/projects"} className="flex flex-col p-3">
+                <div className="flex items-center gap-2 before:w-1 before:h-5 before:rounded-full before:bg-blue-600 before:-ml-3">
+                  <FaBriefcase fontSize={18} />
+                  <h2 className="text-sm">All Projects</h2>
+                </div>
+                <div className="flex items-center justify-end relative top-4 scroll-m-0 ">
+                  {/* <div className="bg-sky-50 px-2 py-1.5 rounded-md "> */}
+                  <h2 className="text-4xl font-bold text-gray-300">
+                    {totalProjects}
+                  </h2>
+                  {/* </div> */}
+                </div>
               </Link>
-            </Tooltip>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2 hover:shadow-lg hover:shadow-sky-50 rounded-md p-3"
+            >
+              <div className="flex items-center gap-2 before:w-1 before:h-5 before:rounded-full before:bg-green-400 before:-ml-3">
+                <HiMiniRocketLaunch fontSize={20} />
+                <h2 className="text-sm">Complete Projects</h2>
+              </div>
+              <div className="flex items-end justify-end">
+                {/* <div className="bg-sky-50 px-2 py-1.5 rounded-md"> */}
+                <h2 className="text-4xl font-bold text-gray-300">
+                  {totalCompleteProjects}
+                </h2>
+                {/* </div> */}
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2  hover:shadow-lg hover:shadow-sky-50 rounded-md p-3"
+            >
+              <div className="flex items-center gap-2 before:w-1 before:h-5 before:rounded-full before:bg-yellow-300 before:-ml-3">
+                <TbTimelineEventFilled fontSize={20} />
+                <h2 className="text-sm">In-Progress</h2>
+              </div>
+              <div className="flex items-center justify-end">
+                {/* <div className="bg-sky-50 px-2 py-1.5 rounded-md"> */}
+                <h2 className="text-4xl font-bold text-gray-300">
+                  {totalInprogressProjects}
+                </h2>
+                {/* </div> */}
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2  hover:shadow-lg hover:shadow-sky-50 rounded-md p-3"
+            >
+              <div className="flex items-center gap-2 before:w-1 before:h-5 before:rounded-full before:bg-red-400 before:-ml-3">
+                <FaBusinessTime fontSize={20} />
+                <h2 className="text-sm">Pending Projects</h2>
+              </div>
+              <div className="flex items-center justify-end">
+                {/* <div className="bg-sky-50 px-2 py-1.5 rounded-md"> */}
+                <h2 className="text-4xl font-bold text-gray-300">
+                  {totalPendingProjects}
+                </h2>
+                {/* </div> */}
+              </div>
+            </motion.div>
           </div>
         </div>
-        <div className="ml-2">
-          <div
-            onClick={toggleViewMode}
-            className="mr-2 bg-sky-100 p-2 rounded-md cursor-pointer"
-          >
-            {viewMode === "grid" ? (
-              <FaThList fontSize={17} color="black" />
-            ) : (
-              <BsFillGrid3X3GapFill fontSize={17} color="black" />
-            )}
+        <div
+          style={{ marginBottom: 10 }}
+          className=" p-2 flex justify-between items-center "
+        >
+          <div className="flex items-center">
+            <div
+              className={`${classes.searchContainer} bg-sky-50 mr-2  flex  h-full py-1 `}
+            >
+              <InputBase
+                placeholder="Search by Client Name, Id "
+                className={`${classes.searchInput} md:w-96`}
+                value={searchTerm}
+                onChange={handleInputChange}
+                inputProps={{ style: { fontSize: 14 } }}
+              />
+            </div>
+            <Link
+              to="/clients/addclient"
+              className="bg-sky-50 rounded-md p-2.5 flex items-center gap-2"
+            >
+              <Tooltip title="Add Client" placement="right" arrow>
+                <MdOutlineAddCircle fontSize={20} />
+              </Tooltip>
+            </Link>
+          </div>
+          <div className="ml-2">
+            <div
+              onClick={toggleViewMode}
+              className="mr-2 bg-sky-100 p-2 rounded-md cursor-pointer"
+            >
+              {viewMode === "grid" ? (
+                <FaThList fontSize={17} color="black" />
+              ) : (
+                <BsFillGrid3X3GapFill fontSize={17} color="black" />
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -242,9 +405,9 @@ export default function ClientCard({ clients }) {
                             <span
                               style={{
                                 backgroundColor:
-                                  client.projects[0].status === "0"
+                                  client.projects[0].status === 0
                                     ? "#f87171"
-                                    : client.projects[0].status === "1"
+                                    : client.projects[0].status === 1
                                     ? "#fcd34d"
                                     : "#22c55e",
                                 fontWeight: "bold",
@@ -254,9 +417,9 @@ export default function ClientCard({ clients }) {
                                 borderRadius: "5px",
                               }}
                             >
-                              {client.projects[0].status === "0"
+                              {client.projects[0].status === 0
                                 ? "Pending"
-                                : client.projects[0].status === "1"
+                                : client.projects[0].status === 1
                                 ? "In Progress"
                                 : "Completed"}
                             </span>
