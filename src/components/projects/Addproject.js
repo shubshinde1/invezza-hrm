@@ -12,6 +12,7 @@ import { IoMdSave } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { BsPersonFillCheck, BsPersonFillAdd } from "react-icons/bs";
 import { motion } from "framer-motion";
+import clientsData from "../client/MasterClientsProjects.json";
 
 import {
   TextField,
@@ -23,11 +24,11 @@ import {
 
 const GlobalStyles = createGlobalStyle`
 .MuiPaper-root{
-  // border-radius:10px;
-} 
-.MuiList-root {
-  height: full;
-} 
+    border-radius:10px;
+  } 
+  .MuiList-root {
+    height: 212px;
+  } 
   .MuiMenuItem-root {
     font-family: Euclid;
     font-size: 14px;
@@ -100,13 +101,15 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Addclient() {
+export default function Addproject() {
   const classes = useStyles();
   const navigate = useNavigate();
   const [selectedFileName, setSelectedFileName] = useState("");
   const [isInputLabelShrunk, setIsInputLabelShrunk] = useState(false);
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
   const [remainingTime, setRemainingTime] = useState(2); // Initial remaining time in seconds
+  const [selectedBusinessName, setSelectedBusinessName] = useState("");
+  const [selectedClientId, setSelectedClientId] = useState("");
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -130,7 +133,7 @@ export default function Addclient() {
       clearInterval(timer);
       setIsSuccessPopupOpen(false);
       // Redirect to "/clients"
-      navigate("/clients");
+      navigate("/projects");
     }, 2000); // Popup will disappear after 2 seconds
   };
 
@@ -138,7 +141,7 @@ export default function Addclient() {
     const handleEscKey = (event) => {
       if (event.key === "Escape") {
         setIsSuccessPopupOpen(false);
-        navigate("/clients");
+        navigate("/projects");
       }
     };
 
@@ -148,6 +151,23 @@ export default function Addclient() {
       document.removeEventListener("keydown", handleEscKey);
     };
   }, [navigate]);
+
+  const handleBusinessNameChange = (event) => {
+    const selectedName = event.target.value;
+    // console.log("Selected name:", selectedName);
+    setSelectedBusinessName(selectedName);
+    const selectedClient = clientsData.find(
+      (client) =>
+        client.businessname.toLowerCase().replace(/\s/g, "") === selectedName
+    );
+    if (selectedClient) {
+      //   console.log("Selected client ID:", selectedClient.clientid);
+      setSelectedClientId(selectedClient.clientid);
+    } else {
+      //   console.log("Client not found for the selected name:", selectedName);
+      setSelectedClientId(""); // Clearing client ID if client not found
+    }
+  };
 
   return (
     <div className="bg-white p-4 rounded-md mb-20">
@@ -159,53 +179,73 @@ export default function Addclient() {
           transition={{ duration: 0.5 }}
         >
           <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-row gap-2">
-            <div className="w-[120px] flex flex-col">
-              <FormControl
-                variant="outlined"
-                margin="dense"
+            <FormControl
+              variant="outlined"
+              margin="dense"
+              className={classNames(
+                "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                classes.root
+              )}
+            >
+              <InputLabel id="client-label" className="w-52">
+                Choose Client
+              </InputLabel>
+              <Select
+                labelId="client-label"
+                id="chooseclient"
+                name="chooseclient"
+                label="Choose Client"
+                IconComponent={(props) => (
+                  <ArrowDropDownRoundedIcon
+                    {...props}
+                    sx={{
+                      fontSize: 40,
+                      borderRadius: 1,
+                    }}
+                  />
+                )}
+                onChange={handleBusinessNameChange}
+                // onChange={(event) => {
+                //   const selectedValue = event.target.value;
+                //   console.log("Selected value:", selectedValue);
+                // }}
+              >
+                <GlobalStyles />
+                {clientsData.map((client) => (
+                  <MenuItem
+                    key={client.id}
+                    value={client.businessname.toLowerCase().replace(/\s/g, "")}
+                  >
+                    {client.businessname}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <div className="w-[100px] flex flex-col ">
+              <TextField
                 className={classNames(
-                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
+                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs w-[120px] flex flex-col",
                   classes.root
                 )}
-              >
-                <InputLabel id="prefix-label" className="w-52">
-                  Prefix
-                </InputLabel>
-                <Select
-                  labelId="prefix-label"
-                  id="prefix"
-                  name="prefix"
-                  label="Prefix"
-                  IconComponent={(props) => (
-                    // <div className="bg-red-500 z-50">
-                    <ArrowDropDownRoundedIcon
-                      {...props}
-                      sx={{
-                        fontSize: 40,
-                        // marginLeft: "0.375rem",
-                        // backgroundColor: "#bfdbfe",
-                        borderRadius: 1,
-                      }}
-                      // className="bg-sky-200 mr-1.5 rounded-md cursor-pointer"
-                    />
-                    // </div>
-                  )}
-                >
-                  <GlobalStyles />
-                  <MenuItem value="mr">Mr.</MenuItem>
-                  <MenuItem value="mrs">Mrs.</MenuItem>
-                  <MenuItem value="miss">Miss.</MenuItem>
-                </Select>
-              </FormControl>
+                id="clientid"
+                name="clientid"
+                label="Client Id"
+                variant="outlined"
+                margin="dense"
+                value={selectedClientId}
+                disabled
+              />
             </div>
+          </div>
+          <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-row ">
             <TextField
               className={classNames(
                 "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
                 classes.root
               )}
-              id="clientname"
-              name="clientname"
-              label="Client Name"
+              id="projectname"
+              name="projectname"
+              label="Project Name"
               variant="outlined"
               margin="dense"
             />
@@ -216,40 +256,127 @@ export default function Addclient() {
                 "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
                 classes.root
               )}
-              id="clientid"
-              name="clientid"
-              label="Client Id"
+              id="projectid"
+              name="projectid"
+              label="Project Id"
               variant="outlined"
               margin="dense"
+              type="number"
             />
           </div>
+          <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-col">
+            <LocalizationProvider dateAdapter={AdapterDayjs} className="w-full">
+              <DemoContainer components={["DatePicker"]}>
+                <DatePicker
+                  label="Recived Date"
+                  className={classNames(
+                    "col-span-12 sm:col-span-6 xl:col-span-2",
+                    classes.root
+                  )}
+                />
+              </DemoContainer>
+            </LocalizationProvider>
+          </div>
+          <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-col">
+            <LocalizationProvider dateAdapter={AdapterDayjs} className="w-full">
+              <DemoContainer components={["DatePicker"]}>
+                <DatePicker
+                  label="Deadline"
+                  className={classNames(
+                    "col-span-12 sm:col-span-6 xl:col-span-2",
+                    classes.root
+                  )}
+                />
+              </DemoContainer>
+            </LocalizationProvider>
+          </div>
           <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-row ">
-            <TextField
+            <FormControl
+              variant="outlined"
+              margin="dense"
               className={classNames(
                 "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
                 classes.root
               )}
-              id="businessname"
-              name="businessname"
-              label="Conpmany Name"
-              variant="outlined"
-              margin="dense"
-            />
+            >
+              <InputLabel id="status-label" className="w-52">
+                Status
+              </InputLabel>
+              <Select
+                labelId="status-label"
+                id="status"
+                name="status"
+                label="Status"
+                IconComponent={(props) => (
+                  <ArrowDropDownRoundedIcon
+                    {...props}
+                    sx={{
+                      fontSize: 40,
+                      borderRadius: 1,
+                    }}
+                  />
+                )}
+                onChange={handleBusinessNameChange}
+                // onChange={(event) => {
+                //   const selectedValue = event.target.value;
+                //   console.log("Selected value:", selectedValue);
+                // }}
+              >
+                <GlobalStyles />
+                <MenuItem value="planning">Planning</MenuItem>
+                <MenuItem value="inprocess">In Process</MenuItem>
+                <MenuItem value="deployement">Deployement</MenuItem>
+                <MenuItem value="testing">Testing</MenuItem>
+                <MenuItem value="completed">Completed</MenuItem>
+                <MenuItem value="onhold">On Hold</MenuItem>
+                <MenuItem value="cancelled">Cancelled</MenuItem>
+              </Select>
+            </FormControl>
           </div>
           <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-row ">
-            <TextField
+            <FormControl
+              variant="outlined"
+              margin="dense"
               className={classNames(
                 "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
                 classes.root
               )}
-              id="phone"
-              name="phone"
-              label="Phone No"
-              variant="outlined"
-              margin="dense"
-            />
+            >
+              <InputLabel id="status-label" className="w-52">
+                Assign To
+              </InputLabel>
+              <Select
+                labelId="status-label"
+                id="status"
+                name="status"
+                label="Assign To"
+                IconComponent={(props) => (
+                  <ArrowDropDownRoundedIcon
+                    {...props}
+                    sx={{
+                      fontSize: 40,
+                      borderRadius: 1,
+                    }}
+                  />
+                )}
+                onChange={handleBusinessNameChange}
+                // onChange={(event) => {
+                //   const selectedValue = event.target.value;
+                //   console.log("Selected value:", selectedValue);
+                // }}
+              >
+                <GlobalStyles />
+                <MenuItem value="shubhamshinde">Shubham Shinde</MenuItem>
+                <MenuItem value="shubhamshinde">Shubham Shinde</MenuItem>
+                <MenuItem value="shubhamshinde">Shubham Shinde</MenuItem>
+                <MenuItem value="shubhamshinde">Shubham Shinde</MenuItem>
+                <MenuItem value="shubhamshinde">Shubham Shinde</MenuItem>
+                <MenuItem value="shubhamshinde">Shubham Shinde</MenuItem>
+                <MenuItem value="shubhamshinde">Shubham Shinde</MenuItem>
+              </Select>
+            </FormControl>
           </div>
-          <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-row ">
+          {/* <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-row ">
             <TextField
               className={classNames(
                 "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
@@ -300,59 +427,6 @@ export default function Addclient() {
               variant="outlined"
               margin="dense"
             />
-          </div>
-          <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-row ">
-            <FormControl
-              variant="outlined"
-              margin="dense"
-              className={classNames(
-                "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                classes.root
-              )}
-            >
-              <InputLabel id="prefix-label" className="w-52">
-                Client Type
-              </InputLabel>
-              <Select
-                labelId="clienttype-label"
-                id="clienttype"
-                name="clienttype"
-                label="Client Type"
-                IconComponent={(props) => (
-                  // <div className="bg-red-500 z-50">
-                  <ArrowDropDownRoundedIcon
-                    {...props}
-                    sx={{
-                      fontSize: 40,
-                      // marginLeft: "0.375rem",
-                      // backgroundColor: "#bfdbfe",
-                      borderRadius: 1,
-                    }}
-                    // className="bg-sky-200 mr-1.5 rounded-md cursor-pointer"
-                  />
-                  // </div>
-                )}
-              >
-                <GlobalStyles />
-                <MenuItem value="businesspartner">Business Partner</MenuItem>
-                <MenuItem value="individual">Individual </MenuItem>
-                <MenuItem value="corporate">Corporate </MenuItem>
-                <MenuItem value="government">Government </MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-          <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-col">
-            <LocalizationProvider dateAdapter={AdapterDayjs} className="w-full">
-              <DemoContainer components={["DatePicker"]}>
-                <DatePicker
-                  label="Contract Date"
-                  className={classNames(
-                    "col-span-12 sm:col-span-6 xl:col-span-2",
-                    classes.root
-                  )}
-                />
-              </DemoContainer>
-            </LocalizationProvider>
           </div>
           <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-col">
             <div>
@@ -405,14 +479,14 @@ export default function Addclient() {
               variant="outlined"
               margin="dense"
             />
-          </div>
-          <div className="col-span-12 sm:col-span-6 md:col-span-8 flex flex-col">
+          </div> */}
+          <div className="col-span-12 sm:col-span-6 md:col-span-8 flex flex-col mt-2">
             <textarea
               className="bg-[#f0f9ff] rounded-md focus:border-[1px] p-3 pb-0 h-20 "
-              placeholder="Description"
+              placeholder="Description/Remark"
             ></textarea>
           </div>
-          <div className="col-span-12 sm:col-span-6 md:col-span-4 flex items-end justify-end">
+          <div className="col-span-12 flex items-end justify-end mt-2">
             <button
               type="submit"
               value="Save Details"
@@ -437,13 +511,13 @@ export default function Addclient() {
                   <div className="flex flex-row items-center gap-3 bg-sky-50 p-3 rounded-md">
                     <BsPersonFillCheck className="text-green-500 text-2xl" />
                     <p className="text-center text-base">
-                      New Client Added Successfully.
+                      New Project Added Successfully.
                     </p>
                   </div>
                   <div className="flex justify-center mt-5">
                     <p className="text-red-500">
                       {" "}
-                      Redirect To Clients Page in {remainingTime} s.
+                      Redirect To Projects Page in {remainingTime} s.
                     </p>
                   </div>
                 </div>

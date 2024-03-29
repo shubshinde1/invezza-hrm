@@ -15,6 +15,9 @@ import data from "./client/MasterClientsProjects.json";
 import { motion } from "framer-motion";
 import { makeStyles } from "@mui/styles";
 import classNames from "classnames";
+import { MdOutlineAddCircle } from "react-icons/md";
+import Tooltip from "@mui/material/Tooltip";
+import { Link, useNavigate } from "react-router-dom";
 
 const SearchInput = styled(InputBase)({
   borderRadius: "7px",
@@ -60,6 +63,16 @@ const useStyles = makeStyles({
     "& .completed": {
       backgroundColor: "#22c55e",
     },
+  },
+  searchContainer: {
+    borderRadius: 7,
+    display: "flex",
+    alignItems: "center",
+  },
+  searchInput: {
+    fontFamily: "euclid",
+    marginLeft: 7,
+    padding: 2,
   },
 });
 
@@ -122,13 +135,28 @@ export default function Projects() {
   return (
     <div className="w-[96vw] md:w-auto">
       <div className="bg-white rounded-md  px-2 py-1 flex  items-center justify-between">
-        <div className="">
-          <SearchInput
-            placeholder="Search by Project name, id"
-            value={searchQuery}
-            onChange={handleSearchChange}
-            className=" bg-sky-50 md:w-96"
-          />
+        <div className="flex items-center">
+          <div
+            className={`${classes.searchContainer} bg-sky-50 mr-2  flex  h-full py-1 `}
+          >
+            <InputBase
+              placeholder="Search by Client Name, Id "
+              className={`${classes.searchInput} md:w-96`}
+              value={searchQuery}
+              onChange={handleSearchChange}
+              inputProps={{ style: { fontSize: 14 } }}
+            />
+          </div>
+          <Link
+            to="/projects/addproject"
+            className="bg-sky-50 rounded-md p-2.5 flex items-center gap-2"
+          >
+            <Tooltip title="Add Project" placement="top" arrow>
+              <div>
+                <MdOutlineAddCircle fontSize={20} />
+              </div>
+            </Tooltip>
+          </Link>
         </div>
         <div className="">
           <TablePagination

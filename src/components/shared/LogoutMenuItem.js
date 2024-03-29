@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import { Menu } from "@headlessui/react";
 import { FaPowerOff } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 // import classNames from "classnames";
 
 const LogoutMenuItem = () => {
   const navigate = useNavigate();
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const { logout } = useAuth0();
 
   const handleLogout = () => {
     setShowConfirmation(true);
   };
 
-  const confirmLogout = () => {
-    navigate("/login");
-  };
 
   const cancelLogout = () => {
     setShowConfirmation(false);
@@ -54,7 +53,11 @@ const LogoutMenuItem = () => {
                 <div className="flex justify-around mt-4 ">
                   <button
                     className="px-3 py-2 bg-red-500 text-white rounded-md mr-2 flex items-center hover:scale-105 duration-300"
-                    onClick={confirmLogout}
+                    onClick={() =>
+                      logout({
+                        logoutParams: { returnTo: window.location.origin },
+                      })
+                    }
                   >
                     <FaPowerOff fontSize={18} className="mr-2" />
                     Logout

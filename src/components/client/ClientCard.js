@@ -320,8 +320,10 @@ export default function ClientCard({ clients }) {
               to="/clients/addclient"
               className="bg-sky-50 rounded-md p-2.5 flex items-center gap-2"
             >
-              <Tooltip title="Add Client" placement="right" arrow>
-                <MdOutlineAddCircle fontSize={20} />
+              <Tooltip title="Add Client" placement="top" arrow>
+                <div>
+                  <MdOutlineAddCircle fontSize={20} />
+                </div>
               </Tooltip>
             </Link>
           </div>
