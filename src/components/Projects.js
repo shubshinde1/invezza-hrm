@@ -41,27 +41,32 @@ const useStyles = makeStyles({
       fontFamily: "euclid",
     },
     "& .statusCell": {
-      display: "flex",
+      width: 80,
+      // display: "flex",
       // alignItems: "center",
-      justifyItems: "center",
+      // justifyItems: "center",
       text: "center",
       borderRadius: 7,
-      height: "fit-content",
+      border: 0,
+      // height: "fit-content",
       padding: 5,
-      fontSize: 12,
+      fontSize: 11,
       fontWeight: "bold",
-      marginTop: 11,
-      marginBottom: 11,
-      color: "white",
+      marginTop: 12,
+      marginBottom: 10,
+      // color: "white",
     },
     "& .pending": {
-      backgroundColor: "#f87171",
+      backgroundColor: "#fee2e2",
+      color: "#f87171",
     },
     "& .inProgress": {
-      backgroundColor: "#fcd34d",
+      backgroundColor: "#fef3c7",
+      color: "#fbbf24",
     },
     "& .completed": {
-      backgroundColor: "#22c55e",
+      backgroundColor: "#bbf7d0",
+      color: "#22c55e",
     },
   },
   searchContainer: {
@@ -209,17 +214,23 @@ export default function Projects() {
                     <TableCell>{project.projectname}</TableCell>
                     <TableCell>{client.clientname}</TableCell>
                     <TableCell>{client.businessname}</TableCell>
-                    <TableCell
-                      className={`statusCell ${getStatusColor(
-                        project.status
-                      )} `}
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
+                    <Tooltip
+                      title={"Work " + getStatusLabel(project.status)}
+                      placement="top"
+                      arrow
                     >
-                      {getStatusLabel(project.status)}
-                    </TableCell>
+                      <TableCell
+                        className={`statusCell cursor-pointer ${getStatusColor(
+                          project.status
+                        )} `}
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {getStatusLabel(project.status)}
+                      </TableCell>
+                    </Tooltip>
                     <TableCell>{project.receiveddate}</TableCell>
                     <TableCell>{project.deadline}</TableCell>
                     <TableCell>{project.associate}</TableCell>

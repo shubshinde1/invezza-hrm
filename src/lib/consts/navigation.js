@@ -53,12 +53,12 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     path: "/leave",
     icon: <FaDoorOpen />,
   },
-  {
-    key: "attendance",
-    label: "Attendance",
-    path: "/attendance",
-    icon: <IoCalendar />,
-  },
+  // {
+  //   key: "attendance",
+  //   label: "Attendance",
+  //   path: "/attendance",
+  //   icon: <IoCalendar />,
+  // },
   {
     key: "myprofile",
     label: "My Profile",

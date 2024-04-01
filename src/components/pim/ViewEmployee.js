@@ -1,13 +1,22 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import View from "./View";
 import Attendance from "./Attendance";
+import attendanceData from "./leaveData.json";
 
 export default function ViewEmployee() {
   const [activeTab, setActiveTab] = useState("view");
+  const [selectedEmployeeData, setSelectedEmployeeData] = useState(null);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
+  };
+
+  const handleEmployeeSelect = (employeeId) => {
+    // Find the selected employee data from the leaveData.json file
+    const employee = attendanceData.find(
+      (employee) => employee.id === employeeId
+    );
+    setSelectedEmployeeData(employee);
   };
 
   return (
@@ -22,7 +31,9 @@ export default function ViewEmployee() {
             }`}
             onClick={() => handleTabChange("view")}
           >
-            <div className="cursor-pointer" activeClassName="bg-gray-200">View</div>
+            <div className="cursor-pointer" activeClassName="bg-gray-200">
+              View
+            </div>
           </li>
           <li
             className={`text-sm px-3 py-1.5 rounded-md ${
@@ -32,19 +43,21 @@ export default function ViewEmployee() {
             }`}
             onClick={() => handleTabChange("attendance")}
           >
-            <div className="cursor-pointer" activeClassName="bg-gray-200">Attendance</div>
+            <div className="cursor-pointer" activeClassName="bg-gray-200">
+              Attendance
+            </div>
           </li>
         </ul>
       </div>
       <div>
         {activeTab === "view" && (
           <div id="view" className="">
-            <View />
+            <View onEmployeeSelect={handleEmployeeSelect} />
           </div>
         )}
-        {activeTab === "attendance" && (
+        {activeTab === "attendance" && selectedEmployeeData && (
           <div id="attendance" className="">
-            <Attendance />
+            <Attendance data={selectedEmployeeData} />
           </div>
         )}
       </div>

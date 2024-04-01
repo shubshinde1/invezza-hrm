@@ -408,12 +408,18 @@ export default function ClientCard({ clients }) {
                               style={{
                                 backgroundColor:
                                   client.projects[0].status === 0
+                                    ? "#fee2e2"
+                                    : client.projects[0].status === 1
+                                    ? "#fef3c7"
+                                    : "#bbf7d0",
+                                color:
+                                  client.projects[0].status === 0
                                     ? "#f87171"
                                     : client.projects[0].status === 1
                                     ? "#fcd34d"
                                     : "#22c55e",
                                 fontWeight: "bold",
-                                color: "white",
+                                // color: "white",
                                 fontSize: 11,
                                 padding: "3px 8px",
                                 borderRadius: "5px",

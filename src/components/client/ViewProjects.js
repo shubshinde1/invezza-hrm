@@ -91,10 +91,10 @@ function ViewProjects() {
                       <span
                         className={`inline-block px-1 py-0.5 rounded-md font-bold text-[.6rem] text-white cursor-pointer ${
                           project.status === 0
-                            ? "bg-red-400"
+                            ? "bg-red-200 text-red-400"
                             : project.status === 1
-                            ? "bg-yellow-400"
-                            : "bg-green-400"
+                            ? "bg-yellow-100 text-yellow-400"
+                            : "bg-green-200 text-green-400"
                         }`}
                       >
                         {project.status === 0

@@ -24,6 +24,7 @@ import { makeStyles } from "@mui/styles";
 import { createGlobalStyle } from "styled-components";
 import classNames from "classnames";
 import { motion } from "framer-motion";
+import leaveData from "./leaveData.json";
 
 import Tooltip from "@mui/material/Tooltip";
 
@@ -118,168 +119,7 @@ function createData(empid, ename, designation, mark, jdate, status) {
   return { empid, ename, designation, mark, jdate, status };
 }
 
-const rows = [
-  {
-    empid: "EMP001",
-    ename: "John Doe",
-    designation: "Software Engineer",
-    jdate: "01/01/2022",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP002",
-    ename: "Jane Smith",
-    designation: "Project Manager",
-    jdate: "05/15/2021",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP003",
-    ename: "Alice Johnson",
-    designation: "Data Analyst",
-    jdate: "03/20/2023",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP004",
-    ename: "Michael Brown",
-    designation: "Software Developer",
-    jdate: "11/10/2021",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP005",
-    ename: "Emma Garcia",
-    designation: "Business Analyst",
-    jdate: "07/08/2022",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP006",
-    ename: "William Martinez",
-    designation: "Quality Assurance",
-    jdate: "09/25/2023",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP007",
-    ename: "Olivia Anderson",
-    designation: "UI/UX Designer",
-    jdate: "04/05/2021",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP008",
-    ename: "James Wilson",
-    designation: "System Administrator",
-    jdate: "02/14/2022",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP009",
-    ename: "Ella Taylor",
-    designation: "Network Engineer",
-    jdate: "06/30/2023",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP010",
-    ename: "Noah Thomas",
-    designation: "Database Administrator",
-    jdate: "08/17/2021",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP011",
-    ename: "Isabella Hernandez",
-    designation: "Cybersecurity Analyst",
-    jdate: "10/29/2022",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP012",
-    ename: "Liam Lopez",
-    designation: "DevOps Engineer",
-    jdate: "12/12/2023",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP013",
-    ename: "Sophia Scott",
-    designation: "Software Tester",
-    jdate: "03/18/2021",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP014",
-    ename: "Mason Green",
-    designation: "Product Owner",
-    jdate: "07/22/2022",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP015",
-    ename: "Ava Adams",
-    designation: "Scrum Master",
-    jdate: "11/05/2023",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP016",
-    ename: "Harper Baker",
-    designation: "Technical Writer",
-    jdate: "05/14/2021",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP017",
-    ename: "Evelyn Rivera",
-    designation: "Business Intelligence Analyst",
-    jdate: "01/29/2022",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP018",
-    ename: "Alexander Reed",
-    designation: "Frontend Developer",
-    jdate: "09/10/2023",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP019",
-    ename: "Charlotte Perez",
-    designation: "Backend Developer",
-    jdate: "06/07/2021",
-    status: "Inactive",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-  {
-    empid: "EMP020",
-    ename: "Ryan Roberts",
-    designation: "Full Stack Developer",
-    jdate: "04/02/2022",
-    status: "Active",
-    mark: Math.floor(Math.random() * 2), // Randomly generates either 0 or 1
-  },
-];
+const rows = leaveData;
 
 export default function StickyHeadTable({
   empid,
@@ -541,8 +381,10 @@ export default function StickyHeadTable({
                                 arrow
                               >
                                 <div
-                                  className={`rounded-full px-1.5 py-0.5 w-fit flex justify-center text-white text-[.7rem] euclid-bold font-bold cursor-pointer ${
-                                    row.mark ? "bg-green-500" : "bg-red-500"
+                                  className={`rounded-full px-1.5 py-0.5 w-fit flex justify-center text-[.7rem] euclid-bold font-bold cursor-pointer ${
+                                    row.mark
+                                      ? "bg-green-200 text-green-600"
+                                      : "bg-red-200 text-red-600"
                                   }`}
                                 >
                                   {row.mark ? "P" : "A"}

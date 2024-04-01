@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Menutabs from "./Menutabs";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,17 +7,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { IoEye } from "react-icons/io5";
-import { FaUserEdit } from "react-icons/fa";
-import {
-  TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-} from "@mui/material";
+import { TextField } from "@mui/material";
 import { FaFilterCircleXmark } from "react-icons/fa6";
-import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import { makeStyles } from "@mui/styles";
 import { createGlobalStyle } from "styled-components";
 import classNames from "classnames";
@@ -100,14 +89,25 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const columns = [
-  { id: "from", label: "From", minWidth: 120 },
-  { id: "to", label: "To", minWidth: 120 },
-  { id: "reason", label: "Reason", minWidth: 120 },
-  { id: "noofleaves", label: "No Of Leaves", minWidth: 120 },
+  { id: "leavetype", label: "Leave Type", minWidth: 10 },
+  { id: "reason", label: "Reason", minWidth: 100 },
+  { id: "from", label: "From", minWidth: 100 },
+  { id: "to", label: "To", minWidth: 100 },
+  { id: "noofleaves", label: "No Of Leaves", minWidth: 100 },
+  { id: "status", label: "Status", minWidth: 100 },
+  { id: "approvedby", label: "Approved By", minWidth: 100 },
 ];
 
-function createData(from, to, reason, noofleaves) {
-  return { from, to, reason, noofleaves };
+function createData(
+  from,
+  to,
+  reason,
+  noofleaves,
+  leavetype,
+  status,
+  approvedby
+) {
+  return { from, to, reason, noofleaves, leavetype, status, approvedby };
 }
 
 // Function to calculate the number of days between two dates
@@ -118,45 +118,14 @@ function calculateDaysBetweenDates(fromDate, toDate) {
   return Math.round(Math.abs((from - to) / oneDay)) + 1; // Adding 1 to include both start and end dates
 }
 
-const rows = [
-  {
-    from: "05/15/2021",
-    to: "05/16/2021",
-    reason: "Vacation",
-    noofleaves: calculateDaysBetweenDates("05/15/2021", "05/15/2021"), // 1 day
-  },
-  {
-    from: "06/01/2021",
-    to: "06/02/2021",
-    reason: "Sick Leave",
-    noofleaves: calculateDaysBetweenDates("06/01/2021", "06/02/2021"), // 3 days
-  },
-  {
-    from: "07/10/2021",
-    to: "07/11/2021",
-    reason: "Family Emergency",
-    noofleaves: calculateDaysBetweenDates("07/10/2021", "07/11/2021"), // 3 days
-  },
-  {
-    from: "08/05/2021",
-    to: "08/05/2021",
-    reason: "Personal Time",
-    noofleaves: calculateDaysBetweenDates("08/05/2021", "08/05/2021"), // 2 days
-  },
-  {
-    from: "09/01/2021",
-    to: "09/01/211",
-    reason: "Workshop",
-    noofleaves: calculateDaysBetweenDates("09/01/2021", "09/1/2021"), // 2 days
-  },
-];
-
-export default function Attendance({ from, to, reason, noofleaves }) {
+export default function Attendance({ data }) {
   const classes = useStyles();
 
-  console.log(noofleaves);
+  // const empattendance =(data.att)
 
-  const totalLeaves = rows.reduce((total, row) => total + row.noofleaves, 0);
+  console.log(data);
+
+  const totalLeaves = data.reduce((total, row) => total + row.noofleaves, 0);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -192,7 +161,7 @@ export default function Attendance({ from, to, reason, noofleaves }) {
   // const statuses = Array.from(new Set(rows.map((row) => row.status)));
 
   const filteredRows = React.useMemo(() => {
-    return rows.filter((row) => {
+    return data.filter((row) => {
       return Object.entries(filters).every(([key, value]) => {
         if (!value) return true; // If filter value is empty, return true
         if (key === "designation") {
@@ -218,11 +187,27 @@ export default function Attendance({ from, to, reason, noofleaves }) {
     setPage(0);
   };
 
-  const handlePreview = (from, to, reason, noofleaves) => {
-    console.log("Row Data:", { from, to, reason, noofleaves });
+  const handlePreview = (
+    from,
+    to,
+    reason,
+    noofleaves,
+    leavetype,
+    status,
+    approvedby
+  ) => {
+    console.log("Row Data:", {
+      from,
+      to,
+      reason,
+      noofleaves,
+      leavetype,
+      status,
+      approvedby,
+    });
   };
 
-  console.log(rows.noofleaves);
+  console.log(data.noofleaves);
 
   return (
     <div>
@@ -394,7 +379,29 @@ export default function Attendance({ from, to, reason, noofleaves }) {
                       {columns.map((column) => (
                         <TableCell key={column.id} align="left">
                           {column.id !== "actions" ? (
-                            row[column.id]
+                            column.id === "status" ? (
+                              // Conditional rendering based on status value
+                              <>
+                                {row[column.id] === 0 && (
+                                  <span className="text-red-600 euclid text-xs font-bold bg-red-200 py-1 px-2 rounded-md">
+                                    Declined
+                                  </span>
+                                )}
+                                {row[column.id] === 1 && (
+                                  <span className="text-green-600 euclid text-xs font-bold bg-green-200 py-1 px-2 rounded-md">
+                                    Approved
+                                  </span>
+                                )}
+                                {row[column.id] === 2 && (
+                                  <span className="text-orange-600 euclid text-xs font-bold bg-orange-200 py-1 px-2 rounded-md">
+                                    Pending
+                                  </span>
+                                )}
+                              </>
+                            ) : (
+                              // Render other column values as usual
+                              row[column.id]
+                            )
                           ) : (
                             <div className="flex items-center gap-2"></div>
                           )}
@@ -405,7 +412,7 @@ export default function Attendance({ from, to, reason, noofleaves }) {
               </TableBody>
             </Table>
             <div className="px-2 py-4 font-bold bg-sky-50 flex">
-              <h2 className=" w-4/6">Total Leaves Of Month</h2>
+              <h2 className=" w-1/2">Total Leaves Of Month</h2>
               <h5 className="ml-36">{totalLeaves}</h5>
             </div>
           </TableContainer>
