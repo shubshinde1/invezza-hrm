@@ -89,7 +89,7 @@ function ViewProjects() {
                     </h2>
                     <Tooltip title="Work Status" placement="top" arrow>
                       <span
-                        className={`inline-block px-1 py-0.5 rounded-md font-bold text-[.6rem] text-white cursor-pointer ${
+                        className={`inline-block px-1 py-0.5 rounded-md font-bold text-[.6rem]  cursor-pointer ${
                           project.status === 0
                             ? "bg-red-200 text-red-400"
                             : project.status === 1
