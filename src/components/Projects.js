@@ -139,7 +139,7 @@ export default function Projects() {
 
   return (
     <div className="w-[96vw] md:w-auto">
-      <div className="bg-white rounded-md  px-2 py-1 flex  items-center justify-between">
+      <div className="bg-white rounded-md  px-2 py-1 flex  items-center justify-between sticky top-0 z-50">
         <div className="flex items-center">
           <div
             className={`${classes.searchContainer} bg-sky-50 mr-2  flex  h-full py-1 `}
@@ -165,7 +165,7 @@ export default function Projects() {
         </div>
         <div className="">
           <TablePagination
-            rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+            rowsPerPageOptions={[10, 25, { label: "All", value: -1 }]}
             component="div"
             count={filteredData.length}
             rowsPerPage={rowsPerPage}
@@ -182,14 +182,12 @@ export default function Projects() {
       >
         <TableContainer
           component={Paper}
-          style={{ maxHeight: "80vh" }}
-          className="scrollbar-hide mb-20 mt-2"
+          style={{ maxHeight: "100%" }}
+          className="scrollbar-hide mt-2 h-[85vh] md:h-[79vh]"
         >
           <Table>
-            <TableHead>
-              <TableRow
-                className={classNames("bg-sky-50 sticky top-0", classes.root)}
-              >
+            <TableHead className="sticky top-0">
+              <TableRow className={classNames("bg-sky-50 ", classes.root)}>
                 <TableCell>Project Id</TableCell>
                 <TableCell>Project Name</TableCell>
                 <TableCell>Client Name</TableCell>
@@ -200,7 +198,7 @@ export default function Projects() {
                 <TableCell>Assigned To</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody className={classNames(classes.bodyroot)}>
+            <TableBody className={`${classNames(classes.bodyroot)}`}>
               {(rowsPerPage > 0
                 ? filteredData.slice(
                     page * rowsPerPage,
@@ -209,7 +207,7 @@ export default function Projects() {
                 : filteredData
               ).map((client) =>
                 client.projects.map((project) => (
-                  <TableRow key={project.projectid}>
+                  <TableRow key={project.projectid} className="">
                     <TableCell>{project.projectid}</TableCell>
                     <TableCell>{project.projectname}</TableCell>
                     <TableCell>{client.clientname}</TableCell>

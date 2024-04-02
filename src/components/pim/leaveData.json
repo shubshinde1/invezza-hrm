@@ -7,13 +7,41 @@
         "status": "Active",
         "mark": 0,
         "attendance": {
-            "from": "05/15/2021",
-            "to": "05/16/2021",
-            "reason": "Vacation",
-            "noofleaves": 1,
-            "leavetype": "Casual Leave",
-            "status": 0,
-            "approvedby": "Swapnil Patli"
+            "leave1": {
+                "from": "05/15/2021",
+                "to": "05/16/2021",
+                "reason": "Vacation",
+                "noofleaves": 1,
+                "leavetype": "Casual Leave",
+                "status": 0,
+                "approvedby": "Swapnil Patli"
+            },
+            "leave2": {
+                "from": "05/15/2021",
+                "to": "05/16/2021",
+                "reason": "Vacation",
+                "noofleaves": 2,
+                "leavetype": "Casual Leave",
+                "status": 1,
+                "approvedby": "Swapnil Patli"
+            }
+        },
+        "leavedata": {
+            "annual_leave": {
+                "total": 20,
+                "remaining": 15,
+                "elapsed": 5
+            },
+            "sick_leave": {
+                "total": 10,
+                "remaining": 8,
+                "elapsed": 2
+            },
+            "personal_leave": {
+                "total": 5,
+                "remaining": 3,
+                "elapsed": 2
+            }
         }
     },
     {
@@ -24,13 +52,15 @@
         "status": "Inactive",
         "mark": 0,
         "attendance": {
-            "from": "06/01/2021",
-            "to": "06/02/2021",
-            "reason": "Sick Leave",
-            "noofleaves": 2,
-            "leavetype": "Casual Leave",
-            "status": 1,
-            "approvedby": "Swapnil Patli"
+            "leave2": {
+                "from": "05/15/2021",
+                "to": "05/16/2021",
+                "reason": "Vacation",
+                "noofleaves": 2,
+                "leavetype": "Casual Leave",
+                "status": 1,
+                "approvedby": "Swapnil Patli"
+            }
         }
     },
     {
@@ -41,13 +71,15 @@
         "status": "Inactive",
         "mark": 0,
         "attendance": {
-            "from": "07/10/2021",
-            "to": "07/11/2021",
-            "reason": "Family Emergency",
-            "noofleaves": 2,
-            "leavetype": "Casual Leave",
-            "status": 1,
-            "approvedby": "Swapnil Patli"
+            "leave2": {
+                "from": "05/15/2021",
+                "to": "05/16/2021",
+                "reason": "Vacation",
+                "noofleaves": 2,
+                "leavetype": "Casual Leave",
+                "status": 1,
+                "approvedby": "Swapnil Patli"
+            }
         }
     },
     {
@@ -58,13 +90,15 @@
         "status": "Active",
         "mark": 1,
         "attendance": {
-            "from": "08/05/2021",
-            "to": "08/05/2021",
-            "reason": "Personal Time",
-            "noofleaves": 1,
-            "leavetype": "Casual Leave",
-            "status": 2,
-            "approvedby": "Swapnil Patli"
+            "leave2": {
+                "from": "05/15/2021",
+                "to": "05/16/2021",
+                "reason": "Vacation",
+                "noofleaves": 2,
+                "leavetype": "Casual Leave",
+                "status": 1,
+                "approvedby": "Swapnil Patli"
+            }
         }
     },
     {
@@ -75,13 +109,15 @@
         "status": "Active",
         "mark": 1,
         "attendance": {
-            "from": "09/01/2021",
-            "to": "09/01/211",
-            "reason": "Workshop",
-            "noofleaves": 1,
-            "leavetype": "Casual Leave",
-            "status": 1,
-            "approvedby": "Swapnil Patli"
+            "leave2": {
+                "from": "05/15/2021",
+                "to": "05/16/2021",
+                "reason": "Vacation",
+                "noofleaves": 2,
+                "leavetype": "Casual Leave",
+                "status": 1,
+                "approvedby": "Swapnil Patli"
+            }
         }
     },
     {
@@ -92,13 +128,15 @@
         "status": "Active",
         "mark": 0,
         "attendance": {
-            "from": "08/05/2021",
-            "to": "08/05/2021",
-            "reason": "Personal Time",
-            "noofleaves": 1,
-            "leavetype": "Casual Leave",
-            "status": 2,
-            "approvedby": "Swapnil Patli"
+            "leave2": {
+                "from": "05/15/2021",
+                "to": "05/16/2021",
+                "reason": "Vacation",
+                "noofleaves": 2,
+                "leavetype": "Casual Leave",
+                "status": 1,
+                "approvedby": "Swapnil Patli"
+            }
         }
     },
     {
@@ -109,13 +147,15 @@
         "status": "Inactive",
         "mark": 1,
         "attendance": {
-            "from": "09/01/2021",
-            "to": "09/01/211",
-            "reason": "Workshop",
-            "noofleaves": 1,
-            "leavetype": "Casual Leave",
-            "status": 1,
-            "approvedby": "Swapnil Patli"
+            "leave2": {
+                "from": "05/15/2021",
+                "to": "05/16/2021",
+                "reason": "Vacation",
+                "noofleaves": 2,
+                "leavetype": "Casual Leave",
+                "status": 1,
+                "approvedby": "Swapnil Patli"
+            }
         }
     },
     {
@@ -126,13 +166,15 @@
         "status": "Active",
         "mark": 0,
         "attendance": {
-            "from": "07/10/2021",
-            "to": "07/11/2021",
-            "reason": "Family Emergency",
-            "noofleaves": 2,
-            "leavetype": "Casual Leave",
-            "status": 1,
-            "approvedby": "Swapnil Patli"
+            "leave2": {
+                "from": "05/15/2021",
+                "to": "05/16/2021",
+                "reason": "Vacation",
+                "noofleaves": 2,
+                "leavetype": "Casual Leave",
+                "status": 1,
+                "approvedby": "Swapnil Patli"
+            }
         }
     },
     {
@@ -143,13 +185,15 @@
         "status": "Active",
         "mark": 1,
         "attendance": {
-            "from": "08/05/2021",
-            "to": "08/05/2021",
-            "reason": "Personal Time",
-            "noofleaves": 1,
-            "leavetype": "Casual Leave",
-            "status": 2,
-            "approvedby": "Swapnil Patli"
+            "leave2": {
+                "from": "05/15/2021",
+                "to": "05/16/2021",
+                "reason": "Vacation",
+                "noofleaves": 2,
+                "leavetype": "Casual Leave",
+                "status": 1,
+                "approvedby": "Swapnil Patli"
+            }
         }
     }
 ]

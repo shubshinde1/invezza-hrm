@@ -13,6 +13,8 @@ import { makeStyles } from "@mui/styles";
 import { createGlobalStyle } from "styled-components";
 import classNames from "classnames";
 import { motion } from "framer-motion";
+import { useParams } from "react-router-dom";
+import empdata from "./leaveData.json";
 
 const useStyles = makeStyles({
   root: {
@@ -88,6 +90,8 @@ const GlobalStyles = createGlobalStyle`
 }
 `;
 
+const data = empdata;
+
 const columns = [
   { id: "leavetype", label: "Leave Type", minWidth: 10 },
   { id: "reason", label: "Reason", minWidth: 100 },
@@ -98,42 +102,14 @@ const columns = [
   { id: "approvedby", label: "Approved By", minWidth: 100 },
 ];
 
-function createData(
-  from,
-  to,
-  reason,
-  noofleaves,
-  leavetype,
-  status,
-  approvedby
-) {
-  return { from, to, reason, noofleaves, leavetype, status, approvedby };
-}
-
-// Function to calculate the number of days between two dates
-function calculateDaysBetweenDates(fromDate, toDate) {
-  const from = new Date(fromDate);
-  const to = new Date(toDate);
-  const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-  return Math.round(Math.abs((from - to) / oneDay)) + 1; // Adding 1 to include both start and end dates
-}
-
-export default function Attendance({ data }) {
+export default function Attendance() {
   const classes = useStyles();
 
-  // const empattendance =(data.att)
-
-  console.log(data);
-
-  const totalLeaves = data.reduce((total, row) => total + row.noofleaves, 0);
+  const { empid } = useParams();
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [filters, setFilters] = React.useState({
-    // empid: "",
-    // ename: "",
-    // status: "",
-    // designation: "",
     from: "",
     to: "",
     reason: "",
@@ -152,31 +128,34 @@ export default function Attendance({ data }) {
     setFilters({
       from: "",
       to: "",
-      reason: "",
-      noofleaves: "",
     });
   };
 
-  // const designations = Array.from(new Set(rows.map((row) => row.designation)));
-  // const statuses = Array.from(new Set(rows.map((row) => row.status)));
-
   const filteredRows = React.useMemo(() => {
     return data.filter((row) => {
-      return Object.entries(filters).every(([key, value]) => {
-        if (!value) return true; // If filter value is empty, return true
-        if (key === "designation") {
-          // For designation, check if the row value contains the filter value
-          return row[key].toLowerCase().includes(value.toLowerCase());
-        } else if (key === "status") {
-          // For status, check if the row value matches the filter value
-          return row[key].toLowerCase() === value.toLowerCase();
-        } else {
-          // For other fields, check if the row value starts with the filter value
-          return row[key].toLowerCase().startsWith(value.toLowerCase());
-        }
-      });
+      return (
+        row.empid === empid &&
+        Object.entries(filters).every(([key, value]) => {
+          if (!value || !row[key]) return true;
+          if (key === "from") {
+            return row[key].toLowerCase().includes(value.toLowerCase());
+          } else if (key === "to") {
+            return row[key].toLowerCase() === value.toLowerCase();
+          } else {
+            return row[key].toLowerCase().startsWith(value.toLowerCase());
+          }
+        })
+      );
     });
-  }, [filters]);
+  }, [data, empid, filters]);
+
+  const totalLeavesOfMonth = filteredRows.reduce((total, row) => {
+    const leaveKeys = Object.keys(row.attendance);
+    const totalLeavesForEmployee = leaveKeys.reduce((acc, key) => {
+      return acc + row.attendance[key].noofleaves;
+    }, 0);
+    return total + totalLeavesForEmployee;
+  }, 0);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -186,28 +165,6 @@ export default function Attendance({ data }) {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
-  const handlePreview = (
-    from,
-    to,
-    reason,
-    noofleaves,
-    leavetype,
-    status,
-    approvedby
-  ) => {
-    console.log("Row Data:", {
-      from,
-      to,
-      reason,
-      noofleaves,
-      leavetype,
-      status,
-      approvedby,
-    });
-  };
-
-  console.log(data.noofleaves);
 
   return (
     <div>
@@ -276,7 +233,7 @@ export default function Attendance({ data }) {
             className="m-2 pr-4 scrollbar-hide"
           >
             <Table stickyHeader aria-label="sticky table">
-              <TableHead className="">
+              <TableHead>
                 <TableRow>
                   {columns.map((column) => (
                     <TableCell
@@ -285,7 +242,7 @@ export default function Attendance({ data }) {
                       style={{
                         minWidth: column.minWidth,
                         backgroundColor: "#f0f9ff",
-                        fontWeight: "Bold",
+                        fontWeight: "bold",
                         fontFamily: "Euclid",
                       }}
                     >
@@ -297,51 +254,51 @@ export default function Attendance({ data }) {
               <TableBody>
                 {filteredRows
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => (
-                    <TableRow
-                      hover
-                      role="checkbox"
-                      tabIndex={-1}
-                      key={row.from}
-                    >
-                      {columns.map((column) => (
-                        <TableCell key={column.id} align="left">
-                          {column.id !== "actions" ? (
-                            column.id === "status" ? (
-                              // Conditional rendering based on status value
+                  .map((row, index) => {
+                    const attendanceKeys = Object.keys(row.attendance);
+                    return attendanceKeys.map((key) => (
+                      <TableRow hover role="checkbox" tabIndex={-1} key={key}>
+                        {columns.map((column) => (
+                          <TableCell
+                            key={column.id}
+                            align="left"
+                            style={{
+                              fontFamily: "Euclid",
+                            }}
+                          >
+                            {column.id !== "status" ? (
+                              row.attendance[key][column.id]
+                            ) : (
                               <>
-                                {row[column.id] === 0 && (
+                                {row.attendance[key][column.id] === 0 && (
                                   <span className="text-red-600 euclid text-xs font-bold bg-red-200 py-1 px-2 rounded-md">
                                     Declined
                                   </span>
                                 )}
-                                {row[column.id] === 1 && (
+                                {row.attendance[key][column.id] === 1 && (
                                   <span className="text-green-600 euclid text-xs font-bold bg-green-200 py-1 px-2 rounded-md">
                                     Approved
                                   </span>
                                 )}
-                                {row[column.id] === 2 && (
+                                {row.attendance[key][column.id] === 2 && (
                                   <span className="text-orange-600 euclid text-xs font-bold bg-orange-200 py-1 px-2 rounded-md">
                                     Pending
                                   </span>
                                 )}
                               </>
-                            ) : (
-                              // Render other column values as usual
-                              row[column.id]
-                            )
-                          ) : (
-                            <div className="flex items-center gap-2"></div>
-                          )}
-                        </TableCell>
-                      ))}
-                    </TableRow>
-                  ))}
+                            )}
+                          </TableCell>
+                        ))}
+                      </TableRow>
+                    ));
+                  })}
               </TableBody>
             </Table>
-            <div className="px-2 py-4 font-bold bg-sky-50 flex">
-              <h2 className=" w-1/2">Total Leaves Of Month</h2>
-              <h5 className="ml-36">{totalLeaves}</h5>
+            <div className="px-4 py-4 font-bold w-full bg-sky-50 flex flex-row justify-between sm:justify-start">
+              <h2 className=" sm:w-1/2 ">Total Leaves Of Month</h2>
+              <h5 className="sm:ml-16 md:ml-16 lg:ml-20">
+                {totalLeavesOfMonth}
+              </h5>
             </div>
           </TableContainer>
         </Paper>

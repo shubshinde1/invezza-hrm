@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Menutabs from "./Menutabs";
 import Paper from "@mui/material/Paper";
@@ -25,12 +25,19 @@ import { createGlobalStyle } from "styled-components";
 import classNames from "classnames";
 import { motion } from "framer-motion";
 import leaveData from "./leaveData.json";
+import ViewEmployee from "./ViewEmployee";
 
 import Tooltip from "@mui/material/Tooltip";
 
 const useStyles = makeStyles({
   root: {
     "& .MuiInputLabel-root": {
+      fontFamily: "euclid",
+      fontSize: 14,
+      paddingTop: -2.5,
+      fontWeight: "bold",
+    },
+    "& .MuiTableCell-root": {
       fontFamily: "euclid",
       fontSize: 14,
       paddingTop: -2.5,
@@ -111,7 +118,6 @@ const columns = [
   { id: "designation", label: "Designation", minWidth: 120 },
   { id: "jdate", label: "Joining Date", minWidth: 120 },
   { id: "status", label: "Status", minWidth: 120 },
-  { id: "mark", label: "Mark" },
   { id: "actions", label: "Actions", minWidth: 80 },
 ];
 
@@ -120,6 +126,7 @@ function createData(empid, ename, designation, mark, jdate, status) {
 }
 
 const rows = leaveData;
+const edata = leaveData[0].empid;
 
 export default function StickyHeadTable({
   empid,
@@ -129,6 +136,7 @@ export default function StickyHeadTable({
   status,
 }) {
   const classes = useStyles();
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState(edata);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -188,19 +196,29 @@ export default function StickyHeadTable({
 
   const handlePreview = (empid, ename, designation, jdate, status) => {
     console.log("Row Data:", { empid, ename, designation, jdate, status });
+    setSelectedEmployeeId(edata);
+  };
+
+  const employeeParams = {
+    empid: rows.empid,
+    ename: rows.ename,
+    designation: rows.designation,
+    jdate: rows.jdate,
+    status: rows.status,
   };
 
   return (
     <div>
-      <Menutabs />
+      <Menutabs className="" />
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        className=""
       >
         <Paper
-          sx={{ overflow: "hidden" }}
-          className="md:w-[100%] w-[calc(100vw-0.8rem)] h-[90%] top-24"
+          sx={{ overflow: "" }}
+          className="md:w-[100%] w-[calc(100vw-0.8rem)] h-[100vh] md:h-[90%] top-24 mb-4 "
         >
           <div className="m-2 gap-2 flex-col items-center grid grid-cols-12 ">
             <TextField
@@ -372,23 +390,46 @@ export default function StickyHeadTable({
                       key={row.empid}
                     >
                       {columns.map((column) => (
-                        <TableCell key={column.id} align="left">
+                        <TableCell
+                          key={column.id}
+                          align="left"
+                          style={{
+                            fontFamily: "Euclid",
+                          }}
+                        >
                           {column.id !== "actions" ? (
-                            column.id === "mark" ? (
+                            column.id === "ename" ? (
                               <Tooltip
                                 title={row.mark ? "Present" : "Absent"}
-                                placement="top"
+                                placement="left"
                                 arrow
                               >
-                                <div
-                                  className={`rounded-full px-1.5 py-0.5 w-fit flex justify-center text-[.7rem] euclid-bold font-bold cursor-pointer ${
-                                    row.mark
-                                      ? "bg-green-200 text-green-600"
-                                      : "bg-red-200 text-red-600"
-                                  }`}
+                                <Link
+                                  className="flex items-center  cursor-pointer"
+                                  to={{
+                                    pathname: `/pim/view/${
+                                      row.empid
+                                    }/${encodeURIComponent(
+                                      row.ename
+                                    )}/${encodeURIComponent(
+                                      row.designation
+                                    )}/${encodeURIComponent(
+                                      row.jdate
+                                    )}/${encodeURIComponent(row.status)}`,
+                                    state: { ...employeeParams.empid },
+                                  }}
                                 >
-                                  {row.mark ? "P" : "A"}
-                                </div>
+                                  <div
+                                    className={`mr-3 rounded-md px-1.5 py-0.5 w-fit flex justify-center text-[.7rem] euclid-bold font-bold ${
+                                      row.mark
+                                        ? "bg-green-200 text-green-600"
+                                        : "bg-red-200 text-red-600"
+                                    }`}
+                                  >
+                                    {row.mark ? "P" : "A"}
+                                  </div>
+                                  <span>{row[column.id]}</span>
+                                </Link>
                               </Tooltip>
                             ) : (
                               row[column.id]
@@ -435,6 +476,7 @@ export default function StickyHeadTable({
                                     )}/${encodeURIComponent(
                                       row.jdate
                                     )}/${encodeURIComponent(row.status)}`,
+                                    state: { ...employeeParams.empid },
                                   }}
                                 >
                                   <IoEye className="text-xl" />

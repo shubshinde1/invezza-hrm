@@ -1,23 +1,18 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import View from "./View";
 import Attendance from "./Attendance";
-import attendanceData from "./leaveData.json";
+import { useParams } from "react-router-dom";
 
 export default function ViewEmployee() {
   const [activeTab, setActiveTab] = useState("view");
-  const [selectedEmployeeData, setSelectedEmployeeData] = useState(null);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
 
-  const handleEmployeeSelect = (employeeId) => {
-    // Find the selected employee data from the leaveData.json file
-    const employee = attendanceData.find(
-      (employee) => employee.id === employeeId
-    );
-    setSelectedEmployeeData(employee);
-  };
+  const { empid } = useParams();
+  // console.log("Employee ID:", empid);
 
   return (
     <div className="">
@@ -52,12 +47,12 @@ export default function ViewEmployee() {
       <div>
         {activeTab === "view" && (
           <div id="view" className="">
-            <View onEmployeeSelect={handleEmployeeSelect} />
+            <View />
           </div>
         )}
-        {activeTab === "attendance" && selectedEmployeeData && (
+        {activeTab === "attendance" && (
           <div id="attendance" className="">
-            <Attendance data={selectedEmployeeData} />
+            <Attendance empid={empid} />
           </div>
         )}
       </div>

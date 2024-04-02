@@ -11,6 +11,9 @@ export default function ViewEmployee() {
   const email = `${firstName.toLowerCase()}${lastName.toLowerCase()}${emailSuffix}`;
   const contentRef = useRef(null);
 
+  // const { empid } = useParams();
+  // console.log("Employee ID:", empid);
+
   return (
     <div className="">
       <motion.div
