@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import View from "./View";
-import Attendance from "./Attendance";
+import Leave from "./Leave";
+import TimeSheets from "./TimeSheets";
 import { useParams } from "react-router-dom";
 
 export default function ViewEmployee() {
@@ -32,14 +33,26 @@ export default function ViewEmployee() {
           </li>
           <li
             className={`text-sm px-3 py-1.5 rounded-md ${
-              activeTab === "attendance"
+              activeTab === "leave"
                 ? "bg-[#5336FD] text-white font-bold"
                 : "bg-sky-50"
             }`}
-            onClick={() => handleTabChange("attendance")}
+            onClick={() => handleTabChange("leave")}
           >
             <div className="cursor-pointer" activeClassName="bg-gray-200">
-              Attendance
+              Leave History
+            </div>
+          </li>
+          <li
+            className={`text-sm px-3 py-1.5 rounded-md ${
+              activeTab === "timesheets"
+                ? "bg-[#5336FD] text-white font-bold"
+                : "bg-sky-50"
+            }`}
+            onClick={() => handleTabChange("timesheets")}
+          >
+            <div className="cursor-pointer" activeClassName="bg-gray-200">
+              Time Sheet
             </div>
           </li>
         </ul>
@@ -50,9 +63,14 @@ export default function ViewEmployee() {
             <View />
           </div>
         )}
-        {activeTab === "attendance" && (
-          <div id="attendance" className="">
-            <Attendance empid={empid} />
+        {activeTab === "leave" && (
+          <div id="leave" className="">
+            <Leave empid={empid} />
+          </div>
+        )}
+        {activeTab === "timesheets" && (
+          <div id="timesheets" className="">
+            <TimeSheets empid={empid} />
           </div>
         )}
       </div>

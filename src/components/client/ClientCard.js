@@ -73,7 +73,7 @@ const useStyles = makeStyles({
 function GenerateLink({ client, navigate }) {
   const handleClick = () => {
     navigate({
-      pathname: "/projects/viewprojects",
+      pathname: "/clients/viewclient",
       search: `?client=${encodeURIComponent(JSON.stringify(client))}`,
     });
   };
@@ -93,7 +93,7 @@ function GenerateLink({ client, navigate }) {
 function GenerateLinkForList({ client, navigate }) {
   const handleClick = () => {
     navigate({
-      pathname: "/projects/viewprojects",
+      pathname: "/clients/viewclient",
       search: `?client=${encodeURIComponent(JSON.stringify(client))}`,
     });
   };

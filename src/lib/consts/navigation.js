@@ -47,42 +47,37 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     path: "/projects",
     icon: <HiMiniCodeBracketSquare />,
   },
-  {
-    key: "leave",
-    label: "Leave",
-    path: "/leave",
-    icon: <FaDoorOpen />,
-  },
+  // {
+  //   key: "leave",
+  //   label: "Leave",
+  //   path: "/leave",
+  //   icon: <FaDoorOpen />,
+  // },
   // {
   //   key: "attendance",
   //   label: "Attendance",
   //   path: "/attendance",
   //   icon: <IoCalendar />,
   // },
+  // {
+  //   key: "myprofile",
+  //   label: "My Profile",
+  //   path: "/myprofile",
+  //   icon: <FaClipboardUser />,
+  // },
+  // {
+  //   key: "task",
+  //   label: "Task",
+  //   path: "/task",
+  //   icon: <SiTask />,
+  // },
   {
-    key: "myprofile",
-    label: "My Profile",
-    path: "/myprofile",
-    icon: <FaClipboardUser />,
-  },
-  {
-    key: "task",
-    label: "Task",
-    path: "/task",
-    icon: <SiTask />,
-  },
-  {
-    key: "admin",
-    label: "Admin",
-    path: "/admin",
+    key: "user",
+    label: "User",
+    path: "/user",
     icon: <RiShieldUserFill />,
   },
-  {
-    key: "claim",
-    label: "Claim",
-    path: "/claim",
-    icon: <MdLocalPolice />,
-  },
+  // {Z
 ];
 
 export const DASHBOARD_SIDEBAR_BOTTOM_LINKS = [

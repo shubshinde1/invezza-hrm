@@ -7,20 +7,29 @@
         "status": "Active",
         "mark": 0,
         "attendance": {
-            "leave1": {
-                "from": "05/15/2021",
-                "to": "05/16/2021",
+            "leave0": {
+                "from": "2023/09/15",
+                "to": "2023/09/19",
                 "reason": "Vacation",
-                "noofleaves": 1,
+                "noofleaves": 5,
+                "leavetype": "Casual Leave",
+                "status": 0,
+                "approvedby": "Swapnil Patli"
+            },
+            "leave1": {
+                "from": "2024/04/15",
+                "to": "2024/04/19",
+                "reason": "Vacation",
+                "noofleaves": 5,
                 "leavetype": "Casual Leave",
                 "status": 0,
                 "approvedby": "Swapnil Patli"
             },
             "leave2": {
-                "from": "05/15/2021",
-                "to": "05/16/2021",
+                "from": "2024/02/19",
+                "to": "2024/02/22",
                 "reason": "Vacation",
-                "noofleaves": 2,
+                "noofleaves": 4,
                 "leavetype": "Casual Leave",
                 "status": 1,
                 "approvedby": "Swapnil Patli"
@@ -52,11 +61,29 @@
         "status": "Inactive",
         "mark": 0,
         "attendance": {
-            "leave2": {
-                "from": "05/15/2021",
-                "to": "05/16/2021",
+            "leave0": {
+                "from": "2023/09/15",
+                "to": "2023/09/19",
                 "reason": "Vacation",
-                "noofleaves": 2,
+                "noofleaves": 5,
+                "leavetype": "Casual Leave",
+                "status": 0,
+                "approvedby": "Swapnil Patli"
+            },
+            "leave1": {
+                "from": "2024/04/15",
+                "to": "2024/04/19",
+                "reason": "Vacation",
+                "noofleaves": 5,
+                "leavetype": "Casual Leave",
+                "status": 0,
+                "approvedby": "Swapnil Patli"
+            },
+            "leave2": {
+                "from": "2024/02/19",
+                "to": "2024/02/22",
+                "reason": "Vacation",
+                "noofleaves": 4,
                 "leavetype": "Casual Leave",
                 "status": 1,
                 "approvedby": "Swapnil Patli"
@@ -71,11 +98,29 @@
         "status": "Inactive",
         "mark": 0,
         "attendance": {
-            "leave2": {
-                "from": "05/15/2021",
-                "to": "05/16/2021",
+            "leave0": {
+                "from": "2023/09/15",
+                "to": "2023/09/19",
                 "reason": "Vacation",
-                "noofleaves": 2,
+                "noofleaves": 5,
+                "leavetype": "Casual Leave",
+                "status": 0,
+                "approvedby": "Swapnil Patli"
+            },
+            "leave1": {
+                "from": "2024/04/15",
+                "to": "2024/04/19",
+                "reason": "Vacation",
+                "noofleaves": 5,
+                "leavetype": "Casual Leave",
+                "status": 0,
+                "approvedby": "Swapnil Patli"
+            },
+            "leave2": {
+                "from": "2024/02/19",
+                "to": "2024/02/22",
+                "reason": "Vacation",
+                "noofleaves": 4,
                 "leavetype": "Casual Leave",
                 "status": 1,
                 "approvedby": "Swapnil Patli"
@@ -90,11 +135,29 @@
         "status": "Active",
         "mark": 1,
         "attendance": {
-            "leave2": {
-                "from": "05/15/2021",
-                "to": "05/16/2021",
+            "leave0": {
+                "from": "2023/09/15",
+                "to": "2023/09/19",
                 "reason": "Vacation",
-                "noofleaves": 2,
+                "noofleaves": 5,
+                "leavetype": "Casual Leave",
+                "status": 0,
+                "approvedby": "Swapnil Patli"
+            },
+            "leave1": {
+                "from": "2024/04/15",
+                "to": "2024/04/19",
+                "reason": "Vacation",
+                "noofleaves": 5,
+                "leavetype": "Casual Leave",
+                "status": 0,
+                "approvedby": "Swapnil Patli"
+            },
+            "leave2": {
+                "from": "2024/02/19",
+                "to": "2024/02/22",
+                "reason": "Vacation",
+                "noofleaves": 4,
                 "leavetype": "Casual Leave",
                 "status": 1,
                 "approvedby": "Swapnil Patli"
@@ -110,8 +173,8 @@
         "mark": 1,
         "attendance": {
             "leave2": {
-                "from": "05/15/2021",
-                "to": "05/16/2021",
+                "from": "2021/05/15",
+                "to": "2021/05/16",
                 "reason": "Vacation",
                 "noofleaves": 2,
                 "leavetype": "Casual Leave",
@@ -129,8 +192,8 @@
         "mark": 0,
         "attendance": {
             "leave2": {
-                "from": "05/15/2021",
-                "to": "05/16/2021",
+                "from": "2021/05/15",
+                "to": "2021/05/16",
                 "reason": "Vacation",
                 "noofleaves": 2,
                 "leavetype": "Casual Leave",
@@ -148,8 +211,8 @@
         "mark": 1,
         "attendance": {
             "leave2": {
-                "from": "05/15/2021",
-                "to": "05/16/2021",
+                "from": "2021/05/15",
+                "to": "2021/05/16",
                 "reason": "Vacation",
                 "noofleaves": 2,
                 "leavetype": "Casual Leave",
@@ -167,8 +230,8 @@
         "mark": 0,
         "attendance": {
             "leave2": {
-                "from": "05/15/2021",
-                "to": "05/16/2021",
+                "from": "2021/05/15",
+                "to": "2021/05/16",
                 "reason": "Vacation",
                 "noofleaves": 2,
                 "leavetype": "Casual Leave",
@@ -186,8 +249,8 @@
         "mark": 1,
         "attendance": {
             "leave2": {
-                "from": "05/15/2021",
-                "to": "05/16/2021",
+                "from": "2021/05/15",
+                "to": "2021/05/16",
                 "reason": "Vacation",
                 "noofleaves": 2,
                 "leavetype": "Casual Leave",

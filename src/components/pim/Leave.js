@@ -7,7 +7,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { TextField } from "@mui/material";
+import {
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 import { FaFilterCircleXmark } from "react-icons/fa6";
 import { makeStyles } from "@mui/styles";
 import { createGlobalStyle } from "styled-components";
@@ -15,6 +21,7 @@ import classNames from "classnames";
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import empdata from "./leaveData.json";
+import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 
 const useStyles = makeStyles({
   root: {
@@ -64,8 +71,10 @@ const useStyles = makeStyles({
 
 const GlobalStyles = createGlobalStyle`
 .MuiPaper-root{
-  height:215px;
   border-radius:10px;
+} 
+.MuiList-root {
+  height: 215px;
 } 
 .MuiMenuItem-root {
     font-family: Euclid;
@@ -102,7 +111,7 @@ const columns = [
   { id: "approvedby", label: "Approved By", minWidth: 100 },
 ];
 
-export default function Attendance() {
+export default function Leave() {
   const classes = useStyles();
 
   const { empid } = useParams();
@@ -149,6 +158,8 @@ export default function Attendance() {
     });
   }, [data, empid, filters]);
 
+  console.log(filteredRows);
+
   const totalLeavesOfMonth = filteredRows.reduce((total, row) => {
     const leaveKeys = Object.keys(row.attendance);
     const totalLeavesForEmployee = leaveKeys.reduce((acc, key) => {
@@ -178,32 +189,45 @@ export default function Attendance() {
           className="md:w-[100%] w-[calc(100vw-0.8rem)] h-[90%] top-24"
         >
           <div className="m-2 gap-2 flex-col items-center grid grid-cols-12 ">
-            <TextField
-              className={classNames(
-                "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                classes.root
-              )}
-              id="from"
-              name="from"
-              label="From Date"
-              value={filters.from}
-              onChange={handleChangeFilter}
+            <FormControl
               variant="outlined"
               margin="dense"
-            />
-            <TextField
               className={classNames(
-                "col-span-12 sm:col-span-6 xl:col-span-2 py-1",
+                "col-span-12 sm:col-span-6 xl:col-span-2",
                 classes.root
               )}
-              id="to"
-              name="to"
-              label="To Date"
-              value={filters.to}
-              onChange={handleChangeFilter}
-              variant="outlined"
-              margin="dense"
-            />
+            >
+              <InputLabel id="leave-label" className="w-52 ">
+                All Leaves
+              </InputLabel>
+              <Select
+                labelId="leave-label"
+                id="leave"
+                name="All Leaves"
+                value={filters.status}
+                onChange={handleChangeFilter}
+                label="All Leaves"
+                IconComponent={(props) => (
+                  <span>
+                    <ArrowDropDownRoundedIcon
+                      {...props}
+                      sx={{
+                        fontSize: 40,
+                        // backgroundColor: "#CBCBCB",
+                        borderRadius: 2,
+                      }}
+                    />
+                  </span>
+                )}
+              >
+                <GlobalStyles />
+                <MenuItem value="">All</MenuItem>
+                <MenuItem value="currentmonth">Current Month</MenuItem>
+                <MenuItem value="last3months">Last 3 Months</MenuItem>
+                <MenuItem value="last6months">Last 6 Months</MenuItem>
+                <MenuItem value="last1year">Last 1 Year</MenuItem>
+              </Select>
+            </FormControl>
 
             <div className="col-span-12 md:col-span-4 flex items-center justify-between ">
               <button
@@ -295,7 +319,7 @@ export default function Attendance() {
               </TableBody>
             </Table>
             <div className="px-4 py-4 font-bold w-full bg-sky-50 flex flex-row justify-between sm:justify-start">
-              <h2 className=" sm:w-1/2 ">Total Leaves Of Month</h2>
+              <h2 className=" sm:w-1/2 ">Total Leaves in Last</h2>
               <h5 className="sm:ml-16 md:ml-16 lg:ml-20">
                 {totalLeavesOfMonth}
               </h5>

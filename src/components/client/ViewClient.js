@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { IoEye } from "react-icons/io5";
 import { IoIosAddCircle } from "react-icons/io";
 
-function ViewProjects() {
+function ViewClient() {
   const location = useLocation();
   const [client, setClient] = useState(null);
 
@@ -162,4 +162,4 @@ function ViewProjects() {
   );
 }
 
-export default ViewProjects;
+export default ViewClient;
