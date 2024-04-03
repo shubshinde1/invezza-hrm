@@ -111,15 +111,15 @@ export default function Leave() {
   const [filterValue, setFilterValue] = useState("all");
 
   const [totalSickLeave, setTotalSickLeave] = useState(0);
+  const [totalPrivilegeLeave, setTotalPrivilegeLeave] = useState(0);
+  const [totalCasualLeave, setTotalCasualLeave] = useState(0);
+  const [totalHoliday, setTotalHoliday] = useState(0);
   const [remainingSickLeave, setRemainingSickLeave] = useState(0);
   const [elapsedSickLeave, setElapsedSickLeave] = useState(0);
-  const [totalPrivilegeLeave, setTotalPrivilegeLeave] = useState(0);
   const [remainingPrivilegeLeave, setRemainingPrivilegeLeave] = useState(0);
   const [elapsedPrivilegeLeave, setElapsedPrivilegeLeave] = useState(0);
-  const [totalCasualLeave, setTotalCasualLeave] = useState(0);
   const [remainingCasualLeave, setRemainingCasualLeave] = useState(0);
   const [elapsedCasualLeave, setElapsedCasualLeave] = useState(0);
-  const [totalHoliday, setTotalHoliday] = useState(0);
   const [remainingHoliday, setRemainingHoliday] = useState(0);
   const [elapsedHoliday, setElapsedHoliday] = useState(0);
   const [totalAllLeaves, setTotalAllLeaves] = useState(0);
@@ -395,6 +395,7 @@ export default function Leave() {
               )}
             >
               <GlobalStyles />
+              <MenuItem value="all">All Records</MenuItem>
               <MenuItem value="currentmonth">Current Month</MenuItem>
               <MenuItem value="last3months">Last 3 Months</MenuItem>
               <MenuItem value="last6months">Last 6 Months</MenuItem>

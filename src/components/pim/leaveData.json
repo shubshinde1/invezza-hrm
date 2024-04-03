@@ -125,7 +125,8 @@
                 "remaining": 3,
                 "elapsed": 7
             }
-        }
+        },
+        "timesheet": {}
     },
     {
         "empid": "EMP003",
@@ -184,7 +185,8 @@
                 "remaining": 3,
                 "elapsed": 7
             }
-        }
+        },
+        "timesheet": {}
     },
     {
         "empid": "EMP004",
@@ -243,7 +245,8 @@
                 "remaining": 3,
                 "elapsed": 7
             }
-        }
+        },
+        "timesheet": {}
     },
     {
         "empid": "EMP005",
@@ -261,6 +264,15 @@
                 "leavetype": "Casual Leave",
                 "status": 1,
                 "approvedby": "Swapnil Patli"
+            },
+            "leave0": {
+                "from": "2021-05-15",
+                "to": "2021-05-16",
+                "reason": "Vacation",
+                "noofleaves": 2,
+                "leavetype": "Casual Leave",
+                "status": 1,
+                "approvedby": "Swapnil Patli"
             }
         },
         "leavedata": {
@@ -284,7 +296,8 @@
                 "remaining": 3,
                 "elapsed": 7
             }
-        }
+        },
+        "timesheet": {}
     },
     {
         "empid": "EMP006",
@@ -294,7 +307,7 @@
         "status": "Active",
         "mark": 0,
         "attendance": {
-            "leave2": {
+            "leave0": {
                 "from": "2021-05-15",
                 "to": "2021-05-16",
                 "reason": "Vacation",
@@ -325,7 +338,8 @@
                 "remaining": 3,
                 "elapsed": 7
             }
-        }
+        },
+        "timesheet": {}
     },
     {
         "empid": "EMP007",
@@ -335,7 +349,7 @@
         "status": "Inactive",
         "mark": 1,
         "attendance": {
-            "leave2": {
+            "leave0": {
                 "from": "2021-05-15",
                 "to": "2021-05-16",
                 "reason": "Vacation",
@@ -366,7 +380,8 @@
                 "remaining": 3,
                 "elapsed": 7
             }
-        }
+        },
+        "timesheet": {}
     },
     {
         "empid": "EMP008",
@@ -376,7 +391,7 @@
         "status": "Active",
         "mark": 0,
         "attendance": {
-            "leave2": {
+            "leave0": {
                 "from": "2021-05-15",
                 "to": "2021-05-16",
                 "reason": "Vacation",
@@ -407,7 +422,8 @@
                 "remaining": 3,
                 "elapsed": 7
             }
-        }
+        },
+        "timesheet": {}
     },
     {
         "empid": "EMP009",
@@ -417,7 +433,7 @@
         "status": "Active",
         "mark": 1,
         "attendance": {
-            "leave2": {
+            "leave0": {
                 "from": "2021-05-15",
                 "to": "2021-05-16",
                 "reason": "Vacation",
@@ -448,6 +464,7 @@
                 "remaining": 3,
                 "elapsed": 7
             }
-        }
+        },
+        "timesheet": {}
     }
 ]
