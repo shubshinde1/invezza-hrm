@@ -47,8 +47,7 @@ const useStyles = makeStyles({
       fontFamily: "euclid",
       fontSize: 13,
       fontWeight: "bold",
-      color: "black",
-      backgroundColor: "#f0f9ff",
+      // color: "black",
       borderRadius: 6,
       cursor: "pointer",
     },
@@ -64,16 +63,19 @@ export default function Calendar() {
   return (
     <div className="flex flex-col sm:flex-row xl:flex-col justify-start items-start sm:items-stretch sm:justify-between xl:justify-normal ">
       <div className="">
-        <LocalizationProvider dateAdapter={AdapterDayjs} className="">
-          <DateCalendar className={`${classes.root} `} />
+        <LocalizationProvider
+          dateAdapter={AdapterDayjs}
+          className="dark:text-white"
+        >
+          <DateCalendar className={`${classes.root} dark:text-white`} />
         </LocalizationProvider>
       </div>
       <div className="sm:mr-5 sm:mt-4 xl:mt-2 w-full px-4 sm:w-1/2 xl:w-full">
         <div className="">
           <h2 className=" font-bold ">Upcoming Holidays</h2>
           <div className="mt-2 flex flex-col gap-3 ">
-            <div className="flex flex-row items-center gap-5 p-2 rounded-md hover:bg-sky-50 cursor-pointer">
-              <div className="flex flex-col relative items-center justify-start bg-sky-50  rounded-md p-3   after:w-8  after:absolute after:h-1.5 after:bg-[#3C5EFE] after:-bottom-0 after:rounded-sm ">
+            <div className="flex flex-row items-center gap-5 p-2 rounded-md hover:bg-sky-50 dark:hover:bg-gray-700 cursor-pointer">
+              <div className="flex flex-col relative items-center justify-start bg-sky-50 dark:bg-gray-800  rounded-md p-3   after:w-8  after:absolute after:h-1.5 after:bg-[#3C5EFE] after:-bottom-0 after:rounded-sm ">
                 <h2 className="font-bold">Mar</h2>
                 <h2>25</h2>
               </div>
@@ -83,8 +85,8 @@ export default function Calendar() {
               </div>
             </div>
 
-            <div className="flex flex-row items-center gap-5 p-2 rounded-md hover:bg-sky-50 cursor-pointer">
-              <div className="flex flex-col relative items-center justify-start bg-sky-50  rounded-md p-3 after:w-8  after:absolute after:h-1.5 after:bg-blue-200 after:-bottom-0 after:rounded-sm">
+            <div className="flex flex-row items-center gap-5 p-2 rounded-md hover:bg-sky-50 dark:hover:bg-gray-700 cursor-pointer">
+              <div className="flex flex-col relative items-center justify-start bg-sky-50 dark:bg-gray-800  rounded-md p-3 after:w-8  after:absolute after:h-1.5 after:bg-blue-200 dark:after:bg-gray-600 after:-bottom-0 after:rounded-sm">
                 <h2 className="font-bold">Mar</h2>
                 <h2>25</h2>
               </div>
@@ -94,8 +96,8 @@ export default function Calendar() {
               </div>
             </div>
 
-            <div className="flex flex-row items-center gap-5 p-2 rounded-md hover:bg-sky-50 cursor-pointer">
-              <div className="flex flex-col relative items-center justify-start bg-sky-50  rounded-md p-3 after:w-8  after:absolute after:h-1.5 after:bg-blue-200 after:-bottom-0 after:rounded-sm">
+            <div className="flex flex-row items-center gap-5 p-2 rounded-md hover:bg-sky-50 dark:hover:bg-gray-700 cursor-pointer">
+              <div className="flex flex-col relative items-center justify-start bg-sky-50 dark:bg-gray-800  rounded-md p-3 after:w-8  after:absolute after:h-1.5 after:bg-blue-200 dark:after:bg-gray-600 after:-bottom-0 after:rounded-sm">
                 <h2 className="font-bold">Mar</h2>
                 <h2>25</h2>
               </div>

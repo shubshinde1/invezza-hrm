@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 // import classNames from "classnames";
 
-const LogoutMenuItem = () => {
+const LogoutMenuItem = ({ handleThemeSwitch }) => {
   const navigate = useNavigate();
   const [showConfirmation, setShowConfirmation] = useState(false);
   const { logout } = useAuth0();
@@ -13,7 +13,6 @@ const LogoutMenuItem = () => {
   const handleLogout = () => {
     setShowConfirmation(true);
   };
-
 
   const cancelLogout = () => {
     setShowConfirmation(false);
@@ -24,7 +23,7 @@ const LogoutMenuItem = () => {
       {({ active }) => (
         <>
           <div
-            className={`px-3 py-2 flex hover:bg-sky-50 cursor-pointer rounded-md  ${
+            className={`px-3 py-2 flex  hover:bg-sky-50 cursor-pointer rounded-md  ${
               active ? "" : ""
             }`}
             onClick={handleLogout}
@@ -48,7 +47,7 @@ const LogoutMenuItem = () => {
               }}
             >
               <div className="absolute inset-0 opacity-50 backdrop-blur-lg bg-black"></div>
-              <div className="absolute bg-white p-7 rounded-md shadow-lg">
+              <div className="absolute  bg-white p-7 rounded-md shadow-lg">
                 <p>Are you sure you want to logout?</p>
                 <div className="flex justify-around mt-4 ">
                   <button

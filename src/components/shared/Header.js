@@ -9,7 +9,7 @@ import { DASHBOARD_SIDEBAR_LINKS } from "../../lib/consts/navigation";
 import classNames from "classnames";
 import LogoutMenuItem from "./LogoutMenuItem"; // Import the LogoutMenuItem component
 
-export default function Header() {
+export default function Header({ handleThemeSwitch, theme }) {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -25,37 +25,6 @@ export default function Header() {
       // If current path is found in main links array, return its label
       return currentLink.label;
     } else {
-      // below block is for this (item) just shows parent
-
-      // If not found, search within the subItems arrays
-      // for (const link of DASHBOARD_SIDEBAR_LINKS) {
-      //   if (link.subItems) {
-      //     const subItem = link.subItems.find(
-      //       (subLink) => subLink.path === currentPath
-      //     );
-      //     if (subItem) {
-      //       // If current path is found in a subItem, return its parent label
-      //       return link.label;
-      //     }
-      //   }
-      // }
-
-      // Below bloack is for (item > SubItems)
-
-      // for (const link of DASHBOARD_SIDEBAR_LINKS) {
-      //   if (link.subItems) {
-      //     const subItem = link.subItems.find(
-      //       (subLink) => subLink.path === currentPath
-      //     );
-      //     if (subItem) {
-      //       // Return main link label + ">" + subItem label
-      //       return `${link.label} > ${subItem.label}`;
-      //     }
-      //   }
-      // }
-
-      // Below bloack is for (SubItems)
-
       for (const link of DASHBOARD_SIDEBAR_LINKS) {
         if (link.subItems) {
           const subItem = link.subItems.find(
@@ -71,11 +40,21 @@ export default function Header() {
     return "View Employee"; // Return default title if no match is found
   };
 
+  const buttonText = theme === "dark" ? "Light Mode" : "Dark Mode";
+
   return (
-    <div className=" mt-2 mb-2 mr-2 ml-16 md:m-2 pl-2 bg-white h-12 md:h-16 rounded-md flex justify-between items-center">
+    <div className=" mt-2 mb-2 mr-2 ml-16 md:m-2 pl-2 dark:bg-gray-900 bg-white dark:text-white h-12 md:h-16 rounded-md flex justify-between items-center">
       <div className="font-bold">{getTitle()}</div>
       <div className="">
         <div className="flex items-center gap-3 text-sm">
+          <div>
+            <button
+              className="bg-sky-100 dark:bg-gray-800 rounded-md p-2 text-sm"
+              onClick={handleThemeSwitch}
+            >
+              {buttonText}
+            </button>
+          </div>
           <Popover className="relative">
             {({ open }) => (
               <>

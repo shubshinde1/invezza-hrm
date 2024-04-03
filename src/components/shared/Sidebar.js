@@ -8,7 +8,7 @@ import { HiMenuAlt1 } from "react-icons/hi";
 import { motion } from "framer-motion";
 
 const LinkClasses =
-  "flex hover:bg-sky-50 hover:duration-500 p-3 mt-1.5 rounded-md euclid";
+  "flex hover:bg-sky-50 dark:hover:bg-gray-800 hover:duration-500 p-3 mt-1.5 rounded-md euclid";
 
 export default function Sidebar() {
   const { pathname } = useLocation();
@@ -83,9 +83,9 @@ export default function Sidebar() {
 
   const [rotate, setRotate] = React.useState(true);
   return (
-    <div className="z-10">
+    <div className="z-10 ">
       <button
-        className="md:hidden fixed top-2 left-2 p-3 text-black bg-white rounded-md"
+        className="md:hidden fixed top-2 left-2 p-3 text-black bg-white dark:bg-gray-800  rounded-md"
         onClick={() => {
           toggleSidebar();
           setRotate(!rotate);
@@ -95,14 +95,14 @@ export default function Sidebar() {
       </button>
       <div
         ref={sidebarRef}
-        className={`md:flex md:flex-col w-52 h-[98vh] md:h-screen ml-2 mt-2 md:m-0 md:rounded-none rounded-md absolute md:relative p-4 bg-white z-50 shadow-2xl md:shadow-none ${
+        className={`md:flex md:flex-col w-52 h-[98vh] md:h-screen ml-2 mt-2 md:m-0 md:rounded-none rounded-md absolute md:relative p-4 bg-white dark:bg-gray-900 z-50 shadow-2xl md:shadow-none ${
           isSidebarOpen ? "" : "hidden"
         }`}
       >
         <div className=" flex flex-row justify-between items-center">
           <img src={logo} className="pr-16" alt="logo" />
           <TbLayoutSidebarLeftCollapseFilled
-            className="text-2xl absolute flex md:hidden right-5 mt-5 hover:bg-sky-50 rounded-md"
+            className="text-2xl absolute flex md:hidden right-5 mt-5 hover:bg-sky-50 dark:hover:bg-gray-700 rounded-md"
             onClick={() => {
               toggleSidebar();
               setRotate(!rotate);
@@ -155,7 +155,7 @@ export default function Sidebar() {
                 {clickedItem === item && item.subItems && (
                   <div className="md:absolute left-44 md:pl-6 top-0 md:w-60 ">
                     <motion.div
-                      className=" bg-white shadow-md rounded-md p-1 border"
+                      className=" bg-white dark:bg-gray-800  shadow-md rounded-md p-1 border"
                       animate={{ x: 0 }}
                       initial={{ x: -20 }}
                       transition={{ type: "spring", bounce: 0.7 }}
@@ -190,14 +190,14 @@ function SidebarLink({ item, pathname, onClick }) {
       to={item.path}
       className={classNames(
         isActive
-          ? "euclid-bold bg-sky-50 after:w-1.5 after:bg-[#3C5EFE] after:rounded-full"
+          ? "euclid-bold bg-sky-50 dark:bg-gray-800 after:w-1.5 after:bg-[#3C5EFE] after:rounded-full"
           : "",
         LinkClasses
       )}
       onClick={onClick}
     >
-      <span className="text-xl my-auto">{item.icon}</span>
-      <span className="ml-3 w-[90%]">{item.label}</span>
+      <span className="text-xl my-auto dark:text-white">{item.icon}</span>
+      <span className="ml-3 w-[90%] dark:text-white">{item.label}</span>
     </Link>
   );
 }

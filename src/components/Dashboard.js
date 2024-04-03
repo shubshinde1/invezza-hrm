@@ -13,7 +13,7 @@ export default function dashboard() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className=" col-span-12 xl:col-span-9 h-fit bg-white p-4 rounded-md "
+            className=" col-span-12 xl:col-span-9 h-fit bg-white dark:bg-gray-900 dark:text-white p-4 rounded-md "
           >
             <Greeting />
           </motion.div>
@@ -21,7 +21,7 @@ export default function dashboard() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className=" col-span-12 xl:col-span-3 pb-4 md:pb-4 md:-mt-4 md:row-span-2 xl:row-span-12 bg-white rounded-md 2xl:fixed 2xl:right-2 2xl:top-24"
+            className=" col-span-12 xl:col-span-3 pb-4 md:pb-4 md:-mt-4 md:row-span-2 xl:row-span-12 bg-white dark:bg-gray-900 dark:text-white rounded-md 2xl:fixed 2xl:right-2 2xl:top-24"
           >
             <Calendar />
           </motion.div>

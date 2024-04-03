@@ -131,7 +131,7 @@ export default function Greeting() {
             <button
               className={`px-2 py-1.5 rounded-md flex items-center gap-1 text-xs font-bold hover:bg-sky-50  ${
                 isPunchedIn ? "text-red-500" : "text-green-500"
-              } text-green-500 bg-sky-100 transition-all duration-1000`}
+              } text-green-500 bg-sky-100 dark:bg-gray-800 transition-all duration-1000`}
               onClick={handleClick}
             >
               {isPunchedIn ? (
@@ -154,7 +154,7 @@ export default function Greeting() {
                 {formatTime(remainingTime)} Remaining
               </span>
             </div>
-            <div className="bg-sky-100 mt-2 h-5 rounded-full flex justify-start relative overflow-hidden">
+            <div className="bg-sky-100 dark:bg-gray-800 mt-2 h-5 rounded-full flex justify-start relative overflow-hidden">
               <div
                 className="absolute h-full bg-[#5336FD] transition-width duration-1000"
                 style={{
