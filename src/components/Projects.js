@@ -193,7 +193,7 @@ export default function Projects() {
                 <TableCell>Client Name</TableCell>
                 <TableCell>Business Name</TableCell>
                 <TableCell>Status</TableCell>
-                <TableCell>Received Date</TableCell>
+                <TableCell>Start Date</TableCell>
                 <TableCell>Deadline</TableCell>
                 <TableCell>Assigned To</TableCell>
               </TableRow>

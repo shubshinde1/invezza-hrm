@@ -40,7 +40,7 @@ export default function ViewEmployee() {
             onClick={() => handleTabChange("leave")}
           >
             <div className="cursor-pointer" activeClassName="bg-gray-200">
-              Leave History
+              Leave info
             </div>
           </li>
           <li

@@ -188,10 +188,12 @@ export default function ClientCard({ clients }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
-              className="flex flex-col gap-5 col-span-12 lg:col-span-3 bg-sky-5 border-2  hover:shadow-lg hover:shadow-sky-50 rounded-md p-3"
+              className="flex flex-col gap-5 col-span-12 lg:col-span-3 bg-sky-5 border-2  hover:shadow-lg hover:shadow-sky-50 rounded-md p-2"
             >
               <div className="flex items-center gap-2">
-                <FaHospitalUser fontSize={20} />
+                <div className="bg-sky-100 rounded-md p-2">
+                  <FaHospitalUser fontSize={20} className="text-sky-600" />
+                </div>
                 <h2 className="text-sm">All Clients</h2>
               </div>
               <div className="flex items-center justify-between">
@@ -225,14 +227,16 @@ export default function ClientCard({ clients }) {
               </div>
             </motion.div>
             <motion.div
-              className="col-span-6 lg:col-span-2 bg-sky-5 border-2 hover:shadow-lg hover:shadow-sky-50 rounded-md"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
+              className="col-span-6 lg:col-span-2 bg-sky-5 border-2 hover:shadow-lg hover:shadow-sky-50 rounded-md"
             >
-              <Link to={"/projects"} className="flex flex-col p-3">
-                <div className="flex items-center gap-2 before:w-1 before:h-5 before:rounded-full before:bg-blue-600 before:-ml-3">
-                  <FaBriefcase fontSize={18} />
+              <Link to={"/projects"} className="flex flex-col p-2">
+                <div className="flex items-center gap-2">
+                  <div className="bg-purple-100 rounded-md p-2">
+                    <FaBriefcase fontSize={18} className="text-purple-600" />
+                  </div>
                   <h2 className="text-sm">All Projects</h2>
                 </div>
                 <div className="flex items-center justify-end relative top-4 scroll-m-0 ">
@@ -248,10 +252,15 @@ export default function ClientCard({ clients }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2 hover:shadow-lg hover:shadow-sky-50 rounded-md p-3"
+              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2 hover:shadow-lg hover:shadow-sky-50 rounded-md p-2"
             >
-              <div className="flex items-center gap-2 before:w-1 before:h-5 before:rounded-full before:bg-green-400 before:-ml-3">
-                <HiMiniRocketLaunch fontSize={20} />
+              <div className="flex items-center gap-2">
+                <div className="bg-green-100 rounded-md p-2">
+                  <HiMiniRocketLaunch
+                    fontSize={20}
+                    className="text-green-500"
+                  />
+                </div>
                 <h2 className="text-sm">Complete Projects</h2>
               </div>
               <div className="flex items-end justify-end">
@@ -266,10 +275,15 @@ export default function ClientCard({ clients }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2  hover:shadow-lg hover:shadow-sky-50 rounded-md p-3"
+              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2  hover:shadow-lg hover:shadow-sky-50 rounded-md p-2"
             >
-              <div className="flex items-center gap-2 before:w-1 before:h-5 before:rounded-full before:bg-yellow-300 before:-ml-3">
-                <TbTimelineEventFilled fontSize={20} />
+              <div className="flex items-center gap-2">
+                <div className="bg-orange-100 rounded-md p-2">
+                  <TbTimelineEventFilled
+                    fontSize={20}
+                    className="text-orange-500"
+                  />
+                </div>
                 <h2 className="text-sm">In-Progress</h2>
               </div>
               <div className="flex items-center justify-end">
@@ -284,10 +298,12 @@ export default function ClientCard({ clients }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
-              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2  hover:shadow-lg hover:shadow-sky-50 rounded-md p-3"
+              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2  hover:shadow-lg hover:shadow-sky-50 rounded-md p-2"
             >
-              <div className="flex items-center gap-2 before:w-1 before:h-5 before:rounded-full before:bg-red-400 before:-ml-3">
-                <FaBusinessTime fontSize={20} />
+              <div className="flex items-center gap-2">
+                <div className="bg-red-100 rounded-md p-2">
+                  <FaBusinessTime fontSize={20} className="text-red-500"/>
+                </div>
                 <h2 className="text-sm">Pending Projects</h2>
               </div>
               <div className="flex items-center justify-end">

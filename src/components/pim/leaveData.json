@@ -36,22 +36,28 @@
             }
         },
         "leavedata": {
-            "annual_leave": {
-                "total": 20,
-                "remaining": 15,
-                "elapsed": 5
-            },
-            "sick_leave": {
-                "total": 10,
-                "remaining": 8,
-                "elapsed": 2
-            },
-            "personal_leave": {
-                "total": 5,
+            "sickleave": {
+                "total": 4,
                 "remaining": 3,
+                "elapsed": 1
+            },
+            "privilegeleave": {
+                "total": 7,
+                "remaining": 5,
                 "elapsed": 2
+            },
+            "casualleave": {
+                "total": 7,
+                "remaining": 6,
+                "elapsed": 1
+            },
+            "holiday": {
+                "total": 10,
+                "remaining": 4,
+                "elapsed": 6
             }
-        }
+        },
+        "timesheet": {}
     },
     {
         "empid": "EMP002",
@@ -87,6 +93,28 @@
                 "leavetype": "Casual Leave",
                 "status": 1,
                 "approvedby": "Swapnil Patli"
+            }
+        },
+        "leavedata": {
+            "sickleave": {
+                "total": 4,
+                "remaining": 2,
+                "elapsed": 2
+            },
+            "privilegeleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "casualleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "holiday": {
+                "total": 10,
+                "remaining": 3,
+                "elapsed": 7
             }
         }
     },
@@ -125,6 +153,28 @@
                 "status": 1,
                 "approvedby": "Swapnil Patli"
             }
+        },
+        "leavedata": {
+            "sickleave": {
+                "total": 4,
+                "remaining": 2,
+                "elapsed": 2
+            },
+            "privilegeleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "casualleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "holiday": {
+                "total": 10,
+                "remaining": 3,
+                "elapsed": 7
+            }
         }
     },
     {
@@ -162,6 +212,28 @@
                 "status": 1,
                 "approvedby": "Swapnil Patli"
             }
+        },
+        "leavedata": {
+            "sickleave": {
+                "total": 4,
+                "remaining": 2,
+                "elapsed": 2
+            },
+            "privilegeleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "casualleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "holiday": {
+                "total": 10,
+                "remaining": 3,
+                "elapsed": 7
+            }
         }
     },
     {
@@ -180,6 +252,28 @@
                 "leavetype": "Casual Leave",
                 "status": 1,
                 "approvedby": "Swapnil Patli"
+            }
+        },
+        "leavedata": {
+            "sickleave": {
+                "total": 4,
+                "remaining": 2,
+                "elapsed": 2
+            },
+            "privilegeleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "casualleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "holiday": {
+                "total": 10,
+                "remaining": 3,
+                "elapsed": 7
             }
         }
     },
@@ -200,6 +294,28 @@
                 "status": 1,
                 "approvedby": "Swapnil Patli"
             }
+        },
+        "leavedata": {
+            "sickleave": {
+                "total": 4,
+                "remaining": 2,
+                "elapsed": 2
+            },
+            "privilegeleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "casualleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "holiday": {
+                "total": 10,
+                "remaining": 3,
+                "elapsed": 7
+            }
         }
     },
     {
@@ -218,6 +334,28 @@
                 "leavetype": "Casual Leave",
                 "status": 1,
                 "approvedby": "Swapnil Patli"
+            }
+        },
+        "leavedata": {
+            "sickleave": {
+                "total": 4,
+                "remaining": 2,
+                "elapsed": 2
+            },
+            "privilegeleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "casualleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "holiday": {
+                "total": 10,
+                "remaining": 3,
+                "elapsed": 7
             }
         }
     },
@@ -238,6 +376,28 @@
                 "status": 1,
                 "approvedby": "Swapnil Patli"
             }
+        },
+        "leavedata": {
+            "sickleave": {
+                "total": 4,
+                "remaining": 2,
+                "elapsed": 2
+            },
+            "privilegeleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "casualleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "holiday": {
+                "total": 10,
+                "remaining": 3,
+                "elapsed": 7
+            }
         }
     },
     {
@@ -256,6 +416,28 @@
                 "leavetype": "Casual Leave",
                 "status": 1,
                 "approvedby": "Swapnil Patli"
+            }
+        },
+        "leavedata": {
+            "sickleave": {
+                "total": 4,
+                "remaining": 2,
+                "elapsed": 2
+            },
+            "privilegeleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "casualleave": {
+                "total": 7,
+                "remaining": 3,
+                "elapsed": 4
+            },
+            "holiday": {
+                "total": 10,
+                "remaining": 3,
+                "elapsed": 7
             }
         }
     }

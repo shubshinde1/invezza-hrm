@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -22,6 +22,12 @@ import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import empdata from "./leaveData.json";
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
+import { FaCalculator } from "react-icons/fa6";
+import { MdSick } from "react-icons/md";
+import { BiSolidHappyHeartEyes } from "react-icons/bi";
+import { FaHandHoldingHeart } from "react-icons/fa6";
+import { MdFestival } from "react-icons/md";
+import Tooltip from "@mui/material/Tooltip";
 
 const useStyles = makeStyles({
   root: {
@@ -74,7 +80,7 @@ const GlobalStyles = createGlobalStyle`
   border-radius:10px;
 } 
 .MuiList-root {
-  height: 215px;
+  height: auto;
 } 
 .MuiMenuItem-root {
     font-family: Euclid;
@@ -113,8 +119,27 @@ const columns = [
 
 export default function Leave() {
   const classes = useStyles();
-
   const { empid } = useParams();
+
+  const [totalSickLeave, setTotalSickLeave] = useState(0);
+  const [remainingSickLeave, setRemainingSickLeave] = useState(0);
+  const [elapsedSickLeave, setElapsedSickLeave] = useState(0);
+
+  const [totalPrivilegeLeave, setTotalPrivilegeLeave] = useState(0);
+  const [remainingPrivilegeLeave, setRemainingPrivilegeLeave] = useState(0);
+  const [elapsedPrivilegeLeave, setElapsedPrivilegeLeave] = useState(0);
+
+  const [totalCasualLeave, setTotalCasualLeave] = useState(0);
+  const [remainingCasualLeave, setRemainingCasualLeave] = useState(0);
+  const [elapsedCasualLeave, setElapsedCasualLeave] = useState(0);
+
+  const [totalHoliday, setTotalHoliday] = useState(0);
+  const [remainingHoliday, setRemainingHoliday] = useState(0);
+  const [elapsedHoliday, setElapsedHoliday] = useState(0);
+
+  const [totalAllLeaves, setTotalAllLeaves] = useState(0);
+  const [totalAllLeavesRemaining, setTotalAllLeavesRemaining] = useState(0);
+  const [totalAllLeavesElapsed, setTotalAllLeavesElapsed] = useState(0);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -158,8 +183,6 @@ export default function Leave() {
     });
   }, [data, empid, filters]);
 
-  console.log(filteredRows);
-
   const totalLeavesOfMonth = filteredRows.reduce((total, row) => {
     const leaveKeys = Object.keys(row.attendance);
     const totalLeavesForEmployee = leaveKeys.reduce((acc, key) => {
@@ -177,6 +200,62 @@ export default function Leave() {
     setPage(0);
   };
 
+  useEffect(() => {
+    let sickLeave = 0;
+    let privilegeLeave = 0;
+    let casualLeave = 0;
+    let holiday = 0;
+
+    filteredRows.forEach((row) => {
+      sickLeave += row.leavedata.sickleave.total;
+      privilegeLeave += row.leavedata.privilegeleave.total;
+      casualLeave += row.leavedata.casualleave.total;
+      holiday += row.leavedata.holiday.total;
+    });
+
+    setTotalSickLeave(sickLeave);
+    setTotalPrivilegeLeave(privilegeLeave);
+    setTotalCasualLeave(casualLeave);
+    setTotalHoliday(holiday);
+
+    let remainingSick = 0;
+    let elapsedSick = 0;
+    let remainingPrivilege = 0;
+    let elapsedPrivilege = 0;
+    let remainingCasual = 0;
+    let elapsedCasual = 0;
+    let remainingHoliday = 0;
+    let elapsedHoliday = 0;
+
+    filteredRows.forEach((row) => {
+      remainingSick += row.leavedata.sickleave.remaining;
+      elapsedSick += row.leavedata.sickleave.elapsed;
+      remainingPrivilege += row.leavedata.privilegeleave.remaining;
+      elapsedPrivilege += row.leavedata.privilegeleave.elapsed;
+      remainingCasual += row.leavedata.casualleave.remaining;
+      elapsedCasual += row.leavedata.casualleave.elapsed;
+      remainingHoliday += row.leavedata.holiday.remaining;
+      elapsedHoliday += row.leavedata.holiday.elapsed;
+    });
+
+    setRemainingSickLeave(remainingSick);
+    setElapsedSickLeave(elapsedSick);
+    setRemainingPrivilegeLeave(remainingPrivilege);
+    setElapsedPrivilegeLeave(elapsedPrivilege);
+    setRemainingCasualLeave(remainingCasual);
+    setElapsedCasualLeave(elapsedCasual);
+    setRemainingHoliday(remainingHoliday);
+    setElapsedHoliday(elapsedHoliday);
+
+    setTotalAllLeaves(sickLeave + privilegeLeave + casualLeave + holiday);
+    setTotalAllLeavesRemaining(
+      remainingSick + remainingPrivilege + remainingCasual + remainingHoliday
+    );
+    setTotalAllLeavesElapsed(
+      elapsedSick + elapsedPrivilege + elapsedCasual + elapsedHoliday
+    );
+  }, [filteredRows]);
+
   return (
     <div>
       <motion.div
@@ -188,12 +267,148 @@ export default function Leave() {
           sx={{ overflow: "hidden" }}
           className="md:w-[100%] w-[calc(100vw-0.8rem)] h-[90%] top-24"
         >
-          <div className="m-2 gap-2 flex-col items-center grid grid-cols-12 ">
+          <div className="p-2 grid grid-cols-11 sm:grid-cols-12 lg:grid-cols-10 gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2 }}
+              className="col-span-12 sm:col-span-6 lg:col-span-2 border-2 rounded-md p-2 flex flex-col gap-3"
+            >
+              <div className="flex items-center gap-2">
+                <div className="bg-sky-100 rounded-md p-2">
+                  <FaCalculator fontSize={20} className="text-sky-600" />
+                </div>
+                <h2 className="font-bold">Total Leaves</h2>
+              </div>
+              <h2 className="flex items-end justify-end">
+                <span className="text-4xl font-bold cursor-pointer">
+                  <Tooltip title="Available" placement="top" arrow>
+                    {totalAllLeavesRemaining}
+                  </Tooltip>
+                </span>
+                /
+                <span className="cursor-pointer">
+                  <Tooltip title="Total" placement="top" arrow>
+                    {totalAllLeaves}
+                  </Tooltip>
+                </span>
+              </h2>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="col-span-12 sm:col-span-6 lg:col-span-2 border-2 rounded-md p-2 flex flex-col gap-3"
+            >
+              <div className="flex items-center gap-2">
+                <div className="bg-green-100 rounded-md p-2">
+                  <BiSolidHappyHeartEyes
+                    fontSize={20}
+                    className="text-green-500"
+                  />
+                </div>
+                <h2 className="font-bold">Casual Leave</h2>
+              </div>
+              <h2 className="flex items-end justify-end">
+                <span className="text-4xl font-bold cursor-pointer">
+                  <Tooltip title="Available" placement="top" arrow>
+                    {remainingCasualLeave}
+                  </Tooltip>
+                </span>
+                /
+                <span className="cursor-pointer">
+                  <Tooltip title="Total" placement="top" arrow>
+                    {totalCasualLeave}
+                  </Tooltip>
+                </span>
+              </h2>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="col-span-12 sm:col-span-6 lg:col-span-2 border-2 rounded-md p-2 flex flex-col gap-3"
+            >
+              <div className="flex items-center gap-2">
+                <div className="bg-orange-100 rounded-md p-2">
+                  <MdSick fontSize={20} className="text-orange-500" />
+                </div>
+                <h2 className="font-bold">Sick Leave</h2>
+              </div>
+              <h2 className="flex items-end justify-end">
+                <span className="text-4xl font-bold cursor-pointer">
+                  <Tooltip title="Available" placement="top" arrow>
+                    {remainingSickLeave}
+                  </Tooltip>
+                </span>
+                /
+                <span className="cursor-pointer">
+                  <Tooltip title="Total" placement="top" arrow>
+                    {totalSickLeave}
+                  </Tooltip>
+                </span>
+              </h2>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="col-span-12 sm:col-span-6 lg:col-span-2 border-2 rounded-md p-2 flex flex-col gap-3"
+            >
+              <div className="flex items-center gap-2">
+                <div className="bg-red-100 rounded-md p-2">
+                  <FaHandHoldingHeart fontSize={20} className="text-red-500" />
+                </div>
+                <h2 className="font-bold">Privilege Leave</h2>
+              </div>
+              <h2 className="flex items-end justify-end">
+                <span className="text-4xl font-bold cursor-pointer">
+                  <Tooltip title="Available" placement="top" arrow>
+                    {remainingPrivilegeLeave}
+                  </Tooltip>
+                </span>
+                /
+                <span className="cursor-pointer">
+                  <Tooltip title="Total" placement="top" arrow>
+                    {totalPrivilegeLeave}
+                  </Tooltip>
+                </span>
+              </h2>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="col-span-12 sm:col-span-6 lg:col-span-2 border-2 rounded-md p-2 flex flex-col gap-3"
+            >
+              <div className="flex items-center gap-2">
+                <div className="bg-yellow-100 rounded-md p-2">
+                  <MdFestival fontSize={20} className="text-yellow-500" />
+                </div>
+                <h2 className="font-bold">Holiday</h2>
+              </div>
+              <h2 className="flex items-end justify-end">
+                <span className="text-4xl font-bold cursor-pointer">
+                  <Tooltip title="Available" placement="top" arrow>
+                    {remainingHoliday}
+                  </Tooltip>
+                </span>
+                /
+                <span className="cursor-pointer">
+                  <Tooltip title="Total" placement="top" arrow>
+                    {totalHoliday}
+                  </Tooltip>
+                </span>
+              </h2>
+            </motion.div>
+          </div>
+          <div className="m-2 gap-2  items-center justify-between grid grid-cols-12 ">
             <FormControl
               variant="outlined"
               margin="dense"
               className={classNames(
-                "col-span-12 sm:col-span-6 xl:col-span-2",
+                "col-span-12 sm:col-span-4 xl:col-span-2",
                 classes.root
               )}
             >
@@ -229,8 +444,8 @@ export default function Leave() {
               </Select>
             </FormControl>
 
-            <div className="col-span-12 md:col-span-4 flex items-center justify-between ">
-              <button
+            <div className="col-span-12 sm:col-span-8 xl:col-span-10 flex items-center lg:justify-end">
+              {/* <button
                 className="bg-sky-50 md:mt-1 px-4 rounded-md w-fit"
                 onClick={handleClearFilters}
               >
@@ -238,7 +453,7 @@ export default function Leave() {
                   variant="outlined"
                   className="h-11 cursor-pointer text-xl"
                 />
-              </button>
+              </button> */}
               <TablePagination
                 rowsPerPageOptions={[10, 25, 100]}
                 component="div"
