@@ -22,6 +22,7 @@ import ViewClient from "./components/client/ViewClient";
 import Addproject from "./components/projects/Addproject";
 import Loginimg from "../src/assets/images/login.svg";
 import logo from "../src/assets/images/invezza-logo.png";
+import ViewProject from "./components/project/ViewProject";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -78,6 +79,10 @@ function App() {
             <Route path="clients/viewclient" element={<ViewClient />} />
             <Route path="clients/addclient" element={<Addclient />} />
             <Route path="projects/addproject" element={<Addproject />} />
+            <Route
+              path="/projects/viewproject/:projectId"
+              element={<ViewProject />}
+            />
           </Route>
         </Routes>
       </Router>

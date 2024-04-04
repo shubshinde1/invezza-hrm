@@ -69,7 +69,7 @@ export default function Sidebar({ theme }) {
   return (
     <div className="z-10 ">
       <button
-        className="md:hidden fixed top-2 left-2 p-3 dark:text-white bg-white dark:bg-neutral-900  rounded-md"
+        className="md:hidden fixed top-2 left-2 p-3 dark:text-white bg-white dark:bg-neutral-950  rounded-md"
         onClick={() => {
           toggleSidebar();
           setRotate(!rotate);
@@ -142,7 +142,7 @@ export default function Sidebar({ theme }) {
                 {clickedItem === item && item.subItems && (
                   <div className="md:absolute left-44 md:pl-6 top-0 md:w-60 ">
                     <motion.div
-                      className=" bg-white dark:bg-neutral-800  shadow-md rounded-md p-1 border"
+                      className=" bg-white dark:bg-neutral-950  shadow-md rounded-md p-1 border border-neutral-600"
                       animate={{ x: 0 }}
                       initial={{ x: -20 }}
                       transition={{ type: "spring", bounce: 0.7 }}
@@ -177,7 +177,7 @@ function SidebarLink({ item, pathname, onClick }) {
       to={item.path}
       className={classNames(
         isActive
-          ? "euclid-bold bg-sky-50 dark:bg-neutral-800 after:w-1.5 after:bg-[#3C5EFE] after:rounded-full"
+          ? "euclid-bold bg-sky-50 dark:bg-neutral-900 after:w-1.5 after:bg-[#3C5EFE] after:rounded-full"
           : "",
         LinkClasses
       )}

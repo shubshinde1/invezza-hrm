@@ -49,7 +49,7 @@ const useStyles = makeStyles({
       fontSize: 15,
     },
     "& .MuiInputBase-root": {
-      backgroundColor: "#f0f9ff",
+      // backgroundColor: "#f0f9ff",
       border: "0 none",
       borderRadius: 7,
       height: 50,
@@ -325,7 +325,7 @@ export default function StickyHeadTable({
                   <MenuItem
                     key={designation}
                     value={designation.toLowerCase()}
-                    className="bg-sky-50 "
+                    className="bg-sky-50 dark:bg-neutral-950 "
                   >
                     {designation}
                   </MenuItem>
@@ -335,7 +335,7 @@ export default function StickyHeadTable({
 
             <div className="col-span-12 md:col-span-4 flex items-center justify-between ">
               <button
-                className="bg-sky-50 md:mt-1 px-4 rounded-md w-fit"
+                className="bg-sky-50 dark:bg-neutral-800 md:mt-1 px-4 rounded-md w-fit"
                 onClick={handleClearFilters}
               >
                 <FaFilterCircleXmark
@@ -352,16 +352,16 @@ export default function StickyHeadTable({
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
                 style={{ paddingRight: "5px" }}
-                className="scrollbar-hide"
+                className="scrollbar-hide dark:text-white"
               />
             </div>
           </div>
           <TableContainer
             sx={{ maxHeight: 530 }}
-            className="m-2 pr-4 scrollbar-hide"
+            className="m-2 pr-4 scrollbar-hide "
           >
             <Table stickyHeader aria-label="sticky table">
-              <TableHead className="">
+              <TableHead className="tablehead">
                 <TableRow>
                   {columns.map((column) => (
                     <TableCell

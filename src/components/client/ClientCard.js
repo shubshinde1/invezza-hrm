@@ -83,7 +83,7 @@ function GenerateLink({ client, navigate }) {
       onClick={handleClick}
       className="rounded-md  group-hover:flex group-hover:items-start cursor-pointer"
     >
-      <div className="hover:bg-sky-100 rounded-md hidden group-hover:flex p-3">
+      <div className="hover:bg-sky-100 hover:dark:bg-neutral-950 rounded-md hidden group-hover:flex p-3">
         <FaExternalLinkAlt />
       </div>
     </div>
@@ -100,7 +100,7 @@ function GenerateLinkForList({ client, navigate }) {
 
   return (
     <div onClick={handleClick} className="rounded-md   cursor-pointer">
-      <div className="hover:bg-sky-100 rounded-md w-fit p-3">
+      <div className="hover:bg-sky-100 hover:dark:bg-neutral-950 rounded-md w-fit p-3">
         <FaExternalLinkAlt />
       </div>
     </div>
@@ -181,14 +181,14 @@ export default function ClientCard({ clients }) {
 
   return (
     <div className={classes.root}>
-      <div className="bg-white rounded-md">
+      <div className="bg-white dark:bg-neutral-950 dark:text-white rounded-md">
         <div className="p-2">
           <div className="grid grid-cols-12 lg:grid-cols-11 gap-4 ">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
-              className="flex flex-col gap-5 col-span-12 lg:col-span-3 bg-sky-5 border-2  hover:shadow-lg hover:shadow-sky-50 rounded-md p-2"
+              className="flex flex-col gap-5 col-span-12 lg:col-span-3 bg-sky-5 border-2 dark:border-0 dark:bg-neutral-900 rounded-md p-2"
             >
               <div className="flex items-center gap-2">
                 <div className="bg-sky-100 rounded-md p-2">
@@ -230,7 +230,7 @@ export default function ClientCard({ clients }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="col-span-6 lg:col-span-2 bg-sky-5 border-2 hover:shadow-lg hover:shadow-sky-50 rounded-md"
+              className="col-span-6 lg:col-span-2 bg-sky-5 border-2 dark:border-0 dark:bg-neutral-900 rounded-md"
             >
               <Link to={"/projects"} className="flex flex-col p-2">
                 <div className="flex items-center gap-2">
@@ -252,7 +252,7 @@ export default function ClientCard({ clients }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2 hover:shadow-lg hover:shadow-sky-50 rounded-md p-2"
+              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2 dark:border-0 dark:bg-neutral-900 rounded-md p-2"
             >
               <div className="flex items-center gap-2">
                 <div className="bg-green-100 rounded-md p-2">
@@ -275,7 +275,7 @@ export default function ClientCard({ clients }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2  hover:shadow-lg hover:shadow-sky-50 rounded-md p-2"
+              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2  dark:border-0 dark:bg-neutral-900 rounded-md p-2"
             >
               <div className="flex items-center gap-2">
                 <div className="bg-orange-100 rounded-md p-2">
@@ -298,11 +298,11 @@ export default function ClientCard({ clients }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
-              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2  hover:shadow-lg hover:shadow-sky-50 rounded-md p-2"
+              className="flex flex-col gap-5 col-span-6 lg:col-span-2 bg-sky-5 border-2  dark:border-0 dark:bg-neutral-900 rounded-md p-2"
             >
               <div className="flex items-center gap-2">
                 <div className="bg-red-100 rounded-md p-2">
-                  <FaBusinessTime fontSize={20} className="text-red-500"/>
+                  <FaBusinessTime fontSize={20} className="text-red-500" />
                 </div>
                 <h2 className="text-sm">Pending Projects</h2>
               </div>
@@ -322,11 +322,11 @@ export default function ClientCard({ clients }) {
         >
           <div className="flex items-center">
             <div
-              className={`${classes.searchContainer} bg-sky-50 mr-2  flex  h-full py-1 `}
+              className={`${classes.searchContainer} bg-sky-50 dark:bg-neutral-900 mr-2  flex  h-full py-1 `}
             >
               <InputBase
                 placeholder="Search by Client Name, Id "
-                className={`${classes.searchInput} md:w-96`}
+                className={`${classes.searchInput} md:w-96 searchInput`}
                 value={searchTerm}
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
@@ -334,7 +334,7 @@ export default function ClientCard({ clients }) {
             </div>
             <Link
               to="/clients/addclient"
-              className="bg-sky-50 rounded-md p-2.5 flex items-center gap-2"
+              className="bg-sky-50 dark:bg-neutral-900 rounded-md p-2.5 flex items-center gap-2"
             >
               <Tooltip title="Add Client" placement="top" arrow>
                 <div>
@@ -346,12 +346,12 @@ export default function ClientCard({ clients }) {
           <div className="ml-2">
             <div
               onClick={toggleViewMode}
-              className="mr-2 bg-sky-100 p-2 rounded-md cursor-pointer"
+              className="mr-2 bg-sky-100 dark:bg-neutral-900 dark:text-white p-2 rounded-md cursor-pointer"
             >
               {viewMode === "grid" ? (
-                <FaThList fontSize={17} color="black" />
+                <FaThList fontSize={17} />
               ) : (
-                <BsFillGrid3X3GapFill fontSize={17} color="black" />
+                <BsFillGrid3X3GapFill fontSize={17} />
               )}
             </div>
           </div>
@@ -374,8 +374,8 @@ export default function ClientCard({ clients }) {
                 transition={{ duration: 0.5 }}
               >
                 <Card className={`${classes.card} `}>
-                  <CardContent className="flex flex-col gap-4 hover:shadow-xl group ">
-                    <div className="flex  justify-between group-hover:bg-sky-50 py-2 group-hover:px-2 duration-300 group-hover:rounded-md">
+                  <CardContent className="flex flex-col gap-4 hover:shadow-xl group dark:bg-neutral-950 dark:shadow-none dark:text-white">
+                    <div className="flex  justify-between group-hover:bg-sky-50 group-hover:dark:bg-neutral-900  py-2 group-hover:px-2 duration-300 group-hover:rounded-md">
                       <div className="flex items-center gap-4">
                         <img src={clientAvatar} width={50} alt="Clientlogo" />
                         <div className={classes.pos}>
@@ -385,7 +385,7 @@ export default function ClientCard({ clients }) {
                       </div>
                       <GenerateLink client={client} navigate={navigate} />
                     </div>
-                    <hr className="w-full h-[1px] bg-gray-300" />
+                    <hr className="w-full h-[1px] bg-gray-300 dark:bg-neutral-950" />
                     <div className="flex flex-col gap-2 text-[.85rem]">
                       <div className="flex ">
                         <label className="w-20 font-semibold">Client ID </label>
@@ -461,7 +461,7 @@ export default function ClientCard({ clients }) {
         <Box className={`${classes.listViewContainer} w-[96vw] md:w-auto`}>
           <TableContainer component={Paper}>
             <Table>
-              <TableHead className="bg-sky-50">
+              <TableHead className="bg-sky-50 dark:bg-neutral-950 TableHead">
                 <TableRow>
                   <TableCell className={classes.columnHeader}>
                     Client Name
