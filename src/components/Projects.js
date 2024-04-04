@@ -139,7 +139,7 @@ export default function Projects() {
 
   return (
     <div className="w-[96vw] md:w-auto">
-      <div className="bg-white rounded-md  px-2 py-1 flex  items-center justify-between sticky top-0 z-50">
+      <div className="bg-white rounded-md  px-2 py-1 flex  items-center justify-between sticky top-0">
         <div className="flex items-center">
           <div
             className={`${classes.searchContainer} bg-sky-50 mr-2  flex  h-full py-1 `}

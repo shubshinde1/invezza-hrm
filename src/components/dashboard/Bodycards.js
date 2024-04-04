@@ -7250,22 +7250,22 @@ export default function Bodycards() {
   return (
     <div>
       <div className="flex flex-col md:flex-row gap-2 dark:text-white">
-        <div className="bg-white dark:bg-gray-900 p-4 rounded-md w-full md:w-fit">
+        <div className="bg-white dark:bg-neutral-950 p-4 rounded-md w-full md:w-fit">
           <h2 className="dark:text-white">Last 7 days Time at work</h2>
           <div className=" " id="chart" style={{}}></div>
         </div>
-        <div className="bg-white dark:bg-gray-900  p-4 rounded-md w-full md:w-full">
+        <div className="bg-white dark:bg-neutral-950  p-4 rounded-md w-full md:w-full">
           <h2>My Stats</h2>
           <div className="flex flex-col gap-2 mt-3">
             <div className="grid grid-cols-12 gap-2">
-              <div className="col-span-6 bg-sky-50 dark:bg-gray-800  p-3 rounded-md flex gap-4 items-center hover:scale-[1.020] cursor-pointer">
+              <div className="col-span-6 bg-sky-50 dark:bg-neutral-900  p-3 rounded-md flex gap-4 items-center hover:scale-[1.020] cursor-pointer">
                 <img src={intime} alt="icon" />
                 <div>
                   <h2 className=" font-bold mb-1">09:35 AM</h2>
                   <h2>Today’s In Time</h2>
                 </div>
               </div>
-              <div className="col-span-6 bg-sky-50 dark:bg-gray-800 p-3 rounded-md flex gap-4 items-center hover:scale-[1.020] cursor-pointer">
+              <div className="col-span-6 bg-sky-50 dark:bg-neutral-900 p-3 rounded-md flex gap-4 items-center hover:scale-[1.020] cursor-pointer">
                 <img src={breaktime} alt="icon" />
                 <div>
                   <h2 className=" font-bold mb-1">45 Min</h2>
@@ -7274,14 +7274,14 @@ export default function Bodycards() {
               </div>
             </div>
             <div className="grid grid-cols-12 gap-2">
-              <div className="col-span-6 bg-sky-50 dark:bg-gray-800 p-3 rounded-md flex gap-4 items-center hover:scale-[1.020] cursor-pointer">
+              <div className="col-span-6 bg-sky-50 dark:bg-neutral-900 p-3 rounded-md flex gap-4 items-center hover:scale-[1.020] cursor-pointer">
                 <img src={totalhours} alt="icon" />
                 <div>
                   <h2 className=" font-bold mb-1">08:15 AM</h2>
                   <h2>Work Time</h2>
                 </div>
               </div>
-              <div className="col-span-6 bg-sky-50 dark:bg-gray-800 p-3 rounded-md flex gap-4 items-center hover:scale-[1.020] cursor-pointer">
+              <div className="col-span-6 bg-sky-50 dark:bg-neutral-900 p-3 rounded-md flex gap-4 items-center hover:scale-[1.020] cursor-pointer">
                 <img src={tasks} alt="icon" />
                 <div>
                   <h2 className=" font-bold mb-1">5 Total</h2>
@@ -7290,14 +7290,14 @@ export default function Bodycards() {
               </div>
             </div>
             <div className="grid grid-cols-12 gap-2">
-              <div className="col-span-6 bg-sky-50 dark:bg-gray-800 p-3 rounded-md flex gap-4 items-center hover:scale-[1.020] cursor-pointer">
+              <div className="col-span-6 bg-sky-50 dark:bg-neutral-900 p-3 rounded-md flex gap-4 items-center hover:scale-[1.020] cursor-pointer">
                 <img src={totalhours} alt="icon" />
                 <div>
                   <h2 className=" font-bold mb-1">08:15 AM</h2>
                   <h2>Work Time</h2>
                 </div>
               </div>
-              <div className="col-span-6 bg-sky-50 dark:bg-gray-800 p-3 rounded-md flex gap-4 items-center hover:scale-[1.020] cursor-pointer">
+              <div className="col-span-6 bg-sky-50 dark:bg-neutral-900 p-3 rounded-md flex gap-4 items-center hover:scale-[1.020] cursor-pointer">
                 <img src={tasks} alt="icon" />
                 <div>
                   <h2 className=" font-bold mb-1">5 Total</h2>

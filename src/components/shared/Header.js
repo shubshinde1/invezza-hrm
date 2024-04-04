@@ -43,13 +43,13 @@ export default function Header({ handleThemeSwitch, theme }) {
   const buttonText = theme === "dark" ? "Light Mode" : "Dark Mode";
 
   return (
-    <div className=" mt-2 mb-2 mr-2 ml-16 md:m-2 pl-2 dark:bg-gray-900 bg-white dark:text-white h-12 md:h-16 rounded-md flex justify-between items-center">
+    <div className=" mt-2 mb-2 mr-2 ml-16 md:m-2 pl-2 dark:bg-neutral-950 bg-white dark:text-white h-12 md:h-16 rounded-md flex justify-between items-center">
       <div className="font-bold">{getTitle()}</div>
       <div className="">
         <div className="flex items-center gap-3 text-sm">
           <div>
             <button
-              className="bg-sky-100 dark:bg-gray-800 rounded-md p-2 text-sm"
+              className="bg-sky-100 dark:bg-neutral-900 rounded-md p-2 text-sm"
               onClick={handleThemeSwitch}
             >
               {buttonText}

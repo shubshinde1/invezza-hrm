@@ -9,7 +9,7 @@ import { HiMenuAlt1 } from "react-icons/hi";
 import { motion } from "framer-motion";
 
 const LinkClasses =
-  "flex hover:bg-sky-50 dark:hover:bg-gray-800 hover:duration-500 p-3 mt-1.5 rounded-md euclid";
+  "flex hover:bg-sky-50 dark:hover:bg-neutral-800 hover:duration-500 p-3 mt-1.5 rounded-md euclid";
 
 export default function Sidebar({ theme }) {
   const { pathname } = useLocation();
@@ -69,7 +69,7 @@ export default function Sidebar({ theme }) {
   return (
     <div className="z-10 ">
       <button
-        className="md:hidden fixed top-2 left-2 p-3 dark:text-white bg-white dark:bg-gray-900  rounded-md"
+        className="md:hidden fixed top-2 left-2 p-3 dark:text-white bg-white dark:bg-neutral-900  rounded-md"
         onClick={() => {
           toggleSidebar();
           setRotate(!rotate);
@@ -79,7 +79,7 @@ export default function Sidebar({ theme }) {
       </button>
       <div
         ref={sidebarRef}
-        className={`md:flex md:flex-col w-52 h-[98vh] md:h-screen ml-2 mt-2 md:m-0 md:rounded-none rounded-md absolute md:relative p-4 bg-white dark:bg-gray-900 z-50 shadow-2xl md:shadow-none ${
+        className={`md:flex md:flex-col w-52 h-[98vh] md:h-screen ml-2 mt-2 md:m-0 md:rounded-none rounded-md absolute md:relative p-4 bg-white dark:bg-neutral-950 z-50 shadow-2xl md:shadow-none ${
           isSidebarOpen ? "" : "hidden"
         }`}
       >
@@ -89,7 +89,7 @@ export default function Sidebar({ theme }) {
           ) : (
             <img src={logolightmode} className="pr-16" alt="logo" />
           )}
-          <div className="text-2xl absolute flex md:hidden right-5 mt-3 bg-sky-50 dark:bg-gray-800 dark:text-white p-2 hover:bg-sky-100 dark:hover:bg-gray-700 rounded-md">
+          <div className="text-2xl absolute flex md:hidden right-5 mt-3 bg-sky-50 dark:bg-neutral-800 dark:text-white p-2 hover:bg-sky-100 dark:hover:bg-neutral-700 rounded-md">
             <TbLayoutSidebarLeftCollapseFilled
               className=""
               onClick={() => {
@@ -142,7 +142,7 @@ export default function Sidebar({ theme }) {
                 {clickedItem === item && item.subItems && (
                   <div className="md:absolute left-44 md:pl-6 top-0 md:w-60 ">
                     <motion.div
-                      className=" bg-white dark:bg-gray-800  shadow-md rounded-md p-1 border"
+                      className=" bg-white dark:bg-neutral-800  shadow-md rounded-md p-1 border"
                       animate={{ x: 0 }}
                       initial={{ x: -20 }}
                       transition={{ type: "spring", bounce: 0.7 }}
@@ -177,7 +177,7 @@ function SidebarLink({ item, pathname, onClick }) {
       to={item.path}
       className={classNames(
         isActive
-          ? "euclid-bold bg-sky-50 dark:bg-gray-800 after:w-1.5 after:bg-[#3C5EFE] after:rounded-full"
+          ? "euclid-bold bg-sky-50 dark:bg-neutral-800 after:w-1.5 after:bg-[#3C5EFE] after:rounded-full"
           : "",
         LinkClasses
       )}
