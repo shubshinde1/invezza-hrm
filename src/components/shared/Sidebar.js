@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { DASHBOARD_SIDEBAR_LINKS } from "../../lib/consts/navigation";
-import logo from "../../assets/images/invezza-logo.png";
+import logolightmode from "../../assets/images/invezza-logo.png";
+import logoDarkmode from "../../assets/images/invezza-logo-darkmode.png";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
@@ -10,7 +11,7 @@ import { motion } from "framer-motion";
 const LinkClasses =
   "flex hover:bg-sky-50 dark:hover:bg-gray-800 hover:duration-500 p-3 mt-1.5 rounded-md euclid";
 
-export default function Sidebar() {
+export default function Sidebar({ theme }) {
   const { pathname } = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [clickedItem, setClickedItem] = useState(null);
@@ -18,32 +19,15 @@ export default function Sidebar() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // function handleClickOutside(event) {
-    //   if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-    //     setIsSidebarOpen(false);
-    //   }
-    // }
-
-    // function handleEscapeKey(event) {
-    //   if (event.key === "Escape") {
-    //     setIsSidebarOpen(false);
-    //   }
-    // }
-
     function handleResize() {
-      setIsMobile(window.innerWidth < 768); // Adjust the breakpoint as needed
+      setIsMobile(window.innerWidth < 768);
     }
 
-    handleResize(); // Set initial mobile/desktop state
+    handleResize();
     window.addEventListener("resize", handleResize);
-
-    // document.addEventListener("mousedown", handleClickOutside);
-    // document.addEventListener("keydown", handleEscapeKey);
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      // document.removeEventListener("mousedown", handleClickOutside);
-      // document.removeEventListener("keydown", handleEscapeKey);
     };
   }, []);
 
@@ -85,7 +69,7 @@ export default function Sidebar() {
   return (
     <div className="z-10 ">
       <button
-        className="md:hidden fixed top-2 left-2 p-3 text-black bg-white dark:bg-gray-800  rounded-md"
+        className="md:hidden fixed top-2 left-2 p-3 dark:text-white bg-white dark:bg-gray-900  rounded-md"
         onClick={() => {
           toggleSidebar();
           setRotate(!rotate);
@@ -100,14 +84,20 @@ export default function Sidebar() {
         }`}
       >
         <div className=" flex flex-row justify-between items-center">
-          <img src={logo} className="pr-16" alt="logo" />
-          <TbLayoutSidebarLeftCollapseFilled
-            className="text-2xl absolute flex md:hidden right-5 mt-5 hover:bg-sky-50 dark:hover:bg-gray-700 rounded-md"
-            onClick={() => {
-              toggleSidebar();
-              setRotate(!rotate);
-            }}
-          />
+          {theme === "dark" ? (
+            <img src={logoDarkmode} className="pr-16" alt="logo" />
+          ) : (
+            <img src={logolightmode} className="pr-16" alt="logo" />
+          )}
+          <div className="text-2xl absolute flex md:hidden right-5 mt-3 bg-sky-50 dark:bg-gray-800 dark:text-white p-2 hover:bg-sky-100 dark:hover:bg-gray-700 rounded-md">
+            <TbLayoutSidebarLeftCollapseFilled
+              className=""
+              onClick={() => {
+                toggleSidebar();
+                setRotate(!rotate);
+              }}
+            />
+          </div>
         </div>
         <div className="flex-1 mt-10 mb-2">
           {DASHBOARD_SIDEBAR_LINKS.map((item) => (
@@ -120,10 +110,7 @@ export default function Sidebar() {
                 <motion.div
                   animate={{ x: 0 }}
                   initial={{ x: -20 }}
-                  transition={
-                    { type: "tween", duration: 1 }
-                    // { type: "spring", bounce: 0.7 }
-                  }
+                  transition={{ type: "tween", duration: 1 }}
                   className="hidden md:block"
                 >
                   <SidebarLink

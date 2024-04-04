@@ -24,14 +24,18 @@ import Loginimg from "../src/assets/images/login.svg";
 import logo from "../src/assets/images/invezza-logo.png";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
+    // Apply theme to the document
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
+
+    // Store theme preference in local storage
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const handleThemeSwitch = () => {

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const Layout = ({ handleThemeSwitch, theme }) => {
   return (
     <div className="bg-[#D9D9D9] dark:bg-gray-800 flex flex-row h-screen w-screen overflow-hidden">
-      <Sidebar className="z-10" />
+      <Sidebar className="z-10" theme={theme} />
       <div className="flex-1">
         <motion.div
           initial={{ opacity: 0 }}
@@ -21,7 +21,7 @@ const Layout = ({ handleThemeSwitch, theme }) => {
           />
         </motion.div>
         <div className="px-2 overflow-scroll h-[98vh] scrollbar-hide">
-          {<Outlet className="z-40" />}
+          {<Outlet className="z-40" theme={theme} />}
         </div>
       </div>
     </div>
