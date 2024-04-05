@@ -229,11 +229,3 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .MuiPickersCalendarHeader-root {
     @apply 2xl:w-[100%];
 }
-
-/* .MuiDayCalendar-header {
-    @apply xl:w-[90%];
-}
-
-.MuiPickersCalendarHeader-root {
-    @apply xl:w-[90%];
-} */
