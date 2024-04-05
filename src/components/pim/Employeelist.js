@@ -44,7 +44,6 @@ const useStyles = makeStyles({
       fontWeight: "bold",
     },
     "& .MuiInputLabel-root.Mui-focused": {
-      color: "black",
       fontWeight: "bold",
       fontSize: 15,
     },
@@ -369,7 +368,6 @@ export default function StickyHeadTable({
                       align="left"
                       style={{
                         minWidth: column.minWidth,
-                        backgroundColor: "#f0f9ff",
                         fontWeight: "Bold",
                         fontFamily: "Euclid",
                       }}

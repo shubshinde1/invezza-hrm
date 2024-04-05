@@ -458,10 +458,12 @@ export default function ClientCard({ clients }) {
           ))}
         </Grid>
       ) : (
-        <Box className={`${classes.listViewContainer} w-[96vw] md:w-auto`}>
+        <Box
+          className={`${classes.listViewContainer} w-[96vw] md:w-auto dark:bg-neutral-950 p-2 rounded-md`}
+        >
           <TableContainer component={Paper}>
             <Table>
-              <TableHead className="bg-sky-50 dark:bg-neutral-950 TableHead">
+              <TableHead className="bg-sky-50">
                 <TableRow>
                   <TableCell className={classes.columnHeader}>
                     Client Name

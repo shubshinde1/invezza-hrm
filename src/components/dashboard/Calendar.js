@@ -51,6 +51,8 @@ const useStyles = makeStyles({
       borderRadius: 6,
       cursor: "pointer",
     },
+    // "& .MuiPickersSlideTransition-root": {
+    // },
     display: "block",
     width: "100%",
     fontFamily: "Euclid-medium",
@@ -61,11 +63,11 @@ export default function Calendar() {
   const classes = useStyles();
 
   return (
-    <div className="flex flex-col  sm:flex-row xl:flex-col justify-start items-start sm:items-stretch sm:justify-between xl:justify-normal ">
+    <div className=" flex flex-col  sm:flex-row xl:flex-col justify-start items-start sm:items-stretch sm:justify-between xl:justify-normal ">
       <div className="w-full">
         <LocalizationProvider
           dateAdapter={AdapterDayjs}
-          className="dark:text-white "
+          className="dark:text-white"
         >
           <DateCalendar className={`${classes.root} dark:text-white `} />
         </LocalizationProvider>

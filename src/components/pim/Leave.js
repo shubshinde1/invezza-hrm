@@ -36,12 +36,10 @@ const useStyles = makeStyles({
       fontWeight: "bold",
     },
     "& .MuiInputLabel-root.Mui-focused": {
-      color: "black",
       fontWeight: "bold",
       fontSize: 15,
     },
     "& .MuiInputBase-root": {
-      backgroundColor: "#f0f9ff",
       border: "0 none",
       borderRadius: 7,
       height: 50,
@@ -231,7 +229,7 @@ export default function Leave() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
-            className="col-span-12 sm:col-span-6 lg:col-span-2 border-2 rounded-md p-2 flex flex-col gap-3"
+            className="col-span-12 sm:col-span-6 lg:col-span-2 border-2 dark:border-0 dark:bg-neutral-900 rounded-md p-2 flex flex-col gap-3"
           >
             <div className="flex items-center gap-2">
               <div className="bg-sky-800 dark:bg-gray-800 rounded-md p-2">
@@ -257,7 +255,7 @@ export default function Leave() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="col-span-6 lg:col-span-2 border-2 rounded-md p-2 flex flex-col gap-3"
+            className="col-span-6 lg:col-span-2 border-2 dark:border-0 dark:bg-neutral-900 rounded-md p-2 flex flex-col gap-3"
           >
             <div className="flex items-center gap-2">
               <div className="bg-green-100 rounded-md p-2">
@@ -286,7 +284,7 @@ export default function Leave() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="col-span-6 lg:col-span-2 border-2 rounded-md p-2 flex flex-col gap-3"
+            className="col-span-6 lg:col-span-2 border-2 dark:border-0 dark:bg-neutral-900 rounded-md p-2 flex flex-col gap-3"
           >
             <div className="flex items-center gap-2">
               <div className="bg-orange-100 rounded-md p-2">
@@ -312,7 +310,7 @@ export default function Leave() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="col-span-6 lg:col-span-2 border-2 rounded-md p-2 flex flex-col gap-3"
+            className="col-span-6 lg:col-span-2 border-2 dark:border-0 dark:bg-neutral-900 rounded-md p-2 flex flex-col gap-3"
           >
             <div className="flex items-center gap-2">
               <div className="bg-red-100 rounded-md p-2">
@@ -339,7 +337,7 @@ export default function Leave() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="col-span-6 lg:col-span-2 border-2 rounded-md p-2 flex flex-col gap-3"
+            className="col-span-6 lg:col-span-2 border-2 dark:border-0 dark:bg-neutral-900 rounded-md p-2 flex flex-col gap-3"
           >
             <div className="flex items-center gap-2">
               <div className="bg-yellow-100 rounded-md p-2">
@@ -414,7 +412,7 @@ export default function Leave() {
                 <TableCell
                   align="left"
                   style={{
-                    backgroundColor: "#f0f9ff",
+                    // backgroundColor: "#f0f9ff",
                     fontWeight: "bold",
                     fontFamily: "Euclid",
                   }}
@@ -424,7 +422,7 @@ export default function Leave() {
                 <TableCell
                   align="left"
                   style={{
-                    backgroundColor: "#f0f9ff",
+                    // backgroundColor: "#f0f9ff",
                     fontWeight: "bold",
                     fontFamily: "Euclid",
                   }}
@@ -434,7 +432,7 @@ export default function Leave() {
                 <TableCell
                   align="left"
                   style={{
-                    backgroundColor: "#f0f9ff",
+                    // backgroundColor: "#f0f9ff",
                     fontWeight: "bold",
                     fontFamily: "Euclid",
                   }}
@@ -444,7 +442,7 @@ export default function Leave() {
                 <TableCell
                   align="left"
                   style={{
-                    backgroundColor: "#f0f9ff",
+                    // backgroundColor: "#f0f9ff",
                     fontWeight: "bold",
                     fontFamily: "Euclid",
                   }}
@@ -455,7 +453,7 @@ export default function Leave() {
                 <TableCell
                   align="left"
                   style={{
-                    backgroundColor: "#f0f9ff",
+                    // backgroundColor: "#f0f9ff",
                     fontWeight: "bold",
                     fontFamily: "Euclid",
                     width: 150,
@@ -467,7 +465,7 @@ export default function Leave() {
                 <TableCell
                   align="left"
                   style={{
-                    backgroundColor: "#f0f9ff",
+                    // backgroundColor: "#f0f9ff",
                     fontWeight: "bold",
                     fontFamily: "Euclid",
                   }}
@@ -477,7 +475,7 @@ export default function Leave() {
                 <TableCell
                   align="left"
                   style={{
-                    backgroundColor: "#f0f9ff",
+                    // backgroundColor: "#f0f9ff",
                     fontWeight: "bold",
                     fontFamily: "Euclid",
                   }}
@@ -531,7 +529,7 @@ export default function Leave() {
               )}
             </TableBody>
           </Table>
-          <div className="px-4 py-4 font-bold w-full bg-sky-50 flex flex-row justify-between sm:justify-start">
+          <div className="px-4 py-4 font-bold w-full bg-sky-50 dark:bg-neutral-900 flex flex-row justify-between sm:justify-start">
             <h2 className=" sm:w-3/5 ">Total Leaves in Last</h2>
             <h5 className="sm:ml-16 md:ml-16 lg:-ml-2">{totalLeavesOfMonth}</h5>
           </div>

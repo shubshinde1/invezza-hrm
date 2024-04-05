@@ -17,13 +17,13 @@ export default function ViewEmployee() {
 
   return (
     <div className="">
-      <div className="bg-white rounded-md p-2 sticky top-0 mb-2">
+      <div className="bg-white dark:bg-neutral-950 rounded-md p-2 sticky top-0 mb-2">
         <ul className="flex gap-2">
           <li
             className={`text-sm px-3 py-1.5 rounded-md ${
               activeTab === "view"
                 ? "bg-[#5336FD] text-white font-bold"
-                : "bg-sky-50"
+                : "bg-sky-50 dark:bg-neutral-900 dark:text-white"
             }`}
             onClick={() => handleTabChange("view")}
           >
@@ -35,7 +35,7 @@ export default function ViewEmployee() {
             className={`text-sm px-3 py-1.5 rounded-md ${
               activeTab === "leave"
                 ? "bg-[#5336FD] text-white font-bold"
-                : "bg-sky-50"
+                : "bg-sky-50 dark:bg-neutral-900 dark:text-white"
             }`}
             onClick={() => handleTabChange("leave")}
           >
@@ -47,7 +47,7 @@ export default function ViewEmployee() {
             className={`text-sm px-3 py-1.5 rounded-md ${
               activeTab === "timesheets"
                 ? "bg-[#5336FD] text-white font-bold"
-                : "bg-sky-50"
+                : "bg-sky-50 dark:bg-neutral-900 dark:text-white"
             }`}
             onClick={() => handleTabChange("timesheets")}
           >

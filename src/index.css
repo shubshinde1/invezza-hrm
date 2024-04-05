@@ -178,7 +178,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     @apply dark:text-white dark:bg-neutral-800;
 }
 
-.MuiTableCell-head {
+.MuiTableHead-root {
     @apply dark:bg-neutral-950;
 }
 
@@ -186,12 +186,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     @apply dark:text-white;
 }
 
+.MuiInputLabel-root.Mui-focused {
+    @apply dark:text-white text-white;
+}
+
 .MuiTableCell-root {
-    @apply dark:bg-neutral-800;
+    @apply dark:bg-neutral-900;
 }
 
 .MuiInputBase-root {
-    @apply dark:bg-neutral-800 bg-[#f0f9ff] rounded-md;
+    @apply dark:bg-neutral-900 dark:text-white bg-[#f0f9ff] rounded-md;
 }
 
 .MuiPaper-root {
@@ -213,3 +217,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .tablehead {
     @apply dark:bg-neutral-900;
 }
+
+.MuiPickersSlideTransition-root,
+.MuiDayCalendar-header,
+.MuiPickersCalendarHeader-root {
+    @apply xl:w-[90%];
+}
+
+.MuiPickersSlideTransition-root,
+.MuiDayCalendar-header,
+.MuiPickersCalendarHeader-root {
+    @apply 2xl:w-[100%];
+}
+
+/* .MuiDayCalendar-header {
+    @apply xl:w-[90%];
+}
+
+.MuiPickersCalendarHeader-root {
+    @apply xl:w-[90%];
+} */

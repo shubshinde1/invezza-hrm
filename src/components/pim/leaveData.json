@@ -66,7 +66,17 @@
                 "elapsed": 6
             }
         },
-        "timesheet": {}
+        "timesheet": [
+            {
+                "date": "2024-03-22",
+                "projectname": "",
+                "taskname": "",
+                "subtask": "",
+                "description": "",
+                "duration": "",
+                "remark": ""
+            }
+        ]
     },
     {
         "empid": "EMP002",

@@ -7249,7 +7249,7 @@ export default function Bodycards() {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row gap-2 dark:text-white">
+      <div className="flex flex-col md:flex-row gap-2 dark:text-white -mt-16 xl:mt-5 2xl:mt-0">
         <div className="bg-white dark:bg-neutral-950 p-4 rounded-md w-full md:w-fit">
           <h2 className="dark:text-white">Last 7 days Time at work</h2>
           <div className=" " id="chart" style={{}}></div>
