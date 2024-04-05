@@ -8,10 +8,14 @@ import { DASHBOARD_SIDEBAR_LINKS } from "../../lib/consts/navigation";
 // import { FaPowerOff } from "react-icons/fa";
 import classNames from "classnames";
 import LogoutMenuItem from "./LogoutMenuItem"; // Import the LogoutMenuItem component
+import { TbMoonFilled } from "react-icons/tb";
+import { MdLightMode } from "react-icons/md";
+import { motion } from "framer-motion";
 
 export default function Header({ handleThemeSwitch, theme }) {
   const location = useLocation();
   const navigate = useNavigate();
+  const [rotate, setRotate] = React.useState(false);
 
   const getTitle = () => {
     const currentPath = location.pathname;
@@ -40,7 +44,22 @@ export default function Header({ handleThemeSwitch, theme }) {
     return "View Employee"; // Return default title if no match is found
   };
 
-  const buttonText = theme === "dark" ? "Light Mode" : "Dark Mode";
+  const buttonIcon =
+    theme === "dark" ? (
+      <motion.div
+        animate={{ rotate: rotate ? 90 : 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <MdLightMode size={18} />
+      </motion.div>
+    ) : (
+      <motion.div
+        animate={{ rotate: rotate ? 50 : 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <TbMoonFilled size={18} />
+      </motion.div>
+    );
 
   return (
     <div className=" mt-2 mb-2 mr-2 ml-16 md:m-2 pl-2 dark:bg-neutral-950 bg-white dark:text-white h-12 md:h-16 rounded-md flex justify-between items-center">
@@ -49,10 +68,13 @@ export default function Header({ handleThemeSwitch, theme }) {
         <div className="flex items-center gap-3 text-sm">
           <div>
             <button
-              className="bg-sky-100 dark:bg-neutral-900 rounded-md p-2 text-sm"
-              onClick={handleThemeSwitch}
+              className="bg-sky-50 dark:bg-neutral-900 rounded-md p-2 text-sm"
+              onClick={() => {
+                handleThemeSwitch();
+                setRotate(!rotate);
+              }}
             >
-              {buttonText}
+              {buttonIcon}
             </button>
           </div>
           <Popover className="relative">
@@ -60,11 +82,11 @@ export default function Header({ handleThemeSwitch, theme }) {
               <>
                 <Popover.Button
                   className={classNames(
-                    open && "bg-sky-50",
-                    "hover:bg-sky-50 duration-500 p-2 rounded-md cursor-pointer focus:outline-none"
+                    open && "bg-sky-50 ",
+                    "bg-sky-50 hover:dark:bg-neutral-900 dark:bg-neutral-900 duration-500 p-2 rounded-md cursor-pointer focus:outline-none"
                   )}
                 >
-                  <IoNotifications fontSize={20} />
+                  <IoNotifications fontSize={18} />
                 </Popover.Button>
                 <Transition
                   as={Fragment}
