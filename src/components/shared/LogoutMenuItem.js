@@ -23,7 +23,7 @@ const LogoutMenuItem = ({ handleThemeSwitch }) => {
       {({ active }) => (
         <>
           <div
-            className={`px-3 py-2 flex  hover:bg-sky-50 cursor-pointer rounded-md  ${
+            className={`px-3 py-2 flex  hover:bg-sky-50 hover:dark:bg-neutral-900 cursor-pointer rounded-md items-center  ${
               active ? "" : ""
             }`}
             onClick={handleLogout}

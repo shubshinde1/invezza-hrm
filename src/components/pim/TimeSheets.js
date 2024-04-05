@@ -5,10 +5,69 @@ import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import Tooltip from "@mui/material/Tooltip";
 import NotFound from "../../assets/images/norecordfound.svg";
 
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import classNames from "classnames";
+import { makeStyles } from "@mui/styles";
+
 const data = empdata;
+
+const useStyles = makeStyles({
+  root: {
+    "& .MuiInputLabel-root": {
+      fontFamily: "euclid",
+      fontSize: 14,
+      paddingTop: -2.5,
+      fontWeight: "bold",
+    },
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "black",
+      fontWeight: "bold",
+      fontSize: 15,
+    },
+    "& .MuiInputBase-root": {
+      backgroundColor: "#f0f9ff",
+      border: "0 none",
+      borderRadius: 7,
+      height: 50,
+      width: "100%",
+      overflow: "hidden",
+    },
+    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "transparent",
+    },
+    "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
+      borderColor: "transparent",
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "gray",
+    },
+    "& .Muilplaceholder": {
+      fontFamily: "euclid",
+      fontSize: 10,
+    },
+    "& .MuiOutlinedInput-input": {
+      fontFamily: "euclid-medium",
+      fontSize: 14,
+    },
+    "& ::placeholder": {
+      fontSize: 12,
+    },
+    "& JoyCheckbox-input": {
+      backgroundColor: "red",
+    },
+    display: "block",
+    width: "100%",
+    fontFamily: "euclid-medium",
+  },
+});
 
 export default function TimeSheets() {
   const { empid } = useParams();
+  const classes = useStyles();
+
   const [currentDate, setCurrentDate] = useState(
     new Date().toISOString().split("T")[0]
   ); // State to track current date
@@ -16,12 +75,11 @@ export default function TimeSheets() {
   // Filter the data array to find the matching employee data
   const employeeData = data.filter((emp) => emp.empid === empid);
 
-  console.log(employeeData);
-
-  // Check if there's any matching employee data
-  if (employeeData.length === 0) {
-    return <div>No data found for employee with ID {empid}</div>;
-  }
+  // Function to handle date change
+  const handleDateChange = (event) => {
+    const selectedDate = event.target.value;
+    setCurrentDate(selectedDate);
+  };
 
   // Access tasks data for the current date
   const currentTasks = employeeData
@@ -57,9 +115,25 @@ export default function TimeSheets() {
   return (
     <div className="rounded-md bg-white dark:bg-neutral-950 dark:text-white p-2 flex flex-col gap-2 mb-10">
       <div className="flex gap-2 ">
-        <div className="bg-sky-50 dark:bg-neutral-900 py-2 px-4 rounded-md">
-          <span>{currentDate}</span>
-        </div>
+        <input
+          type="date"
+          value={currentDate}
+          onChange={handleDateChange}
+          className="bg-sky-50 dark:bg-neutral-900 py-2 px-4 rounded-md"
+        />
+        {/* <div className="h-5  w-52 ">
+          <LocalizationProvider dateAdapter={AdapterDayjs} className="w-full">
+            <DemoContainer components={["DatePicker"]}>
+              <DatePicker
+                label="Date of Birth"
+                className={classNames(
+                  "col-span-12 sm:col-span-6 xl:col-span-2",
+                  classes.root
+                )}
+              />
+            </DemoContainer>
+          </LocalizationProvider>
+        </div> */}
         <Tooltip title="Previous Day" placement="top" arrow>
           <button
             onClick={handlePrevDate}
@@ -119,11 +193,17 @@ export default function TimeSheets() {
               </div>
             </div>
             <div className="md:w-1/2 flex justify-center">
-              <img src={NotFound} className="w-1/2" />
+              <img src={NotFound} className="w-1/2" alt="No Records Found" />
             </div>
           </div>
         )}
       </div>
     </div>
   );
+}
+
+{
+  /* <div className="bg-sky-50 dark:bg-neutral-900 py-2 px-4 rounded-md">
+  <span>{currentDate}</span>
+</div>; */
 }

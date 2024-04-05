@@ -50,14 +50,14 @@ export default function Header({ handleThemeSwitch, theme }) {
         animate={{ rotate: rotate ? 90 : 0 }}
         transition={{ duration: 0.5 }}
       >
-        <MdLightMode size={18} />
+        <MdLightMode size={20} />
       </motion.div>
     ) : (
       <motion.div
         animate={{ rotate: rotate ? 50 : 0 }}
         transition={{ duration: 0.5 }}
       >
-        <TbMoonFilled size={18} />
+        <TbMoonFilled size={20} />
       </motion.div>
     );
 
@@ -66,17 +66,6 @@ export default function Header({ handleThemeSwitch, theme }) {
       <div className="font-bold">{getTitle()}</div>
       <div className="">
         <div className="flex items-center gap-3 text-sm">
-          <div>
-            <button
-              className="bg-sky-50 dark:bg-neutral-900 rounded-md p-2 text-sm"
-              onClick={() => {
-                handleThemeSwitch();
-                setRotate(!rotate);
-              }}
-            >
-              {buttonIcon}
-            </button>
-          </div>
           <Popover className="relative">
             {({ open }) => (
               <>
@@ -86,7 +75,7 @@ export default function Header({ handleThemeSwitch, theme }) {
                     "bg-sky-50 hover:dark:bg-neutral-900 dark:bg-neutral-900 duration-500 p-2 rounded-md cursor-pointer focus:outline-none"
                   )}
                 >
-                  <IoNotifications fontSize={18} />
+                  <IoNotifications fontSize={20} />
                 </Popover.Button>
                 <Transition
                   as={Fragment}
@@ -98,7 +87,7 @@ export default function Header({ handleThemeSwitch, theme }) {
                   leaveTo="opacity-0 translate-y-1"
                 >
                   <Popover.Panel className="absolute md:-right-2 right-0 z-10 md:m-2.5 md:w-52 w-[50vw] md:mt-5 mt-4">
-                    <div className="bg-white rounded-md shadow-lg p-3">
+                    <div className="bg-white  dark:bg-neutral-950 dark:border rounded-md shadow-lg p-3">
                       this is the panel
                     </div>
                   </Popover.Panel>
@@ -106,6 +95,18 @@ export default function Header({ handleThemeSwitch, theme }) {
               </>
             )}
           </Popover>
+          <div>
+            <button
+              className="bg-sky-50 dark:bg-neutral-900 rounded-md p-2 text-sm"
+              onClick={() => {
+                handleThemeSwitch();
+                setRotate(!rotate);
+              }}
+            >
+              {buttonIcon}
+            </button>
+          </div>
+
           <Menu as="div" className="relative">
             <div>
               <Menu.Button className="flex align-middle">
@@ -129,17 +130,18 @@ export default function Header({ handleThemeSwitch, theme }) {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="origin-top-right absolute -right-5 z-10 m-2.5 w-52 md:mt-5 mt-4 bg-white rounded-md shadow-lg p-2">
+              <Menu.Items className="origin-top-right absolute -right-5 z-10 m-2.5 w-52 md:mt-5 mt-4 bg-white dark:bg-neutral-950 dark:border rounded-md shadow-lg p-2">
                 <Menu.Item>
                   {({ active }) => (
                     <div
                       className={classNames(
-                        active && "bg-sky-50 cursor-pointer rounded-md",
-                        "px-3 py-2 flex"
+                        active &&
+                          "bg-sky-50 dark:bg-neutral-900 cursor-pointer rounded-md flex items-center",
+                        "px-3 py-2 flex "
                       )}
                       onClick={() => navigate("/myprofile")}
                     >
-                      <IoPerson fontSize={20} />
+                      <IoPerson fontSize={18} />
                       <span className="ml-3">View Profile</span>
                     </div>
                   )}
@@ -148,12 +150,13 @@ export default function Header({ handleThemeSwitch, theme }) {
                   {({ active }) => (
                     <div
                       className={classNames(
-                        active && "bg-sky-50 cursor-pointer rounded-md",
-                        "px-3 py-2 flex"
+                        active &&
+                          "bg-sky-50 dark:bg-neutral-900 cursor-pointer rounded-md flex items-center",
+                        "px-3 py-2 flex "
                       )}
                       onClick={() => navigate("/myprofile")}
                     >
-                      <RiSettingsFill fontSize={20} />
+                      <RiSettingsFill fontSize={18} />
                       <span className="ml-3">Settings</span>
                     </div>
                   )}
