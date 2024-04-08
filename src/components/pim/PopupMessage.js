@@ -22,32 +22,19 @@ const PopupMessage = ({ message, onAddMore, onGoToList }) => {
 
   return (
     <>
-      <div
-        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg z-[9999] w-72 sm:w-auto px-5"
-        // style={{
-        //   position: "fixed",
-        //   top: "50%",
-        //   left: "50%",
-        //   transform: "translate(-50%, -50%)",
-        //   backgroundColor: "white",
-        //   padding: "25px 20px",
-        //   borderRadius: "5px",
-        //   zIndex: "9999",
-        // }}
-      >
-        <div className="flex items-center justify-center bg-sky-50 rounded-md px-4 py-3">
+      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-neutral-900 p-6 rounded-lg z-[9999] w-72 sm:w-auto px-5">
+        <div className="flex items-center justify-center bg-sky-50 dark:bg-neutral-950 rounded-md px-4 py-3">
           <BsPersonFillCheck className="text-green-500 text-3xl" />
           <p className="ml-2">{message}</p>
         </div>
 
-        <div className="bg-sky-50 mt-2 w-[100%] items-center">
+        <div className=" mt-2 w-[100%] items-center">
           {timer > 0 && (
             <div
               className="text-center "
               style={{
                 top: "10px",
                 right: "10px",
-                backgroundColor: "white",
                 padding: "5px 10px",
                 borderRadius: "5px",
                 zIndex: "9999",

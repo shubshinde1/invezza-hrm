@@ -38,7 +38,6 @@ const GlobalStyles = createGlobalStyle`
     margin-top:5px;
   }
   .MuiMenuItem-root:hover {
-    background-color:#e0f2fe;
     padding-left: 14px;
   }
   .MuiMenuItem-root:hover {
@@ -60,12 +59,10 @@ const useStyles = makeStyles({
       fontWeight: "bold",
     },
     "& .MuiInputLabel-root.Mui-focused": {
-      color: "black",
       fontWeight: "bold",
       fontSize: 15,
     },
     "& .MuiInputBase-root": {
-      backgroundColor: "#f0f9ff",
       border: "0 none",
       borderRadius: 7,
       height: 52,
@@ -170,7 +167,7 @@ export default function Addproject() {
   };
 
   return (
-    <div className="bg-white p-4 rounded-md mb-20">
+    <div className="bg-white dark:bg-neutral-950 p-4 rounded-md mb-20">
       <form>
         <motion.div
           className="grid grid-cols-12 gap-2"
@@ -205,10 +202,6 @@ export default function Addproject() {
                   />
                 )}
                 onChange={handleBusinessNameChange}
-                // onChange={(event) => {
-                //   const selectedValue = event.target.value;
-                //   console.log("Selected value:", selectedValue);
-                // }}
               >
                 <GlobalStyles />
                 {clientsData.map((client) => (
@@ -360,10 +353,6 @@ export default function Addproject() {
                   />
                 )}
                 onChange={handleBusinessNameChange}
-                // onChange={(event) => {
-                //   const selectedValue = event.target.value;
-                //   console.log("Selected value:", selectedValue);
-                // }}
               >
                 <GlobalStyles />
                 <MenuItem value="shubhamshinde">Shubham Shinde</MenuItem>
@@ -376,113 +365,9 @@ export default function Addproject() {
               </Select>
             </FormControl>
           </div>
-          {/* <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-row ">
-            <TextField
-              className={classNames(
-                "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                classes.root
-              )}
-              id="email"
-              name="email"
-              label="Email Id"
-              variant="outlined"
-              margin="dense"
-            />
-          </div>
-          <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-row ">
-            <TextField
-              className={classNames(
-                "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                classes.root
-              )}
-              id="website"
-              name="website"
-              label="Website Url"
-              variant="outlined"
-              margin="dense"
-            />
-          </div>
-          <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-row ">
-            <TextField
-              className={classNames(
-                "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                classes.root
-              )}
-              id="address"
-              name="address"
-              label="Office Address"
-              variant="outlined"
-              margin="dense"
-            />
-          </div>
-          <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-row ">
-            <TextField
-              className={classNames(
-                "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                classes.root
-              )}
-              id="projectname"
-              name="projectname"
-              label="Project Name"
-              variant="outlined"
-              margin="dense"
-            />
-          </div>
-          <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-col">
-            <div>
-              <input
-                type="file"
-                id="contractfile"
-                name="contractfile"
-                accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
-                onChange={handleFileChange}
-                style={{ display: "none" }} // Hide the file input
-              />
-              <TextField
-                id="contractfile"
-                label="Contract File"
-                variant="outlined"
-                margin="dense"
-                type="text" // Change type to text for styling purposes
-                className={classNames(
-                  "col-span-12 sm:col-span-6 xl:col-span-2 text-xs ",
-                  classes.root
-                )}
-                InputLabelProps={{
-                  shrink: isInputLabelShrunk, // Dynamic shrink property based on file selection
-                }}
-                InputProps={{
-                  endAdornment: (
-                    <label
-                      htmlFor="contractfile"
-                      className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
-                    >
-                      <FaFileArrowUp className="text-gray-500" />
-                    </label>
-                  ),
-                  value: selectedFileName, // Display only the selected file name
-                  readOnly: true, // Make the field read-only
-                  style: { paddingRight: 10, height: 50 }, // Adjust padding and maintain height
-                }}
-              />
-            </div>
-          </div>
-          <div className="col-span-12 sm:col-span-6 md:col-span-4 flex flex-row ">
-            <TextField
-              className={classNames(
-                "col-span-12 sm:col-span-6 xl:col-span-2 text-xs",
-                classes.root
-              )}
-              id="gstn"
-              name="gstn"
-              label="GST No"
-              variant="outlined"
-              margin="dense"
-            />
-          </div> */}
           <div className="col-span-12 sm:col-span-6 md:col-span-8 flex flex-col mt-2">
             <textarea
-              className="bg-[#f0f9ff] rounded-md focus:border-[1px] p-3 pb-0 h-20 "
+              className="bg-[#f0f9ff] dark:bg-neutral-900 dark:text-white rounded-md focus:border-[1px] p-3 pb-0 h-20 "
               placeholder="Description/Remark"
             ></textarea>
           </div>
@@ -507,8 +392,8 @@ export default function Addproject() {
                   zIndex: 9998,
                 }}
               >
-                <div className="bg-white p-4 rounded-md shadow-lg popup-content ">
-                  <div className="flex flex-row items-center gap-3 bg-sky-50 p-3 rounded-md">
+                <div className="bg-white dark:bg-neutral-900 dark:text-white p-4 rounded-md shadow-lg popup-content ">
+                  <div className="flex flex-row items-center gap-3 bg-sky-50 dark:bg-neutral-950 p-3 rounded-md">
                     <BsPersonFillCheck className="text-green-500 text-2xl" />
                     <p className="text-center text-base">
                       New Project Added Successfully.

@@ -63,12 +63,10 @@ const useStyles = makeStyles({
       fontWeight: "bold",
     },
     "& .MuiInputLabel-root.Mui-focused": {
-      color: "black",
       fontWeight: "bold",
       fontSize: 15,
     },
     "& .MuiInputBase-root": {
-      backgroundColor: "#f0f9ff",
       border: "0 none",
       borderRadius: 7,
       height: 50,
@@ -94,9 +92,6 @@ const useStyles = makeStyles({
     },
     "& ::placeholder": {
       fontSize: 12,
-    },
-    "& JoyCheckbox-input": {
-      backgroundColor: "red",
     },
     display: "block",
     width: "100%",
@@ -134,7 +129,7 @@ export function PersonalInformation({ onNext }) {
         >
           <div className="flex items-center md:items-center mt-4 gap-4">
             <div>
-              <div className="w-28 md:w-20 bg-sky-50 p-2 rounded-md flex justify-center">
+              <div className="w-28 md:w-20 bg-sky-50 dark:bg-neutral-900 p-2 rounded-md flex justify-center">
                 {selectedImage ? (
                   <img
                     src={selectedImage}
@@ -142,7 +137,7 @@ export function PersonalInformation({ onNext }) {
                     alt="Profile"
                   />
                 ) : (
-                  <FaUserAlt className="text-6xl text-gray-300" />
+                  <FaUserAlt className="text-6xl text-gray-300 dark:text-neutral-700" />
                 )}
               </div>
             </div>
@@ -163,7 +158,7 @@ export function PersonalInformation({ onNext }) {
                   <h1 className="ml-2 text-xs font-bold">Upload Avatar</h1>
                 </label>
                 <div
-                  className="bg-sky-50 px-3 py-2 flex rounded-md md:ml-4 mt-4 md:mt-0 cursor-pointer items-center hover:scale-[1.020] duration-150"
+                  className="bg-sky-50 dark:bg-neutral-900 px-3 py-2 flex rounded-md md:ml-4 mt-4 md:mt-0 cursor-pointer items-center hover:scale-[1.020] duration-150"
                   onClick={handleResetImage}
                 >
                   <BiReset size={20} />
@@ -484,7 +479,7 @@ export function EmploymentInformation({ onPrev, onNext }) {
         <button
           type="button"
           onClick={onPrev}
-          className="bg-blue-100 px-4 py-2 rounded-md hover:scale-[1.020]"
+          className="bg-blue-100 dark:bg-neutral-900 px-4 py-2 rounded-md hover:scale-[1.020]"
         >
           <div className="flex items-center gap-2">
             <TbPlayerTrackNextFilled className="rotate-180" />
@@ -768,7 +763,7 @@ export function ContactInformation({ onPrev, onNext }) {
         <button
           type="button"
           onClick={onPrev}
-          className="bg-blue-100 px-4 py-2 rounded-md hover:scale-[1.020]"
+          className="bg-blue-100 dark:bg-neutral-900 px-4 py-2 rounded-md hover:scale-[1.020]"
         >
           <div className="flex items-center gap-2">
             <TbPlayerTrackNextFilled className="rotate-180" />
@@ -978,7 +973,7 @@ export function EmergencyContacts({ onPrev, onNext }) {
         <button
           type="button"
           onClick={onPrev}
-          className="bg-blue-100 px-4 py-2 rounded-md hover:scale-[1.020]"
+          className="bg-blue-100 dark:bg-neutral-900 px-4 py-2 rounded-md hover:scale-[1.020]"
         >
           <div className="flex items-center gap-2">
             <TbPlayerTrackNextFilled className="rotate-180" />
@@ -1093,7 +1088,7 @@ export function WorkExperience({ onPrev, onNext }) {
                         handleRemove(index);
                         setElecome(!elecome);
                       }}
-                      className="bg-sky-50 px-2 py-1 rounded-md text-xs ml-3 hover:bg-[#5336FD] hover:text-white flex items-center gap-1"
+                      className="bg-sky-50 dark:bg-neutral-900 px-2 py-1 rounded-md text-xs ml-3 hover:bg-[#5336FD] hover:text-white flex items-center gap-1"
                     >
                       Remove
                     </button>
@@ -1290,7 +1285,7 @@ export function WorkExperience({ onPrev, onNext }) {
               <div className="flex gap-5 flex-wrap sm:flex-nowrap mt-5">
                 <div className="w-full lg:w-2/3 flex flex-col">
                   <textarea
-                    className="bg-[#f0f9ff] rounded-md focus:border-[1px] mt-2 p-3 pb-0 "
+                    className="bg-[#f0f9ff] dark:bg-neutral-900 rounded-md focus:border-[1px] mt-2 p-3 pb-0 "
                     placeholder="Description"
                   ></textarea>
                 </div>
@@ -1305,7 +1300,7 @@ export function WorkExperience({ onPrev, onNext }) {
         <button
           type="button"
           onClick={onPrev}
-          className="bg-blue-100 px-4 py-2 rounded-md hover:scale-[1.020]"
+          className="bg-blue-100 dark:bg-neutral-900 px-4 py-2 rounded-md hover:scale-[1.020]"
         >
           <div className="flex items-center gap-2">
             <TbPlayerTrackNextFilled className="rotate-180" />
@@ -1427,9 +1422,9 @@ export function Documents({ onPrev }) {
                       endAdornment: (
                         <label
                           htmlFor="adharcard"
-                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 dark:bg-neutral-950 hover:scale-105 cursor-pointer"
                         >
-                          <FaFileArrowUp className="text-gray-500" />
+                          <FaFileArrowUp className="text-gray-500 dark:text-neutral-600" />
                         </label>
                       ),
                       value: selectedFileName, // Display only the selected file name
@@ -1467,9 +1462,9 @@ export function Documents({ onPrev }) {
                       endAdornment: (
                         <label
                           htmlFor="pancard"
-                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 dark:bg-neutral-950 hover:scale-105 cursor-pointer"
                         >
-                          <FaFileArrowUp className="text-gray-500" />
+                          <FaFileArrowUp className="text-gray-500 dark:text-neutral-600" />
                         </label>
                       ),
                       value: selectedFileName, // Display only the selected file name
@@ -1507,9 +1502,9 @@ export function Documents({ onPrev }) {
                       endAdornment: (
                         <label
                           htmlFor="addressproof"
-                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 dark:bg-neutral-950 hover:scale-105 cursor-pointer"
                         >
-                          <FaFileArrowUp className="text-gray-500" />
+                          <FaFileArrowUp className="text-gray-500 dark:text-neutral-600" />
                         </label>
                       ),
                       value: selectedFileName, // Display only the selected file name
@@ -1548,9 +1543,9 @@ export function Documents({ onPrev }) {
                       endAdornment: (
                         <label
                           htmlFor="electricitybil"
-                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 dark:bg-neutral-950 hover:scale-105 cursor-pointer"
                         >
-                          <FaFileArrowUp className="text-gray-500" />
+                          <FaFileArrowUp className="text-gray-500 dark:text-neutral-600" />
                         </label>
                       ),
                       value: selectedFileName, // Display only the selected file name
@@ -1588,9 +1583,9 @@ export function Documents({ onPrev }) {
                       endAdornment: (
                         <label
                           htmlFor="offerlatter"
-                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 dark:bg-neutral-950 hover:scale-105 cursor-pointer"
                         >
-                          <FaFileArrowUp className="text-gray-500" />
+                          <FaFileArrowUp className="text-gray-500 dark:text-neutral-600" />
                         </label>
                       ),
                       value: selectedFileName, // Display only the selected file name
@@ -1628,9 +1623,9 @@ export function Documents({ onPrev }) {
                       endAdornment: (
                         <label
                           htmlFor="experiencelatter"
-                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 dark:bg-neutral-950 hover:scale-105 cursor-pointer"
                         >
-                          <FaFileArrowUp className="text-gray-500" />
+                          <FaFileArrowUp className="text-gray-500 dark:text-neutral-600" />
                         </label>
                       ),
                       value: selectedFileName, // Display only the selected file name
@@ -1683,9 +1678,9 @@ export function Documents({ onPrev }) {
                       endAdornment: (
                         <label
                           htmlFor="payslip1"
-                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 dark:bg-neutral-950 hover:scale-105 cursor-pointer"
                         >
-                          <FaFileArrowUp className="text-gray-500" />
+                          <FaFileArrowUp className="text-gray-500 dark:text-neutral-600" />
                         </label>
                       ),
                       value: selectedFileName, // Display only the selected file name
@@ -1723,9 +1718,9 @@ export function Documents({ onPrev }) {
                       endAdornment: (
                         <label
                           htmlFor="payslip2"
-                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 dark:bg-neutral-950 hover:scale-105 cursor-pointer"
                         >
-                          <FaFileArrowUp className="text-gray-500" />
+                          <FaFileArrowUp className="text-gray-500 dark:text-neutral-600" />
                         </label>
                       ),
                       value: selectedFileName, // Display only the selected file name
@@ -1763,9 +1758,9 @@ export function Documents({ onPrev }) {
                       endAdornment: (
                         <label
                           htmlFor="payslip3"
-                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                          className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 dark:bg-neutral-950 hover:scale-105 cursor-pointer"
                         >
-                          <FaFileArrowUp className="text-gray-500" />
+                          <FaFileArrowUp className="text-gray-500 dark:text-neutral-600" />
                         </label>
                       ),
                       value: selectedFileName, // Display only the selected file name
@@ -1783,7 +1778,7 @@ export function Documents({ onPrev }) {
         <button
           type="button"
           onClick={onPrev}
-          className="bg-blue-100 px-4 py-2 rounded-md hover:scale-[1.020]"
+          className="bg-blue-100 dark:bg-neutral-900 px-4 py-2 rounded-md hover:scale-[1.020]"
         >
           <div className="flex items-center gap-2">
             <TbPlayerTrackNextFilled className="rotate-180" />

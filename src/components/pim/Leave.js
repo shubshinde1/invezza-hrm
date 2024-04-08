@@ -224,7 +224,7 @@ export default function Leave() {
         sx={{ overflow: "hidden" }}
         className="md:w-[100%] w-[calc(100vw-0.8rem)] h-[90%] top-24"
       >
-        <div className="p-2 grid grid-cols-11 sm:grid-cols-12 lg:grid-cols-10 gap-4">
+        <div className="p-2 grid grid-cols-11 sm:grid-cols-12 lg:grid-cols-10 gap-2">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -232,7 +232,7 @@ export default function Leave() {
             className="col-span-12 sm:col-span-6 lg:col-span-2 border-2 dark:border-0 dark:bg-neutral-900 rounded-md p-2 flex flex-col gap-3"
           >
             <div className="flex items-center gap-2">
-              <div className="bg-sky-200 dark:bg-gray-800 rounded-md p-2">
+              <div className="bg-sky-200  rounded-md p-2">
                 <FaCalculator fontSize={20} className="text-sky-600" />
               </div>
               <h2 className="font-bold">Total Leaves</h2>
@@ -360,7 +360,7 @@ export default function Leave() {
             </h2>
           </motion.div>
         </div>
-        <div className="m-2 gap-2  items-center justify-between grid grid-cols-12 ">
+        <div className="mx-2 gap-2  items-center justify-between grid grid-cols-12 ">
           <FormControl
             variant="outlined"
             margin="dense"
@@ -401,139 +401,147 @@ export default function Leave() {
             </Select>
           </FormControl>
         </div>
-        <TableContainer
-          component={Paper}
-          sx={{ boxShadow: "none" }}
-          className="m-2 pr-4 scrollbar-hide"
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                <TableCell
-                  align="left"
-                  style={{
-                    // backgroundColor: "#f0f9ff",
-                    fontWeight: "bold",
-                    fontFamily: "Euclid",
-                  }}
-                >
-                  Leave Type
-                </TableCell>
-                <TableCell
-                  align="left"
-                  style={{
-                    // backgroundColor: "#f0f9ff",
-                    fontWeight: "bold",
-                    fontFamily: "Euclid",
-                  }}
-                >
-                  Reason
-                </TableCell>
-                <TableCell
-                  align="left"
-                  style={{
-                    // backgroundColor: "#f0f9ff",
-                    fontWeight: "bold",
-                    fontFamily: "Euclid",
-                  }}
-                >
-                  From
-                </TableCell>
-                <TableCell
-                  align="left"
-                  style={{
-                    // backgroundColor: "#f0f9ff",
-                    fontWeight: "bold",
-                    fontFamily: "Euclid",
-                  }}
-                >
-                  To
-                </TableCell>
+          <TableContainer
+            component={Paper}
+            sx={{ boxShadow: "none" }}
+            className="m-2 pr-4 scrollbar-hide"
+          >
+            <Table stickyHeader aria-label="sticky table">
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    align="left"
+                    style={{
+                      // backgroundColor: "#f0f9ff",
+                      fontWeight: "bold",
+                      fontFamily: "Euclid",
+                    }}
+                  >
+                    Leave Type
+                  </TableCell>
+                  <TableCell
+                    align="left"
+                    style={{
+                      // backgroundColor: "#f0f9ff",
+                      fontWeight: "bold",
+                      fontFamily: "Euclid",
+                    }}
+                  >
+                    Reason
+                  </TableCell>
+                  <TableCell
+                    align="left"
+                    style={{
+                      // backgroundColor: "#f0f9ff",
+                      fontWeight: "bold",
+                      fontFamily: "Euclid",
+                    }}
+                  >
+                    From
+                  </TableCell>
+                  <TableCell
+                    align="left"
+                    style={{
+                      // backgroundColor: "#f0f9ff",
+                      fontWeight: "bold",
+                      fontFamily: "Euclid",
+                    }}
+                  >
+                    To
+                  </TableCell>
 
-                <TableCell
-                  align="left"
-                  style={{
-                    // backgroundColor: "#f0f9ff",
-                    fontWeight: "bold",
-                    fontFamily: "Euclid",
-                    width: 150,
-                  }}
-                >
-                  No. of Leaves
-                </TableCell>
+                  <TableCell
+                    align="left"
+                    style={{
+                      // backgroundColor: "#f0f9ff",
+                      fontWeight: "bold",
+                      fontFamily: "Euclid",
+                      width: 150,
+                    }}
+                  >
+                    No. of Leaves
+                  </TableCell>
 
-                <TableCell
-                  align="left"
-                  style={{
-                    // backgroundColor: "#f0f9ff",
-                    fontWeight: "bold",
-                    fontFamily: "Euclid",
-                  }}
-                >
-                  Status
-                </TableCell>
-                <TableCell
-                  align="left"
-                  style={{
-                    // backgroundColor: "#f0f9ff",
-                    fontWeight: "bold",
-                    fontFamily: "Euclid",
-                  }}
-                >
-                  Approved By
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {employeeData.map((emp) =>
-                Object.values(emp.attendance)
-                  .filter((leave) => filterData(leave))
-                  .map((leave, index) => (
-                    <TableRow key={index}>
-                      <TableCell style={{ fontFamily: "Euclid" }}>
-                        {leave.leavetype}
-                      </TableCell>
-                      <TableCell style={{ fontFamily: "Euclid" }}>
-                        {leave.reason}
-                      </TableCell>
-                      <TableCell style={{ fontFamily: "Euclid" }}>
-                        {new Date(leave.from).toLocaleDateString()}
-                      </TableCell>
-                      <TableCell style={{ fontFamily: "Euclid" }}>
-                        {new Date(leave.to).toLocaleDateString()}
-                      </TableCell>
+                  <TableCell
+                    align="left"
+                    style={{
+                      // backgroundColor: "#f0f9ff",
+                      fontWeight: "bold",
+                      fontFamily: "Euclid",
+                    }}
+                  >
+                    Status
+                  </TableCell>
+                  <TableCell
+                    align="left"
+                    style={{
+                      // backgroundColor: "#f0f9ff",
+                      fontWeight: "bold",
+                      fontFamily: "Euclid",
+                    }}
+                  >
+                    Approved By
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {employeeData.map((emp) =>
+                  Object.values(emp.attendance)
+                    .filter((leave) => filterData(leave))
+                    .map((leave, index) => (
+                      <TableRow key={index}>
+                        <TableCell style={{ fontFamily: "Euclid" }}>
+                          {leave.leavetype}
+                        </TableCell>
+                        <TableCell style={{ fontFamily: "Euclid" }}>
+                          {leave.reason}
+                        </TableCell>
+                        <TableCell style={{ fontFamily: "Euclid" }}>
+                          {new Date(leave.from).toLocaleDateString()}
+                        </TableCell>
+                        <TableCell style={{ fontFamily: "Euclid" }}>
+                          {new Date(leave.to).toLocaleDateString()}
+                        </TableCell>
 
-                      <TableCell style={{ fontFamily: "Euclid" }}>
-                        {leave.noofleaves}
-                      </TableCell>
+                        <TableCell style={{ fontFamily: "Euclid" }}>
+                          {leave.noofleaves}
+                        </TableCell>
 
-                      <TableCell>
-                        {leave.status === 0 ? (
-                          <span className="text-red-600 euclid text-xs font-bold bg-red-200 py-1 px-2 rounded-md">
-                            Declined
-                          </span>
-                        ) : leave.status === 1 ? (
-                          <span className="text-green-600 euclid text-xs font-bold bg-green-200 py-1 px-2 rounded-md">
-                            Approved
-                          </span>
-                        ) : (
-                          <span className="text-orange-600 euclid text-xs font-bold bg-orange-200 py-1 px-2 rounded-md">
-                            Pending
-                          </span>
-                        )}
-                      </TableCell>
+                        <TableCell>
+                          {leave.status === 0 ? (
+                            <span className="text-red-600 euclid text-xs font-bold bg-red-200 py-1 px-2 rounded-md">
+                              Declined
+                            </span>
+                          ) : leave.status === 1 ? (
+                            <span className="text-green-600 euclid text-xs font-bold bg-green-200 py-1 px-2 rounded-md">
+                              Approved
+                            </span>
+                          ) : (
+                            <span className="text-orange-600 euclid text-xs font-bold bg-orange-200 py-1 px-2 rounded-md">
+                              Pending
+                            </span>
+                          )}
+                        </TableCell>
 
-                      <TableCell>{leave.approvedby}</TableCell>
-                    </TableRow>
-                  ))
-              )}
-            </TableBody>
-          </Table>
-          <div className="px-4 py-4 font-bold w-full bg-sky-50 dark:bg-neutral-900 flex flex-row justify-between sm:justify-start">
-            <h2 className=" sm:w-3/5 ">Total Leaves in Last</h2>
-            <h5 className="sm:ml-16 md:ml-16 lg:-ml-2">{totalLeavesOfMonth}</h5>
-          </div>
-        </TableContainer>
+                        <TableCell>{leave.approvedby}</TableCell>
+                      </TableRow>
+                    ))
+                )}
+              </TableBody>
+            </Table>
+            <div className="px-4 py-4 font-bold w-full bg-sky-50 dark:bg-neutral-900 flex flex-row justify-between sm:justify-start">
+              <h2 className=" sm:w-3/5 ">Total Leaves in Last</h2>
+              <h5 className="sm:ml-16 md:ml-16 lg:-ml-2">
+                {totalLeavesOfMonth}
+              </h5>
+            </div>
+          </TableContainer>
+        </motion.div>
       </Paper>
     </div>
   );

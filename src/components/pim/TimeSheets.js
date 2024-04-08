@@ -250,21 +250,30 @@ export default function TimeSheets() {
         {/* Button to go back to today's date */}
       </div>
       <div className="">
-        <ul className="hidden lg:grid grid-cols-12 mb-2 gap-2 px-2 py-3 bg-sky-100 dark:bg-neutral-800 rounded-md font-bold">
-          <li className="col-span-1 ">Sr.No</li>
-          <li className="col-span-2 ">Project Name</li>
-          <li className="col-span-2 ">Task Name</li>
-          <li className="col-span-2 ">Subtask</li>
-          <li className="col-span-2 ">Description</li>
-          <li className="col-span-1 ">Duration</li>
-          <li className="col-span-1 ">Assigned</li>
-          <li className="col-span-1 ">Remark</li>
-        </ul>
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ul className="hidden lg:grid grid-cols-12 mb-2 gap-2 px-2 py-3 bg-sky-100 dark:bg-neutral-800 rounded-md font-bold">
+            <li className="col-span-1 ">Sr.No</li>
+            <li className="col-span-2 ">Project Name</li>
+            <li className="col-span-2 ">Task Name</li>
+            <li className="col-span-2 ">Subtask</li>
+            <li className="col-span-2 ">Description</li>
+            <li className="col-span-1 ">Duration</li>
+            <li className="col-span-1 ">Assigned</li>
+            <li className="col-span-1 ">Remark</li>
+          </ul>
+        </motion.div>
 
         {currentTasks ? (
           <div className=" flex flex-col overflow-scroll h-[78vh]  2xl:h-[50vh] scrollbar-hide ">
             {Object.values(currentTasks).map((task, index) => (
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
                 key={index}
                 className={`bg-sky-50 dark:bg-neutral-900 p-2 rounded-md grid grid-cols-12 gap-2 items-start  ${
                   index !== 0 ? "mt-2" : ""
@@ -312,11 +321,16 @@ export default function TimeSheets() {
                     {task.remark === 0 ? "Pending" : "Complete"}
                   </h2>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         ) : (
-          <div className="flex flex-col md:flex-row h-[78vh]  2xl:h-[50vh] gap-10 md:gap-0 items-center bg-sky-50 dark:bg-neutral-900 rounded-md p-5 mt-2">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col md:flex-row gap-10 md:gap-0 items-center bg-sky-50 dark:bg-neutral-900 rounded-md p-5 mt-2"
+          >
             <div className="md:w-1/2 flex justify-center flex-col items-center gap-4">
               <h2 className="text-lg font-bold">
                 No Records for {currentDate}
@@ -334,7 +348,7 @@ export default function TimeSheets() {
             <div className="md:w-1/2 flex justify-center">
               <img src={NotFound} className="w-1/2" alt="No Records Found" />
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </div>

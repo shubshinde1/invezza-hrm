@@ -187,7 +187,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .MuiInputLabel-root.Mui-focused {
-    @apply dark:text-white text-white;
+    @apply dark:text-white;
 }
 
 .MuiTableCell-root {
@@ -228,4 +228,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .MuiDayCalendar-header,
 .MuiPickersCalendarHeader-root {
     @apply 2xl:w-[100%];
+}
+
+.MuiOutlinedInput-input {
+    @apply dark:bg-neutral-900;
+}
+
+.MuiDateCalendar-root {
+    @apply border rounded-md;
+}
+
+.MuiInputLabel-root.Mui-disabled {
+    @apply dark:text-white;
+}
+
+.Mui-disabled {
+    @apply dark:text-white;
 }

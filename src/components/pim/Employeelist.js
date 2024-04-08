@@ -357,7 +357,7 @@ export default function StickyHeadTable({
           </div>
           <TableContainer
             sx={{ maxHeight: 530 }}
-            className="m-2 pr-4 scrollbar-hide "
+            className="m-2 pr-4 pb-2 scrollbar-hide rounded-md"
           >
             <Table stickyHeader aria-label="sticky table">
               <TableHead className="tablehead">
@@ -440,7 +440,7 @@ export default function StickyHeadTable({
                                 arrow
                               >
                                 <Link
-                                  className="hover:bg-[#dbd6fc] rounded-md p-2"
+                                  className="hover:bg-[#dbd6fc] hover:dark:bg-neutral-950 rounded-md p-2"
                                   to={{
                                     pathname: `/pim/edit/${
                                       row.empid
@@ -463,7 +463,7 @@ export default function StickyHeadTable({
                                 arrow
                               >
                                 <Link
-                                  className="hover:bg-[#dbd6fc] rounded-md p-2"
+                                  className="hover:bg-[#dbd6fc] hover:dark:bg-neutral-950 rounded-md p-2"
                                   to={{
                                     pathname: `/pim/view/${
                                       row.empid

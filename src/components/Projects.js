@@ -36,39 +36,7 @@ const useStyles = makeStyles({
       fontWeight: "bold",
     },
   },
-  bodyroot: {
-    "& .MuiTableCell-root": {
-      fontFamily: "euclid",
-    },
-    "& .statusCell": {
-      width: 80,
-      // display: "flex",
-      // alignItems: "center",
-      // justifyItems: "center",
-      text: "center",
-      borderRadius: 7,
-      border: 0,
-      // height: "fit-content",
-      padding: 5,
-      fontSize: 11,
-      fontWeight: "bold",
-      marginTop: 12,
-      marginBottom: 10,
-      // color: "white",
-    },
-    "& .pending": {
-      backgroundColor: "#fee2e2",
-      color: "#f87171",
-    },
-    "& .inProgress": {
-      backgroundColor: "#fef3c7",
-      color: "#fbbf24",
-    },
-    "& .completed": {
-      backgroundColor: "#bbf7d0",
-      color: "#22c55e",
-    },
-  },
+
   searchContainer: {
     borderRadius: 7,
     display: "flex",
@@ -101,32 +69,6 @@ export default function Projects() {
     setPage(0); // Reset page when search query changes
   };
 
-  const getStatusLabel = (status) => {
-    switch (status) {
-      case 0:
-        return "Pending";
-      case 1:
-        return "In Progress";
-      case 2:
-        return "Completed";
-      default:
-        return "";
-    }
-  };
-
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 0:
-        return "pending";
-      case 1:
-        return "inProgress";
-      case 2:
-        return "completed";
-      default:
-        return "";
-    }
-  };
-
   const filteredData = data.filter((client) =>
     client.projects.some((project) =>
       Object.values(project).some(
@@ -139,10 +81,10 @@ export default function Projects() {
 
   return (
     <div className="w-[96vw] md:w-auto">
-      <div className="bg-white rounded-md  px-2 py-1 flex  items-center justify-between sticky top-0">
+      <div className="bg-white dark:bg-neutral-950 dark:text-white rounded-md  px-2 py-1 flex  items-center justify-between sticky top-0">
         <div className="flex items-center">
           <div
-            className={`${classes.searchContainer} bg-sky-50 mr-2  flex  h-full py-1 `}
+            className={`${classes.searchContainer} bg-sky-50 dark:bg-neutral-900 mr-2  flex  h-full py-1 `}
           >
             <InputBase
               placeholder="Search by Client Name, Id "
@@ -154,7 +96,7 @@ export default function Projects() {
           </div>
           <Link
             to="/projects/addproject"
-            className="bg-sky-50 rounded-md p-2.5 flex items-center gap-2"
+            className="bg-sky-50 dark:bg-neutral-900 rounded-md p-2.5 flex items-center gap-2"
           >
             <Tooltip title="Add Project" placement="top" arrow>
               <div>
@@ -172,6 +114,7 @@ export default function Projects() {
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
+            className="dark:text-white"
           />
         </div>
       </div>
@@ -183,10 +126,10 @@ export default function Projects() {
         <TableContainer
           component={Paper}
           style={{ maxHeight: "100%" }}
-          className="scrollbar-hide mt-2 h-[85vh] md:h-[79vh]"
+          className="scrollbar-hide mt-2 h-[85vh] md:h-[79vh] p-2 "
         >
-          <Table>
-            <TableHead className="sticky top-0">
+          <Table className="rounded-md">
+            <TableHead className="sticky top-0 ">
               <TableRow className={classNames("bg-sky-50 ", classes.root)}>
                 <TableCell>Project Id</TableCell>
                 <TableCell>Project Name</TableCell>
@@ -198,7 +141,7 @@ export default function Projects() {
                 <TableCell>Assigned To</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody className={`${classNames(classes.bodyroot)}`}>
+            <TableBody className={`${classNames(classes.bodyroot)} `}>
               {(rowsPerPage > 0
                 ? filteredData.slice(
                     page * rowsPerPage,
@@ -212,23 +155,25 @@ export default function Projects() {
                     <TableCell>{project.projectname}</TableCell>
                     <TableCell>{client.clientname}</TableCell>
                     <TableCell>{client.businessname}</TableCell>
-                    <Tooltip
-                      title={"Work " + getStatusLabel(project.status)}
-                      placement="top"
-                      arrow
-                    >
-                      <TableCell
-                        className={`statusCell cursor-pointer ${getStatusColor(
-                          project.status
-                        )} `}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "center",
-                        }}
-                      >
-                        {getStatusLabel(project.status)}
-                      </TableCell>
-                    </Tooltip>
+                    <TableCell>
+                      {project.status === 0 ? (
+                        <span className="text-red-600 bg-red-200 px-2 py-1 rounded-md text-xs font-bold euclid">
+                          Pending
+                        </span>
+                      ) : project.status === 1 ? (
+                        <span className="text-orange-600 bg-orange-200 px-2 py-1 rounded-md text-xs font-bold euclid">
+                          In Progress
+                        </span>
+                      ) : project.status === 2 ? (
+                        <span className="text-green-500 bg-green-200 px-2 py-1 rounded-md text-xs font-bold euclid">
+                          Completed
+                        </span>
+                      ) : (
+                        <span className=" bg-sky-50 dark:bg-neutral-950 px-2 py-1 rounded-md text-xs font-bold euclid">
+                          Not Found
+                        </span>
+                      )}
+                    </TableCell>
                     <TableCell>{project.receiveddate}</TableCell>
                     <TableCell>{project.deadline}</TableCell>
                     <TableCell>{project.associate}</TableCell>

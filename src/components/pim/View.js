@@ -23,9 +23,9 @@ export default function ViewEmployee() {
       >
         <div
           ref={contentRef}
-          className="bg-white dark:bg-neutral-950 dark:text-white rounded-md md:p-4 p-2 flex flex-col md:flex-col gap-2 md:gap-5 mb-16 md:mb-20"
+          className="bg-white dark:bg-neutral-950 dark:text-white rounded-md p-2 flex flex-col md:flex-col gap-2  mb-16 md:mb-20"
         >
-          <div className=" flex flex-col md:flex-row gap-2 md:gap-5">
+          <div className=" flex flex-col md:flex-row gap-2 ">
             <div className="md:w-1/2 bg-blue-50 dark:bg-neutral-900 p-4 rounded-md">
               <h1 className="font-bold">Personal Information</h1>
               <div className="flex flex-row  items-center mt-2 gap-5 md:gap-10">
@@ -84,7 +84,7 @@ export default function ViewEmployee() {
             </div>
           </div>
 
-          <div className=" flex flex-col md:flex-row gap-2 md:gap-5">
+          <div className=" flex flex-col md:flex-row gap-2 ">
             <div className="md:w-1/2 bg-blue-50 dark:bg-neutral-900 p-4 rounded-md">
               <h1 className="font-bold">Employement Information</h1>
               <div className="flex flex-col gap-2 mt-2">

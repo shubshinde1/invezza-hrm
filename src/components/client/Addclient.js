@@ -59,12 +59,10 @@ const useStyles = makeStyles({
       fontWeight: "bold",
     },
     "& .MuiInputLabel-root.Mui-focused": {
-      color: "black",
       fontWeight: "bold",
       fontSize: 15,
     },
     "& .MuiInputBase-root": {
-      backgroundColor: "#f0f9ff",
       border: "0 none",
       borderRadius: 7,
       height: 52,
@@ -150,10 +148,10 @@ export default function Addclient() {
   }, [navigate]);
 
   return (
-    <div className="bg-white p-4 rounded-md mb-20">
+    <div className="bg-white dark:bg-neutral-950 p-4 rounded-md mb-20">
       <form>
         <motion.div
-          className="grid grid-cols-12 gap-2"
+          className="grid grid-cols-12 gap-4"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -381,9 +379,9 @@ export default function Addclient() {
                   endAdornment: (
                     <label
                       htmlFor="contractfile"
-                      className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-100 hover:scale-105 cursor-pointer"
+                      className="p-2.5 my-2 -mr-0.5 rounded-md bg-blue-10 dark:bg-neutral-950 hover:scale-105 cursor-pointer"
                     >
-                      <FaFileArrowUp className="text-gray-500" />
+                      <FaFileArrowUp className="text-gray-500 dark:text-neutral-600" />
                     </label>
                   ),
                   value: selectedFileName, // Display only the selected file name
@@ -408,7 +406,7 @@ export default function Addclient() {
           </div>
           <div className="col-span-12 sm:col-span-6 md:col-span-8 flex flex-col">
             <textarea
-              className="bg-[#f0f9ff] rounded-md focus:border-[1px] p-3 pb-0 h-20 "
+              className="bg-[#f0f9ff] dark:bg-neutral-900 dark:text-white rounded-md focus:border-[1px] p-3 pb-0 h-20 "
               placeholder="Description"
             ></textarea>
           </div>
@@ -433,8 +431,8 @@ export default function Addclient() {
                   zIndex: 9998,
                 }}
               >
-                <div className="bg-white p-4 rounded-md shadow-lg popup-content ">
-                  <div className="flex flex-row items-center gap-3 bg-sky-50 p-3 rounded-md">
+                <div className="bg-white dark:bg-neutral-900 p-4 rounded-md shadow-lg popup-content ">
+                  <div className="flex flex-row items-center gap-3 bg-sky-50 dark:bg-neutral-950 dark:text-white p-3 rounded-md">
                     <BsPersonFillCheck className="text-green-500 text-2xl" />
                     <p className="text-center text-base">
                       New Client Added Successfully.

@@ -89,8 +89,8 @@ function ViewClient() {
             </div>
           </div>
           <hr className="mt-3 text-red-600" />
-          <div className=" rounded-md bg-white dark:bg-neutral-950  lg:ml-0 mt-5">
-            <ul className="flex flex-col md:flex-row md:grid grid-cols-12 gap-4 p-1">
+          <div className=" rounded-md bg-white dark:bg-neutral-950  lg:ml-0 mt-3">
+            <ul className="flex flex-col md:flex-row md:grid grid-cols-12 gap-2">
               {client.projects.map((project, index) => (
                 <li
                   key={index}

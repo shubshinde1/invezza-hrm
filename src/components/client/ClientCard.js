@@ -183,7 +183,7 @@ export default function ClientCard({ clients }) {
     <div className={classes.root}>
       <div className="bg-white dark:bg-neutral-950 dark:text-white rounded-md">
         <div className="p-2">
-          <div className="grid grid-cols-12 lg:grid-cols-11 gap-4 ">
+          <div className="grid grid-cols-12 lg:grid-cols-11 gap-2 ">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -318,7 +318,7 @@ export default function ClientCard({ clients }) {
         </div>
         <div
           style={{ marginBottom: 10 }}
-          className=" p-2 flex justify-between items-center "
+          className=" pl-2 pb-2 flex justify-between items-center "
         >
           <div className="flex items-center">
             <div
@@ -346,10 +346,10 @@ export default function ClientCard({ clients }) {
           <div className="ml-2">
             <div
               onClick={toggleViewMode}
-              className="mr-2 bg-sky-100 dark:bg-neutral-900 dark:text-white p-2 rounded-md cursor-pointer"
+              className="mr-2 bg-sky-100 dark:bg-neutral-900 dark:text-white p-3 rounded-md cursor-pointer"
             >
               {viewMode === "grid" ? (
-                <FaThList fontSize={17} />
+                <FaThList fontSize={16} />
               ) : (
                 <BsFillGrid3X3GapFill fontSize={17} />
               )}
@@ -459,7 +459,7 @@ export default function ClientCard({ clients }) {
         </Grid>
       ) : (
         <Box
-          className={`${classes.listViewContainer} w-[96vw] md:w-auto dark:bg-neutral-950 p- rounded-md`}
+          className={`${classes.listViewContainer} w-[96vw] md:w-auto dark:bg-neutral-950 p-2 rounded-md`}
         >
           <TableContainer component={Paper}>
             <Table>
