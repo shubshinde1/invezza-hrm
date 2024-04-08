@@ -459,7 +459,7 @@ export default function ClientCard({ clients }) {
         </Grid>
       ) : (
         <Box
-          className={`${classes.listViewContainer} w-[96vw] md:w-auto dark:bg-neutral-950 p-2 rounded-md`}
+          className={`${classes.listViewContainer} w-[96vw] md:w-auto dark:bg-neutral-950 p- rounded-md`}
         >
           <TableContainer component={Paper}>
             <Table>
