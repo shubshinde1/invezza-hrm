@@ -47,7 +47,7 @@ const LogoutMenuItem = ({ handleThemeSwitch }) => {
               }}
             >
               <div className="absolute inset-0 opacity-50 backdrop-blur-lg bg-black"></div>
-              <div className="absolute  bg-white p-7 rounded-md shadow-lg">
+              <div className="absolute  bg-white dark:bg-neutral-900 p-7 rounded-md shadow-lg">
                 <p>Are you sure you want to logout?</p>
                 <div className="flex justify-around mt-4 ">
                   <button
@@ -62,7 +62,7 @@ const LogoutMenuItem = ({ handleThemeSwitch }) => {
                     Logout
                   </button>
                   <button
-                    className="px-4 py-2 bg-gray-300 rounded-md hover:scale-105 duration-300"
+                    className="px-4 py-2 bg-gray-300 dark:bg-neutral-950 rounded-md hover:scale-105 duration-300"
                     onClick={cancelLogout}
                   >
                     Cancel

@@ -235,7 +235,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .MuiDateCalendar-root {
-    @apply border rounded-md;
+    @apply  rounded-md;
 }
 
 .MuiInputLabel-root.Mui-disabled {

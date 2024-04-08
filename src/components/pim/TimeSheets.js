@@ -258,11 +258,11 @@ export default function TimeSheets() {
           <ul className="hidden lg:grid grid-cols-12 mb-2 gap-2 px-2 py-3 bg-sky-100 dark:bg-neutral-800 rounded-md font-bold">
             <li className="col-span-1 ">Sr.No</li>
             <li className="col-span-2 ">Project Name</li>
-            <li className="col-span-2 ">Task Name</li>
+            <li className="col-span-2 ">Task</li>
             <li className="col-span-2 ">Subtask</li>
-            <li className="col-span-2 ">Description</li>
+            <li className="col-span-3 ">Description</li>
             <li className="col-span-1 ">Duration</li>
-            <li className="col-span-1 ">Assigned</li>
+            {/* <li className="col-span-1 ">Assigned</li> */}
             <li className="col-span-1 ">Remark</li>
           </ul>
         </motion.div>
@@ -290,14 +290,14 @@ export default function TimeSheets() {
                   <h2>{task.projectname}</h2>
                 </div>
                 <div className="flex col-span-12 lg:col-span-2 justify-between items-center">
-                  <h2 className="flex lg:hidden">Task Name - </h2>
+                  <h2 className="flex lg:hidden">Task - </h2>
                   <h2>{task.taskname}</h2>
                 </div>
                 <div className="flex col-span-12 lg:col-span-2 justify-between items-center">
                   <h2 className="flex lg:hidden">Subtask - </h2>
                   <h2>{task.subtask}</h2>
                 </div>
-                <div className="flex col-span-12 lg:col-span-2 justify-between items-center">
+                <div className="flex col-span-12 lg:col-span-3 justify-between items-center">
                   <h2 className="flex lg:hidden">Description - </h2>
                   <h2>{task.description}</h2>
                 </div>
@@ -305,10 +305,10 @@ export default function TimeSheets() {
                   <h2 className="flex lg:hidden">Duration - </h2>
                   <h2>{task.duration} Hrs</h2>
                 </div>
-                <div className="flex col-span-12 lg:col-span-1 justify-between items-center">
+                {/* <div className="flex col-span-12 lg:col-span-1 justify-between items-center">
                   <h2 className="flex lg:hidden">Assigned Date - </h2>
                   <h2>{task.assigneddate}</h2>
-                </div>
+                </div> */}
                 <div className="flex col-span-12 lg:col-span-1 justify-between items-center">
                   <h2 className="flex lg:hidden">Remark - </h2>
                   <h2
@@ -329,7 +329,7 @@ export default function TimeSheets() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col md:flex-row gap-10 md:gap-0 items-center bg-sky-50 dark:bg-neutral-900 rounded-md p-5 mt-2"
+            className="flex flex-col md:flex-row gap-10 md:gap-0 items-center bg-sky-50 dark:bg-neutral-900 rounded-md p-5 lg:mt-2"
           >
             <div className="md:w-1/2 flex justify-center flex-col items-center gap-4">
               <h2 className="text-lg font-bold">
