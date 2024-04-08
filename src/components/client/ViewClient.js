@@ -144,7 +144,7 @@ function ViewClient() {
                     </div>
                     <div className="text-sm">
                       <p className="text-sm font-medium text-neutral-500">
-                        Received Date
+                        Start Date
                       </p>
                       <p className="font-normal">{project.receiveddate}</p>
                     </div>

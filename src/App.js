@@ -40,7 +40,7 @@ function App() {
   }, [theme]);
 
   const handleThemeSwitch = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    setTheme(theme === "dark" ? "dark" : "light");
   };
 
   const { user, loginWithRedirect, isAuthenticated } = useAuth0();

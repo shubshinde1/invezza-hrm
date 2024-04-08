@@ -18,6 +18,7 @@ import classNames from "classnames";
 import { MdOutlineAddCircle } from "react-icons/md";
 import Tooltip from "@mui/material/Tooltip";
 import { Link, useNavigate } from "react-router-dom";
+import { IoEye } from "react-icons/io5";
 
 const SearchInput = styled(InputBase)({
   borderRadius: "7px",
@@ -133,12 +134,12 @@ export default function Projects() {
               <TableRow className={classNames("bg-sky-50 ", classes.root)}>
                 <TableCell>Project Id</TableCell>
                 <TableCell>Project Name</TableCell>
-                <TableCell>Client Name</TableCell>
                 <TableCell>Business Name</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell>Start Date</TableCell>
                 <TableCell>Deadline</TableCell>
                 <TableCell>Assigned To</TableCell>
+                <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody className={`${classNames(classes.bodyroot)} `}>
@@ -153,7 +154,6 @@ export default function Projects() {
                   <TableRow key={project.projectid} className="">
                     <TableCell>{project.projectid}</TableCell>
                     <TableCell>{project.projectname}</TableCell>
-                    <TableCell>{client.clientname}</TableCell>
                     <TableCell>{client.businessname}</TableCell>
                     <TableCell>
                       {project.status === 0 ? (
@@ -177,6 +177,13 @@ export default function Projects() {
                     <TableCell>{project.receiveddate}</TableCell>
                     <TableCell>{project.deadline}</TableCell>
                     <TableCell>{project.associate}</TableCell>
+                    <TableCell>
+                      <Link to={`/projects/viewproject/${project.projectid}`}>
+                        <button className="hover:bg-[#dbd6fc] hover:dark:bg-neutral-950 rounded-md p-2">
+                          <IoEye className="text-xl" />
+                        </button>
+                      </Link>
+                    </TableCell>
                   </TableRow>
                 ))
               )}

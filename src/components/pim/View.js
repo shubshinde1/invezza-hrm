@@ -26,8 +26,10 @@ export default function ViewEmployee() {
           className="bg-white dark:bg-neutral-950 dark:text-white rounded-md p-2 flex flex-col md:flex-col gap-2  mb-16 md:mb-20"
         >
           <div className=" flex flex-col md:flex-row gap-2 ">
-            <div className="md:w-1/2 bg-blue-50 dark:bg-neutral-900 p-4 rounded-md">
-              <h1 className="font-bold">Personal Information</h1>
+            <div className="md:w-1/2 bg-blue-50 dark:bg-neutral-900 p-2 rounded-md group">
+              <h1 className="font-bold p-2 group-hover:bg-sky-100 group-hover:dark:bg-neutral-950 group-hover:duration-500 rounded-md w-fit">
+                Personal Information
+              </h1>
               <div className="flex flex-row  items-center mt-2 gap-5 md:gap-10">
                 <div className=" p-4 rounded-md">
                   <FaUserAlt className="text-gray-300 text-7xl md:text-8xl" />
@@ -57,8 +59,10 @@ export default function ViewEmployee() {
               </div>
             </div>
 
-            <div className="md:w-1/2 bg-blue-50 dark:bg-neutral-900 p-4 rounded-md">
-              <h1 className="font-bold">Contact Information</h1>
+            <div className="md:w-1/2 bg-blue-50 dark:bg-neutral-900 p-2 rounded-md group">
+              <h1 className="font-bold p-2 group-hover:bg-sky-100 group-hover:dark:bg-neutral-950 group-hover:duration-500  rounded-md w-fit">
+                Contact Information
+              </h1>
               <div className="flex flex-col gap-2 mt-2">
                 <div className="flex overflow-hidden">
                   <label className="w-28 md:w-64">Address</label>
@@ -85,8 +89,10 @@ export default function ViewEmployee() {
           </div>
 
           <div className=" flex flex-col md:flex-row gap-2 ">
-            <div className="md:w-1/2 bg-blue-50 dark:bg-neutral-900 p-4 rounded-md">
-              <h1 className="font-bold">Employement Information</h1>
+            <div className="md:w-1/2 bg-blue-50 dark:bg-neutral-900 p-2 rounded-md group">
+              <h1 className="font-bold p-2 group-hover:bg-sky-100 group-hover:dark:bg-neutral-950 group-hover:duration-500 rounded-md w-fit">
+                Employement Information
+              </h1>
               <div className="flex flex-col gap-2 mt-2">
                 <div className="flex overflow-hidden">
                   <label className="w-28 md:w-64">Employee ID </label>
@@ -119,8 +125,10 @@ export default function ViewEmployee() {
               </div>
             </div>
 
-            <div className="md:w-1/2 bg-blue-50 dark:bg-neutral-900 p-4 rounded-md">
-              <h1 className="font-bold">Contact Information</h1>
+            <div className="md:w-1/2 bg-blue-50 dark:bg-neutral-900 p-2 rounded-md group">
+              <h1 className="font-bold  p-2 group-hover:bg-sky-100 group-hover:dark:bg-neutral-950 group-hover:duration-500 rounded-md w-fit">
+                Contact Information
+              </h1>
               <div className="flex flex-col gap-2 mt-2">
                 <div className="flex overflow-hidden">
                   <label className="w-28 md:w-64">First Name</label>
@@ -147,8 +155,10 @@ export default function ViewEmployee() {
           </div>
 
           <div className=" flex flex-col md:flex-row md:gap-5">
-            <div className="w-full bg-blue-50 dark:bg-neutral-900 p-4 rounded-md">
-              <h1 className="font-bold">Work Experience Information</h1>
+            <div className="w-full bg-blue-50 dark:bg-neutral-900 p-2 rounded-md group">
+              <h1 className="font-bold  p-2 group-hover:bg-sky-100 group-hover:dark:bg-neutral-950 group-hover:duration-500 rounded-md w-fit">
+                Work Experience Information
+              </h1>
               <h1 className="mt-3">Experience 1</h1>
               <div className="flex md:flex-row flex-col gap-2 mt-2">
                 <div className="md:w-1/2 flex flex-col gap-2">
