@@ -25,7 +25,7 @@ import logo from "../src/assets/images/invezza-logo.png";
 import ViewProject from "./components/project/ViewProject";
 
 function App() {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
 
   useEffect(() => {
     // Apply theme to the document
@@ -40,7 +40,7 @@ function App() {
   }, [theme]);
 
   const handleThemeSwitch = () => {
-    setTheme(theme === "dark" ? "dark" : "light");
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   const { user, loginWithRedirect, isAuthenticated } = useAuth0();
