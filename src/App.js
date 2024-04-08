@@ -25,7 +25,7 @@ import logo from "../src/assets/images/invezza-logo.png";
 import ViewProject from "./components/project/ViewProject";
 
 function App() {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
     // Apply theme to the document
