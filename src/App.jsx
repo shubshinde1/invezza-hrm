@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/shared/Layout";
 import Dashboard from "./components/Dashboard";
-import Myprofile from "./components/Myprofile";
+// import Myprofile from "./components/Myprofile";
 import User from "./components/User";
-import Task from "./components/Task";
+// import Task from "./components/Task";
 import Leave from "./components/Leave";
-import Claim from "./components/Claim";
-import Login from "./components/Login";
+// import Claim from "./components/Claim";
+// import Login from "./components/Login";
 import Pim from "./components/Pim";
 import Clients from "./components/Clients";
 import Projects from "./components/Projects";
@@ -16,12 +16,12 @@ import Employeelist from "./components/pim/Employeelist";
 import Addemployee from "./components/pim/Addemployee";
 import EditEmployee from "./components/pim/EditEmployee";
 import ViewEmployee from "./components/pim/ViewEmployee";
-import leave from "./components/pim/Leave";
+// import leave from "./components/pim/Leave";
 import Addclient from "./components/client/Addclient";
 import ViewClient from "./components/client/ViewClient";
 import Addproject from "./components/projects/Addproject";
-import Loginimg from "../src/assets/images/login.svg";
-import logo from "../src/assets/images/invezza-logo.png";
+// import Loginimg from "../src/assets/images/login.svg";
+// import logo from "../src/assets/images/invezza-logo.png";
 import ViewProject from "./components/project/ViewProject";
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  const { user, loginWithRedirect, isAuthenticated } = useAuth0();
+  // const { user, loginWithRedirect, isAuthenticated } = useAuth0();
   return (
     <>
       {/* {isAuthenticated ? ( */}

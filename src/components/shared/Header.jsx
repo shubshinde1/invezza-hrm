@@ -12,6 +12,8 @@ import { TbMoonFilled } from "react-icons/tb";
 import { MdLightMode } from "react-icons/md";
 import { motion } from "framer-motion";
 
+import userprofile from "../../assets/images/profilepic.png";
+
 export default function Header({ handleThemeSwitch, theme }) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -50,22 +52,22 @@ export default function Header({ handleThemeSwitch, theme }) {
         animate={{ rotate: rotate ? 90 : 0 }}
         transition={{ duration: 0.5 }}
       >
-        <MdLightMode size={20} />
+        <MdLightMode size={20} className="text-yellow-400" />
       </motion.div>
     ) : (
       <motion.div
-        animate={{ rotate: rotate ? 50 : 0 }}
+        animate={{ rotate: rotate ? 20 : 0 }}
         transition={{ duration: 0.5 }}
       >
-        <TbMoonFilled size={20} />
+        <TbMoonFilled size={20} className="text-blue-950" />
       </motion.div>
     );
 
   return (
-    <div className=" mt-2 mb-2 mr-2 ml-16 md:m-2 pl-2 dark:bg-neutral-950 bg-white dark:text-white h-12 md:h-16 rounded-md flex justify-between items-center">
+    <div className=" my-2 mr-2  ml-16 md:m-2 py-2 pl-2 dark:bg-neutral-950 bg-white dark:text-white h-12 md:h-auto rounded-md flex justify-between items-center">
       <div className="font-bold">{getTitle()}</div>
       <div className="">
-        <div className="flex items-center gap-3 text-sm">
+        <div className="flex items-center gap-2 text-sm">
           <Popover className="relative">
             {({ open }) => (
               <>
@@ -111,9 +113,9 @@ export default function Header({ handleThemeSwitch, theme }) {
             <div>
               <Menu.Button className="flex align-middle">
                 <div
-                  className="h-10 w-10 rounded-md bg-top bg-no-repeat"
+                  className="h-9 w-9 rounded-md bg-top bg-no-repeat"
                   style={{
-                    backgroundImage: `url(${require("../../assets/images/profilepic.png")})`,
+                    backgroundImage: `url(${userprofile})`,
                   }}
                 >
                   <span className="sr-only">Shubham Shinde</span>

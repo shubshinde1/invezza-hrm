@@ -8,6 +8,29 @@ import { IoIosAddCircle } from "react-icons/io";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import { FaGithub } from "react-icons/fa6";
+import { FaExternalLinkSquareAlt } from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
+import { RiJavascriptFill, RiReactjsLine } from "react-icons/ri";
+import { CgFigma } from "react-icons/cg";
+import {
+  SiAdobeillustrator,
+  SiAdobephotoshop,
+  SiAdobexd,
+  SiMui,
+  SiHtml5,
+  SiCss3,
+  SiTailwindcss,
+  SiExpress,
+  SiMongodb,
+  SiDocker,
+  SiJirasoftware,
+} from "react-icons/si";
+import { TbBrandNodejs } from "react-icons/tb";
+import { IoLogoVercel } from "react-icons/io5";
+import { BsGitlab } from "react-icons/bs";
+import { PiAngularLogoFill } from "react-icons/pi";
+
 function ViewClient() {
   const location = useLocation();
   const [client, setClient] = useState(null);
@@ -20,6 +43,14 @@ function ViewClient() {
       setClient(JSON.parse(decodeURIComponent(clientData)));
     }
   }, [location.search]);
+
+  const technologyIcons = {
+    Figma: CgFigma,
+    "Adobe XD": SiAdobexd,
+    "Node js": TbBrandNodejs,
+    "React js": RiReactjsLine,
+    "Angular js": PiAngularLogoFill,
+  };
 
   return (
     <div className=" mx-auto pb-20 ">
@@ -101,23 +132,6 @@ function ViewClient() {
                       <h2 className=" font-semibold group-hover:ml-2 group-hover:duration-300 group-hover:ease-in">
                         {index + 1} - {project.projectname}
                       </h2>
-                      <Tooltip title="Work Status" placement="top" arrow>
-                        <span
-                          className={` px-1 py-0.5 rounded-md font-bold text-[.6rem]  cursor-pointer hidden group-hover:flex ${
-                            project.status === 0
-                              ? "bg-red-200 text-red-400"
-                              : project.status === 1
-                              ? "bg-yellow-100 text-yellow-400"
-                              : "bg-green-200 text-green-400"
-                          }`}
-                        >
-                          {project.status === 0
-                            ? "Pending"
-                            : project.status === 1
-                            ? "In Progress"
-                            : "Completed"}
-                        </span>
-                      </Tooltip>
                     </div>
                     <div className="hidden group-hover:flex cursor-pointer mr-2">
                       <Link
@@ -136,11 +150,28 @@ function ViewClient() {
                       </p>
                       <p className="font-normal">{project.projectid}</p>
                     </div>
-                    <div className="text-sm">
+                    <div className="text-sm flex flex-col gap-0">
                       <p className="text-sm font-medium text-neutral-500">
-                        Assinged To
+                        Status
                       </p>
-                      <p className="font-normal">{project.associate}</p>
+                      {/* <p className="font-normal">{project.associate}</p> */}
+                      <Tooltip title="Work Status" placement="top" arrow>
+                        <span
+                          className={` px-2 py-1 rounded-md font-bold text-[0.750rem]  cursor-pointer w-fit ${
+                            project.status === 0
+                              ? "bg-red-200 text-red-400"
+                              : project.status === 1
+                              ? "bg-yellow-100 text-yellow-400"
+                              : "bg-green-200 text-green-400"
+                          }`}
+                        >
+                          {project.status === 0
+                            ? "Pending"
+                            : project.status === 1
+                            ? "In Progress"
+                            : "Completed"}
+                        </span>
+                      </Tooltip>
                     </div>
                     <div className="text-sm">
                       <p className="text-sm font-medium text-neutral-500">
@@ -150,18 +181,62 @@ function ViewClient() {
                     </div>
                     <div className="text-sm">
                       <p className="text-sm font-medium text-neutral-500">
-                        Deadline
+                        Technologies
                       </p>
-                      <p className="font-normal">{project.deadline}</p>
+                      <div className="flex flex-wrap gap-1 mt-0.5">
+                        {Object.keys(project.details)
+                          .flatMap((teamKey) =>
+                            project.details[teamKey].associates.flatMap(
+                              (associate) => associate.technologies
+                            )
+                          )
+                          .slice(0, 4) // Only take the first four technologies
+                          .map((tech, techIdx) => {
+                            // Check if the technology exists in the mapping object
+                            const IconComponent = technologyIcons[tech];
+                            if (IconComponent) {
+                              // If the icon exists, render it with custom styling
+                              return (
+                                <Tooltip title={tech} placement="top" arrow>
+                                  <div
+                                    key={techIdx}
+                                    className="icon-wrapper bg-sky-100 dark:text-white text-neutral-600 hover:text-blue-600 dark:hover:text-blue-600 cursor-pointer  dark:bg-neutral-950 p-1.5 rounded-md"
+                                  >
+                                    <IconComponent className="icon text-xl " />
+                                    {/* Add custom styling here */}
+                                  </div>
+                                </Tooltip>
+                              );
+                            } else {
+                              // If the icon doesn't exist, render the technology name
+                              return (
+                                <span
+                                  key={techIdx}
+                                  className="bg-gray-200 dark:bg-neutral-950 px-2 py-1 text-xs rounded-md"
+                                >
+                                  {tech}
+                                </span>
+                              );
+                            }
+                          })}
+                        {/* Display remaining count */}
+                        {Object.keys(project.details).flatMap((teamKey) =>
+                          project.details[teamKey].associates.flatMap(
+                            (associate) => associate.technologies
+                          )
+                        ).length > 4 && (
+                          <span className="bg-gray-200 dark:bg-neutral-950 flex items-center p-2 text-xs rounded-md">
+                            +
+                            {Object.keys(project.details).flatMap((teamKey) =>
+                              project.details[teamKey].associates.flatMap(
+                                (associate) => associate.technologies
+                              )
+                            ).length - 4}
+                          </span>
+                        )}
+                      </div>
                     </div>
-                    {/* <div className="">
-                      <p className="text-sm font-medium text-neutral-500">
-                        Remark
-                      </p>
-                      <p className="font-normal">{project.remark}</p>
-                    </div> */}
                   </div>
-                  {/* <hr className="mt-5  " /> */}
                 </li>
               ))}
             </ul>

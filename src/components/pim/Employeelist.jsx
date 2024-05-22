@@ -25,7 +25,6 @@ import { createGlobalStyle } from "styled-components";
 import classNames from "classnames";
 import { motion } from "framer-motion";
 import leaveData from "./leaveData.json";
-import ViewEmployee from "./ViewEmployee";
 
 import Tooltip from "@mui/material/Tooltip";
 
@@ -126,6 +125,8 @@ function createData(empid, ename, designation, mark, jdate, status) {
 
 const rows = leaveData;
 const edata = leaveData[0].empid;
+
+
 
 export default function StickyHeadTable({
   empid,

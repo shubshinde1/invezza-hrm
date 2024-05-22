@@ -399,52 +399,51 @@ export default function ClientCard({ clients }) {
                         <label className="w-20 font-semibold">Email </label>
                         <p>- {client.email}</p>
                       </div>
-                      <div className="flex ">
+                      {/* <div className="flex ">
                         <label className="w-20 font-semibold">GSTN </label>
                         <p>- {client.gstn}</p>
-                      </div>
+                      </div> */}
                       <div className="flex ">
                         <label className="w-20 font-semibold">Projects </label>
                         <p>- {client.projects.length}</p>
                       </div>
-                      <div className="flex">
+                      {/* <div className="flex">
                         <label className="w-20 font-semibold">Project </label>
                         <p>
                           -
                           {client.projects.length > 0 &&
                             client.projects[0].projectname}
                         </p>
-                      </div>
+                      </div> */}
                       <div className="flex">
                         <label className="w-20 font-semibold">Status </label>
                         <p>
                           {" "}
-                          {client.projects.length > 0 && (
+                          {client.status !== undefined && (
                             <span
                               style={{
                                 backgroundColor:
-                                  client.projects[0].status === 0
+                                  client.status === 0
                                     ? "#fee2e2"
-                                    : client.projects[0].status === 1
-                                    ? "#fef3c7"
-                                    : "#bbf7d0",
+                                    : client.status === 1
+                                    ? "#bbf7d0"
+                                    : "#fee2e2",
                                 color:
-                                  client.projects[0].status === 0
+                                  client.status === 0
                                     ? "#f87171"
-                                    : client.projects[0].status === 1
-                                    ? "#fcd34d"
-                                    : "#22c55e",
+                                    : client.status === 1
+                                    ? "#22c55e"
+                                    : "#f87171",
                                 fontWeight: "bold",
-                                // color: "white",
                                 fontSize: 11,
                                 padding: "3px 8px",
                                 borderRadius: "5px",
                               }}
                             >
-                              {client.projects[0].status === 0
-                                ? "Pending"
-                                : client.projects[0].status === 1
-                                ? "In Progress"
+                              {client.status === 0
+                                ? "Inactive"
+                                : client.status === 1
+                                ? "Active"
                                 : "Completed"}
                             </span>
                           )}
